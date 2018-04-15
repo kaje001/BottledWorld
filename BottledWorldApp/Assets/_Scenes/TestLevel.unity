@@ -2322,17 +2322,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 186654249}
   tube: {fileID: 871120676}
-  playerSpeed: 1.5
+  playerSpeed: 1
   boostLenth: 0.8
   jumpForce: 6
   rotSpeed: 100
   lifes: 1
   txtCoins: {fileID: 88984455}
   txtLifes: {fileID: 1203631909}
-  matCheckpointChecked: {fileID: 2100000, guid: 7bbc45d834392ee4f8d0478ea66f8495,
-    type: 2}
-  matCheckpointUnchecked: {fileID: 2100000, guid: b625dd5f0e354474a9386e893fc0d36a,
-    type: 2}
   collectablePrefabs:
   - {fileID: 1188280951918444, guid: 18f00a4c5ac214d42b55bc5864216399, type: 2}
   - {fileID: 1442797169587136, guid: 24cd333027e59944c9f9f73b86aafa70, type: 2}
@@ -2342,6 +2338,10 @@ MonoBehaviour:
   movingObstacleSpawnpoints:
   - {fileID: 1118090513}
   parentMovingObstacles: {fileID: 2111533050}
+  matCheckpointChecked: {fileID: 2100000, guid: 7bbc45d834392ee4f8d0478ea66f8495,
+    type: 2}
+  matCheckpointUnchecked: {fileID: 2100000, guid: b625dd5f0e354474a9386e893fc0d36a,
+    type: 2}
 --- !u!4 &662833492
 Transform:
   m_ObjectHideFlags: 0
