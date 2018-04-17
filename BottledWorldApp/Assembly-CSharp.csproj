@@ -51,11 +51,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\_Scripts\Level1\PlayerController.cs" />
-     <Compile Include="Assets\_Scripts\Level1\PlayerEvents.cs" />
-     <Compile Include="Assets\_Scripts\Level1\TouchCon.cs" />
      <Compile Include="Assets\_Scripts\Menu\AntController.cs" />
      <Compile Include="Assets\_Scripts\Menu\MenuController.cs" />
+     <Compile Include="Assets\_Scripts\TestLevel\CamController.cs" />
+     <Compile Include="Assets\_Scripts\TestLevel\PhysicsController.cs" />
+     <Compile Include="Assets\_Scripts\TestLevel\PlayerController.cs" />
+     <Compile Include="Assets\_Scripts\TestLevel\PlayerEvents.cs" />
+     <Compile Include="Assets\_Scripts\TestLevel\TouchCon.cs" />
      <None Include="Assets\SkySerie Freebie\Hdri setup.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

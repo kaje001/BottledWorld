@@ -9,11 +9,13 @@ public class PlayerController : MonoBehaviour {
 	//Grundeinstellungen
 	public GameObject player;
 	public GameObject tube;
+	public Transform camDummy;
 	public float playerSpeed = 1.5f;
 	public float boostLenth = 0.8f;
 	public float jumpForce = 5f;
 	public int rotSpeed = 100;
 	public int lifes = 1;
+	public Vector3 gravity;
 	
 	//UI Elemente
 	public Text txtCoins;
@@ -55,7 +57,7 @@ public class PlayerController : MonoBehaviour {
 		//Variablen zum Reseten des Spiels werden eingelesen
 		startPosition = player.transform.position;
 		startQuaternion = player.transform.rotation;
-		startGravity = Physics.gravity;
+		startGravity = gravity;
 		startSpeed = playerSpeed;
 		rigPlayer = player.GetComponent<Rigidbody>();
 		startLifes = lifes;
@@ -73,6 +75,10 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 		Vector3 curVel = rigPlayer.velocity;
 		rigPlayer.velocity = new Vector3 (curVel.x,curVel.y,playerSpeed); //Der Spieler wird nach vorne bewegt
+
+		//Camera Movement
+		camDummy.position = player.transform.position;
+		camDummy.rotation = player.transform.rotation;
 	
 	}
 	
