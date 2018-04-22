@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour {
 	public int rotSpeed = 100;
 	public int lifes = 1;
 	public Vector3 gravity;
+
+	public bool lockplayer = false; 
 	
 	//UI Elemente
 	public Text txtCoins;
@@ -33,11 +35,11 @@ public class PlayerController : MonoBehaviour {
 	
 	//Reset Elemente
 	int coinCount = 0;
-	Vector3 jumpVec;
+	//Vector3 jumpVec;
 	Rigidbody rigPlayer;
 	Vector3 startPosition;
 	Vector3 startGravity;
-	Vector3 startJumpVector;
+	//Vector3 startJumpVector;
 	Quaternion startQuaternion;
 	float startSpeed;
 	int startLifes;
@@ -49,7 +51,7 @@ public class PlayerController : MonoBehaviour {
 	List<GameObject> touchedCheckpoints = new List<GameObject>();
 	Vector3 checkpointPosition;
 	Vector3 checkpointGravity;
-	Vector3 checkpointJumpVector;
+	//Vector3 checkpointJumpVector;
 	Quaternion checkpointQuaternion;
 
 	void Start () {
@@ -62,8 +64,8 @@ public class PlayerController : MonoBehaviour {
 		rigPlayer = player.GetComponent<Rigidbody>();
 		startLifes = lifes;
 		
-		jumpVec = new Vector3(0f,jumpForce*200,0f);
-		startJumpVector = jumpVec;
+		//jumpVec = -gravity * jumpForce*200;
+		//startJumpVector = jumpVec;
 		
 		//Die Empties zum Spawner von Extra Leben und Coins werden eingelesen
 		collectableSpawnpoints.Add(GameObject.FindGameObjectsWithTag("CoinSpawner"));
@@ -78,7 +80,6 @@ public class PlayerController : MonoBehaviour {
 
 		//Camera Movement
 		camDummy.position = player.transform.position;
-		camDummy.rotation = player.transform.rotation;
 	
 	}
 	
@@ -90,9 +91,32 @@ public class PlayerController : MonoBehaviour {
 		gravity = Quaternion.Euler(0, 0, rot * rotSpeed) * gravity;
 		Physics.gravity = gravity;
 		
-		jumpVec = Quaternion.Euler(0, 0, rot * rotSpeed) * jumpVec;
+		//jumpVec = Quaternion.Euler(0, 0, rot * rotSpeed) * jumpVec;
 		
 		player.transform.Rotate(0f,0f,(rot * rotSpeed));
+		if (lockplayer) {
+			Vector3 pos = gravity.normalized * 1.71f;
+			pos.z = player.transform.position.z;
+			player.transform.position = pos;
+		}
+		camDummy.rotation = player.transform.rotation;
+
+	}
+
+	public void RotateWorldGyro(Vector2 gravityGyro){
+		Vector3 gravity = Physics.gravity;
+		gravity.x = gravityGyro.x;
+		gravity.y = gravityGyro.y;
+		gravity.z = 0f;
+		Physics.gravity = gravity * 9.81f;
+
+		//jumpVec = -gravity * jumpForce*200;
+
+		//player.transform.Rotate(0f,0f,(rot * rotSpeed));
+		player.transform.up = -gravity;
+		camDummy.rotation = player.transform.rotation;
+		Camera.main.transform.rotation = Quaternion.identity;
+
 	}
 
 	public void LoadMenu(){
@@ -107,7 +131,7 @@ public class PlayerController : MonoBehaviour {
 		player.transform.rotation = startQuaternion;
 		Physics.gravity = startGravity;
 		playerSpeed = startSpeed;
-		jumpVec = startJumpVector;
+		//jumpVec = startJumpVector;
 		
 		lifes = startLifes;
 		coinCount = 0;
@@ -130,14 +154,14 @@ public class PlayerController : MonoBehaviour {
 			player.transform.position = checkpointPosition;
 			player.transform.rotation = checkpointQuaternion;
 			playerSpeed = startSpeed;
-			jumpVec = checkpointJumpVector;
+			//jumpVec = checkpointJumpVector;
 		}else{
 			ResetPlayer();
 		}
 		
 	}
 	
-	//Nur der Spieler wird zurückgesetzt and den anfang des Levels, die Objekte bleiben aber so wie sie sind
+	//Nur der Spieler wird zurückgesetzt and den Anfang des Levels, die Objekte bleiben aber so wie sie sind
 	public void ResetPlayer(){
 		
 		rigPlayer.velocity = Vector3.zero;
@@ -145,10 +169,10 @@ public class PlayerController : MonoBehaviour {
 		player.transform.rotation = startQuaternion;
 		Physics.gravity = startGravity;
 		playerSpeed = startSpeed;
-		jumpVec = startJumpVector;
+		//jumpVec = startJumpVector;
 	}
 	
-	// Es wird gecheckt, ob noch leben verfuegbar sind
+	// Es wird gecheckt, ob noch Leben verfuegbar sind
 	public void CheckDeath(){
 		if(lifes==0){ //wenn nein dann das Spiel zuruegsetzten
 			//ResetGame();
@@ -210,8 +234,8 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	public void PlayerJump(){
-		
-		rigPlayer.AddForce(jumpVec);
+		Vector3 vec = Physics.gravity.normalized;
+		rigPlayer.AddForce(-vec * jumpForce*200);
 	}
 	
 	public void SetPlayerSpeed(float f){
@@ -237,7 +261,7 @@ public class PlayerController : MonoBehaviour {
 		checkpointGravity = Physics.gravity;
 		checkpointPosition = player.transform.position;
 		checkpointQuaternion = player.transform.rotation;
-		checkpointJumpVector = jumpVec;
+		//checkpointJumpVector = jumpVec;
 		
 		checkpointOb.GetComponent<Renderer>().material = matCheckpointChecked;
 	}

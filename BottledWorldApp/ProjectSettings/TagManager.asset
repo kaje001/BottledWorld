@@ -17,6 +17,11 @@ TagManager:
   - Checkpoint
   - ExtraLifeSpawner
   - ExtraLife
+  - Exit
+  - Level2
+  - Level1
+  - Level3
+  - Level4
   layers:
   - Default
   - TransparentFX

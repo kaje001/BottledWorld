@@ -1,13 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\Menu\MenuController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\TestLevel\GyroCon.cs">
     <Files>
-      <File FileName="Assets\_Scripts\Menu\MenuController.cs" Line="12" Column="36" />
+      <File FileName="Assets\_Scripts\Menu\MenuController.cs" Line="26" Column="38" />
       <File FileName="Assets\_Scripts\Menu\AntController.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\TestLevel\PlayerController.cs" Line="72" Column="12" />
-      <File FileName="Assets\_Scripts\TestLevel\TouchCon.cs" Line="55" Column="4" />
-      <File FileName="Assets\_Scripts\TestLevel\CamController.cs" Line="62" Column="38" />
-      <File FileName="Assets\_Scripts\TestLevel\PhysicsController.cs" Line="40" Column="37" />
+      <File FileName="Assets\_Scripts\TestLevel\PlayerController.cs" Line="20" Column="33" />
+      <File FileName="Assets\_Scripts\TestLevel\TouchCon.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\TestLevel\CamController.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\TestLevel\PhysicsController.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\TestLevel\GyroCon.cs" Line="14" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
