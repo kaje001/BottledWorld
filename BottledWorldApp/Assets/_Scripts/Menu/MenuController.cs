@@ -20,17 +20,21 @@ public class MenuController : MonoBehaviour {
 			SceneManager.LoadScene("TestLevel1");
 		} else if (ob.transform.tag == "Level2") {
 			Debug.Log ("Start Level 2");
-			SceneManager.LoadScene("TestLevel2");
+			//SceneManager.LoadScene("TestLevel2");
 		}else if (ob.transform.tag == "Level3") {
 			Debug.Log ("Start Level 2");
-			SceneManager.LoadScene("TestLevel3");
+			//SceneManager.LoadScene("TestLevel3");
 		}else if (ob.transform.tag == "Level4") {
 			Debug.Log ("Start Level 2");
-			SceneManager.LoadScene("TestLevel4");
-		}else if (ob.transform.tag == "Exit") {
+			//SceneManager.LoadScene("TestLevel4");
+		}
+	}
+	
+	public void QuitGame(){
+		
 			Debug.Log ("Exit Game");
 			Application.Quit ();
-		}
+		
 	}
 
 }

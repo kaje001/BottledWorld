@@ -61,7 +61,7 @@ public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 
 
 	public void OnDrag(PointerEventData data){
-		Vector3 touchPointinWorld = Camera.main.ScreenToWorldPoint (new Vector3 (data.position.x, data.position.y, 1.2f));
+		Vector3 touchPointinWorld = Camera.main.ScreenToWorldPoint (new Vector3 (data.position.x, data.position.y+50f, 1.2f));
 
 		//transform.position = Vector3.Lerp (transform.position, touchPointinWorld, Time.deltaTime);
 		targetPos = touchPointinWorld;
@@ -72,7 +72,7 @@ public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 		targetPos = resetPos;
 		isDrop = true;
 		timeNextPosition = Time.time + 2f;
-		Ray ray = Camera.main.ScreenPointToRay(data.position);
+		Ray ray = Camera.main.ScreenPointToRay(new Vector3 (data.position.x, data.position.y+40f, 0f));
 		RaycastHit hitInfo;
 		if (Physics.Raycast (ray, out hitInfo, 10f, layMask)) {
 
