@@ -17,13 +17,7 @@ public class PlayerEvents : MonoBehaviour {
 			playCon.LoadMenu(); //Wenn der Spieler das Lvel schafft wird er zurückgesetzt
 		}
 	}
-	
-	void OnCollisionEnter(Collision other){
-		if(other.transform.tag == "Obstacle"){
-			playCon.CheckDeath(); //Bei einem Zusammenstoss mit einem Hinderniss wird im PlayerController gecheckt, ob noch leben verfügbar sind und ob schon ein Checkpoint activiert wurde
-		}
-		
-	}
+
 	
 	//Es werden alle Interactables abgefragt und dann in der PlayerController Class getriggered
 	void OnTriggerEnter(Collider other){
@@ -47,6 +41,12 @@ public class PlayerEvents : MonoBehaviour {
 		}
 		if(other.transform.tag == "Checkpoint"){ //Checkpoint aktivieren
 			playCon.SetCheckpoint(other.gameObject);
+		}
+
+
+
+		if(other.transform.tag == "Obstacle"){
+			playCon.CheckDeath(); //Bei einem Zusammenstoss mit einem Hinderniss wird im PlayerController gecheckt, ob noch leben verfügbar sind und ob schon ein Checkpoint activiert wurde
 		}
 	}
 }

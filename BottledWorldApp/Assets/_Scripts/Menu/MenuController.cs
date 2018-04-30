@@ -1,23 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
 
 	public bool antIsDraged = false;
 	public PhysicMaterial playermat;
+	[SerializeField] Text txtTotalCoins;
 
 	void Start(){
 		playermat.dynamicFriction = 0.3f;
 		playermat.staticFriction = 0.05f;
+
+		txtTotalCoins.text = CoinController.Instance.state.coins.ToString ();
 	}
 
 	public void CheckActivatedObject(GameObject ob){
 		
 		if (ob.transform.tag == "Level1") {
 			Debug.Log ("Start Level 1");
-			SceneManager.LoadScene("TestLevel1");
+			SceneManager.LoadScene("TestLevel4");
 		} else if (ob.transform.tag == "Level2") {
 			Debug.Log ("Start Level 2");
 			//SceneManager.LoadScene("TestLevel2");

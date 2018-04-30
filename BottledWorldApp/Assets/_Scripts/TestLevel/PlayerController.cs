@@ -15,9 +15,15 @@ public class PlayerController : MonoBehaviour {
 	public float jumpForce = 5f;
 	public int rotSpeed = 100;
 	public int lifes = 1;
+	public int level = 1;
 	public Vector3 gravity;
 
 	public bool lockplayer = false; 
+	bool pause = false;
+	public GameObject pausePanel;
+	public Text txtPauseButton;
+	public Text txtScore;
+	public Text txtCountdown;
 	
 	//UI Elemente
 	public Text txtCoins;
@@ -54,6 +60,8 @@ public class PlayerController : MonoBehaviour {
 	//Vector3 checkpointJumpVector;
 	Quaternion checkpointQuaternion;
 
+
+
 	void Start () {
 		
 		//Variablen zum Reseten des Spiels werden eingelesen
@@ -66,6 +74,16 @@ public class PlayerController : MonoBehaviour {
 		
 		//jumpVec = -gravity * jumpForce*200;
 		//startJumpVector = jumpVec;
+
+		int curCoins = 0;
+		if (level == 1) {
+			curCoins = CoinController.Instance.state.coinsLevel1;
+		}else if(level == 2) {
+			curCoins = CoinController.Instance.state.coinsLevel2;
+		}else if(level == 3) {
+			curCoins = CoinController.Instance.state.coinsLevel3;
+		}
+		txtCoins.text = curCoins.ToString();
 		
 		//Die Empties zum Spawner von Extra Leben und Coins werden eingelesen
 		collectableSpawnpoints.Add(GameObject.FindGameObjectsWithTag("CoinSpawner"));
@@ -75,16 +93,36 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void Update () {
-		Vector3 curVel = rigPlayer.velocity;
-		rigPlayer.velocity = new Vector3 (curVel.x,curVel.y,playerSpeed); //Der Spieler wird nach vorne bewegt
+		if (!pause) {
+			Vector3 curPos = rigPlayer.position;
 
-		//Camera Movement
-		camDummy.position = player.transform.position;
+			if (lockplayer) {
+				Vector3 pos = gravity.normalized * 1.71f;
+				pos.z = player.transform.position.z;
+				pos = pos + (-gravity) * curJumpHight;
+				player.transform.position = pos;
+				rigPlayer.MovePosition (new Vector3 (pos.x, pos.y, curPos.z + playerSpeed / 30f)); //Der Spieler wird nach vorne bewegt
+
+			} else {
+				rigPlayer.MovePosition (new Vector3 (curPos.x, curPos.y, curPos.z + playerSpeed / 30f)); //Der Spieler wird nach vorne bewegt
+
+			}
+
+			//Camera Movement
 	
+			//jumpVec = -gravity * jumpForce*200;
+
+			//player.transform.Rotate(0f,0f,(rot * rotSpeed));
+			player.transform.up = -gravity;
+		}
+
+		camDummy.position = player.transform.position;
+		camDummy.rotation = player.transform.rotation;
+		Camera.main.transform.rotation = Quaternion.identity;
 	}
 	
 	//RotateWorld wird immer bei einer TouchBewegung aufgerufen
-	public void RotateWorld(float rot){
+	/*public void RotateWorld(float rot){
 		//Die Funktion rotiert nicht die Flasche, sondern die Gravitation und den Spieler
 			//Dadurch muss nicht die Ganze Geometrie gedreht und neu Berechnet werden (Performance :))
 		Vector3 gravity = Physics.gravity;
@@ -101,21 +139,16 @@ public class PlayerController : MonoBehaviour {
 		}
 		camDummy.rotation = player.transform.rotation;
 
-	}
+	}*/
+
 
 	public void RotateWorldGyro(Vector2 gravityGyro){
-		Vector3 gravity = Physics.gravity;
-		gravity.x = gravityGyro.x;
-		gravity.y = gravityGyro.y;
+		gravity.x = gravityGyro.x * 9.81f;
+		gravity.y = gravityGyro.y * 9.81f;
 		gravity.z = 0f;
-		Physics.gravity = gravity * 9.81f;
+		Physics.gravity = gravity;
 
-		//jumpVec = -gravity * jumpForce*200;
 
-		//player.transform.Rotate(0f,0f,(rot * rotSpeed));
-		player.transform.up = -gravity;
-		camDummy.rotation = player.transform.rotation;
-		Camera.main.transform.rotation = Quaternion.identity;
 
 	}
 
@@ -143,7 +176,8 @@ public class PlayerController : MonoBehaviour {
 		ResetCheckpoints(); //Die aktivierten Checkpoints werden unchecked
 		SpawnCollectables(); //Coins und Extra Leben werden gespwaned
 		SpawnMovingObstacles(); //Moving Objects (wie Steine, Pendel etc.) werden gespawned
-		
+
+		PauseGame ();
 	}
 	
 	//Der Spieler wird zum letzten aktivierten Checkpoint gesetzt
@@ -177,11 +211,15 @@ public class PlayerController : MonoBehaviour {
 		if(lifes==0){ //wenn nein dann das Spiel zuruegsetzten
 			//ResetGame();
 			LoadMenu();
-
+			pause = true;
+			pausePanel.SetActive (true);
+			txtPauseButton.gameObject.SetActive(false);
 		}else{ //Wenn ja, dann zum letzten Checkpoint zuruegsetzten
 			lifes--;
 			txtLifes.text = lifes.ToString();
 			SetToLastCheckpoint();
+			pause = true;
+			StartCoroutine("CountdownAfterPause");
 		}
 	}
 	
@@ -229,13 +267,23 @@ public class PlayerController : MonoBehaviour {
 	//Ab hier sind die die Funktionen für die Interactables
 	public void AddCoin(GameObject ob){
 		Destroy(ob);
-		coinCount++;
-		txtCoins.text = coinCount.ToString();
+		int curCoins = 0;
+		if (level == 1) {
+			CoinController.Instance.state.coinsLevel1++;
+			curCoins = CoinController.Instance.state.coinsLevel1;
+		}else if(level == 2) {
+			curCoins = CoinController.Instance.state.coinsLevel2++;
+		}else if(level == 3) {
+			curCoins = CoinController.Instance.state.coinsLevel3++;
+		}
+		txtCoins.text = curCoins.ToString();
 	}
 	
 	public void PlayerJump(){
 		Vector3 vec = Physics.gravity.normalized;
-		rigPlayer.AddForce(-vec * jumpForce*200);
+		//rigPlayer.AddForce(-vec * jumpForce*200);
+		inputJump = true;
+		StartCoroutine("Jump");
 	}
 	
 	public void SetPlayerSpeed(float f){
@@ -272,5 +320,67 @@ public class PlayerController : MonoBehaviour {
 		lifes++;
 		txtLifes.text = lifes.ToString();
 		
+	}
+
+	public void PauseGame(){
+		if (!pause) {
+			pause = true;
+			pausePanel.SetActive (true);
+			int curCoins = 0;
+			if (level == 1) {
+				curCoins = CoinController.Instance.state.coinsLevel1;
+			}else if(level == 2) {
+				curCoins = CoinController.Instance.state.coinsLevel2;
+			}else if(level == 3) {
+				curCoins = CoinController.Instance.state.coinsLevel3;
+			}
+			txtScore.text = curCoins.ToString () + "/8";
+			txtPauseButton.text = "Resume";
+		} else if (pause) {
+			pausePanel.SetActive (false);
+			txtPauseButton.text = "Pause";
+			StartCoroutine("CountdownAfterPause");
+		}
+
+	}
+
+
+	float maxJumpHeight = 0.17f;
+	float jumpSpeed = 2.0f;
+	float fallSpeed = 0.2f;
+	public bool inputJump = false;
+
+	public float curJumpHight = 0;
+
+	IEnumerator Jump(){
+		while(true)
+		{
+			if(curJumpHight >= maxJumpHeight-0.05f)
+				inputJump = false;
+			if(inputJump)
+				curJumpHight = Mathf.Lerp (curJumpHight, maxJumpHeight, jumpSpeed * Time.smoothDeltaTime);
+			else if(!inputJump)
+			{
+				curJumpHight = curJumpHight - fallSpeed * Time.smoothDeltaTime;
+				//Debug.Log (curJumpHight);
+				if (curJumpHight <= 0) {
+					curJumpHight = 0;
+					StopAllCoroutines ();
+				}
+			}
+
+			yield return null;
+		}
+	}
+
+	IEnumerator CountdownAfterPause(){
+		txtCountdown.gameObject.SetActive (true);
+		for (int i = 3; i > 0; i--) {
+			txtCountdown.text = i.ToString ();
+			yield return new WaitForSeconds(1f);
+		}
+
+		txtCountdown.gameObject.SetActive (false);
+		pause = false;
 	}
 }

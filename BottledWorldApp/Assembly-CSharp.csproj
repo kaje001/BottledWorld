@@ -52,8 +52,12 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\_Scripts\Menu\AntController.cs" />
+     <Compile Include="Assets\_Scripts\Menu\Collectable.cs" />
      <Compile Include="Assets\_Scripts\Menu\MenuController.cs" />
+     <Compile Include="Assets\_Scripts\StartUp\CoinController.cs" />
      <Compile Include="Assets\_Scripts\StartUp\Fade.cs" />
+     <Compile Include="Assets\_Scripts\StartUp\Helper.cs" />
+     <Compile Include="Assets\_Scripts\StartUp\SaveState.cs" />
      <Compile Include="Assets\_Scripts\StartUp\StartUpController.cs" />
      <Compile Include="Assets\_Scripts\TestLevel\CamController.cs" />
      <Compile Include="Assets\_Scripts\TestLevel\GyroCon.cs" />

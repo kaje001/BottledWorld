@@ -53,7 +53,7 @@ public class TouchCon : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 				length = -length;
 			}
 		}
-		playCon.RotateWorld(length);
+		//playCon.RotateWorld(length);
 		
 
 		lastX = x;
