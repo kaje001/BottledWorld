@@ -13,7 +13,7 @@ public class PlayerEvents : MonoBehaviour {
 	
 
 	void Update () {
-		if(transform.position.z>40){
+		if(transform.position.z>85){
 			playCon.LoadMenu(); //Wenn der Spieler das Lvel schafft wird er zurückgesetzt
 		}
 	}

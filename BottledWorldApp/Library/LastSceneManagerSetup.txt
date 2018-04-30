@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/_Scenes/StartUp.unity
+=======
+- path: Assets/_Scenes/Level1.unity
+>>>>>>> Leveldesign
   isLoaded: 1
   isActive: 1
