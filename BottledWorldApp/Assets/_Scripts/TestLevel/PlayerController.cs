@@ -4,121 +4,118 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
 	//Grundeinstellungen
 	public GameObject player;
 	public GameObject tube;
 	public Transform camDummy;
-	public float playerSpeed = 1.5f;
+	public Transform camCenter;
+	public float playerSpeed = 1.2f;
 	public float boostLenth = 0.8f;
 	public float jumpForce = 5f;
 	public int rotSpeed = 100;
 	public int lifes = 1;
 	public int level = 1;
 	public Vector3 gravity;
+	public Vector3 gravityGyro;
 
-	public bool lockplayer = false; 
 	bool pause = false;
+	bool freeze = false;
+	bool waitForUnpause = false;
+	[SerializeField] GameObject pauseCheck;
+	GameObject objPause;
 	public GameObject pausePanel;
 	public Text txtPauseButton;
 	public Text txtScore;
 	public Text txtCountdown;
-	
+
+	List<int> coinIndexes = new List<int> ();
+	int coinsLeftInLevel;
+
 	//UI Elemente
 	public Text txtCoins;
 	public Text txtLifes;
 		
 	//Elemente für Dinge, die am Anfang des Levels gespawned werden muessen
-	public GameObject[] collectablePrefabs;
-	public List<GameObject[]> collectableSpawnpoints = new List<GameObject[]>();
+	public GameObject coinPrefab;
+	public GameObject coinPrefabInactive;
+	GameObject[] coinSpawnpoints;
 	public Transform parentCoins;
-	
-	public GameObject[] movingObstaclePrefabs;
-	List<GameObject> movingObstacles = new List<GameObject>();
-	public Transform[] movingObstacleSpawnpoints;
-	public Transform parentMovingObstacles;
-	
-	//Reset Elemente
-	int coinCount = 0;
-	//Vector3 jumpVec;
+
 	Rigidbody rigPlayer;
-	Vector3 startPosition;
-	Vector3 startGravity;
-	//Vector3 startJumpVector;
-	Quaternion startQuaternion;
-	float startSpeed;
-	int startLifes;
+	float startPlayerSpeed;
 	
 	//Checkpoint Elemente
 	public Material matCheckpointChecked;
-	public Material matCheckpointUnchecked;	
-	bool checkpointActive = false;
-	List<GameObject> touchedCheckpoints = new List<GameObject>();
+	public Material matCheckpointUnchecked;
+	List<GameObject> touchedCheckpoints = new List<GameObject> ();
 	Vector3 checkpointPosition;
 	Vector3 checkpointGravity;
 	//Vector3 checkpointJumpVector;
-	Quaternion checkpointQuaternion;
+	//Quaternion checkpointQuaternion;
 
 
+	private Vector3 velocity = Vector3.zero;
 
-	void Start () {
-		
-		//Variablen zum Reseten des Spiels werden eingelesen
-		startPosition = player.transform.position;
-		startQuaternion = player.transform.rotation;
-		startGravity = gravity;
-		startSpeed = playerSpeed;
-		rigPlayer = player.GetComponent<Rigidbody>();
-		startLifes = lifes;
-		
-		//jumpVec = -gravity * jumpForce*200;
-		//startJumpVector = jumpVec;
+	void Start ()
+	{
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-		int curCoins = 0;
-		if (level == 1) {
-			curCoins = CoinController.Instance.state.coinsLevel1;
-		}else if(level == 2) {
-			curCoins = CoinController.Instance.state.coinsLevel2;
-		}else if(level == 3) {
-			curCoins = CoinController.Instance.state.coinsLevel3;
-		}
-		txtCoins.text = curCoins.ToString();
-		
+		txtPauseButton.transform.parent.gameObject.SetActive (false);
+		rigPlayer = player.GetComponent<Rigidbody> ();
+
+		int curCoins = CoinController.Instance.GetCoinForLevel (level);
+		txtCoins.text = curCoins.ToString ();
+		txtLifes.text = lifes.ToString ();
+
+		startPlayerSpeed = playerSpeed;
+
 		//Die Empties zum Spawner von Extra Leben und Coins werden eingelesen
-		collectableSpawnpoints.Add(GameObject.FindGameObjectsWithTag("CoinSpawner"));
-		collectableSpawnpoints.Add(GameObject.FindGameObjectsWithTag("ExtraLifeSpawner"));
-		
-		ResetGame(); //Das Spiel wird zurückgesetzt, um die Startbedingungen zu schaffen
+		coinSpawnpoints = GameObject.FindGameObjectsWithTag("CoinSpawner");
+		SpawnCoins ();
+
+		coinsLeftInLevel = 20 - CoinController.Instance.GetCoinForLevel (level);
+
+		pause = true;
+		//freeze = true;
+		//StartCoroutine ("CountdownAfterPause");
 	}
-	
-	void Update () {
-		if (!pause) {
-			Vector3 curPos = rigPlayer.position;
 
-			if (lockplayer) {
-				Vector3 pos = gravity.normalized * 1.71f;
-				pos.z = player.transform.position.z;
-				pos = pos + (-gravity) * curJumpHight;
-				player.transform.position = pos;
-				rigPlayer.MovePosition (new Vector3 (pos.x, pos.y, curPos.z + playerSpeed / 30f)); //Der Spieler wird nach vorne bewegt
+	void Update ()
+	{
+		gravity = Vector3.Lerp (gravity, gravityGyro, 7f * Time.deltaTime);
 
-			} else {
-				rigPlayer.MovePosition (new Vector3 (curPos.x, curPos.y, curPos.z + playerSpeed / 30f)); //Der Spieler wird nach vorne bewegt
+		if (!freeze) {
+			Vector3 curPos = player.transform.position;
 
-			}
+			Vector3 pos = gravity.normalized * 1.86f;
+			pos = pos + (-gravity) * curJumpHight;
+			pos.z = curPos.z;
+			//player.transform.position = pos;
+			float forwardMovement = 0;
+			if (!pause) {
+				forwardMovement = playerSpeed * Time.deltaTime;
+			} 
 
-			//Camera Movement
-	
-			//jumpVec = -gravity * jumpForce*200;
+			//rigPlayer.MovePosition (new Vector3 (pos.x, pos.y, curPos.z + forwardMovement)); //Der Spieler wird nach vorne bewegt
+			//player.transform.position = Vector3.Lerp(curPos, new Vector3 (pos.x, pos.y, curPos.z + forwardMovement), 10f * Time.deltaTime);
+			player.transform.position = new Vector3 (pos.x, pos.y, curPos.z + forwardMovement);
+
 
 			//player.transform.Rotate(0f,0f,(rot * rotSpeed));
 			player.transform.up = -gravity;
 		}
 
+		//Camera Movement
+		Camera.main.transform.LookAt (camCenter);
+		//camDummy.position = Vector3.Lerp(camDummy.position, player.transform.position, 2f * Time.deltaTime);
 		camDummy.position = player.transform.position;
+		//camDummy.rotation = Quaternion.Lerp(camDummy.rotation, player.transform.rotation, 220f * Time.deltaTime);
+		//camDummy.rotation = Quaternion.Lerp(camDummy.rotation, player.transform.rotation, 4f * Time.deltaTime);
 		camDummy.rotation = player.transform.rotation;
-		Camera.main.transform.rotation = Quaternion.identity;
+
 	}
 	
 	//RotateWorld wird immer bei einer TouchBewegung aufgerufen
@@ -142,230 +139,252 @@ public class PlayerController : MonoBehaviour {
 	}*/
 
 
-	public void RotateWorldGyro(Vector2 gravityGyro){
-		gravity.x = gravityGyro.x * 9.81f;
-		gravity.y = gravityGyro.y * 9.81f;
-		gravity.z = 0f;
+	public void RotateWorldGyro (Vector3 tempGravityGyro)
+	{
+		if (Vector3.Angle (gravity, tempGravityGyro) < 1f) {
+			return;
+		}
+
+		gravityGyro = tempGravityGyro * 9.81f;
 		Physics.gravity = gravity;
 
-
-
 	}
 
-	public void LoadMenu(){
+	public void LoadMenu ()
+	{
 
-		SceneManager.LoadScene("Menu");
+		Screen.sleepTimeout = SleepTimeout.SystemSetting;
+		SceneManager.LoadScene ("Menu");
 	}
-	
-	//Wenn das Level auf Anfangszustand zurückgesetzt werden soll
-	public void ResetGame(){
-		rigPlayer.velocity = Vector3.zero;
-		player.transform.position = startPosition;
-		player.transform.rotation = startQuaternion;
-		Physics.gravity = startGravity;
-		playerSpeed = startSpeed;
-		//jumpVec = startJumpVector;
-		
-		lifes = startLifes;
-		coinCount = 0;
-		txtCoins.text = coinCount.ToString();
-		txtLifes.text = lifes.ToString();
-		
-		DestroyGeneratedObjects(); //Alle noch vorhandenen Coins, Extra Leben und Moving Objects (wie Steine etc.) werden entfernt
-			//damit es nicht zu Stacks kommt
-		ResetCheckpoints(); //Die aktivierten Checkpoints werden unchecked
-		SpawnCollectables(); //Coins und Extra Leben werden gespwaned
-		SpawnMovingObstacles(); //Moving Objects (wie Steine, Pendel etc.) werden gespawned
 
-		PauseGame ();
+	public void LoadSameLevel (int newlevel)
+	{
+		if (newlevel == 1) {
+			SceneManager.LoadScene ("Level1");
+		}else if (newlevel == 2) {
+			SceneManager.LoadScene ("Level2");
+		}
 	}
+
 	
 	//Der Spieler wird zum letzten aktivierten Checkpoint gesetzt
-	public void SetToLastCheckpoint(){
-		if(checkpointActive){
-			rigPlayer.velocity = Vector3.zero;
-			Physics.gravity = checkpointGravity;
-			player.transform.position = checkpointPosition;
-			player.transform.rotation = checkpointQuaternion;
-			playerSpeed = startSpeed;
-			//jumpVec = checkpointJumpVector;
-		}else{
-			ResetPlayer();
-		}
-		
-	}
-	
-	//Nur der Spieler wird zurückgesetzt and den Anfang des Levels, die Objekte bleiben aber so wie sie sind
-	public void ResetPlayer(){
-		
+	public void SetToLastCheckpoint ()
+	{
+		txtPauseButton.transform.parent.gameObject.SetActive (false);
 		rigPlayer.velocity = Vector3.zero;
-		player.transform.position = startPosition;
-		player.transform.rotation = startQuaternion;
-		Physics.gravity = startGravity;
-		playerSpeed = startSpeed;
-		//jumpVec = startJumpVector;
+		Physics.gravity = checkpointGravity;
+		Vector3 pos = player.transform.position;
+		pos.z = checkpointPosition.z;
+		player.transform.position = pos;
+		//player.transform.rotation = checkpointQuaternion;
+		playerSpeed = startPlayerSpeed;
+		
 	}
-	
-	// Es wird gecheckt, ob noch Leben verfuegbar sind
-	public void CheckDeath(){
-		if(lifes==0){ //wenn nein dann das Spiel zuruegsetzten
-			//ResetGame();
-			LoadMenu();
+
+	public void Win(){
+		if (!freeze) {
+			freeze = true;
 			pause = true;
 			pausePanel.SetActive (true);
-			txtPauseButton.gameObject.SetActive(false);
-		}else{ //Wenn ja, dann zum letzten Checkpoint zuruegsetzten
-			lifes--;
-			txtLifes.text = lifes.ToString();
-			SetToLastCheckpoint();
+			txtPauseButton.transform.parent.gameObject.SetActive (false);
+			txtScore.text = coinIndexes.Count.ToString () + "/" + coinsLeftInLevel;
+
+			CoinController.Instance.AddCoinForLevel (level, coinIndexes.Count);
+
+			foreach (int i in coinIndexes) {
+				CoinController.Instance.CollectCoin (level, i);
+			}
+
+			CoinController.Instance.Save ();
+		}
+
+	}
+
+	// Es wird gecheckt, ob noch Leben verfuegbar sind
+	public void CheckDeath ()
+	{
+
+		if (pause) {
+			return;
+		}
+
+		if (lifes == 0) { //wenn nein dann das Spiel zuruegsetzten
+			//LoadMenu ();
+			pausePanel.SetActive (true);
+			txtPauseButton.transform.parent.gameObject.SetActive (false);
 			pause = true;
-			StartCoroutine("CountdownAfterPause");
+			freeze = true;
+		} else { //Wenn ja, dann zum letzten Checkpoint zuruegsetzten
+			lifes--;
+			txtLifes.text = lifes.ToString ();
+			SetToLastCheckpoint ();
+			pause = true;
+			//StartCoroutine ("CountdownAfterPause");
 		}
 	}
-	
-	void DestroyGeneratedObjects(){
-		
-		foreach (Transform child in parentMovingObstacles.transform)
-		{
-			Destroy(child.gameObject);
-		}
-		foreach (Transform child in parentCoins.transform)
-		{
-			Destroy(child.gameObject);
-		}
-	}
-	
-	void SpawnCollectables(){
+
+
+	void SpawnCoins ()
+	{
 		int i = 0;
-		foreach(GameObject[] tempList in collectableSpawnpoints){
-			foreach(GameObject trans in tempList){
-				GameObject tempOb = Instantiate(collectablePrefabs[i], trans.transform.position, Quaternion.identity);
+		foreach (GameObject trans in coinSpawnpoints) {
+			if (!CoinController.Instance.IsCoinCollected (level, i)) {
+				GameObject tempOb = Instantiate (coinPrefab, trans.transform.position, trans.transform.rotation);
+				Coin coin = tempOb.transform.GetChild(0).gameObject.GetComponent<Coin> ();
+				coin.index = i;
+				coin.active = true;
+				tempOb.transform.parent = parentCoins;
+			} else {
+				GameObject tempOb = Instantiate (coinPrefabInactive, trans.transform.position, trans.transform.rotation);
+				Coin coin = tempOb.transform.GetChild(0).gameObject.GetComponent<Coin> ();
+				coin.index = i;
+				coin.active = false;
 				tempOb.transform.parent = parentCoins;
 			}
 			i++;
 		}
 		
 	}
-	
-	void SpawnMovingObstacles(){
-		foreach(Transform trans in movingObstacleSpawnpoints){
-			GameObject tempOb = Instantiate(movingObstaclePrefabs[0], trans.position, Quaternion.identity);
-			tempOb.transform.parent = parentMovingObstacles;
-			movingObstacles.Add(tempOb);
-		}
-	}
-	
-	void ResetCheckpoints(){
-		checkpointActive = false;
-		foreach(GameObject ob in touchedCheckpoints){
-			ob.GetComponent<Renderer>().material = matCheckpointUnchecked;
+
+
+	void ResetCheckpoints ()
+	{
+		foreach (GameObject ob in touchedCheckpoints) {
+			ob.GetComponent<Renderer> ().material = matCheckpointUnchecked;
 	
 		}
-		touchedCheckpoints.Clear();
+		touchedCheckpoints.Clear ();
 	}
 	
 	//Ab hier sind die die Funktionen für die Interactables
-	public void AddCoin(GameObject ob){
-		Destroy(ob);
-		int curCoins = 0;
-		if (level == 1) {
-			CoinController.Instance.state.coinsLevel1++;
-			curCoins = CoinController.Instance.state.coinsLevel1;
-		}else if(level == 2) {
-			curCoins = CoinController.Instance.state.coinsLevel2++;
-		}else if(level == 3) {
-			curCoins = CoinController.Instance.state.coinsLevel3++;
+
+	//Ein Zuckerwürfel aufsammeln
+	public void AddCoin (GameObject ob)
+	{
+
+		if (pause) {
+			return;
 		}
-		txtCoins.text = curCoins.ToString();
+			
+		Coin coin = ob.GetComponent<Coin> ();
+		//CoinController.Instance.CollectCoin (level, coin.index);
+		coinIndexes.Add (coin.index);
+		txtCoins.text = coinIndexes.Count.ToString ();
+		Destroy (ob);
+
 	}
-	
-	public void PlayerJump(){
-		Vector3 vec = Physics.gravity.normalized;
-		//rigPlayer.AddForce(-vec * jumpForce*200);
+
+	public void PlayerJump ()
+	{
+		if (pause) {
+			return;
+		}
+		
 		inputJump = true;
-		StartCoroutine("Jump");
+		//Debug.Log ("test");
+		StartCoroutine ("Jump");
 	}
-	
-	public void SetPlayerSpeed(float f){
+
+	public void SetPlayerSpeed (float f)
+	{
 		playerSpeed = f;
 	}
-	public void ResetPlayerSpeed(){
-		playerSpeed = startSpeed;
+
+	public void ResetPlayerSpeed ()
+	{
+		playerSpeed = startPlayerSpeed;
 	}
-	
-	public void PlayerSpeedBoost(){
-		StartCoroutine("Boost");
+
+	public void PlayerSpeedBoost ()
+	{
+		StartCoroutine ("Boost");
 	}
-	
-	IEnumerator Boost() {
-		playerSpeed = 3f;
-		yield return new WaitForSeconds(boostLenth);
-		ResetPlayerSpeed();
+
+	IEnumerator Boost ()
+	{
+		playerSpeed = playerSpeed*2f;
+		yield return new WaitForSeconds (boostLenth);
+		ResetPlayerSpeed ();
 	}
-	
-	public void SetCheckpoint(GameObject checkpointOb){
-		checkpointActive = true;
-		touchedCheckpoints.Add(checkpointOb);
+
+	public void SetCheckpoint (GameObject checkpointOb)
+	{
+		if (pause) {
+
+			txtPauseButton.transform.parent.gameObject.SetActive (true);
+			pause = false;
+		}
+
+		touchedCheckpoints.Add (checkpointOb);
 		checkpointGravity = Physics.gravity;
 		checkpointPosition = player.transform.position;
-		checkpointQuaternion = player.transform.rotation;
-		//checkpointJumpVector = jumpVec;
+		//checkpointQuaternion = player.transform.rotation;
 		
-		checkpointOb.GetComponent<Renderer>().material = matCheckpointChecked;
+		checkpointOb.GetComponent<Renderer> ().material = matCheckpointChecked;
 	}
+
 	
-	
-	public void GetExtraLife(GameObject ob){
-		Destroy(ob);
+	public void GetExtraLife (GameObject ob)
+	{
+		Destroy (ob);
 		lifes++;
-		txtLifes.text = lifes.ToString();
+		txtLifes.text = lifes.ToString ();
 		
 	}
 
-	public void PauseGame(){
+	public void PauseGame ()
+	{
 		if (!pause) {
+
+			Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
 			pause = true;
+			//freeze = true;
+			objPause = Instantiate (pauseCheck, player.transform.position, player.transform.rotation);
 			pausePanel.SetActive (true);
-			int curCoins = 0;
-			if (level == 1) {
-				curCoins = CoinController.Instance.state.coinsLevel1;
-			}else if(level == 2) {
-				curCoins = CoinController.Instance.state.coinsLevel2;
-			}else if(level == 3) {
-				curCoins = CoinController.Instance.state.coinsLevel3;
-			}
-			txtScore.text = curCoins.ToString () + "/8";
+			txtScore.text = coinIndexes.Count.ToString () + "/" + coinsLeftInLevel;
 			txtPauseButton.text = "Resume";
 		} else if (pause) {
+			
+			Screen.sleepTimeout = SleepTimeout.SystemSetting;
+
 			pausePanel.SetActive (false);
 			txtPauseButton.text = "Pause";
-			StartCoroutine("CountdownAfterPause");
+			//StartCoroutine ("CountdownAfterPause");
+			//freeze = false;
+			waitForUnpause = true;
 		}
 
 	}
 
+	public void UnpauseTouched(){
+		if (waitForUnpause) {
+			pause = false;
+			waitForUnpause = false;
+			Destroy (objPause);
+		}
+	}
 
-	float maxJumpHeight = 0.17f;
+	float maxJumpHeight = 0.14f;
 	float jumpSpeed = 2.0f;
-	float fallSpeed = 0.2f;
+	float fallSpeed = 0.23f;
 	public bool inputJump = false;
 
 	public float curJumpHight = 0;
 
-	IEnumerator Jump(){
-		while(true)
-		{
-			if(curJumpHight >= maxJumpHeight-0.05f)
+	IEnumerator Jump ()
+	{
+		while (true) {
+			if (curJumpHight >= maxJumpHeight - 0.05f)
 				inputJump = false;
-			if(inputJump)
-				curJumpHight = Mathf.Lerp (curJumpHight, maxJumpHeight, jumpSpeed * Time.smoothDeltaTime);
-			else if(!inputJump)
-			{
-				curJumpHight = curJumpHight - fallSpeed * Time.smoothDeltaTime;
+			if (inputJump)
+				curJumpHight = Mathf.Lerp (curJumpHight, maxJumpHeight, jumpSpeed * Time.deltaTime);
+			else if (!inputJump) {
+				curJumpHight = curJumpHight - fallSpeed * Time.deltaTime;
 				//Debug.Log (curJumpHight);
 				if (curJumpHight <= 0) {
 					curJumpHight = 0;
-					StopAllCoroutines ();
+					StopCoroutine("Jump");
 				}
 			}
 
@@ -373,14 +392,16 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	IEnumerator CountdownAfterPause(){
+	IEnumerator CountdownAfterPause ()
+	{
 		txtCountdown.gameObject.SetActive (true);
 		for (int i = 3; i > 0; i--) {
+			
 			txtCountdown.text = i.ToString ();
-			yield return new WaitForSeconds(1f);
+			yield return new WaitForSeconds (1f);
 		}
 
 		txtCountdown.gameObject.SetActive (false);
-		pause = false;
+		//freeze = false;
 	}
 }

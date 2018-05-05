@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GyroCon : MonoBehaviour {
-	public Text txt;
 	Gyroscope gyro;
 	public PlayerController playCon;
 	// Use this for initialization
@@ -15,7 +14,7 @@ public class GyroCon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		playCon.RotateWorldGyro (new Vector2(Input.gyro.gravity.x, Input.gyro.gravity.y).normalized);
+		playCon.RotateWorldGyro (new Vector3(Input.gyro.gravity.x, Input.gyro.gravity.y, 0f).normalized);
 		//txt.text = Input.gyro.attitude.ToString ();
 
 	}

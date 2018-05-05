@@ -14,14 +14,14 @@ public class MenuController : MonoBehaviour {
 		playermat.dynamicFriction = 0.3f;
 		playermat.staticFriction = 0.05f;
 
-		txtTotalCoins.text = CoinController.Instance.state.coins.ToString ();
+		txtTotalCoins.text = CoinController.Instance.state.availableCoins.ToString () + "/" + CoinController.Instance.state.totalCoins.ToString ();
 	}
 
 	public void CheckActivatedObject(GameObject ob){
 		
 		if (ob.transform.tag == "Level1") {
 			Debug.Log ("Start Level 1");
-			SceneManager.LoadScene("TestLevel4");
+			SceneManager.LoadScene("Level1");
 		} else if (ob.transform.tag == "Level2") {
 			Debug.Log ("Start Level 2");
 			//SceneManager.LoadScene("TestLevel2");
@@ -39,6 +39,10 @@ public class MenuController : MonoBehaviour {
 			Debug.Log ("Exit Game");
 			Application.Quit ();
 		
+	}
+
+	public void ResetSaveGame(){
+		CoinController.Instance.ResetSaveState();
 	}
 
 }

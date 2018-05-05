@@ -7,21 +7,19 @@ TagManager:
   - Obstacle
   - Coin
   - CoinSpawner
-  - JumpSpawner
   - Jump
-  - SlowSpawner
-  - NormalSpeedSpawner
   - Slow
   - NormalSpeed
   - Speed
   - Checkpoint
-  - ExtraLifeSpawner
   - ExtraLife
   - Exit
   - Level2
   - Level1
   - Level3
   - Level4
+  - PauseCheck
+  - FinishLine
   layers:
   - Default
   - TransparentFX
