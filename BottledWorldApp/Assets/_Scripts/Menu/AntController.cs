@@ -45,6 +45,9 @@ public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 			transform.position = Vector3.Lerp (transform.position, targetPos, lerpSpeed * Time.deltaTime);
 		} else {
 			transform.position = Vector3.MoveTowards (transform.position, targetPos, lerpSpeed * Time.deltaTime);
+			if (transform.position - targetPos != Vector3.zero) {
+				transform.rotation = Quaternion.Lerp (transform.rotation, Quaternion.LookRotation (transform.position - targetPos), 5f * Time.deltaTime);
+			}
 		}
 
 	}
