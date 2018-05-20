@@ -24,6 +24,7 @@ C:\Users\ArtBox\Documents\GitHub\BottledWorld\BottledWorldApp\Temp\bin\Debug\Uni
 C:\Users\ArtBox\Documents\GitHub\BottledWorld\BottledWorldApp\Temp\bin\Debug\Unity.CecilTools.dll
 C:\Users\ArtBox\Documents\GitHub\BottledWorld\BottledWorldApp\Temp\bin\Debug\Unity.Cecil.Pdb.dll
 C:\Users\ArtBox\Documents\GitHub\BottledWorld\BottledWorldApp\Temp\bin\Debug\Unity.Cecil.Mdb.dll
+C:\Users\ArtBox\Documents\GitHub\BottledWorld\BottledWorldApp\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
 C:\Users\ArtBox\Documents\GitHub\BottledWorld\BottledWorldApp\Temp\bin\Debug\UnityEngine.xml
 C:\Users\ArtBox\Documents\GitHub\BottledWorld\BottledWorldApp\Temp\bin\Debug\UnityEditor.xml
 C:\Users\ArtBox\Documents\GitHub\BottledWorld\BottledWorldApp\Temp\bin\Debug\UnityEngine.UI.xml

@@ -6,15 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
 
-	public bool antIsDraged = false;
 	public PhysicMaterial playermat;
 	[SerializeField] Text txtTotalCoins;
+	[SerializeField] GameObject panelSettings;
+	[SerializeField] GameObject panelQuit;
 
 	void Start(){
 		playermat.dynamicFriction = 0.3f;
 		playermat.staticFriction = 0.05f;
 
+		panelQuit.SetActive (false);
+		panelSettings.SetActive (false);
+
 		txtTotalCoins.text = CoinController.Instance.state.availableCoins.ToString () + "/" + CoinController.Instance.state.totalCoins.ToString ();
+
 	}
 
 	public void CheckActivatedObject(GameObject ob){
@@ -45,4 +50,28 @@ public class MenuController : MonoBehaviour {
 		CoinController.Instance.ResetSaveState();
 	}
 
+	public void ShowQuit(){
+		panelQuit.SetActive (true);
+	}
+
+	public void HideQuit(){
+		panelQuit.SetActive (false);
+	}
+
+
+	public void ShowSettings(){
+		panelSettings.SetActive (true);
+	}
+
+	public void HideSettings(){
+		panelSettings.SetActive (false);
+	}
+
+	public void SettingsButtonPressed(){
+		if (panelSettings.activeSelf) {
+			HideSettings ();
+		} else {
+			ShowSettings ();
+		}
+	}
 }

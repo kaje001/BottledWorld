@@ -56,8 +56,14 @@ public class PlayerController : MonoBehaviour
 	//Vector3 checkpointJumpVector;
 	//Quaternion checkpointQuaternion;
 
+	//For the Jump
+	float maxJumpHeight = 0.14f;
+	float jumpSpeed = 2.0f;
+	float fallSpeed = 0.23f;
+	bool inputJump = false;
+	float curJumpHight = 0;
 
-	private Vector3 velocity = Vector3.zero;
+	//private Vector3 velocity = Vector3.zero;
 
 	void Start ()
 	{
@@ -262,9 +268,6 @@ public class PlayerController : MonoBehaviour
 	public void AddCoin (GameObject ob)
 	{
 
-		if (pause) {
-			return;
-		}
 			
 		Coin coin = ob.GetComponent<Coin> ();
 		//CoinController.Instance.CollectCoin (level, coin.index);
@@ -272,6 +275,8 @@ public class PlayerController : MonoBehaviour
 		txtCoins.text = coinIndexes.Count.ToString ();
 		Destroy (ob);
 
+		//Trigger VFX and Sound
+		VFXandSoundTrigger.Instance.TriggerCollect(player.transform);
 	}
 
 	public void PlayerJump ()
@@ -283,6 +288,9 @@ public class PlayerController : MonoBehaviour
 		inputJump = true;
 		//Debug.Log ("test");
 		StartCoroutine ("Jump");
+
+		//Trigger VFX and Sound
+		VFXandSoundTrigger.Instance.TriggerJump(player.transform);
 	}
 
 	public void SetPlayerSpeed (float f)
@@ -329,7 +337,24 @@ public class PlayerController : MonoBehaviour
 		Destroy (ob);
 		lifes++;
 		txtLifes.text = lifes.ToString ();
+
+		//Trigger VFX and Sound
+		//VFXandSoundTrigger.Instance.TriggerHeart();
 		
+	}
+
+
+	public void HitObject ()
+	{
+		if (pause) {
+			return;
+		}
+
+		//Trigger VFX and Sound
+		VFXandSoundTrigger.Instance.TriggerDead(player.transform);
+
+		StartCoroutine (WaitForCheckDeath ());
+
 	}
 
 	public void PauseGame ()
@@ -365,12 +390,7 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	float maxJumpHeight = 0.14f;
-	float jumpSpeed = 2.0f;
-	float fallSpeed = 0.23f;
-	public bool inputJump = false;
 
-	public float curJumpHight = 0;
 
 	IEnumerator Jump ()
 	{
@@ -403,5 +423,20 @@ public class PlayerController : MonoBehaviour
 
 		txtCountdown.gameObject.SetActive (false);
 		//freeze = false;
+	}
+
+
+	IEnumerator WaitForCheckDeath ()
+	{
+		pause = true;
+		freeze = true;
+		yield return new WaitForSeconds (0.5f);
+		player.SetActive (false);
+		yield return new WaitForSeconds (0.5f);
+
+		pause = false;
+		freeze = false;
+		player.SetActive (true);
+		CheckDeath ();
 	}
 }

@@ -41,7 +41,7 @@ public class PlayerEvents : MonoBehaviour {
 			playCon.Win();
 		}
 		if(other.transform.tag == "Obstacle"){
-			playCon.CheckDeath(); //Bei einem Zusammenstoss mit einem Hinderniss wird im PlayerController gecheckt, ob noch leben verfügbar sind und ob schon ein Checkpoint activiert wurde
+			playCon.HitObject (); //Bei einem Zusammenstoss mit einem Hinderniss wird im PlayerController gecheckt, ob noch leben verfügbar sind und ob schon ein Checkpoint activiert wurde
 		}
 	}
 }
