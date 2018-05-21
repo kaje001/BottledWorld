@@ -16,4 +16,8 @@ public class SaveState {
 
 	public int unlockedLevels = 1;
 
+	public bool gotIt = false;
+	public bool settingsSound = true;
+	public bool settingsMusic = true;
+	public bool settingsControls = false;
 }

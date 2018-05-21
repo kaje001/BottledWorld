@@ -46,13 +46,16 @@ public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 		} else {
 			transform.position = Vector3.MoveTowards (transform.position, targetPos, lerpSpeed * Time.deltaTime);
 			if (transform.position - targetPos != Vector3.zero) {
-				transform.rotation = Quaternion.Lerp (transform.rotation, Quaternion.LookRotation (transform.position - targetPos), 5f * Time.deltaTime);
+				transform.GetChild(0).rotation = Quaternion.Lerp (transform.GetChild(0).rotation, Quaternion.LookRotation (transform.position - targetPos), 5f * Time.deltaTime);
 			}
 		}
 
 	}
 
 	public void OnPointerDown(PointerEventData data){
+		if (menuControll.custom) {
+			return;
+		}
 		//Debug.Log ("Start Drag");
 		resetPos = transform.position;
 		targetPos = resetPos;
@@ -64,6 +67,9 @@ public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 
 
 	public void OnDrag(PointerEventData data){
+		if (menuControll.custom) {
+			return;
+		}
 		Vector3 touchPointinWorld = Camera.main.ScreenToWorldPoint (new Vector3 (data.position.x, data.position.y+50f, 1.2f));
 
 		//transform.position = Vector3.Lerp (transform.position, touchPointinWorld, Time.deltaTime);
@@ -72,6 +78,9 @@ public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 
 
 	public void OnPointerUp(PointerEventData data){
+		if (menuControll.custom) {
+			return;
+		}
 		targetPos = resetPos;
 		isDrop = true;
 		timeNextPosition = Time.time + 2f;

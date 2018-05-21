@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 	public int rotSpeed = 100;
 	public int lifes = 1;
 	public int level = 1;
+	bool swipeCon = false;
 	public Vector3 gravity;
 	public Vector3 gravityGyro;
 
@@ -72,6 +73,13 @@ public class PlayerController : MonoBehaviour
 		txtPauseButton.transform.parent.gameObject.SetActive (false);
 		rigPlayer = player.GetComponent<Rigidbody> ();
 
+		swipeCon = CoinController.Instance.state.settingsControls;
+		if (swipeCon) {
+			GetComponent<GyroCon> ().enabled = false;
+			FindObjectOfType<TouchCon> ().enabled = true;
+			gravityGyro = Physics.gravity;
+		}
+
 		int curCoins = CoinController.Instance.GetCoinForLevel (level);
 		txtCoins.text = curCoins.ToString ();
 		txtLifes.text = lifes.ToString ();
@@ -82,7 +90,7 @@ public class PlayerController : MonoBehaviour
 		coinSpawnpoints = GameObject.FindGameObjectsWithTag("CoinSpawner");
 		SpawnCoins ();
 
-		coinsLeftInLevel = 20 - CoinController.Instance.GetCoinForLevel (level);
+		coinsLeftInLevel = 5 - CoinController.Instance.GetCoinForLevel (level);
 
 		pause = true;
 		//freeze = true;
@@ -115,7 +123,9 @@ public class PlayerController : MonoBehaviour
 		}
 
 		//Camera Movement
-		Camera.main.transform.LookAt (camCenter);
+		if (!swipeCon) {
+			Camera.main.transform.LookAt (camCenter);
+		}
 		//camDummy.position = Vector3.Lerp(camDummy.position, player.transform.position, 2f * Time.deltaTime);
 		camDummy.position = player.transform.position;
 		//camDummy.rotation = Quaternion.Lerp(camDummy.rotation, player.transform.rotation, 220f * Time.deltaTime);
@@ -125,24 +135,24 @@ public class PlayerController : MonoBehaviour
 	}
 	
 	//RotateWorld wird immer bei einer TouchBewegung aufgerufen
-	/*public void RotateWorld(float rot){
+	public void RotateWorld(float rot){
 		//Die Funktion rotiert nicht die Flasche, sondern die Gravitation und den Spieler
 			//Dadurch muss nicht die Ganze Geometrie gedreht und neu Berechnet werden (Performance :))
-		Vector3 gravity = Physics.gravity;
-		gravity = Quaternion.Euler(0, 0, rot * rotSpeed) * gravity;
+		gravityGyro = Quaternion.Euler(0, 0, rot * rotSpeed) * gravityGyro;
+		//Debug.Log (gravityGyro);
 		Physics.gravity = gravity;
 		
 		//jumpVec = Quaternion.Euler(0, 0, rot * rotSpeed) * jumpVec;
 		
-		player.transform.Rotate(0f,0f,(rot * rotSpeed));
+		/*player.transform.Rotate(0f,0f,(rot * rotSpeed));
 		if (lockplayer) {
 			Vector3 pos = gravity.normalized * 1.71f;
 			pos.z = player.transform.position.z;
 			player.transform.position = pos;
 		}
-		camDummy.rotation = player.transform.rotation;
+		camDummy.rotation = player.transform.rotation;*/
 
-	}*/
+	}
 
 
 	public void RotateWorldGyro (Vector3 tempGravityGyro)
