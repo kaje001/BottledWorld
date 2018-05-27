@@ -44,13 +44,13 @@ public class MenuController : MonoBehaviour {
 			SceneManager.LoadScene("Level1");
 		} else if (ob.transform.tag == "Level2") {
 			Debug.Log ("Start Level 2");
-			//SceneManager.LoadScene("TestLevel2");
+			SceneManager.LoadScene("Level2");
 		}else if (ob.transform.tag == "Level3") {
 			Debug.Log ("Start Level 2");
-			//SceneManager.LoadScene("TestLevel3");
+			SceneManager.LoadScene("Level3");
 		}else if (ob.transform.tag == "Level4") {
 			Debug.Log ("Start Level 2");
-			//SceneManager.LoadScene("TestLevel4");
+			SceneManager.LoadScene("Level4");
 		}
 	}
 	

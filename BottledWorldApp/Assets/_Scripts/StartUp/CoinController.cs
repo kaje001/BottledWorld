@@ -36,6 +36,8 @@ public class CoinController : MonoBehaviour {
 			return (state.coinsCollectedLevel2 & (1 << (index))) != 0;
 		} else if (level == 3) {
 			return (state.coinsCollectedLevel3 & (1 << (index))) != 0;
+		} else if (level == 4) {
+			return (state.coinsCollectedLevel4 & (1 << (index))) != 0;
 		} else {
 			return false;
 		}
@@ -49,6 +51,8 @@ public class CoinController : MonoBehaviour {
 			state.coinsCollectedLevel2 |= 1 << index;
 		} else if (level == 3) {
 			state.coinsCollectedLevel3 |= 1 << index;
+		} else if (level == 4) {
+			state.coinsCollectedLevel4 |= 1 << index;
 		}
 	}
 
@@ -83,7 +87,10 @@ public class CoinController : MonoBehaviour {
 		} else if (level == 3) {
 			state.coinsLevel3 += value;
 			return state.coinsLevel3;
-		}else{
+		} else if (level == 4) {
+			state.coinsLevel4 += value;
+			return state.coinsLevel4;
+		} else{
 			return 0;
 		}
 	}
@@ -96,7 +103,9 @@ public class CoinController : MonoBehaviour {
 			return state.coinsLevel2;
 		} else if (level == 3) {
 			return state.coinsLevel3;
-		}else{
+		} else if (level == 4) {
+			return state.coinsLevel4;
+		} else{
 			return 0;
 		}
 	}
