@@ -7823,7 +7823,6 @@ GameObject:
   - component: {fileID: 513271481}
   - component: {fileID: 513271484}
   - component: {fileID: 513271483}
-  - component: {fileID: 513271482}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7844,13 +7843,6 @@ Transform:
   m_Father: {fileID: 849894543}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 27.948002, y: -0.272, z: 0.231}
---- !u!81 &513271482
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 513271480}
-  m_Enabled: 1
 --- !u!124 &513271483
 Behaviour:
   m_ObjectHideFlags: 0
@@ -15313,6 +15305,10 @@ MonoBehaviour:
   vfxDead: {fileID: 1232983438141598, guid: 52752711d7ec67e4b9dd55284df167f5, type: 2}
   vfxJump: {fileID: 1532005092390528, guid: b6431be541789844286de251d529fe1c, type: 2}
   vfxCollect: {fileID: 1779340675844256, guid: 6bd4d23329b16c7458d9f4da48cbdb4e, type: 2}
+  soundclipJump: {fileID: 8300000, guid: 227b7bdfefa3d5b4a97ea13f4755033a, type: 3}
+  soundclipCollide: {fileID: 8300000, guid: a1dd73eb67e2673418d7a09b2f77351a, type: 3}
+  soundclipCollect: {fileID: 8300000, guid: 1606232c1fb6343448a719300c169f32, type: 3}
+  soundclipStart: {fileID: 8300000, guid: 9e0f0b38a550c3b469901d18d0313ff1, type: 3}
 --- !u!1 &1144885073 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: b95ca707cac6db943ba64322f2f8c60e, type: 3}

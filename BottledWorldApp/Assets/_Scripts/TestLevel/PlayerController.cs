@@ -228,6 +228,7 @@ public class PlayerController : MonoBehaviour
 			//LoadMenu ();
 			pausePanel.SetActive (true);
 			txtPauseButton.transform.parent.gameObject.SetActive (false);
+			txtScore.text = coinIndexes.Count.ToString () + "/" + coinsLeftInLevel;
 			pause = true;
 			freeze = true;
 		} else { //Wenn ja, dann zum letzten Checkpoint zuruegsetzten
@@ -330,6 +331,7 @@ public class PlayerController : MonoBehaviour
 		if (pause) {
 
 			txtPauseButton.transform.parent.gameObject.SetActive (true);
+			VFXandSoundTrigger.Instance.TriggerStart ();
 			pause = false;
 		}
 
@@ -337,8 +339,9 @@ public class PlayerController : MonoBehaviour
 		checkpointGravity = Physics.gravity;
 		checkpointPosition = player.transform.position;
 		//checkpointQuaternion = player.transform.rotation;
-		
-		checkpointOb.GetComponent<Renderer> ().material = matCheckpointChecked;
+
+		VFXandSoundTrigger.Instance.TriggerCheckpoint (checkpointOb);
+		//checkpointOb.GetComponent<Renderer> ().material = matCheckpointChecked;
 	}
 
 	

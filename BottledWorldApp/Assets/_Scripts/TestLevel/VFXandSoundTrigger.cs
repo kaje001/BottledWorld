@@ -11,6 +11,11 @@ public class VFXandSoundTrigger : MonoBehaviour {
 	[SerializeField] GameObject vfxJump;
 	[SerializeField] GameObject vfxCollect;
 
+	[SerializeField] AudioClip soundclipJump;
+	[SerializeField] AudioClip soundclipCollide;
+	[SerializeField] AudioClip soundclipCollect;
+	[SerializeField] AudioClip soundclipStart;
+
 	//0 = heart; 1 = dead; 2 = jump; 3 = collect 
 	GameObject[] vfx = new GameObject[4];
 
@@ -45,6 +50,8 @@ public class VFXandSoundTrigger : MonoBehaviour {
 		vfx [1].transform.position = trans.position;
 		vfx [1].transform.rotation = trans.rotation;
 		PlayPS (1);
+
+		SoundManager.Instance.PlaySingle (soundclipCollide);
 	}
 
 
@@ -52,6 +59,8 @@ public class VFXandSoundTrigger : MonoBehaviour {
 		vfx [2].transform.position = trans.position;
 		vfx [2].transform.rotation = trans.rotation;
 		PlayPS (2);
+
+		SoundManager.Instance.PlaySingle (soundclipJump);
 	}
 
 
@@ -59,5 +68,19 @@ public class VFXandSoundTrigger : MonoBehaviour {
 		vfx [3].transform.position = trans.position;
 		vfx [3].transform.rotation = trans.rotation;
 		PlayPS (3);
+
+		SoundManager.Instance.PlaySingle (soundclipCollect);
+	}
+
+	public void TriggerStart(){
+		
+		SoundManager.Instance.PlaySingle (soundclipStart);
+	}
+
+	public void TriggerCheckpoint(GameObject checkpointOb){
+
+		checkpointOb.transform.GetChild (0).GetComponent<CheckpointColor> ().ChangeColorChecked ();
+
+		SoundManager.Instance.PlaySingle (soundclipStart);
 	}
 }

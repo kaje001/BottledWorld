@@ -1,20 +1,6 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\Menu\Cutom\UIController.cs">
-    <Files>
-      <File FileName="Assets\_Scripts\TestLevel\VFXandSoundTrigger.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\VFX\Spiral.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\TestLevel\PlayerEvents.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\StartUp\SaveState.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Menu\GotItScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Menu\MenuController.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Menu\AntController.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\TestLevel\PlayerController.cs" Line="142" Column="5" />
-      <File FileName="Assets\_Scripts\TestLevel\TouchCon.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\TestLevel\GyroCon.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Menu\Cutom\UIController.cs" Line="12" Column="22" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

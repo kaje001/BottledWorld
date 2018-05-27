@@ -46,10 +46,10 @@ public class MenuController : MonoBehaviour {
 			Debug.Log ("Start Level 2");
 			SceneManager.LoadScene("Level2");
 		}else if (ob.transform.tag == "Level3") {
-			Debug.Log ("Start Level 2");
+			Debug.Log ("Start Level 3");
 			SceneManager.LoadScene("Level3");
 		}else if (ob.transform.tag == "Level4") {
-			Debug.Log ("Start Level 2");
+			Debug.Log ("Start Level 4");
 			SceneManager.LoadScene("Level4");
 		}
 	}
