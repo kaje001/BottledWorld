@@ -6,51 +6,53 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-
+	
 	//Grundeinstellungen
-	public GameObject player;
-	public GameObject tube;
-	public Transform camDummy;
-	public Transform camCenter;
-	public float playerSpeed = 1.2f;
-	public float boostLenth = 0.8f;
-	public float jumpForce = 5f;
-	public int rotSpeed = 100;
-	public int lifes = 1;
-	public int level = 1;
+	[SerializeField] GameObject player;
+	[SerializeField] GameObject tube;
+	[SerializeField] Transform camDummy;
+	[SerializeField] Transform camCenter;
+	[SerializeField] float playerSpeed = 1.2f;
+	[SerializeField] float boostLenth = 0.8f;
+	//[SerializeField] float jumpForce = 5f;
+	[SerializeField] int rotSpeed = 100;
+	[SerializeField] int lifes = 1;
+	[SerializeField] int level = 1;
 	bool swipeCon = false;
-	public Vector3 gravity;
-	public Vector3 gravityGyro;
+	Vector3 gravity;
+	Vector3 gravityGyro;
 
 	bool pause = false;
 	bool freeze = false;
 	bool waitForUnpause = false;
 	[SerializeField] GameObject pauseCheck;
 	GameObject objPause;
-	public GameObject pausePanel;
-	public Text txtPauseButton;
-	public Text txtScore;
-	public Text txtCountdown;
+	[SerializeField] GameObject pausePanel;
+	[SerializeField] Text txtScore;
+	[SerializeField] Text txtCountdown;
+	[SerializeField] Image txtPauseButton;
+	[SerializeField] Sprite spritePauseUI;
+	[SerializeField] Sprite spriteResumeUI;
 
 	List<int> coinIndexes = new List<int> ();
 	int coinsLeftInLevel;
 
 	//UI Elemente
-	public Text txtCoins;
-	public Text txtLifes;
+	[SerializeField] Text txtCoins;
+	[SerializeField] Text txtLifes;
 		
 	//Elemente für Dinge, die am Anfang des Levels gespawned werden muessen
-	public GameObject coinPrefab;
-	public GameObject coinPrefabInactive;
+	[SerializeField] GameObject coinPrefab;
+	[SerializeField] GameObject coinPrefabInactive;
 	GameObject[] coinSpawnpoints;
-	public Transform parentCoins;
+	[SerializeField] Transform parentCoins;
 
 	Rigidbody rigPlayer;
 	float startPlayerSpeed;
 	
 	//Checkpoint Elemente
-	public Material matCheckpointChecked;
-	public Material matCheckpointUnchecked;
+	[SerializeField] Material matCheckpointChecked;
+	[SerializeField] Material matCheckpointUnchecked;
 	List<GameObject> touchedCheckpoints = new List<GameObject> ();
 	Vector3 checkpointPosition;
 	Vector3 checkpointGravity;
@@ -70,7 +72,7 @@ public class PlayerController : MonoBehaviour
 	{
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
-		txtPauseButton.transform.parent.gameObject.SetActive (false);
+		txtPauseButton.gameObject.SetActive (false);
 		rigPlayer = player.GetComponent<Rigidbody> ();
 
 		swipeCon = CoinController.Instance.state.settingsControls;
@@ -186,7 +188,7 @@ public class PlayerController : MonoBehaviour
 	//Der Spieler wird zum letzten aktivierten Checkpoint gesetzt
 	public void SetToLastCheckpoint ()
 	{
-		txtPauseButton.transform.parent.gameObject.SetActive (false);
+		txtPauseButton.gameObject.SetActive (false);
 		rigPlayer.velocity = Vector3.zero;
 		Physics.gravity = checkpointGravity;
 		Vector3 pos = player.transform.position;
@@ -202,7 +204,7 @@ public class PlayerController : MonoBehaviour
 			freeze = true;
 			pause = true;
 			pausePanel.SetActive (true);
-			txtPauseButton.transform.parent.gameObject.SetActive (false);
+			txtPauseButton.gameObject.SetActive (false);
 			txtScore.text = coinIndexes.Count.ToString () + "/" + coinsLeftInLevel;
 
 			CoinController.Instance.AddCoinForLevel (level, coinIndexes.Count);
@@ -227,7 +229,7 @@ public class PlayerController : MonoBehaviour
 		if (lifes == 0) { //wenn nein dann das Spiel zuruegsetzten
 			//LoadMenu ();
 			pausePanel.SetActive (true);
-			txtPauseButton.transform.parent.gameObject.SetActive (false);
+			txtPauseButton.gameObject.SetActive (false);
 			txtScore.text = coinIndexes.Count.ToString () + "/" + coinsLeftInLevel;
 			pause = true;
 			freeze = true;
@@ -330,7 +332,7 @@ public class PlayerController : MonoBehaviour
 	{
 		if (pause) {
 
-			txtPauseButton.transform.parent.gameObject.SetActive (true);
+			txtPauseButton.gameObject.SetActive (true);
 			VFXandSoundTrigger.Instance.TriggerStart ();
 			pause = false;
 		}
@@ -381,13 +383,13 @@ public class PlayerController : MonoBehaviour
 			objPause = Instantiate (pauseCheck, player.transform.position, player.transform.rotation);
 			pausePanel.SetActive (true);
 			txtScore.text = coinIndexes.Count.ToString () + "/" + coinsLeftInLevel;
-			txtPauseButton.text = "Resume";
+			txtPauseButton.sprite = spriteResumeUI;
 		} else if (pause) {
 			
 			Screen.sleepTimeout = SleepTimeout.SystemSetting;
 
 			pausePanel.SetActive (false);
-			txtPauseButton.text = "Pause";
+			txtPauseButton.sprite = spritePauseUI;
 			//StartCoroutine ("CountdownAfterPause");
 			//freeze = false;
 			waitForUnpause = true;

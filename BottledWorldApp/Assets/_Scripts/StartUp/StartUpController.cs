@@ -34,7 +34,7 @@ public class StartUpController : MonoBehaviour {
 			panelStart.SetActive(true);
 			starting = true;
 			antMiddle.gameObject.SetActive (true);
-			arrow.SetActive (true);
+			//arrow.SetActive (true);
 		}
 	}
 	

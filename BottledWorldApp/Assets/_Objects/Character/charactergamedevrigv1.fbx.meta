@@ -1,0 +1,221 @@
+fileFormatVersion: 2
+guid: fe64f30cbcba74e46a27cb99a93f505b
+timeCreated: 1527500652
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Armature
+    100002: back01_RIG
+    100004: back02_RIg
+    100006: back03_RIG
+    100008: back03_RIG_end
+    100010: //RootNode
+    100012: Cube
+    100014: Eyes
+    100016: head01_RIG
+    100018: lf_antenna01_RIG
+    100020: lf_antenna02_RIG
+    100022: lf_antenna02_RIG_end
+    100024: lf_arm01_RIG
+    100026: lf_arm02_RIG
+    100028: lf_backleg01_RIG
+    100030: lf_backleg02_RIG
+    100032: lf_backleg03_RIG
+    100034: lf_backleg03_RIG_end
+    100036: lf_clavicle_RIG
+    100038: lf_frontleg01_RIG
+    100040: lf_frontleg02_RIG
+    100042: lf_frontleg03_RIG
+    100044: lf_frontleg03_RIG_end
+    100046: lf_hand_RIG
+    100048: lf_index01_RIG
+    100050: lf_index02_RIG
+    100052: lf_index02_RIG_end
+    100054: lf_middle01_RIG
+    100056: lf_middle02_RIG
+    100058: lf_middle02_RIG_end
+    100060: lf_thumb01_RIG
+    100062: lf_thumb02_RIG
+    100064: lf_thumb02_RIG_end
+    100066: midsection01_Rig
+    100068: neck01_RIG
+    100070: Root_Rig
+    100072: rt_antenna01_RIG
+    100074: rt_antenna02_RIG
+    100076: rt_antenna02_RIG_end
+    100078: rt_arm01_RIG
+    100080: rt_arm02_RIG
+    100082: rt_backleg01_RIG
+    100084: rt_backleg02_RIG
+    100086: rt_backleg03_RIG
+    100088: rt_backleg03_RIG_end
+    100090: rt_clavicle_RIG
+    100092: rt_frontleg01_RIG
+    100094: rt_frontleg02_RIG
+    100096: rt_frontleg03_RIG
+    100098: rt_frontleg03_RIG_end
+    100100: rt_hand_RIG
+    100102: rt_index01_RIG
+    100104: rt_index02_RIG
+    100106: rt_index02_RIG_end
+    100108: rt_middle01_RIG
+    100110: rt_middle02_RIG
+    100112: rt_middle02_RIG_end
+    100114: rt_thumb01_RIG
+    100116: rt_thumb02_RIG
+    100118: rt_thumb02_RIG_end
+    100120: spine02_RIG
+    100122: spine03_Rig
+    100124: spineRoot_Rig
+    400000: Armature
+    400002: back01_RIG
+    400004: back02_RIg
+    400006: back03_RIG
+    400008: back03_RIG_end
+    400010: //RootNode
+    400012: Cube
+    400014: Eyes
+    400016: head01_RIG
+    400018: lf_antenna01_RIG
+    400020: lf_antenna02_RIG
+    400022: lf_antenna02_RIG_end
+    400024: lf_arm01_RIG
+    400026: lf_arm02_RIG
+    400028: lf_backleg01_RIG
+    400030: lf_backleg02_RIG
+    400032: lf_backleg03_RIG
+    400034: lf_backleg03_RIG_end
+    400036: lf_clavicle_RIG
+    400038: lf_frontleg01_RIG
+    400040: lf_frontleg02_RIG
+    400042: lf_frontleg03_RIG
+    400044: lf_frontleg03_RIG_end
+    400046: lf_hand_RIG
+    400048: lf_index01_RIG
+    400050: lf_index02_RIG
+    400052: lf_index02_RIG_end
+    400054: lf_middle01_RIG
+    400056: lf_middle02_RIG
+    400058: lf_middle02_RIG_end
+    400060: lf_thumb01_RIG
+    400062: lf_thumb02_RIG
+    400064: lf_thumb02_RIG_end
+    400066: midsection01_Rig
+    400068: neck01_RIG
+    400070: Root_Rig
+    400072: rt_antenna01_RIG
+    400074: rt_antenna02_RIG
+    400076: rt_antenna02_RIG_end
+    400078: rt_arm01_RIG
+    400080: rt_arm02_RIG
+    400082: rt_backleg01_RIG
+    400084: rt_backleg02_RIG
+    400086: rt_backleg03_RIG
+    400088: rt_backleg03_RIG_end
+    400090: rt_clavicle_RIG
+    400092: rt_frontleg01_RIG
+    400094: rt_frontleg02_RIG
+    400096: rt_frontleg03_RIG
+    400098: rt_frontleg03_RIG_end
+    400100: rt_hand_RIG
+    400102: rt_index01_RIG
+    400104: rt_index02_RIG
+    400106: rt_index02_RIG_end
+    400108: rt_middle01_RIG
+    400110: rt_middle02_RIG
+    400112: rt_middle02_RIG_end
+    400114: rt_thumb01_RIG
+    400116: rt_thumb02_RIG
+    400118: rt_thumb02_RIG_end
+    400120: spine02_RIG
+    400122: spine03_Rig
+    400124: spineRoot_Rig
+    2100000: Material
+    2100002: Material.001
+    2300000: Eyes
+    3300000: Eyes
+    4300000: Cube
+    4300002: Eyes
+    9500000: //RootNode
+    13700000: Cube
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
