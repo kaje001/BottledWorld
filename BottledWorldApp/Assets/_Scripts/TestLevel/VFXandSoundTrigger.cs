@@ -38,6 +38,12 @@ public class VFXandSoundTrigger : MonoBehaviour {
 		}
 	}
 
+	void StopPS(int index){
+		foreach (ParticleSystem ps in vfx [index].transform.GetComponentsInChildren<ParticleSystem> ()) {
+			ps.Stop ();
+		}
+	}
+
 	public void TriggerHeart(){
 		//vfx [0].transform.position = trans.position;
 		//vfx [0].transform.rotation = trans.rotation;
@@ -47,6 +53,7 @@ public class VFXandSoundTrigger : MonoBehaviour {
 
 
 	public void TriggerDead(Transform trans){
+		StopPS (1);
 		vfx [1].transform.position = trans.position;
 		vfx [1].transform.rotation = trans.rotation;
 		PlayPS (1);
@@ -56,6 +63,7 @@ public class VFXandSoundTrigger : MonoBehaviour {
 
 
 	public void TriggerJump(Transform trans){
+		StopPS (2);
 		vfx [2].transform.position = trans.position;
 		vfx [2].transform.rotation = trans.rotation;
 		PlayPS (2);
@@ -65,6 +73,7 @@ public class VFXandSoundTrigger : MonoBehaviour {
 
 
 	public void TriggerCollect(Transform trans){
+		StopPS (3);
 		vfx [3].transform.position = trans.position;
 		vfx [3].transform.rotation = trans.rotation;
 		PlayPS (3);

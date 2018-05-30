@@ -157,7 +157,7 @@ public class SplineInterpolator : MonoBehaviour
 					transform.position = mNodes[mNodes.Count - 2].Point;
 
 					if (mRotations)
-						transform.rotation = mNodes[mNodes.Count - 2].Rot;
+						//transform.rotation = mNodes[mNodes.Count - 2].Rot;
 
 					// We call back to inform that we are ended
 					if (mOnEndCallback != null)
@@ -183,7 +183,7 @@ public class SplineInterpolator : MonoBehaviour
 
 			if (mRotations)
 			{
-				transform.rotation = GetSquad(mCurrentIdx, param);
+				//transform.rotation = GetSquad(mCurrentIdx, param);
 			}
 		}
 	}

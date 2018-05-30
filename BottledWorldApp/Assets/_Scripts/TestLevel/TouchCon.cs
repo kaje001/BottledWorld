@@ -6,12 +6,18 @@ using UnityEngine.EventSystems;
 
 public class TouchCon : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler {
 
+	public static TouchCon Instance { get; set; }
+
 	public PlayerController playCon;
 	float lastY;
 	int screenY;
 	float lastX;
 	int screenX;
-	
+	float publicLength;
+
+	void Awake(){
+		Instance = this;
+	}
 
 	void Start () {
 		screenX = Screen.width;
@@ -28,6 +34,7 @@ public class TouchCon : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 	
 	 public void OnPointerUp(PointerEventData data)
     {
+		publicLength = 0f;
     }
 	
 	
@@ -53,11 +60,15 @@ public class TouchCon : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 				length = -length;
 			}
 		}
-		playCon.RotateWorld(length);
-		
+		//playCon.RotateWorld(length);
+		publicLength = length;
 
 		lastX = x;
 		lastY = y;
     }
-	
+
+	public float GetDragLength(){
+		return publicLength;
+	}
+
 }

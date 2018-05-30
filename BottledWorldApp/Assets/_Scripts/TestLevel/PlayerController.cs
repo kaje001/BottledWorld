@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] Material matCheckpointUnchecked;
 	List<GameObject> touchedCheckpoints = new List<GameObject> ();
 	Vector3 checkpointPosition;
-	Vector3 checkpointGravity;
+	//Vector3 checkpointGravity;
 	//Vector3 checkpointJumpVector;
 	//Quaternion checkpointQuaternion;
 
@@ -66,6 +66,8 @@ public class PlayerController : MonoBehaviour
 	bool inputJump = false;
 	float curJumpHight = 0;
 
+	IEnumerator coroutineJump;
+	IEnumerator coroutineCheckCountdown;
 	//private Vector3 velocity = Vector3.zero;
 
 	void Start ()
@@ -74,11 +76,12 @@ public class PlayerController : MonoBehaviour
 
 		txtPauseButton.gameObject.SetActive (false);
 		rigPlayer = player.GetComponent<Rigidbody> ();
+		checkpointPosition = player.transform.position;
 
 		swipeCon = CoinController.Instance.state.settingsControls;
 		if (swipeCon) {
-			GetComponent<GyroCon> ().enabled = false;
-			FindObjectOfType<TouchCon> ().enabled = true;
+			//GetComponent<GyroCon> ().enabled = false;
+			//FindObjectOfType<TouchCon> ().enabled = true;
 			gravityGyro = Physics.gravity;
 		}
 
@@ -101,6 +104,7 @@ public class PlayerController : MonoBehaviour
 
 	void Update ()
 	{
+		GetRotateWorld ();
 		gravity = Vector3.Lerp (gravity, gravityGyro, 7f * Time.deltaTime);
 
 		if (!freeze) {
@@ -168,6 +172,24 @@ public class PlayerController : MonoBehaviour
 
 	}
 
+	void GetRotateWorld(){
+		if (swipeCon) {
+			float rot = TouchCon.Instance.GetDragLength ();
+			Debug.Log (rot);
+			gravityGyro = Quaternion.Euler(0, 0, rot * rotSpeed) * gravityGyro;
+			//Debug.Log (gravityGyro);
+			Physics.gravity = gravity;
+		} else {
+			Vector3 tempGravityGyro = GyroCon.Instance.GetGyroGravity ();
+			if (Vector3.Angle (gravity, tempGravityGyro) < 1f) {
+				return;
+			}
+
+			gravityGyro = tempGravityGyro * 9.81f;
+			Physics.gravity = gravity;
+		}
+	}
+
 	public void LoadMenu ()
 	{
 
@@ -190,7 +212,7 @@ public class PlayerController : MonoBehaviour
 	{
 		txtPauseButton.gameObject.SetActive (false);
 		rigPlayer.velocity = Vector3.zero;
-		Physics.gravity = checkpointGravity;
+		//Physics.gravity = checkpointGravity;
 		Vector3 pos = player.transform.position;
 		pos.z = checkpointPosition.z;
 		player.transform.position = pos;
@@ -297,13 +319,17 @@ public class PlayerController : MonoBehaviour
 		if (pause) {
 			return;
 		}
-		
-		inputJump = true;
-		//Debug.Log ("test");
-		StartCoroutine ("Jump");
+
 
 		//Trigger VFX and Sound
 		VFXandSoundTrigger.Instance.TriggerJump(player.transform);
+		
+		inputJump = true;
+		//Debug.Log ("test");
+
+		coroutineJump = Jump();
+		StartCoroutine (coroutineJump);
+
 	}
 
 	public void SetPlayerSpeed (float f)
@@ -332,13 +358,14 @@ public class PlayerController : MonoBehaviour
 	{
 		if (pause) {
 
-			txtPauseButton.gameObject.SetActive (true);
-			VFXandSoundTrigger.Instance.TriggerStart ();
-			pause = false;
+			//UnpauseGame ();
+			coroutineCheckCountdown = CheckpointCountdown();
+			StartCoroutine(coroutineCheckCountdown);
+			return;
 		}
 
 		touchedCheckpoints.Add (checkpointOb);
-		checkpointGravity = Physics.gravity;
+		//checkpointGravity = Physics.gravity;
 		checkpointPosition = player.transform.position;
 		//checkpointQuaternion = player.transform.rotation;
 
@@ -346,7 +373,19 @@ public class PlayerController : MonoBehaviour
 		//checkpointOb.GetComponent<Renderer> ().material = matCheckpointChecked;
 	}
 
-	
+	public void LeaveCheckpoint(){
+		if (pause == true && freeze == false) {
+			StopCoroutine (coroutineCheckCountdown);
+			txtCountdown.gameObject.SetActive (false);
+		}
+	}
+
+	void UnpauseGame(){
+		txtPauseButton.gameObject.SetActive (true);
+		VFXandSoundTrigger.Instance.TriggerStart ();
+		pause = false;
+	}
+
 	public void GetExtraLife (GameObject ob)
 	{
 		Destroy (ob);
@@ -410,16 +449,18 @@ public class PlayerController : MonoBehaviour
 	IEnumerator Jump ()
 	{
 		while (true) {
-			if (curJumpHight >= maxJumpHeight - 0.05f)
+			if (curJumpHight >= maxJumpHeight - 0.05f) {
 				inputJump = false;
-			if (inputJump)
+			}
+			if (inputJump) {
 				curJumpHight = Mathf.Lerp (curJumpHight, maxJumpHeight, jumpSpeed * Time.deltaTime);
+			}
 			else if (!inputJump) {
 				curJumpHight = curJumpHight - fallSpeed * Time.deltaTime;
 				//Debug.Log (curJumpHight);
 				if (curJumpHight <= 0) {
 					curJumpHight = 0;
-					StopCoroutine("Jump");
+					yield break;
 				}
 			}
 
@@ -438,6 +479,21 @@ public class PlayerController : MonoBehaviour
 
 		txtCountdown.gameObject.SetActive (false);
 		//freeze = false;
+	}
+
+
+	IEnumerator CheckpointCountdown ()
+	{
+		txtCountdown.gameObject.SetActive (true);
+		for (int i = 2; i > 0; i--) {
+
+			txtCountdown.text = i.ToString ();
+			yield return new WaitForSeconds (1f);
+		}
+
+		txtCountdown.gameObject.SetActive (false);
+		//freeze = false;
+		UnpauseGame();
 	}
 
 

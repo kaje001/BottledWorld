@@ -19,14 +19,14 @@ public class StartUpController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		fadeLogo.FadeIn();
+		fadeLogo.FadeIn(2f);
 		timeStamp = Time.time + 2f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(Time.time > timeStamp && ! faded){
-			fadeLogo.FadeOut();
+			fadeLogo.FadeOut(2f);
 			faded = true;
 			timeStamp = Time.time + 2f;
 		}

@@ -44,4 +44,10 @@ public class PlayerEvents : MonoBehaviour {
 			playCon.HitObject (); //Bei einem Zusammenstoss mit einem Hinderniss wird im PlayerController gecheckt, ob noch leben verfügbar sind und ob schon ein Checkpoint activiert wurde
 		}
 	}
+
+	void OnTriggerExit(Collider other){
+		if(other.transform.tag == "Checkpoint"){ //Checkpoint aktivieren
+			playCon.LeaveCheckpoint();
+		}
+	}
 }
