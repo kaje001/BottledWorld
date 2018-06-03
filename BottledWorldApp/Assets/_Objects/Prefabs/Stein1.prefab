@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23595601743929038}
   - component: {fileID: 95096071636701680}
   - component: {fileID: 136757348151084412}
+  - component: {fileID: 136762766884831436}
   m_Layer: 0
   m_Name: Stein1
   m_TagString: Obstacle
@@ -109,6 +110,19 @@ CapsuleCollider:
   m_GameObject: {fileID: 1535247191848026}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 0.3
+  m_Direction: 1
+  m_Center: {x: -0.0011259988, y: -1.9, z: 0.0028314032}
+--- !u!136 &136762766884831436
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1535247191848026}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.1
   m_Height: 0.3

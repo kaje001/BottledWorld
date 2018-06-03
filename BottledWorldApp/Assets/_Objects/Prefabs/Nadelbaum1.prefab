@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23548213311236588}
   - component: {fileID: 95907493835932818}
   - component: {fileID: 136020795762322716}
+  - component: {fileID: 136739204070469880}
   m_Layer: 0
   m_Name: Nadelbaum1
   m_TagString: Obstacle
@@ -111,6 +112,19 @@ CapsuleCollider:
   m_GameObject: {fileID: 1234125733674668}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.12
+  m_Height: 1.4871839
+  m_Direction: 1
+  m_Center: {x: 0.003471002, y: -1.2102766, z: 0.010124266}
+--- !u!136 &136739204070469880
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1234125733674668}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.12
   m_Height: 1.4871839

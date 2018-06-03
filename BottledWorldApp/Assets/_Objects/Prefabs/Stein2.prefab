@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23425775979325708}
   - component: {fileID: 95048331071374540}
   - component: {fileID: 65026009644068494}
+  - component: {fileID: 65539621837508882}
   m_Layer: 0
   m_Name: Stein2
   m_TagString: Obstacle
@@ -92,6 +93,18 @@ BoxCollider:
   m_GameObject: {fileID: 1993533562071226}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22299957, y: 0.15113139, z: 0.22932434}
+  m_Center: {x: -0.005794525, y: -1.893063, z: -0.010913849}
+--- !u!65 &65539621837508882
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1993533562071226}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.22299957, y: 0.15113139, z: 0.22932434}

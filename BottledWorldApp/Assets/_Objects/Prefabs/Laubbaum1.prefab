@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 33356411996388914}
   - component: {fileID: 23147909132836134}
   - component: {fileID: 136490452938566150}
+  - component: {fileID: 136346284451720298}
   m_Layer: 0
   m_Name: BaumKrone:BaumKrone
   m_TagString: Untagged
@@ -73,6 +74,7 @@ GameObject:
   - component: {fileID: 33547962320602012}
   - component: {fileID: 23741934740105132}
   - component: {fileID: 136110167801042160}
+  - component: {fileID: 136402163924861006}
   m_Layer: 0
   m_Name: BaumStamm:BaumStamm
   m_TagString: Untagged
@@ -283,6 +285,32 @@ CapsuleCollider:
   m_GameObject: {fileID: 1740232592016874}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.09
+  m_Height: 0.76
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.24, z: 0.02}
+--- !u!136 &136346284451720298
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1720009510010036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.28
+  m_Height: 0.94
+  m_Direction: 0
+  m_Center: {x: -0.05388552, y: 0.84376836, z: -0.029936016}
+--- !u!136 &136402163924861006
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1740232592016874}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.09
   m_Height: 0.76

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23794568827029866}
   - component: {fileID: 95810073887305220}
   - component: {fileID: 65768523779757664}
+  - component: {fileID: 65010160178321886}
   m_Layer: 0
   m_Name: Zuckerwuerfel
   m_TagString: Obstacle
@@ -84,6 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1399174888450384}
   m_Mesh: {fileID: 4300000, guid: 0257ccea3324e664fba170d3d68fc1fa, type: 3}
+--- !u!65 &65010160178321886
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1399174888450384}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.27, y: 0.34, z: 0.053250965}
+  m_Center: {x: 0, y: -1.8700637, z: 0}
 --- !u!65 &65768523779757664
 BoxCollider:
   m_ObjectHideFlags: 1
