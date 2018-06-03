@@ -10529,7 +10529,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 752634053}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d93be5512f83cab4a85c56a9da1e2563, type: 3}
   m_Name: 
@@ -15302,12 +15302,9 @@ MonoBehaviour:
   camCenter: {fileID: 1943454941}
   playerSpeed: 1.36
   boostLenth: 0.8
-  jumpForce: 6
   rotSpeed: 100
   lifes: 1
   level: 2
-  gravity: {x: 0, y: -9.81, z: 0}
-  gravityGyro: {x: 0, y: 0, z: 0}
   pauseCheck: {fileID: 1693740428920292, guid: 4d01b6baba5ab5946a892136df66a0c0, type: 2}
   pausePanel: {fileID: 562309395}
   txtScore: {fileID: 1483451907}
