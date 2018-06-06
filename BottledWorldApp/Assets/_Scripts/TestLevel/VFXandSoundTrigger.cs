@@ -19,6 +19,8 @@ public class VFXandSoundTrigger : MonoBehaviour {
 	[SerializeField] AudioClip soundclipStart;
 	[SerializeField] AudioClip soundclipHeart;
 
+	[SerializeField] Animator animator;
+
 	CameraShake camShake;
 
 	//0 = heart; 1 = dead; 2 = jump; 3 = collect; 4 = Boost
@@ -84,6 +86,19 @@ public class VFXandSoundTrigger : MonoBehaviour {
 		PlayPS (2);
 
 		SoundManager.Instance.PlaySingle (soundclipJump);
+
+		animator.SetTrigger ("jumpTrigger");
+	}
+
+	public void TriggerJumpEnd(Transform trans){
+		StopPS (2);
+		vfx [2].transform.position = trans.position;
+		vfx [2].transform.rotation = trans.rotation;
+		PlayPS (2);
+
+		SoundManager.Instance.PlaySingle (soundclipCollide);
+
+		animator.SetTrigger ("jumpEnding");
 	}
 
 

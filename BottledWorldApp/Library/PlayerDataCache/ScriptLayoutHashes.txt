@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-C:/Users/ArtBox/Desktop/bottledAnt_03_06_18.apk
+C:/Users/ArtBox/Desktop/bottledAnt_06_06_18.apk
 SceneListBegin?
 Assets/_Scenes/StartUp.unity
 Assets/_Scenes/Menu.unity
@@ -149,7 +149,8 @@ d913d67ae8db6e4afb8556aa50e1369d Assembly-CSharp.dll:.CamController
 cac5093fb1baf037bd671ecbc6727828 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ScreenOverlay
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
-6b978499341050218d42c2af463f7e93 Assembly-CSharp.dll:.VFXandSoundTrigger
+3028af240c92b516a7e5b47eed00b7fa Assembly-CSharp.dll:.VFXandSoundTrigger
+0b9561ae87c263bf84d7325f6d179d70 Assembly-CSharp.dll:.CameraShake
 30db6bf1abfbd17c6cdd1385b9eba6ca Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.DepthOfField
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.PostEffectsHelper
 96c025831f4a2d0f7beda26162b83f01 Assembly-CSharp.dll:.Spiral
@@ -210,4 +211,3 @@ aec04ae54bb862c927ddc254cd43b584 Assembly-CSharp.dll:.PCSicherung
 83a41d631503a3df576a5f892693315e Assembly-CSharp.dll:.PlayerEvents
 d0cbc462bf169459312e914bad5af9cb Assembly-CSharp.dll:.SoundManager
 cd2d2bc9d5f8f02f00d0e2defb6d6baa Assembly-CSharp.dll:.GyroConStartUp
-0b9561ae87c263bf84d7325f6d179d70 Assembly-CSharp.dll:.CameraShake

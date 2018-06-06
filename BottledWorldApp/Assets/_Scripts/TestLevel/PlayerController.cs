@@ -146,7 +146,10 @@ public class PlayerController : MonoBehaviour
 			//Dadurch muss nicht die Ganze Geometrie gedreht und neu Berechnet werden (Performance :))
 		gravityGyro = Quaternion.Euler(0, 0, rot * rotSpeed) * gravityGyro;
 		//Debug.Log (gravityGyro);
-		Physics.gravity = gravity;
+		if (Vector3.Angle (gravity, Physics.gravity) > 3f) {
+
+			Physics.gravity = gravity;
+		}
 		
 		//jumpVec = Quaternion.Euler(0, 0, rot * rotSpeed) * jumpVec;
 		
@@ -168,7 +171,10 @@ public class PlayerController : MonoBehaviour
 		}
 
 		gravityGyro = tempGravityGyro * 9.81f;
-		Physics.gravity = gravity;
+		if (Vector3.Angle (gravity, Physics.gravity) > 3f) {
+
+			Physics.gravity = gravity;
+		}
 
 	}
 
@@ -178,7 +184,6 @@ public class PlayerController : MonoBehaviour
 			//Debug.Log (rot);
 			gravityGyro = Quaternion.Euler(0, 0, rot * rotSpeed) * gravityGyro;
 			//Debug.Log (gravityGyro);
-			Physics.gravity = gravity;
 		} else {
 			Vector3 tempGravityGyro = GyroCon.Instance.GetGyroGravity ();
 			if (Vector3.Angle (gravity, tempGravityGyro) < 1f) {
@@ -186,8 +191,13 @@ public class PlayerController : MonoBehaviour
 			}
 
 			gravityGyro = tempGravityGyro * 9.81f;
+		}
+
+		if (Vector3.Angle (gravity, Physics.gravity) > 2f) {
+
 			Physics.gravity = gravity;
 		}
+
 	}
 
 	public void LoadMenu ()
@@ -463,6 +473,9 @@ public class PlayerController : MonoBehaviour
 				//Debug.Log (curJumpHight);
 				if (curJumpHight <= 0) {
 					curJumpHight = 0;
+
+					VFXandSoundTrigger.Instance.TriggerJumpEnd (player.transform);
+
 					yield break;
 				}
 			}

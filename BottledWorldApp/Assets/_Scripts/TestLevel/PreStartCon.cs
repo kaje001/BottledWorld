@@ -60,7 +60,7 @@ public class PreStartCon : MonoBehaviour
 			gravityGyro = GyroCon.Instance.GetGyroGravity ();
 			gravity = Vector3.Lerp (gravity, gravityGyro, 7f * Time.deltaTime);
 			Vector3 v = gravity;
-			v.x = -v.x;
+			//v.x = -v.x;
 			preCam.transform.up = -v;
 			preCam.transform.GetChild (0).LookAt (preCamCenter);
 		}
