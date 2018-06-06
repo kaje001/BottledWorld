@@ -175,7 +175,7 @@ public class PlayerController : MonoBehaviour
 	void GetRotateWorld(){
 		if (swipeCon) {
 			float rot = TouchCon.Instance.GetDragLength ();
-			Debug.Log (rot);
+			//Debug.Log (rot);
 			gravityGyro = Quaternion.Euler(0, 0, rot * rotSpeed) * gravityGyro;
 			//Debug.Log (gravityGyro);
 			Physics.gravity = gravity;
@@ -349,8 +349,11 @@ public class PlayerController : MonoBehaviour
 
 	IEnumerator Boost ()
 	{
+		VFXandSoundTrigger.Instance.TriggerBoost (player.transform, true);
 		playerSpeed = playerSpeed*2f;
 		yield return new WaitForSeconds (boostLenth);
+
+		VFXandSoundTrigger.Instance.TriggerBoost (player.transform, false);
 		ResetPlayerSpeed ();
 	}
 
@@ -393,7 +396,7 @@ public class PlayerController : MonoBehaviour
 		txtLifes.text = lifes.ToString ();
 
 		//Trigger VFX and Sound
-		//VFXandSoundTrigger.Instance.TriggerHeart();
+		VFXandSoundTrigger.Instance.TriggerHeart();
 		
 	}
 

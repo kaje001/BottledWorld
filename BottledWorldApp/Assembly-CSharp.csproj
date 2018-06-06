@@ -67,6 +67,7 @@
      <Compile Include="Assets\_Scripts\StartUp\SoundManager.cs" />
      <Compile Include="Assets\_Scripts\StartUp\StartUpController.cs" />
      <Compile Include="Assets\_Scripts\TestLevel\CamController.cs" />
+     <Compile Include="Assets\_Scripts\TestLevel\CameraShake.cs" />
      <Compile Include="Assets\_Scripts\TestLevel\Coin.cs" />
      <Compile Include="Assets\_Scripts\TestLevel\GyroCon.cs" />
      <Compile Include="Assets\_Scripts\TestLevel\PCSicherung.cs" />

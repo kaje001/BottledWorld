@@ -8,28 +8,39 @@ public class VFXandSoundTrigger : MonoBehaviour {
 
 	[SerializeField] GameObject vfxHeart;
 	[SerializeField] GameObject vfxDead;
-	[SerializeField] GameObject vfxJump;
-	[SerializeField] GameObject vfxCollect;
+	[SerializeField] GameObject vfxJump; 
+	[SerializeField] GameObject vfxCollect; 
+	[SerializeField] GameObject vfxBoost;
 
 	[SerializeField] AudioClip soundclipJump;
 	[SerializeField] AudioClip soundclipCollide;
-	[SerializeField] AudioClip soundclipCollect;
+	[SerializeField] AudioClip soundclipCollect; 
+	[SerializeField] AudioClip soundclipBoost;
 	[SerializeField] AudioClip soundclipStart;
+	[SerializeField] AudioClip soundclipHeart;
 
-	//0 = heart; 1 = dead; 2 = jump; 3 = collect 
-	GameObject[] vfx = new GameObject[4];
+	CameraShake camShake;
+
+	//0 = heart; 1 = dead; 2 = jump; 3 = collect; 4 = Boost
+	GameObject[] vfx = new GameObject[5];
 
 	void Awake(){
 		Instance = this;
 	}
 
 	void Start(){
+		camShake = Camera.main.GetComponent<CameraShake> ();
 
 		//vfx[0] = Instantiate (vfxHeart, new Vector3 (0f, 0f, 0f), Quaternion.identity);
 		vfx[0] = vfxHeart;
 		vfx[1] = Instantiate (vfxDead, new Vector3 (0f, 0f, 0f), Quaternion.identity);
 		vfx[2] = Instantiate (vfxJump, new Vector3 (0f, 0f, 0f), Quaternion.identity);
 		vfx[3] = Instantiate (vfxCollect, new Vector3 (0f, 0f, 0f), Quaternion.identity);
+		vfx[4] = Instantiate (vfxBoost, new Vector3 (0f, 0f, 0f), Quaternion.identity);
+	}
+
+	void Update(){
+
 	}
 
 	void PlayPS(int index){
@@ -48,7 +59,9 @@ public class VFXandSoundTrigger : MonoBehaviour {
 		//vfx [0].transform.position = trans.position;
 		//vfx [0].transform.rotation = trans.rotation;
 		//PlayPS (0);
-		vfx[0].GetComponent<Spiral>().PlayParticles();
+		//vfx[0].GetComponent<Spiral>().PlayParticles();
+
+		SoundManager.Instance.PlaySingle (soundclipHeart);
 	}
 
 
@@ -59,6 +72,8 @@ public class VFXandSoundTrigger : MonoBehaviour {
 		PlayPS (1);
 
 		SoundManager.Instance.PlaySingle (soundclipCollide);
+
+		camShake.shakeDuration = 0.5f;
 	}
 
 
@@ -79,6 +94,21 @@ public class VFXandSoundTrigger : MonoBehaviour {
 		PlayPS (3);
 
 		SoundManager.Instance.PlaySingle (soundclipCollect);
+	}
+
+
+	public void TriggerBoost(Transform trans, bool b){
+		
+		StopPS (4);
+		if (!b) {
+			return;
+		}
+		vfx [4].transform.position = trans.position;
+		vfx [4].transform.rotation = trans.rotation;
+		vfx [4].transform.parent = trans;
+		PlayPS (4);
+
+		SoundManager.Instance.PlaySingle (soundclipBoost);
 	}
 
 	public void TriggerStart(){

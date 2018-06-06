@@ -7,9 +7,11 @@ public class PreStartCon : MonoBehaviour
 
 	[SerializeField] GameObject mainCam;
 	[SerializeField] PlayerController mainCon;
+	[SerializeField] GameObject mainPanel;
 	[SerializeField] GameObject preCam;
 	[SerializeField] Transform preCamCenter;
 	[SerializeField] GameObject preSpline;
+	[SerializeField] GameObject prePanel;
 
 	[SerializeField] Fade fadeOverlay;
 
@@ -24,6 +26,7 @@ public class PreStartCon : MonoBehaviour
 	void Start ()
 	{
 		mainCam.SetActive (false);
+		mainPanel.SetActive (false);
 		mainCon.enabled = false;
 		timestamp = Time.time;
 		fadeOverlay.FadeOut (1f);
@@ -43,9 +46,11 @@ public class PreStartCon : MonoBehaviour
 
 			fadeOverlay.FadeOut (3f);
 			mainCam.SetActive (true);
+			mainPanel.SetActive (true);
 			mainCon.enabled = true;
 			preCam.SetActive (false);
 			preSpline.SetActive (false);
+			prePanel.SetActive (false);
 			enabled = false;
 		}
 
