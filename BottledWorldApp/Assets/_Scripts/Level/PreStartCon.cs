@@ -5,10 +5,10 @@ using UnityEngine;
 public class PreStartCon : MonoBehaviour
 {
 
-	[SerializeField] GameObject mainCam;
+	[SerializeField] GameObject mainCamDummy;
 	[SerializeField] PlayerController mainCon;
 	[SerializeField] GameObject mainPanel;
-	[SerializeField] GameObject preCam;
+	[SerializeField] GameObject preCamDummy;
 	[SerializeField] Transform preCamCenter;
 	[SerializeField] GameObject preSpline;
 	[SerializeField] GameObject prePanel;
@@ -25,7 +25,7 @@ public class PreStartCon : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		mainCam.SetActive (false);
+		mainCamDummy.SetActive (false);
 		mainPanel.SetActive (false);
 		mainCon.enabled = false;
 		timestamp = Time.time;
@@ -45,10 +45,10 @@ public class PreStartCon : MonoBehaviour
 			b = false;
 
 			fadeOverlay.FadeOut (3f);
-			mainCam.SetActive (true);
+			mainCamDummy.SetActive (true);
 			mainPanel.SetActive (true);
 			mainCon.enabled = true;
-			preCam.SetActive (false);
+			preCamDummy.SetActive (false);
 			preSpline.SetActive (false);
 			prePanel.SetActive (false);
 			enabled = false;
@@ -61,8 +61,8 @@ public class PreStartCon : MonoBehaviour
 			gravity = Vector3.Lerp (gravity, gravityGyro, 7f * Time.deltaTime);
 			Vector3 v = gravity;
 			//v.x = -v.x;
-			preCam.transform.up = -v;
-			preCam.transform.GetChild (0).LookAt (preCamCenter);
+			preCamDummy.transform.up = -v;
+			preCamDummy.transform.GetChild(0).LookAt (preCamCenter);
 		}
 
 		if ((Input.touchCount > 0 || Input.GetMouseButtonDown(0)) && a && b) {

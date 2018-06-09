@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
 	int coinsLeftInLevel;
 
 	//UI Elemente
+	[SerializeField] GameObject panelCoins;
+	[SerializeField] GameObject panelLifes;
 	[SerializeField] Text txtCoins;
 	[SerializeField] Text txtLifes;
 		
@@ -105,6 +107,9 @@ public class PlayerController : MonoBehaviour
 	void Update ()
 	{
 		GetRotateWorld ();
+		if (!swipeCon) {
+			RotateUI ();
+		}
 		gravity = Vector3.Lerp (gravity, gravityGyro, 7f * Time.deltaTime);
 
 		if (!freeze) {
@@ -116,6 +121,7 @@ public class PlayerController : MonoBehaviour
 			//player.transform.position = pos;
 			float forwardMovement = 0;
 			if (!pause) {
+				SetPhysicsGravity ();
 				forwardMovement = playerSpeed * Time.deltaTime;
 			} 
 
@@ -147,10 +153,7 @@ public class PlayerController : MonoBehaviour
 			//Dadurch muss nicht die Ganze Geometrie gedreht und neu Berechnet werden (Performance :))
 		gravityGyro = Quaternion.Euler(0, 0, rot * rotSpeed) * gravityGyro;
 		//Debug.Log (gravityGyro);
-		if (Vector3.Angle (gravity, Physics.gravity) > 2f) {
 
-			Physics.gravity = gravity;
-		}
 		
 		//jumpVec = Quaternion.Euler(0, 0, rot * rotSpeed) * jumpVec;
 		
@@ -172,10 +175,7 @@ public class PlayerController : MonoBehaviour
 		}
 
 		gravityGyro = tempGravityGyro * 9.81f;
-		if (Vector3.Angle (gravity, Physics.gravity) > 2f) {
 
-			Physics.gravity = gravity;
-		}
 
 	}
 
@@ -194,11 +194,19 @@ public class PlayerController : MonoBehaviour
 			gravityGyro = tempGravityGyro * 9.81f;
 		}
 
-		if (Vector3.Angle (gravity, Physics.gravity) > 2f) {
+	}
+
+	void SetPhysicsGravity(){
+		if (Vector3.Angle (gravity, Physics.gravity) > 1f) {
 
 			Physics.gravity = gravity;
 		}
+	}
 
+	void RotateUI(){
+		panelCoins.transform.up = -gravity;
+		panelLifes.transform.up = -gravity;
+		txtPauseButton.transform.up = -gravity;
 	}
 
 	public void LoadMenu ()

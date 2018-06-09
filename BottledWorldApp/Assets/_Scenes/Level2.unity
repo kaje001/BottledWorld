@@ -15951,10 +15951,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 917ead13df79d8d4abea00366e4fffbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCam: {fileID: 513271480}
+  mainCamDummy: {fileID: 849894542}
   mainCon: {fileID: 1144378892}
   mainPanel: {fileID: 949935940}
-  preCam: {fileID: 221342741}
+  preCamDummy: {fileID: 221342741}
   preCamCenter: {fileID: 149083874}
   preSpline: {fileID: 1452235657}
   prePanel: {fileID: 692466786}
