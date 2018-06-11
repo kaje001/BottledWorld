@@ -326,7 +326,8 @@ public class PlayerController : MonoBehaviour
 		Coin coin = ob.GetComponent<Coin> ();
 		//CoinController.Instance.CollectCoin (level, coin.index);
 		coinIndexes.Add (coin.index);
-		txtCoins.text = coinIndexes.Count.ToString ();
+		//txtCoins.text = coinIndexes.Count.ToString ();
+		CollectEffectUI (panelCoins, txtCoins, coinIndexes.Count);
 		Destroy (ob);
 
 		//Trigger VFX and Sound
@@ -412,7 +413,8 @@ public class PlayerController : MonoBehaviour
 	{
 		Destroy (ob);
 		lifes++;
-		txtLifes.text = lifes.ToString ();
+		CollectEffectUI (panelLifes, txtLifes, lifes);
+		//txtLifes.text = lifes.ToString ();
 
 		//Trigger VFX and Sound
 		VFXandSoundTrigger.Instance.TriggerHeart();
@@ -466,7 +468,9 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-
+	void CollectEffectUI(GameObject ui, Text text, int value){
+		StartCoroutine(PulseUI(ui, text, value));
+	}
 
 	IEnumerator Jump ()
 	{
@@ -534,5 +538,25 @@ public class PlayerController : MonoBehaviour
 		freeze = false;
 		player.SetActive (true);
 		CheckDeath ();
+	}
+
+	IEnumerator PulseUI(GameObject ui, Text text, int value){
+		float scale = 1f;
+		int i = 0;
+		for (i = 0; i < 10; i++) {
+			scale += 0.08f;
+			ui.transform.localScale = new Vector3 (scale, scale, scale);
+			yield return new WaitForSeconds (0.01f);
+		}
+		yield return new WaitForSeconds (0.1f);
+		text.text = value.ToString();
+		yield return new WaitForSeconds (0.1f);
+		for (i = 10; i > 0; i--) {
+			scale -= 0.08f;
+			ui.transform.localScale = new Vector3 (scale, scale, scale);
+			yield return new WaitForSeconds (0.01f);
+		}
+
+		ui.transform.localScale = Vector3.one;
 	}
 }

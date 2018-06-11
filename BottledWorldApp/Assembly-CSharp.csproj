@@ -52,12 +52,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\_Scripts\CamInEditor.cs" />
-     <Compile Include="Assets\_Scripts\Level\CamController.cs" />
      <Compile Include="Assets\_Scripts\Level\CameraShake.cs" />
      <Compile Include="Assets\_Scripts\Level\Coin.cs" />
      <Compile Include="Assets\_Scripts\Level\GyroCon.cs" />
-     <Compile Include="Assets\_Scripts\Level\PCSicherung.cs" />
-     <Compile Include="Assets\_Scripts\Level\PhysicsController.cs" />
      <Compile Include="Assets\_Scripts\Level\PlayerController.cs" />
      <Compile Include="Assets\_Scripts\Level\PlayerEvents.cs" />
      <Compile Include="Assets\_Scripts\Level\PreStartCon.cs" />
@@ -78,6 +75,9 @@
      <Compile Include="Assets\_Scripts\StartUp\SaveState.cs" />
      <Compile Include="Assets\_Scripts\StartUp\SoundManager.cs" />
      <Compile Include="Assets\_Scripts\StartUp\StartUpController.cs" />
+     <Compile Include="Assets\_Scripts\Test\CamController.cs" />
+     <Compile Include="Assets\_Scripts\Test\PCSicherung.cs" />
+     <Compile Include="Assets\_Scripts\Test\PhysicsController.cs" />
      <Compile Include="Assets\_Scripts\VFX\CheckpointColor.cs" />
      <Compile Include="Assets\_Scripts\VFX\Spiral.cs" />
      <None Include="Assets\SkySerie Freebie\Hdri setup.txt" />
