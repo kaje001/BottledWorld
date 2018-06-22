@@ -241,6 +241,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Scripts\CamInEditor.cs" />
+    <Compile Include="Assets\_Scripts\Level\CameraShake.cs" />
+    <Compile Include="Assets\_Scripts\Level\Coin.cs" />
+    <Compile Include="Assets\_Scripts\Level\GyroCon.cs" />
+    <Compile Include="Assets\_Scripts\Level\PlayerController.cs" />
+    <Compile Include="Assets\_Scripts\Level\PlayerEvents.cs" />
+    <Compile Include="Assets\_Scripts\Level\PreStartCon.cs" />
+    <Compile Include="Assets\_Scripts\Level\TouchCon.cs" />
+    <Compile Include="Assets\_Scripts\Level\VFXandSoundTrigger.cs" />
     <Compile Include="Assets\_Scripts\Menu\AntController.cs" />
     <Compile Include="Assets\_Scripts\Menu\Collectable.cs" />
     <Compile Include="Assets\_Scripts\Menu\Cutom\UIController.cs" />
@@ -256,16 +265,9 @@
     <Compile Include="Assets\_Scripts\StartUp\SaveState.cs" />
     <Compile Include="Assets\_Scripts\StartUp\SoundManager.cs" />
     <Compile Include="Assets\_Scripts\StartUp\StartUpController.cs" />
-    <Compile Include="Assets\_Scripts\TestLevel\CamController.cs" />
-    <Compile Include="Assets\_Scripts\TestLevel\Coin.cs" />
-    <Compile Include="Assets\_Scripts\TestLevel\GyroCon.cs" />
-    <Compile Include="Assets\_Scripts\TestLevel\PCSicherung.cs" />
-    <Compile Include="Assets\_Scripts\TestLevel\PhysicsController.cs" />
-    <Compile Include="Assets\_Scripts\TestLevel\PlayerController.cs" />
-    <Compile Include="Assets\_Scripts\TestLevel\PlayerEvents.cs" />
-    <Compile Include="Assets\_Scripts\TestLevel\PreStartCon.cs" />
-    <Compile Include="Assets\_Scripts\TestLevel\TouchCon.cs" />
-    <Compile Include="Assets\_Scripts\TestLevel\VFXandSoundTrigger.cs" />
+    <Compile Include="Assets\_Scripts\Test\CamController.cs" />
+    <Compile Include="Assets\_Scripts\Test\PCSicherung.cs" />
+    <Compile Include="Assets\_Scripts\Test\PhysicsController.cs" />
     <Compile Include="Assets\_Scripts\VFX\CheckpointColor.cs" />
     <Compile Include="Assets\_Scripts\VFX\Spiral.cs" />
   </ItemGroup>
