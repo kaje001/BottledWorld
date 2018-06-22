@@ -58,6 +58,8 @@
      <Compile Include="Assets\_Scripts\Level\PlayerController.cs" />
      <Compile Include="Assets\_Scripts\Level\PlayerEvents.cs" />
      <Compile Include="Assets\_Scripts\Level\PreStartCon.cs" />
+     <Compile Include="Assets\_Scripts\Level\SphereController.cs" />
+     <Compile Include="Assets\_Scripts\Level\SphereEvents.cs" />
      <Compile Include="Assets\_Scripts\Level\TouchCon.cs" />
      <Compile Include="Assets\_Scripts\Level\VFXandSoundTrigger.cs" />
      <Compile Include="Assets\_Scripts\Menu\AntController.cs" />

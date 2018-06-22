@@ -11,8 +11,9 @@ public class Fade : MonoBehaviour
 	void Start ()
 	{
 		image = GetComponent<Image> ();
-         
-		//targetAlpha = image.color.a;
+		//Color curColor = image.color;
+		//curColor.a = 1.0f;
+		//image.color = curColor;
 	}
      
 	// Update is called once per frame
