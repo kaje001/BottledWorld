@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerEvents : MonoBehaviour {
 
-	public PlayerController playCon;
+	[SerializeField] PlayerController playCon;
 	
 	// Use this for initialization
 	void Start () {

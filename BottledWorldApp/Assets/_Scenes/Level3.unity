@@ -6922,6 +6922,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1cebd7ea1648e124cb8111ad21440dd7, type: 3}
   m_IsPrefabParent: 0
+--- !u!1001 &461189855
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4576175553005958, guid: 2b0ca5d0b718c184d84d52916e884fcf, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.239
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576175553005958, guid: 2b0ca5d0b718c184d84d52916e884fcf, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576175553005958, guid: 2b0ca5d0b718c184d84d52916e884fcf, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 78.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576175553005958, guid: 2b0ca5d0b718c184d84d52916e884fcf, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576175553005958, guid: 2b0ca5d0b718c184d84d52916e884fcf, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576175553005958, guid: 2b0ca5d0b718c184d84d52916e884fcf, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.9947185
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576175553005958, guid: 2b0ca5d0b718c184d84d52916e884fcf, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.10264071
+      objectReference: {fileID: 0}
+    - target: {fileID: 4576175553005958, guid: 2b0ca5d0b718c184d84d52916e884fcf, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2b0ca5d0b718c184d84d52916e884fcf, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &461414427 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: aa1901eff2e347f42b71895429905e25, type: 3}
@@ -15270,6 +15312,8 @@ MonoBehaviour:
   txtPauseButton: {fileID: 221444247}
   spritePauseUI: {fileID: 21300000, guid: f7ea0635b14c83549984fb5773fb17f8, type: 3}
   spriteResumeUI: {fileID: 21300000, guid: 33fba99c5ea43f54fbd33a22ae1c6674, type: 3}
+  panelCoins: {fileID: 0}
+  panelLifes: {fileID: 0}
   txtCoins: {fileID: 549476399}
   txtLifes: {fileID: 2127448735}
   coinPrefab: {fileID: 1540675714835574, guid: 2ab3249a883c44e4284861179535eee2, type: 2}
@@ -15327,6 +15371,8 @@ MonoBehaviour:
   soundclipBoost: {fileID: 8300000, guid: 227b7bdfefa3d5b4a97ea13f4755033a, type: 3}
   soundclipStart: {fileID: 8300000, guid: 9e0f0b38a550c3b469901d18d0313ff1, type: 3}
   soundclipHeart: {fileID: 8300000, guid: eeeb13e3492c1804099b13d42637b750, type: 3}
+  music1: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!1 &1144885073 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: b95ca707cac6db943ba64322f2f8c60e, type: 3}

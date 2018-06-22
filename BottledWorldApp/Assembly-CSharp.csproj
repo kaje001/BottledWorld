@@ -52,18 +52,22 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\_Scripts\CamInEditor.cs" />
+     <Compile Include="Assets\_Scripts\EndLevel\AntControllerEndLevel.cs" />
      <Compile Include="Assets\_Scripts\Level\CameraShake.cs" />
      <Compile Include="Assets\_Scripts\Level\Coin.cs" />
      <Compile Include="Assets\_Scripts\Level\GyroCon.cs" />
      <Compile Include="Assets\_Scripts\Level\PlayerController.cs" />
      <Compile Include="Assets\_Scripts\Level\PlayerEvents.cs" />
      <Compile Include="Assets\_Scripts\Level\PreStartCon.cs" />
+     <Compile Include="Assets\_Scripts\Level\SphereController.cs" />
+     <Compile Include="Assets\_Scripts\Level\SphereEvents.cs" />
      <Compile Include="Assets\_Scripts\Level\TouchCon.cs" />
      <Compile Include="Assets\_Scripts\Level\VFXandSoundTrigger.cs" />
      <Compile Include="Assets\_Scripts\Menu\AntController.cs" />
      <Compile Include="Assets\_Scripts\Menu\Collectable.cs" />
      <Compile Include="Assets\_Scripts\Menu\Cutom\UIController.cs" />
      <Compile Include="Assets\_Scripts\Menu\GotItScript.cs" />
+     <Compile Include="Assets\_Scripts\Menu\HighlightBottle.cs" />
      <Compile Include="Assets\_Scripts\Menu\MenuController.cs" />
      <Compile Include="Assets\_Scripts\Spline\MathUtils.cs" />
      <Compile Include="Assets\_Scripts\Spline\SplineController.cs" />
@@ -80,6 +84,7 @@
      <Compile Include="Assets\_Scripts\Test\PhysicsController.cs" />
      <Compile Include="Assets\_Scripts\VFX\CheckpointColor.cs" />
      <Compile Include="Assets\_Scripts\VFX\Spiral.cs" />
+     <None Include="Assets\_Materials\Menu\glasTest.shader" />
      <None Include="Assets\SkySerie Freebie\Hdri setup.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

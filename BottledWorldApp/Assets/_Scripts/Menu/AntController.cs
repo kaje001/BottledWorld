@@ -15,8 +15,11 @@ public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 	float lerpSpeed;
 	public bool isDraged = false;
 	public bool isDrop = false;
+	GameObject overObject = null;
 
 	float timeNextPosition = 0;
+
+	[SerializeField] Animator animator;
 
 	// Use this for initialization
 	void Start () {
@@ -41,12 +44,14 @@ public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 
 
 		if (isDraged || isDrop) {
-
 			transform.position = Vector3.Lerp (transform.position, targetPos, lerpSpeed * Time.deltaTime);
 		} else {
 			transform.position = Vector3.MoveTowards (transform.position, targetPos, lerpSpeed * Time.deltaTime);
 			if (transform.position - targetPos != Vector3.zero) {
-				transform.GetChild(0).rotation = Quaternion.Lerp (transform.GetChild(0).rotation, Quaternion.LookRotation (transform.position - targetPos), 5f * Time.deltaTime);
+				transform.GetChild (0).rotation = Quaternion.Lerp (transform.GetChild (0).rotation, Quaternion.LookRotation (transform.position - targetPos), 5f * Time.deltaTime);
+				animator.SetBool ("walking", true);
+			} else {
+				animator.SetBool ("walking", false);
 			}
 		}
 
@@ -62,6 +67,8 @@ public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 		isDraged = true;
 		isDrop = false;
 		lerpSpeed = lerpSpeedDrag;
+
+		animator.SetBool ("draged", true);
 	}
 
 
@@ -74,6 +81,20 @@ public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 
 		//transform.position = Vector3.Lerp (transform.position, touchPointinWorld, Time.deltaTime);
 		targetPos = touchPointinWorld;
+
+		Ray ray = Camera.main.ScreenPointToRay(new Vector3 (data.position.x, data.position.y+40f, 0f));
+		RaycastHit hitInfo;
+		if (Physics.Raycast (ray, out hitInfo, 10f, layMask)) {
+			if (overObject == null) {
+				overObject = hitInfo.collider.gameObject;
+				menuControll.OverObject (overObject);
+			}
+		}else{
+			if (overObject != null) {
+				menuControll.OverObjectLeave (overObject);
+				overObject = null;
+			}
+		}
 	}
 
 
@@ -90,10 +111,13 @@ public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 
 			menuControll.CheckActivatedObject (hitInfo.collider.gameObject);
 		}
+
+		animator.SetBool ("draged", false);
+		animator.SetBool ("walking", false);
 	}
 
 	Vector3 GetRandomPos(){
-		Vector3 newPos = new Vector3(Random.Range(0,90)/100f-2f,1.1f,Random.Range(0,140)/100f-0.7f);
+		Vector3 newPos = new Vector3(Random.Range(0,70)/100f-2f,1.1f,Random.Range(0,140)/100f-0.7f);
 
 		return newPos;
 	}

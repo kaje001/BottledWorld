@@ -19,9 +19,15 @@ public class Spiral : MonoBehaviour {
 	float radiusStart_1;
     float radiusStart_2;
 
+	float startRadius_1;
+	float startRadius_2;
+
 	// Use this for initialization
 	void Start () {
-        
+
+		startRadius_1 = Radius_1;
+		startRadius_2 = Radius_2;
+		PlayParticles ();
 	}
 	
 	// Update is called once per frame
@@ -48,8 +54,8 @@ public class Spiral : MonoBehaviour {
     private void calculateXZ()
     {
         progress += RotationPerSecond * Time.deltaTime * 2 * Mathf.PI;
-        xPos = Radius_1 * Mathf.Cos(progress);
-        zPos = Radius_2 * Mathf.Sin(progress);
+		xPos = Radius_1 * Mathf.Cos(progress);
+		zPos = Radius_2 * Mathf.Sin(progress);
     }
 
     // calculates next (next Frame) z position of Emitter
@@ -67,6 +73,8 @@ public class Spiral : MonoBehaviour {
 
 	//TODO: Play()
 	public void PlayParticles(){
+		Radius_1 = startRadius_1;
+		Radius_2 = startRadius_2;
 		calculateXZ();
 		Emitter.transform.localPosition = new Vector3(xPos,0,zPos);
 		timePassed = 0;

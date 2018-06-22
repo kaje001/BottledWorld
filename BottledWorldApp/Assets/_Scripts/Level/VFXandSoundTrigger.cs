@@ -19,6 +19,8 @@ public class VFXandSoundTrigger : MonoBehaviour {
 	[SerializeField] AudioClip soundclipStart;
 	[SerializeField] AudioClip soundclipHeart;
 
+	[SerializeField] AudioClip music1;
+
 	[SerializeField] Animator animator;
 
 	CameraShake camShake;
@@ -46,6 +48,7 @@ public class VFXandSoundTrigger : MonoBehaviour {
 	}
 
 	void PlayPS(int index){
+		
 		foreach (ParticleSystem ps in vfx [index].transform.GetComponentsInChildren<ParticleSystem> ()) {
 			ps.Play ();
 		}
@@ -58,10 +61,11 @@ public class VFXandSoundTrigger : MonoBehaviour {
 	}
 
 	public void TriggerHeart(){
+		StopPS (0);
 		//vfx [0].transform.position = trans.position;
 		//vfx [0].transform.rotation = trans.rotation;
-		//PlayPS (0);
-		//vfx[0].GetComponent<Spiral>().PlayParticles();
+		PlayPS (0);
+		vfx[0].GetComponent<Spiral>().PlayParticles();
 
 		SoundManager.Instance.PlaySingle (soundclipHeart);
 	}
@@ -76,6 +80,8 @@ public class VFXandSoundTrigger : MonoBehaviour {
 		SoundManager.Instance.PlaySingle (soundclipCollide);
 
 		camShake.shakeDuration = 0.5f;
+
+		animator.SetTrigger ("knockdown");
 	}
 
 
@@ -109,6 +115,7 @@ public class VFXandSoundTrigger : MonoBehaviour {
 		PlayPS (3);
 
 		SoundManager.Instance.PlaySingle (soundclipCollect);
+		animator.SetTrigger ("collectedSugar");
 	}
 
 
@@ -116,6 +123,7 @@ public class VFXandSoundTrigger : MonoBehaviour {
 		
 		StopPS (4);
 		if (!b) {
+			animator.SetTrigger ("boostEnd");
 			return;
 		}
 		vfx [4].transform.position = trans.position;
@@ -124,7 +132,10 @@ public class VFXandSoundTrigger : MonoBehaviour {
 		PlayPS (4);
 
 		SoundManager.Instance.PlaySingle (soundclipBoost);
+
+		animator.SetTrigger ("boostStart");
 	}
+
 
 	public void TriggerStart(){
 		
@@ -137,4 +148,28 @@ public class VFXandSoundTrigger : MonoBehaviour {
 
 		SoundManager.Instance.PlaySingle (soundclipStart);
 	}
+
+	public void StartLevelMusic(){
+		SoundManager.Instance.PlayMusic (music1);
+	}
+
+	public void EndLevelMusic(){
+		SoundManager.Instance.StopMusic ();
+	}
+
+	public void TriggerStartCountdown(){
+
+		animator.SetTrigger ("standUp");
+	}
+
+	public void TriggerCancelCountdown(){
+
+		animator.SetTrigger ("cancelStandUp");
+	}
+
+	public void TriggerStartRunning(){
+
+		animator.SetTrigger ("startRunning");
+	}
+
 }

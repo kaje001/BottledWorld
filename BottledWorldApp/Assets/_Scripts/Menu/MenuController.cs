@@ -17,6 +17,9 @@ public class MenuController : MonoBehaviour {
 	[SerializeField] Toggle toggleMusic;
 	[SerializeField] Toggle toggleControls;
 
+	[SerializeField] AudioClip musicMenu;
+	[SerializeField] AudioClip soundOverBottle;
+
 	bool slide = false;
 	public bool custom = false;
 
@@ -27,7 +30,9 @@ public class MenuController : MonoBehaviour {
 		panelQuit.SetActive (false);
 		panelSettings.SetActive (false);
 
-		txtTotalCoins.text = CoinController.Instance.state.availableCoins.ToString () + "/" + CoinController.Instance.state.totalCoins.ToString ();
+		txtTotalCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString ();
+
+		SoundManager.Instance.PlayMusic (musicMenu);
 
 	}
 
@@ -38,10 +43,11 @@ public class MenuController : MonoBehaviour {
 	}
 
 	public void CheckActivatedObject(GameObject ob){
-		
+		bool musicoff = false;
 		if (ob.transform.tag == "Level1") {
 			Debug.Log ("Start Level 1");
 			SceneManager.LoadScene("Level1");
+			musicoff = true;
 		} else if (ob.transform.tag == "Level2") {
 			Debug.Log ("Start Level 2");
 			//SceneManager.LoadScene("Level2");
@@ -52,6 +58,51 @@ public class MenuController : MonoBehaviour {
 			Debug.Log ("Start Level 4");
 			//SceneManager.LoadScene("Level4");
 		}
+
+		if (musicoff) {
+			SoundManager.Instance.StopMusic ();
+		}
+	}
+
+	public void OverObject(GameObject ob){
+
+		if(ob.GetComponent<HighlightBottle> ().active){
+			ob.GetComponent<HighlightBottle> ().Hightlight (true);
+			SoundManager.Instance.PlaySingle (soundOverBottle);
+		}
+
+		/*if (ob.transform.tag == "Level1") {
+			//Highlight Bottle1
+		} else if (ob.transform.tag == "Level2") {
+			Debug.Log ("Start Level 2");
+			//SceneManager.LoadScene("Level2");
+		}else if (ob.transform.tag == "Level3") {
+			Debug.Log ("Start Level 3");
+			//SceneManager.LoadScene("Level3");
+		}else if (ob.transform.tag == "Level4") {
+			Debug.Log ("Start Level 4");
+			//SceneManager.LoadScene("Level4");
+		}*/
+	}
+
+	public void OverObjectLeave(GameObject ob){
+
+		if (ob.GetComponent<HighlightBottle> ().active) {
+			ob.GetComponent<HighlightBottle> ().Hightlight (false);
+		}
+		//SoundManager.Instance.PlaySingle (soundOverBottle);
+		/*if (ob.transform.tag == "Level1") {
+			//Highlight Bottle1
+		} else if (ob.transform.tag == "Level2") {
+			Debug.Log ("Start Level 2");
+			//SceneManager.LoadScene("Level2");
+		}else if (ob.transform.tag == "Level3") {
+			Debug.Log ("Start Level 3");
+			//SceneManager.LoadScene("Level3");
+		}else if (ob.transform.tag == "Level4") {
+			Debug.Log ("Start Level 4");
+			//SceneManager.LoadScene("Level4");
+		}*/
 	}
 	
 	public void QuitGame(){
@@ -65,7 +116,8 @@ public class MenuController : MonoBehaviour {
 		CoinController.Instance.ResetSaveState();
 		HideSettings ();
 		ShowSettings ();
-		txtTotalCoins.text = CoinController.Instance.state.availableCoins.ToString () + "/" + CoinController.Instance.state.totalCoins.ToString ();
+		txtTotalCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString ();
+		// + "/" + CoinController.Instance.state.totalCoins.ToString ()
 	}
 
 	public void ShowQuit(){
@@ -105,6 +157,11 @@ public class MenuController : MonoBehaviour {
 
 	public void SetSettingMusic(bool b){
 		CoinController.Instance.state.settingsMusic = b;
+		if (!b) {
+			SoundManager.Instance.StopMusic ();
+		} else {
+			SoundManager.Instance.PlayMusic (musicMenu);
+		}
 	}
 
 	public void SetSettingControl(bool b){

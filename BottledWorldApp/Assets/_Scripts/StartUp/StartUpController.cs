@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StartUpController : MonoBehaviour {
-	
+
 	public Fade fadeLogo;
+	public Fade fadeCaution;
 	float timeStamp;
 	bool faded = false;
 	bool logo = false;
@@ -20,11 +21,12 @@ public class StartUpController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		fadeLogo.FadeIn(2f);
-		timeStamp = Time.time + 2f;
+		StartCoroutine(FadeCaution());
+		//timeStamp = Time.time + 2f;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	/*void Update () {
 		if(Time.time > timeStamp && ! faded){
 			fadeLogo.FadeOut(2f);
 			faded = true;
@@ -36,7 +38,7 @@ public class StartUpController : MonoBehaviour {
 			antMiddle.gameObject.SetActive (true);
 			//arrow.SetActive (true);
 		}
-	}
+	}*/
 	
 	public void StartGame(){
 		
@@ -66,6 +68,18 @@ public class StartUpController : MonoBehaviour {
 
 			lastAngle = angle;
 		}
+	}
+	IEnumerator FadeCaution(){
+		yield return new WaitForSeconds (2f);
+		fadeLogo.FadeOut(2f);
+		yield return new WaitForSeconds (2f);
+		fadeCaution.FadeIn (4f);
+		yield return new WaitForSeconds (2f);
+		fadeCaution.FadeOut (4f);
+		yield return new WaitForSeconds (1f);
+		panelStart.SetActive(true);
+		starting = true;
+		antMiddle.gameObject.SetActive (true);
 	}
 	
 }

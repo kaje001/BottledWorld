@@ -54,6 +54,10 @@ public class SoundManager : MonoBehaviour
 		musicSource.Play ();
 	}
 
+	public void StopMusic(){
+		musicSource.Stop ();
+	}
+
 	//RandomizeSfx chooses randomly between various audio clips and slightly changes their pitch.
 	public void RandomizeSfx (params AudioClip[] clips)
 	{

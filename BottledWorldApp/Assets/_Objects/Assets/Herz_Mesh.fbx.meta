@@ -12,7 +12,12 @@ ModelImporter:
     3300000: //RootNode
     4300000: Herz_Mesh
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Herz_tris_blinn1
+    second: {fileID: 2100000, guid: 8a3f3e8ef08aa1d4a91c8f109cb3cd60, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

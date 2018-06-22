@@ -23,11 +23,12 @@ public class SplineInterpolator : MonoBehaviour
 
 	List<SplineNode> mNodes = new List<SplineNode>();
 	string mState = "";
-	bool mRotations;
+	bool mRotations = false;
+	[SerializeField] bool rotations;
 
 	OnEndCallback mOnEndCallback;
 
-
+	public bool pause = false;
 
 	void Awake()
 	{
@@ -70,7 +71,7 @@ public class SplineInterpolator : MonoBehaviour
 		if (mNodes.Count < 2)
 			throw new System.Exception("Invalid number of points");
 
-		if (mRotations)
+		if (rotations)
 		{
 			for (int c = 1; c < mNodes.Count; c++)
 			{
@@ -135,7 +136,7 @@ public class SplineInterpolator : MonoBehaviour
 
 	void Update()
 	{
-		if (mState == "Reset" || mState == "Stopped" || mNodes.Count < 4)
+		if (mState == "Reset" || mState == "Stopped" || mNodes.Count < 4 || pause)
 			return;
 
 		mCurrentTime += Time.deltaTime;
@@ -156,8 +157,8 @@ public class SplineInterpolator : MonoBehaviour
 					// We stop right in the end point
 					transform.position = mNodes[mNodes.Count - 2].Point;
 
-					if (mRotations)
-						//transform.rotation = mNodes[mNodes.Count - 2].Rot;
+					if (rotations)
+						transform.rotation = mNodes[mNodes.Count - 2].Rot;
 
 					// We call back to inform that we are ended
 					if (mOnEndCallback != null)
@@ -181,9 +182,9 @@ public class SplineInterpolator : MonoBehaviour
 
 			transform.position = GetHermiteInternal(mCurrentIdx, param);
 
-			if (mRotations)
+			if (rotations)
 			{
-				//transform.rotation = GetSquad(mCurrentIdx, param);
+				transform.rotation = GetSquad(mCurrentIdx, param);
 			}
 		}
 	}

@@ -87,8 +87,9 @@ public class PlayerController : MonoBehaviour
 			gravityGyro = Physics.gravity;
 		}
 
-		int curCoins = CoinController.Instance.GetCoinForLevel (level);
-		txtCoins.text = curCoins.ToString ();
+		//int curCoins = CoinController.Instance.GetCoinForLevel (level);
+		//txtCoins.text = curCoins.ToString ();
+		txtCoins.text = "0";
 		txtLifes.text = lifes.ToString ();
 
 		startPlayerSpeed = playerSpeed;
@@ -102,6 +103,8 @@ public class PlayerController : MonoBehaviour
 		pause = true;
 		//freeze = true;
 		//StartCoroutine ("CountdownAfterPause");
+
+		VFXandSoundTrigger.Instance.StartLevelMusic ();
 	}
 
 	void Update ()
@@ -211,6 +214,7 @@ public class PlayerController : MonoBehaviour
 
 	public void LoadMenu ()
 	{
+		VFXandSoundTrigger.Instance.EndLevelMusic ();
 
 		Screen.sleepTimeout = SleepTimeout.SystemSetting;
 		SceneManager.LoadScene ("Menu");
@@ -384,6 +388,9 @@ public class PlayerController : MonoBehaviour
 			//UnpauseGame ();
 			coroutineCheckCountdown = CheckpointCountdown();
 			StartCoroutine(coroutineCheckCountdown);
+
+			VFXandSoundTrigger.Instance.TriggerStartCountdown ();
+
 			return;
 		}
 
@@ -400,12 +407,14 @@ public class PlayerController : MonoBehaviour
 		if (pause == true && freeze == false) {
 			StopCoroutine (coroutineCheckCountdown);
 			txtCountdown.gameObject.SetActive (false);
+			VFXandSoundTrigger.Instance.TriggerCancelCountdown();
 		}
 	}
 
 	void UnpauseGame(){
 		txtPauseButton.gameObject.SetActive (true);
 		VFXandSoundTrigger.Instance.TriggerStart ();
+		VFXandSoundTrigger.Instance.TriggerStartRunning ();
 		pause = false;
 	}
 
