@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
 	
 	//Grundeinstellungen
 	[SerializeField] GameObject player;
-	[SerializeField] GameObject tube;
 	[SerializeField] Transform camDummy;
 	[SerializeField] Transform camCenter;
 	[SerializeField] float playerSpeed = 1.2f;
@@ -17,6 +16,7 @@ public class PlayerController : MonoBehaviour
 	//[SerializeField] float jumpForce = 5f;
 	[SerializeField] int rotSpeed = 100;
 	[SerializeField] int lifes = 1;
+	[SerializeField] int coinsInLevel = 5;
 	[SerializeField] int level = 1;
 	bool swipeCon = false;
 	Vector3 gravity;
@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
 	bool pause = false;
 	bool freeze = false;
 	bool waitForUnpause = false;
+	bool finished = false;
 	[SerializeField] GameObject pauseCheck;
 	GameObject objPause;
 	[SerializeField] GameObject pausePanel;
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] GameObject panelLifes;
 	[SerializeField] Text txtCoins;
 	[SerializeField] Text txtLifes;
+	[SerializeField] Fade fadeImage;
 		
 	//Elemente für Dinge, die am Anfang des Levels gespawned werden muessen
 	[SerializeField] GameObject coinPrefab;
@@ -98,7 +100,12 @@ public class PlayerController : MonoBehaviour
 		coinSpawnpoints = GameObject.FindGameObjectsWithTag("CoinSpawner");
 		SpawnCoins ();
 
-		coinsLeftInLevel = 5 - CoinController.Instance.GetCoinForLevel (level);
+		coinsLeftInLevel = coinsInLevel - CoinController.Instance.GetCoinForLevel (level);
+
+		LastGameData.Instance.coins = 0;
+		LastGameData.Instance.hearts = 0;
+		LastGameData.Instance.deaths = 0;
+		LastGameData.Instance.won = false;
 
 		pause = true;
 		//freeze = true;
@@ -140,7 +147,12 @@ public class PlayerController : MonoBehaviour
 		//Camera Movement
 
 		//camDummy.position = Vector3.Lerp(camDummy.position, player.transform.position, 2f * Time.deltaTime);
-		camDummy.position = player.transform.position;
+		if (finished) {
+			camDummy.position = new Vector3 (player.transform.position.x, player.transform.position.y, camDummy.position.z);
+		} else {
+			camDummy.position = player.transform.position;
+
+		}
 		//camDummy.rotation = Quaternion.Lerp(camDummy.rotation, player.transform.rotation, 220f * Time.deltaTime);
 		//camDummy.rotation = Quaternion.Lerp(camDummy.rotation, player.transform.rotation, 4f * Time.deltaTime);
 		camDummy.rotation = player.transform.rotation;
@@ -246,11 +258,17 @@ public class PlayerController : MonoBehaviour
 
 	public void Win(){
 		if (!freeze) {
-			freeze = true;
-			pause = true;
-			pausePanel.SetActive (true);
+			finished = true;
+			//freeze = true;
+			//pause = true;
+			//pausePanel.SetActive (true);
 			txtPauseButton.gameObject.SetActive (false);
 			txtScore.text = coinIndexes.Count.ToString () + "/" + coinsLeftInLevel;
+
+			LastGameData.Instance.coins = coinIndexes.Count;
+			LastGameData.Instance.hearts = lifes;
+			LastGameData.Instance.deaths = 0;
+			LastGameData.Instance.won = true;
 
 			CoinController.Instance.AddCoinForLevel (level, coinIndexes.Count);
 
@@ -259,8 +277,16 @@ public class PlayerController : MonoBehaviour
 			}
 
 			CoinController.Instance.Save ();
+			StartCoroutine (WaitForFinish ());
 		}
 
+	}
+
+	IEnumerator WaitForFinish(){
+		yield return new WaitForSeconds (1f);
+		fadeImage.FadeIn (3f);
+		yield return new WaitForSeconds (0.4f);
+		SceneManager.LoadScene ("EndLevel");
 	}
 
 	// Es wird gecheckt, ob noch Leben verfuegbar sind

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AntControllerEndLevel : MonoBehaviour {
 
@@ -26,6 +27,10 @@ public class AntControllerEndLevel : MonoBehaviour {
 	[SerializeField] GameObject panelSugar;
 	[SerializeField] GameObject panelUnlock;
 
+	[SerializeField] AudioClip audioScore;
+	//[SerializeField] AudioClip audioUnlockLevel;
+	[SerializeField] AudioClip audioJump;
+
 	// Use this for initialization
 	void Start () {
 		panelSugar.SetActive (false);
@@ -35,23 +40,26 @@ public class AntControllerEndLevel : MonoBehaviour {
 	}
 
 	void Update(){
-		if (Vector3.Distance (transform.position, stopTrigger.transform.position) < 0.005f && !pause) {
+		if (Vector3.Distance (transform.position, stopTrigger.transform.position) < 0.05f && !pause) {
 			pause = true;
 			PauseMovement ();
 		}
-		if (Vector3.Distance (transform.position, jumpTrigger.transform.position) < 0.005f && !jump) {
+		if (Vector3.Distance (transform.position, jumpTrigger.transform.position) < 0.05f && !jump) {
 			jump = true;
 			animator.SetTrigger ("jumpUp");
+			SoundManager.Instance.PlaySingle (audioJump);
 
 		}
-		if (Vector3.Distance (transform.position, groundTrigger.transform.position) < 0.005f && !ground) {
+		if (Vector3.Distance (transform.position, groundTrigger.transform.position) < 0.05f && !ground) {
 			ground = true;
 			animator.SetTrigger ("floor");
+			SoundManager.Instance.PlaySingle (audioJump);
 			ps.Play ();
 		}
-		if (Vector3.Distance (transform.position, fadeTrigger.transform.position) < 0.005f && !fadeb) {
+		if (Vector3.Distance (transform.position, fadeTrigger.transform.position) < 0.05f && !fadeb) {
 			fadeb = true;
 			fade.FadeIn (3f);
+			StartCoroutine(WaitForLoadMenu ());
 		}
 	}
 
@@ -72,10 +80,17 @@ public class AntControllerEndLevel : MonoBehaviour {
 	IEnumerator ShowScore(){
 		yield return new WaitForSeconds (0.8f);
 		panelSugar.SetActive (true);
+		SoundManager.Instance.PlaySingle (audioScore);
 		//playSound&Effect
 		yield return new WaitForSeconds (0.7f);
-		panelUnlock.SetActive (true);
+		//panelUnlock.SetActive (true); //Enable if unlocked a new Level
+
 		//playSound&Effect
 
+	}
+	IEnumerator WaitForLoadMenu(){
+		yield return new WaitForSeconds (0.5f);
+		SoundManager.Instance.StopMusic ();
+		SceneManager.LoadScene ("Menu");
 	}
 }

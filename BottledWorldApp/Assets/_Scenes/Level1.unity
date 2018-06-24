@@ -605,13 +605,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 939718188}
-  tube: {fileID: 28078594}
   camDummy: {fileID: 1528792685}
   camCenter: {fileID: 523984570}
   playerSpeed: 1.36
   boostLenth: 0.8
   rotSpeed: 100
   lifes: 1
+  coinsInLevel: 5
   level: 1
   pauseCheck: {fileID: 1693740428920292, guid: 4d01b6baba5ab5946a892136df66a0c0, type: 2}
   pausePanel: {fileID: 887897084}
@@ -624,6 +624,7 @@ MonoBehaviour:
   panelLifes: {fileID: 1918557820}
   txtCoins: {fileID: 1050941553}
   txtLifes: {fileID: 1389408324}
+  fadeImage: {fileID: 216089306}
   coinPrefab: {fileID: 1540675714835574, guid: 2ab3249a883c44e4284861179535eee2, type: 2}
   coinPrefabInactive: {fileID: 1407240633229484, guid: 831859c33796f9945a222358f74e91de,
     type: 2}

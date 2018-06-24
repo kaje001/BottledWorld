@@ -53,6 +53,8 @@
   <ItemGroup>
      <Compile Include="Assets\_Scripts\CamInEditor.cs" />
      <Compile Include="Assets\_Scripts\EndLevel\AntControllerEndLevel.cs" />
+     <Compile Include="Assets\_Scripts\EndLevel\LookAtAnt.cs" />
+     <Compile Include="Assets\_Scripts\EndLevel\UIConEndLevel.cs" />
      <Compile Include="Assets\_Scripts\Level\CameraShake.cs" />
      <Compile Include="Assets\_Scripts\Level\Coin.cs" />
      <Compile Include="Assets\_Scripts\Level\GyroCon.cs" />
@@ -76,6 +78,7 @@
      <Compile Include="Assets\_Scripts\StartUp\Fade.cs" />
      <Compile Include="Assets\_Scripts\StartUp\GyroConStartUp.cs" />
      <Compile Include="Assets\_Scripts\StartUp\Helper.cs" />
+     <Compile Include="Assets\_Scripts\StartUp\LastGameData.cs" />
      <Compile Include="Assets\_Scripts\StartUp\SaveState.cs" />
      <Compile Include="Assets\_Scripts\StartUp\SoundManager.cs" />
      <Compile Include="Assets\_Scripts\StartUp\StartUpController.cs" />
