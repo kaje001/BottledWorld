@@ -51,7 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\_Scripts\Editor\CamInEditor.cs" />
+     <Compile Include="Assets\JMO Assets\Cartoon FX Easy Editor\Editor\CFXEasyEditor.cs" />
+     <Compile Include="Assets\LeanTween\Editor\LeanTweenDocumentationEditor.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -138,6 +139,12 @@
  </Reference>
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
+ </Reference>
+ <Reference Include="JMOAssets">
+ <HintPath>C:/Users/ArtBox/Documents/GitHub/BottledWorld/BottledWorldApp/Assets/JMO Assets/Editor/JMOAssets.dll</HintPath>
+ </Reference>
+ <Reference Include="JMOAssets_CartoonFXFreeWelcome">
+ <HintPath>C:/Users/ArtBox/Documents/GitHub/BottledWorld/BottledWorldApp/Assets/JMO Assets/Editor/JMOAssets_CartoonFXFreeWelcome.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

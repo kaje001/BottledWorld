@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] int lifes = 1;
 	[SerializeField] int coinsInLevel = 5;
 	[SerializeField] int level = 1;
+	[SerializeField] bool unlockLevel = false;
 	bool swipeCon = false;
 	Vector3 gravity;
 	Vector3 gravityGyro;
@@ -106,6 +107,7 @@ public class PlayerController : MonoBehaviour
 		LastGameData.Instance.hearts = 0;
 		LastGameData.Instance.deaths = 0;
 		LastGameData.Instance.won = false;
+		LastGameData.Instance.unlockLevel = 0;
 
 		pause = true;
 		//freeze = true;
@@ -269,6 +271,9 @@ public class PlayerController : MonoBehaviour
 			LastGameData.Instance.hearts = lifes;
 			LastGameData.Instance.deaths = 0;
 			LastGameData.Instance.won = true;
+			if (unlockLevel) {
+				LastGameData.Instance.unlockLevel = level + 1;
+			}
 
 			CoinController.Instance.AddCoinForLevel (level, coinIndexes.Count);
 
@@ -293,7 +298,7 @@ public class PlayerController : MonoBehaviour
 	public void CheckDeath ()
 	{
 
-		if (pause) {
+		if (pause || finished) {
 			return;
 		}
 

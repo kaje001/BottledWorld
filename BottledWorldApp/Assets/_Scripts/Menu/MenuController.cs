@@ -20,6 +20,9 @@ public class MenuController : MonoBehaviour {
 	[SerializeField] AudioClip musicMenu;
 	[SerializeField] AudioClip soundOverBottle;
 
+	[SerializeField] HighlightBottle[] bottles;
+	[SerializeField] AudioClip audioUnlockLevel;
+
 	bool slide = false;
 	public bool custom = false;
 
@@ -34,6 +37,25 @@ public class MenuController : MonoBehaviour {
 
 		SoundManager.Instance.PlayMusic (musicMenu);
 
+		/*int i = 0;
+		foreach (HighlightBottle hb in bottles) {
+			if (CoinController.Instance.IsLevelUnlocked (i)) {
+				hb.active = true;
+			} else {
+				hb.active = false;
+			}
+			hb.SetMaterial ();
+			i++;
+		}*/
+
+		if (LastGameData.Instance.unlockLevel != 0) {
+			CoinController.Instance.UnlockLevel (LastGameData.Instance.unlockLevel - 1);
+			StartCoroutine (UnlockLevel (true));
+
+		} else {
+			StartCoroutine (UnlockLevel (false));
+		}
+
 	}
 
 	void Update(){
@@ -44,19 +66,19 @@ public class MenuController : MonoBehaviour {
 
 	public void CheckActivatedObject(GameObject ob){
 		bool musicoff = false;
-		if (ob.transform.tag == "Level1") {
+		if (ob.transform.tag == "Level1" && CoinController.Instance.IsLevelUnlocked(0)) {
 			Debug.Log ("Start Level 1");
 			SceneManager.LoadScene("Level1");
 			musicoff = true;
-		} else if (ob.transform.tag == "Level2") {
+		} else if (ob.transform.tag == "Level2" && CoinController.Instance.IsLevelUnlocked(1)) {
 			Debug.Log ("Start Level 2");
-			//SceneManager.LoadScene("Level2");
-		}else if (ob.transform.tag == "Level3") {
+			SceneManager.LoadScene("Level2");
+		}else if (ob.transform.tag == "Level3" && CoinController.Instance.IsLevelUnlocked(2)) {
 			Debug.Log ("Start Level 3");
-			//SceneManager.LoadScene("Level3");
-		}else if (ob.transform.tag == "Level4") {
+			SceneManager.LoadScene("Level3");
+		}else if (ob.transform.tag == "Level4" && CoinController.Instance.IsLevelUnlocked(3)) {
 			Debug.Log ("Start Level 4");
-			//SceneManager.LoadScene("Level4");
+			SceneManager.LoadScene("Level4");
 		}
 
 		if (musicoff) {
@@ -117,6 +139,7 @@ public class MenuController : MonoBehaviour {
 		HideSettings ();
 		ShowSettings ();
 		txtTotalCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString ();
+		StartCoroutine (UnlockLevel (false));
 		// + "/" + CoinController.Instance.state.totalCoins.ToString ()
 	}
 
@@ -187,7 +210,7 @@ public class MenuController : MonoBehaviour {
 
 	IEnumerator SlideCam(Transform targetPos, bool b){
 		slide = true;
-		while(Vector3.Distance(Camera.main.transform.position, targetPos.position) > 0.1f){
+		while(Vector3.Distance(Camera.main.transform.position, targetPos.position) > 1.2f){
 			Transform pos = Camera.main.transform;
 			pos.position = Vector3.Lerp(pos.position, targetPos.position, 3f * Time.deltaTime);
 			pos.rotation = Quaternion.Lerp ( pos.rotation, targetPos.rotation, 3f * Time.deltaTime);
@@ -203,6 +226,23 @@ public class MenuController : MonoBehaviour {
 			canvasDefault.SetActive (true);
 		}
 		slide = false;
+	}
+
+	IEnumerator UnlockLevel(bool b){
+		yield return new WaitForSeconds (0.5f);
+		int i = 0;
+		foreach (HighlightBottle hb in bottles) {
+			if (CoinController.Instance.IsLevelUnlocked (i)) {
+				hb.active = true;
+			} else {
+				hb.active = false;
+			}
+			hb.SetMaterial ();
+			i++;
+		}
+		if (b) {
+			SoundManager.Instance.PlaySingle (audioUnlockLevel);
+		}
 	}
 
 }

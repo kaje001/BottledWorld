@@ -83,8 +83,9 @@ public class AntControllerEndLevel : MonoBehaviour {
 		SoundManager.Instance.PlaySingle (audioScore);
 		//playSound&Effect
 		yield return new WaitForSeconds (0.7f);
-		//panelUnlock.SetActive (true); //Enable if unlocked a new Level
-
+		if(LastGameData.Instance.unlockLevel != 0){
+			panelUnlock.SetActive (true); //Enable if unlocked a new Level
+		}
 		//playSound&Effect
 
 	}

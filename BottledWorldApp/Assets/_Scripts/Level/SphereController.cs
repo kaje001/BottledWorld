@@ -60,7 +60,7 @@ public class SphereController : MonoBehaviour {
 	IEnumerator Jump ()
 	{
 		while (true) {
-			Debug.Log (curJumpHight);
+			//Debug.Log (curJumpHight);
 			if (curJumpHight >= maxJumpHeight - 0.05f) {
 				inputJump = false;
 			}
@@ -88,5 +88,6 @@ public class SphereController : MonoBehaviour {
 
 		ResetSphereSpeed ();
 	}
+
 
 }

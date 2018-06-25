@@ -110,4 +110,18 @@ public class CoinController : MonoBehaviour {
 		}
 	}
 
+	public bool IsLevelUnlocked(int index){
+		return (state.unlockedLevels & (1 << index)) != 0;
+	}
+
+
+	public void UnlockLevel(int index){
+		state.unlockedLevels |= 1 << index;
+	}
+
+
+	public void LockLevel(int index){
+		state.unlockedLevels ^= 1 << index;
+	}
+
 }

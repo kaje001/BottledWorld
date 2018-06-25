@@ -22,6 +22,7 @@ public class VFXandSoundTrigger : MonoBehaviour {
 	[SerializeField] AudioClip music1;
 
 	[SerializeField] Animator animator;
+	[SerializeField] Animator animatorStars;
 
 	CameraShake camShake;
 
@@ -82,6 +83,7 @@ public class VFXandSoundTrigger : MonoBehaviour {
 		camShake.shakeDuration = 0.5f;
 
 		animator.SetTrigger ("knockdown");
+		animatorStars.SetTrigger ("starsStart");
 	}
 
 
@@ -160,11 +162,13 @@ public class VFXandSoundTrigger : MonoBehaviour {
 	public void TriggerStartCountdown(){
 
 		animator.SetTrigger ("standUp");
+		animatorStars.SetTrigger ("starsEnd");
 	}
 
 	public void TriggerCancelCountdown(){
 
 		animator.SetTrigger ("cancelStandUp");
+		animatorStars.SetTrigger ("starsStart");
 	}
 
 	public void TriggerStartRunning(){

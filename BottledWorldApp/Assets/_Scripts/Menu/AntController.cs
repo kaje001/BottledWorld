@@ -5,8 +5,8 @@ using UnityEngine.EventSystems;
 
 public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler{
 
-	[SerializeField] float lerpSpeedDrag = 15f;
-	[SerializeField] float lerpSpeedMove = 0.2f;
+	[SerializeField] float lerpSpeedDrag = 15f*20;
+	[SerializeField] float lerpSpeedMove = 0.2f*20;
 	public MenuController menuControll;
 	public LayerMask layMask;
 
@@ -48,9 +48,16 @@ public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 		} else {
 			transform.position = Vector3.MoveTowards (transform.position, targetPos, lerpSpeed * Time.deltaTime);
 			if (transform.position - targetPos != Vector3.zero) {
-				transform.GetChild (0).rotation = Quaternion.Lerp (transform.GetChild (0).rotation, Quaternion.LookRotation (transform.position - targetPos), 5f * Time.deltaTime);
+				transform.GetChild (0).rotation = Quaternion.Lerp (transform.GetChild (0).rotation, Quaternion.LookRotation (transform.position - targetPos), 3f * Time.deltaTime);
 				animator.SetBool ("walking", true);
+				animator.SetBool ("winken", false);
 			} else {
+				
+				float angleToWorld = transform.GetChild (0).localEulerAngles.y;
+				if (angleToWorld < 300f && angleToWorld > 240f) {
+					Debug.Log ("Winken");
+					animator.SetBool ("winken", true);
+				}
 				animator.SetBool ("walking", false);
 			}
 		}
@@ -77,14 +84,14 @@ public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 		if (menuControll.custom) {
 			return;
 		}
-		Vector3 touchPointinWorld = Camera.main.ScreenToWorldPoint (new Vector3 (data.position.x, data.position.y+50f, 1.2f));
+		Vector3 touchPointinWorld = Camera.main.ScreenToWorldPoint (new Vector3 (data.position.x, data.position.y+50f, 24f));
 
 		//transform.position = Vector3.Lerp (transform.position, touchPointinWorld, Time.deltaTime);
 		targetPos = touchPointinWorld;
 
 		Ray ray = Camera.main.ScreenPointToRay(new Vector3 (data.position.x, data.position.y+40f, 0f));
 		RaycastHit hitInfo;
-		if (Physics.Raycast (ray, out hitInfo, 10f, layMask)) {
+		if (Physics.Raycast (ray, out hitInfo, 100f, layMask)) {
 			if (overObject == null) {
 				overObject = hitInfo.collider.gameObject;
 				menuControll.OverObject (overObject);
@@ -107,7 +114,7 @@ public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 		timeNextPosition = Time.time + 2f;
 		Ray ray = Camera.main.ScreenPointToRay(new Vector3 (data.position.x, data.position.y+40f, 0f));
 		RaycastHit hitInfo;
-		if (Physics.Raycast (ray, out hitInfo, 10f, layMask)) {
+		if (Physics.Raycast (ray, out hitInfo, 100f, layMask)) {
 
 			menuControll.CheckActivatedObject (hitInfo.collider.gameObject);
 		}
@@ -117,7 +124,7 @@ public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 	}
 
 	Vector3 GetRandomPos(){
-		Vector3 newPos = new Vector3(Random.Range(0,70)/100f-2f,1.1f,Random.Range(0,140)/100f-0.7f);
+		Vector3 newPos = new Vector3(Random.Range(100,240)/10f-2f,-6.16f,Random.Range(0,250)/10f-5f);
 
 		return newPos;
 	}

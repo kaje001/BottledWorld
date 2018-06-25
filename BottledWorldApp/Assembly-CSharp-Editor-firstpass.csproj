@@ -152,6 +152,12 @@
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>C:/ProgramData/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
  </Reference>
+ <Reference Include="JMOAssets">
+ <HintPath>C:/Users/ArtBox/Documents/GitHub/BottledWorld/BottledWorldApp/Assets/JMO Assets/Editor/JMOAssets.dll</HintPath>
+ </Reference>
+ <Reference Include="JMOAssets_CartoonFXFreeWelcome">
+ <HintPath>C:/Users/ArtBox/Documents/GitHub/BottledWorld/BottledWorldApp/Assets/JMO Assets/Editor/JMOAssets_CartoonFXFreeWelcome.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
