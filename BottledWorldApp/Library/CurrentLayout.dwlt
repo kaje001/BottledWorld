@@ -70,7 +70,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 271}
   m_MaxSize: {x: 14006, y: 10021}
   vertical: 0
-  controlID: 97
+  controlID: 90
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 292}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 155
+  controlID: 148
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 392}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 154
+  controlID: 147
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 392}
   m_MaxSize: {x: 14006, y: 14042}
   vertical: 1
-  controlID: 96
+  controlID: 89
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -566,7 +566,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: a6360000
     m_LastClickedID: 13990
-    m_ExpandedIDs: 0000000066290000782900008a29000098290000a2290000b4290000202a00004c2b00008c2b0000da2b0000fc2b0000fe2b0000342d00003e2e0000962e0000d62e00000c2f0000862f00008a2f0000aa2f0000103000002430000070300000e2300000063100004e3200008a3300008c330000a83300005a350000703500008e350000d2350000503600009c3e00009e3e0000a03e0000a23e0000a43e0000a63e0000a83e0000aa3e0000ac3e0000ae3e0000b03e0000b23e0000b43e0000b63e0000b83e0000ba3e0000bc3e0000be3e0000c03e0000c23e0000
+    m_ExpandedIDs: 00000000662900007829000098290000a2290000b4290000202a00004c2b00008c2b0000da2b0000fc2b0000fe2b0000342d00003e2e0000962e0000d62e00000c2f0000862f00008a2f0000aa2f00001030000070300000e2300000063100004e3200008a3300008c330000a83300005a350000703500008e350000d235000016440000184400001a4400001c4400001e44000020440000224400002444000026440000284400002a4400002c4400002e44000030440000324400003444000036440000384400003a4400003c440000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -594,7 +594,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000662900007829000098290000a2290000b4290000202a00004c2b00008c2b0000da2b0000fc2b0000fe2b0000342d00003e2e0000962e0000d62e00000c2f0000862f00008a2f0000aa2f00001030000070300000e2300000063100004e3200008a3300008c330000a83300005a350000703500008e350000d23500009c3e00009e3e0000a03e0000a23e0000a43e0000a63e0000a83e0000aa3e0000ac3e0000ae3e0000b03e0000b23e0000b43e0000b63e0000b83e0000ba3e0000bc3e0000be3e0000c03e0000c23e0000
+    m_ExpandedIDs: 00000000662900006e2900007829000098290000a2290000b4290000202a00004c2b00008c2b0000da2b0000fc2b0000fe2b0000342d00003e2e0000962e0000d62e00000c2f0000862f00008a2f0000aa2f00001030000070300000e2300000063100004e3200008a3300008c330000a8330000323400005a350000703500008e350000d235000016440000184400001a4400001c4400001e44000020440000224400002444000026440000284400002a4400002c4400002e44000030440000324400003444000036440000384400003a4400003c440000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -714,21 +714,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 06d9f3ff746af9ffa07cf9ff7a88f9ffc6a8f9ff6ab5f9ff3cbff9ff80caf9ff3ee2f9ff88e2f9fffaedf9ff9efbffff000000003438000054380000ba380000fe3800000a390000423900009639000020610000e862000032750000c47600000c8300004094000050950000409700002a9d0000809f0000cea00000
+    m_ExpandedIDs: 0e67f7ffb8dcf7ff74e4f7ff0aeff7ff18f5f7ff6afff7ff2a11f8ff3a11f8ff3c11f8ff3e11f8ff082afaff3cb5fbff24effbffe001fcff2aa5fcffe25bfdff26a4fdff7caffdffeac0fdffecc0fdfff8ecfdff3a06feff5006feff6420feff6820feff7020feff7820fefffe33feff0a34feff1634feff1a34feff463dfeffcc3ffeff086bfeffda71feffe426ffff185dffff2069ffff9cd0ffff9efbffff0000000040380000b038000080390000243b0000a43b0000483c00005c3c0000dc8a0000468e0000b68e0000168f0000ba900000ce90000078920000b4920000249c0000a0a10000dca2000048a30000c8a4000032a70000e8a800001aa90000acc6000070d30000a2d3000018e6000030e700001eea00006aea0000f6ea00000aeb0000a2eb0000b2eb000082ed0000e0ef00003600010022040100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Checkpoint (1)
-      m_OriginalName: Checkpoint (1)
+      m_Name: Checkpoint
+      m_OriginalName: Checkpoint
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: -796412
+      m_UserData: 65266
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 4
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 4}
     m_SearchString: 
@@ -765,14 +765,14 @@ MonoBehaviour:
     height: 666
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 3972.7888458262337
+  lastFramingTime: 3821.3502650450446
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: -1.874, z: 90.47999}
+    m_Target: {x: -3.6889973, y: 0.47806072, z: 19.055552}
     speed: 2
-    m_Value: {x: 0, y: -1.874, z: 90.47999}
+    m_Value: {x: -3.6889973, y: 0.47806072, z: 19.055552}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -796,13 +796,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.22459985, y: -0.6911655, z: 0.24138677, w: 0.64311093}
+    m_Target: {x: 0.21014321, y: 0.6170721, z: -0.1757456, w: 0.73766226}
     speed: 2
-    m_Value: {x: 0.22459827, y: -0.6911606, z: 0.24138507, w: 0.6431064}
+    m_Value: {x: 0.21014634, y: 0.6170813, z: -0.17574823, w: 0.7376732}
   m_Size:
-    m_Target: 0.4739229
+    m_Target: 65.29498
     speed: 2
-    m_Value: 0.4739229
+    m_Value: 65.29498
   m_Ortho:
     m_Target: 0
     speed: 2
