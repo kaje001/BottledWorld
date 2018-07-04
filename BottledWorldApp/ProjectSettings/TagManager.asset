@@ -20,6 +20,7 @@ TagManager:
   - Level4
   - PauseCheck
   - FinishLine
+  - Level0
   layers:
   - Default
   - TransparentFX

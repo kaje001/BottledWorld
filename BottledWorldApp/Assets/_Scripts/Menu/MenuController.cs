@@ -13,6 +13,7 @@ public class MenuController : MonoBehaviour {
 	[SerializeField] GameObject panelQuit;
 	[SerializeField] GameObject canvasDefault;
 	[SerializeField] GameObject canvasCustoms;
+	[SerializeField] GameObject panelGotIt;
 	[SerializeField] Toggle toggleSound;
 	[SerializeField] Toggle toggleMusic;
 	[SerializeField] Toggle toggleControls;
@@ -47,6 +48,10 @@ public class MenuController : MonoBehaviour {
 			hb.SetMaterial ();
 			i++;
 		}*/
+
+		if (CoinController.Instance.state.gotIt) {
+			panelGotIt.SetActive (false);
+		}
 
 		if (LastGameData.Instance.unlockLevel != 0) {
 			CoinController.Instance.UnlockLevel (LastGameData.Instance.unlockLevel - 1);
@@ -134,11 +139,18 @@ public class MenuController : MonoBehaviour {
 		
 	}
 
+	public void PressedGotIt(){
+		panelGotIt.SetActive (false);
+		CoinController.Instance.state.gotIt = true;
+		CoinController.Instance.Save ();
+	}
+
 	public void ResetSaveGame(){
 		CoinController.Instance.ResetSaveState();
 		HideSettings ();
 		ShowSettings ();
 		txtTotalCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString ();
+		panelGotIt.SetActive (true);
 		StartCoroutine (UnlockLevel (false));
 		// + "/" + CoinController.Instance.state.totalCoins.ToString ()
 	}

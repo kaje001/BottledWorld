@@ -551,10 +551,10 @@ public class PlayerController : MonoBehaviour
 	IEnumerator CheckpointCountdown ()
 	{
 		txtCountdown.gameObject.SetActive (true);
-		for (int i = 2; i > 0; i--) {
+		for (int i = 3; i > 0; i--) {
 
 			txtCountdown.text = i.ToString ();
-			yield return new WaitForSeconds (1f);
+			yield return new WaitForSeconds (0.6f);
 		}
 
 		txtCountdown.gameObject.SetActive (false);

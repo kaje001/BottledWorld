@@ -70,7 +70,6 @@
      <Compile Include="Assets\_Scripts\Menu\AntController.cs" />
      <Compile Include="Assets\_Scripts\Menu\Collectable.cs" />
      <Compile Include="Assets\_Scripts\Menu\Cutom\UIController.cs" />
-     <Compile Include="Assets\_Scripts\Menu\GotItScript.cs" />
      <Compile Include="Assets\_Scripts\Menu\HighlightBottle.cs" />
      <Compile Include="Assets\_Scripts\Menu\MenuController.cs" />
      <Compile Include="Assets\_Scripts\Spline\MathUtils.cs" />
