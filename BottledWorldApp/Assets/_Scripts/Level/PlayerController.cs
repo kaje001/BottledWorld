@@ -234,13 +234,10 @@ public class PlayerController : MonoBehaviour
 		SceneManager.LoadScene ("Menu");
 	}
 
-	public void LoadSameLevel (int newlevel)
+	public void LoadSameLevel ()
 	{
-		if (newlevel == 1) {
-			SceneManager.LoadScene ("Level1");
-		}else if (newlevel == 2) {
-			SceneManager.LoadScene ("Level2");
-		}
+		SceneManager.LoadScene ("Level" + level);
+
 	}
 
 	
