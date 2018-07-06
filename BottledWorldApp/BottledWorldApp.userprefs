@@ -1,16 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\Menu\Cutom\ButtonColorCustom.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\StartUp\SaveState.cs">
     <Files>
-      <File FileName="Assets\_Scripts\StartUp\SaveState.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Menu\Cutom\UIController.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Menu\Cutom\CustomSelecter.cs" Line="3" Column="19" />
-      <File FileName="Assets\_Scripts\StartUp\CoinController.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Menu\MenuController.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\StartUp\StartUpController.cs" Line="1" Column="1" />
+      <File FileName="Assets\LeanTween\Examples\Scripts\GeneralBasic.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Level\Effects\UpAndDownFloating.cs" Line="1" Column="1" />
       <File FileName="Assets\_Scripts\Level\PlayerController.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Menu\MenuController.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Level\VFXandSoundTrigger.cs" Line="1" Column="1" />
       <File FileName="Assets\_Scripts\Menu\AntController.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Menu\Cutom\ButtonColorCustom.cs" Line="18" Column="27" />
+      <File FileName="Assets\_Scripts\StartUp\SaveState.cs" Line="20" Column="30" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

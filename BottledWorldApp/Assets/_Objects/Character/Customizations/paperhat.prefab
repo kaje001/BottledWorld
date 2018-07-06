@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33378356844512194}
   - component: {fileID: 23742488649760452}
   m_Layer: 0
-  m_Name: Paperhat
+  m_Name: paperhat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

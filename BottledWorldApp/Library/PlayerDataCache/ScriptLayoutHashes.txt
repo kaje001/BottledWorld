@@ -1,6 +1,6 @@
 Android
 PlayerPath?
-C:/Users/ArtBox/Desktop/bottledAnt_04_07_18.apk
+C:/Users/ArtBox/Desktop/bottledAnt_06_07_18.apk
 SceneListBegin?
 Assets/_Scenes/StartUp.unity
 Assets/_Scenes/Menu.unity
@@ -174,7 +174,7 @@ ab33636d6ab69a357f553ed12c5ccacc Assembly-CSharp.dll:.CFX_Demo_RotateCamera
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:.LeanTween
 9a88b788604a8b06321243afb3e6f1f6 Assembly-CSharp.dll:.LastGameData
 83a41d631503a3df576a5f892693315e Assembly-CSharp.dll:.GyroCon
-aaa0abdad892b2bc039e3f8d62d100b3 Assembly-CSharp.dll:.StartUpController
+1de17f3d46345d02a6919f9577923bdb Assembly-CSharp.dll:.StartUpController
 98ad08159355ec243d5adfda5d74fbf1 Assembly-CSharp.dll:.TestingPunch
 cac5093fb1baf037bd671ecbc6727828 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ScreenOverlay
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
@@ -209,7 +209,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 b7877bd70bf5797fff63cdaa8bae1e29 Assembly-CSharp.dll:.UIConEndLevel
 511a47c0b60a5c54945284cdcf23c911 Assembly-CSharp.dll:.TestingAll
 cff2f7383b123d207597108afcecde7e Assembly-CSharp.dll:.CFX_AutoRotate
-e373ec6eab6ac9c54472d87c18d76835 Assembly-CSharp.dll:.MenuController
+f35f688001276d3d11dda51dbd4c0900 Assembly-CSharp.dll:.MenuController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.TestingRigidbodyCS
 4536fed390d6638cfec4387322259968 Assembly-CSharp.dll:.CFX_Demo_New
 4aadab9e3e4d34f6e069833451e815bb Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.CreaseShading
@@ -265,3 +265,5 @@ aec04ae54bb862c927ddc254cd43b584 Assembly-CSharp.dll:.PCSicherung
 83a41d631503a3df576a5f892693315e Assembly-CSharp.dll:.PlayerEvents
 d0cbc462bf169459312e914bad5af9cb Assembly-CSharp.dll:.SoundManager
 cd2d2bc9d5f8f02f00d0e2defb6d6baa Assembly-CSharp.dll:.GyroConStartUp
+3790b182220244723be271f6c61eb8a8 Assembly-CSharp.dll:.ButtonColorCustom
+56184f9845bb7cf6e78a98320752b491 Assembly-CSharp.dll:.CustomSelecter
