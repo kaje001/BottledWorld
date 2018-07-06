@@ -16,7 +16,7 @@ public class SaveState {
 
 	public int customs = 0;
 
-	public int unlockedLevels = 15;
+	public int unlockedLevels = 31;
 
 	public bool gotIt = false;
 	public bool settingsSound = true;

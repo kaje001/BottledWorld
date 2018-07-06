@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 9}
-  m_MinSize: {x: 950, y: 421}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -70,7 +70,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 271}
   m_MaxSize: {x: 14006, y: 10021}
   vertical: 0
-  controlID: 84
+  controlID: 91
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -89,8 +89,8 @@ MonoBehaviour:
     y: 0
     width: 303
     height: 411
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 277, y: 292}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 142
+  controlID: 149
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,10 +141,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 713, y: 371}
-  m_MaxSize: {x: 18008, y: 14021}
+  m_MinSize: {x: 713, y: 392}
+  m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 82
+  controlID: 148
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -163,8 +163,8 @@ MonoBehaviour:
     y: 411
     width: 303
     height: 536
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -188,8 +188,8 @@ MonoBehaviour:
     y: 687
     width: 1617
     height: 260
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 23}
   m_Panes:
   - {fileID: 23}
@@ -217,7 +217,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 950, y: 421}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &10
 MonoBehaviour:
@@ -280,10 +280,10 @@ MonoBehaviour:
     y: 0
     width: 1617
     height: 947
-  m_MinSize: {x: 436, y: 371}
-  m_MaxSize: {x: 14006, y: 14021}
+  m_MinSize: {x: 436, y: 392}
+  m_MaxSize: {x: 14006, y: 14042}
   vertical: 1
-  controlID: 83
+  controlID: 90
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -555,18 +555,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/_Scenes
+    - Assets/_Scripts/StartUp
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: F:\3D_PROJEKTE\BottledWorld_GitHub\BottledWorld\BottledWorldApp
+  m_LastProjectPath: C:\Users\ArtBox\Documents\GitHub\BottledWorld\BottledWorldApp
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: a6360000
     m_LastClickedID: 13990
-    m_ExpandedIDs: 00000000662900009a290000a42900001a2a0000222a0000502b0000902b0000e22b0000042c0000062c00004c2d0000562e0000ae2e0000f62e0000322f0000ac2f0000b02f0000d02f0000983000000a31000076320000b4330000b6330000d2330000843500009a350000fc350000c8430000ca430000cc430000ce430000d0430000d2430000d4430000d6430000d8430000da430000dc430000de430000e0430000e2430000e4430000e6430000e8430000ea430000ec430000ee430000
+    m_ExpandedIDs: 000000007c3d0000fe44000076450000964500009c45000000460000c0460000f84600003c4700004647000048470000f84800002e490000684900007a4900008a490000de490000e2490000f64900008a4a0000da4a0000564b0000f84b0000fa4b0000164c0000044d00000e4d0000524d0000c8620000ca620000cc620000ce620000d0620000d2620000d4620000d6620000d8620000da620000dc620000de620000e0620000e2620000e4620000e6620000e8620000ea620000ec620000ee620000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -591,24 +591,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 60}
+    scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000662900009a290000a42900001a2a0000222a0000502b0000902b0000e22b0000042c0000062c00004c2d0000562e0000ae2e0000f62e0000082f0000322f0000ac2f0000b02f0000d02f0000983000000a31000076320000b4330000b6330000d2330000843500009a350000fc350000c8430000ca430000cc430000ce430000d0430000d2430000d4430000d6430000d8430000da430000dc430000de430000e0430000e2430000e4430000e6430000e8430000ea430000ec430000ee430000
+    m_ExpandedIDs: 000000007c3d0000fe44000076450000964500009c450000ae45000000460000c0460000f84600003c4700004647000048470000f84800002e490000684900007a4900008a490000de490000e2490000f6490000da4a0000fa4a0000564b0000f84b0000fa4b0000164c0000044d00000e4d0000504d0000524d0000c8620000ca620000cc620000ce620000d0620000d2620000d4620000d6620000d8620000da620000dc620000de620000e0620000e2620000e4620000e6620000e8620000ea620000ec620000ee620000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Level3
-      m_OriginalName: Level3
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 11946
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 2}
     m_SearchString: 
@@ -676,7 +676,7 @@ MonoBehaviour:
     width: 301
     height: 515
   m_PersistentViewDataDictionary: {fileID: 0}
-  m_ScrollPosition: {x: 0, y: 0}
+  m_ScrollPosition: {x: 0, y: 180}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: 160
@@ -711,29 +711,29 @@ MonoBehaviour:
     height: 390
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
-    scrollPos: {x: 0, y: 6187}
-    m_SelectedIDs: 
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 52070000
     m_LastClickedID: 0
-    m_ExpandedIDs: a475f7fff27bf7ffa8a5f7ffd2c4f7ffa0cdf7fff217f8ff0642f8ff8063f8ffb087f8ff40b0f8ff3a0ff9ff6c27f9ff844ff9ff2c6af9ffc67df9ffdca0f9fffeb7f9ff14e4f9ff240dfaff1c11faff4c37faff6e53faff5a77faffda8ffaffc0d4faff5a02fbffdc4efbff4476fbfff08ffbff8ea3fbff78c6fbffb203fcff4029fcffd24afcff266efcff7017fdffd05dfdff9a83fdff72b3fdff2cd5fdff62eafdff3a24feff98dafffffadbffff7aefffff9efbffff0000000090590000e85a00006c5b0000325c0000125e00004e5e00000a5f00004a5f000048620000b86300006ca8000028e00000ece3000062e500001ee6000034e600005016010032170100e0170100a41b0100d41c01001a1d0100921f0100984e01006e5301009e88010054890100348d010026d601003e0d0200f20d02008e0f0200cc120200f41402007c170200a81a0200864b02003a4c0200d64d0200ee5202003c5302008c970200f69c0200b8e70200c6ea0200aeee020030f00200e6f4020046f502004af50200fc470300624d030012820300a08d0300d8910300e2940300c6980300489a0300d49c0300569f03005a9f030042ed030028f203003a260400e626040086280400a62d0400f42d040090320400ac7004001a7604008aa60400b0a804009ea9040050aa040040ae040070af0400beaf0400c6af040082b0040098b0040056b2040028b304007eb50400
+    m_ExpandedIDs: 7c26feff943cfeff8a75feff0287feff5e0dffffd642ffff1a82ffff649fffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Jump
-      m_OriginalName: Jump
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 150502
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 4}
     m_SearchString: 
   m_ExpandedScenes:
-  - Level3
+  - Level4
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -798,7 +798,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.13601062, y: -0.642353, z: 0.11643642, w: -0.74530196}
     speed: 2
-    m_Value: {x: -0.1360005, y: -0.6423052, z: 0.116427764, w: -0.7452465}
+    m_Value: {x: 0.13601062, y: 0.642353, z: -0.11643642, w: 0.74530196}
   m_Size:
     m_Target: 18.546698
     speed: 2
@@ -849,8 +849,8 @@ MonoBehaviour:
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
-    m_HBaseRangeMin: -519.2
-    m_HBaseRangeMax: 519.2
+    m_HBaseRangeMin: -685
+    m_HBaseRangeMax: 685
     m_VBaseRangeMin: -324.5
     m_VBaseRangeMax: 324.5
     m_HAllowExceedBaseRangeMin: 1
