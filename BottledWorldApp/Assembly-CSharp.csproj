@@ -69,6 +69,8 @@
      <Compile Include="Assets\_Scripts\Level\VFXandSoundTrigger.cs" />
      <Compile Include="Assets\_Scripts\Menu\AntController.cs" />
      <Compile Include="Assets\_Scripts\Menu\Collectable.cs" />
+     <Compile Include="Assets\_Scripts\Menu\Cutom\ButtonColorCustom.cs" />
+     <Compile Include="Assets\_Scripts\Menu\Cutom\CustomSelecter.cs" />
      <Compile Include="Assets\_Scripts\Menu\Cutom\UIController.cs" />
      <Compile Include="Assets\_Scripts\Menu\HighlightBottle.cs" />
      <Compile Include="Assets\_Scripts\Menu\MenuController.cs" />

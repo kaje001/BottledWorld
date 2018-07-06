@@ -21,6 +21,7 @@ TagManager:
   - PauseCheck
   - FinishLine
   - Level0
+  - Hats
   layers:
   - Default
   - TransparentFX

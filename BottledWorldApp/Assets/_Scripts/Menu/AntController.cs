@@ -55,7 +55,7 @@ public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 				
 				float angleToWorld = transform.GetChild (0).localEulerAngles.y;
 				if (angleToWorld < 300f && angleToWorld > 240f) {
-					Debug.Log ("Winken");
+					//Debug.Log ("Winken");
 					animator.SetBool ("winken", true);
 				}
 				animator.SetBool ("walking", false);

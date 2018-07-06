@@ -27,6 +27,8 @@ public class MenuController : MonoBehaviour {
 	bool slide = false;
 	public bool custom = false;
 
+	[SerializeField] CustomSelecter customSel;
+
 	void Start(){
 		playermat.dynamicFriction = 0.3f;
 		playermat.staticFriction = 0.05f;
@@ -151,6 +153,7 @@ public class MenuController : MonoBehaviour {
 		ShowSettings ();
 		txtTotalCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString ();
 		panelGotIt.SetActive (true);
+		customSel.Reload ();
 		StartCoroutine (UnlockLevel (false));
 		// + "/" + CoinController.Instance.state.totalCoins.ToString ()
 	}
@@ -217,6 +220,7 @@ public class MenuController : MonoBehaviour {
 		}
 		canvasCustoms.SetActive (false);
 		custom = false;
+		CoinController.Instance.Save ();
 		StartCoroutine(SlideCam(camPositions[0].transform, false));
 	}
 
