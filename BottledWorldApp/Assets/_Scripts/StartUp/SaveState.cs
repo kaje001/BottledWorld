@@ -14,7 +14,8 @@ public class SaveState {
 	public int coinsCollectedLevel3 = 0;
 	public int coinsCollectedLevel4 = 0;
 
-	public int customs = 0;
+	public int unlockedCustoms = 1;
+	public int selectedCustoms = 1;
 
 	public int unlockedLevels = 15;
 

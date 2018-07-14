@@ -57,17 +57,31 @@ public class CoinController : MonoBehaviour {
 	}
 
 	public bool IsCustomOwned(int index){
-		return (state.customs & (1 << index)) != 0;
+		return (state.unlockedCustoms & (1 << index)) != 0;
 	}
 
 
 	public void UnlockCustom(int index){
-		state.customs |= 1 << index;
+		state.unlockedCustoms |= 1 << index;
 	}
 
 
 	public void LockCustom(int index){
-		state.customs ^= 1 << index;
+		state.unlockedCustoms ^= 1 << index;
+	}
+
+	public bool IsCustomSelected(int index){
+		return (state.selectedCustoms & (1 << index)) != 0;
+	}
+
+
+	public void SelectCustom(int index){
+		state.selectedCustoms |= 1 << index;
+	}
+
+
+	public void DeselectCustom(int index){
+		state.selectedCustoms ^= 1 << index;
 	}
 
 	public void ResetSaveState(){

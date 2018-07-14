@@ -5,24 +5,43 @@ using UnityEngine.SceneManagement;
 
 public class StartUpController : MonoBehaviour {
 
-	public Fade fadeLogo;
-	public Fade fadeCaution;
+	[SerializeField] Fade fadeLogo;
+	[SerializeField] Fade fadeCaution;
 	float timeStamp;
 	bool faded = false;
 	bool logo = false;
 	bool starting = false;
 
-	public GameObject panelStart;
-	public GameObject arrow;
+	[SerializeField] GameObject panelStart;
+	[SerializeField] GameObject arrow;
 
 	[SerializeField] Transform antMiddle;
 	float lastAngle = 0;
+
+	Vector3 startGyroGravity;
+	[SerializeField] GameObject buttonStartGame;
+	[SerializeField] GameObject textStartRotate;
+	[SerializeField] GameObject panelGyroNotWorking;
 
 	// Use this for initialization
 	void Start () {
 		fadeLogo.FadeIn(2f);
 		StartCoroutine(FadeCaution());
 		//timeStamp = Time.time + 2f;
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+		panelGyroNotWorking.SetActive (false);
+
+		if (CoinController.Instance.state.settingsControls) {
+			textStartRotate.SetActive (false);
+			buttonStartGame.SetActive (true);
+		} else {
+			textStartRotate.SetActive (true);
+			buttonStartGame.SetActive (false);
+		}
+
+		startGyroGravity = Input.gyro.gravity;
+		StartCoroutine (CheckGyro ());
 	}
 	
 	// Update is called once per frame
@@ -69,6 +88,7 @@ public class StartUpController : MonoBehaviour {
 			lastAngle = angle;
 		}
 	}
+
 	IEnumerator FadeCaution(){
 		yield return new WaitForSeconds (2f);
 		fadeLogo.FadeOut(2f);
@@ -80,6 +100,16 @@ public class StartUpController : MonoBehaviour {
 		panelStart.SetActive(true);
 		starting = true;
 		antMiddle.gameObject.SetActive (true);
+	}
+
+	IEnumerator CheckGyro(){
+		yield return new WaitForSeconds (12f);
+
+		if (startGyroGravity == Input.gyro.gravity) {
+			textStartRotate.SetActive (false);
+			buttonStartGame.SetActive (true);
+			panelGyroNotWorking.SetActive (true);
+		}
 	}
 	
 }

@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
 	void Start ()
 	{
-		Screen.sleepTimeout = SleepTimeout.NeverSleep;
+		//Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
 		txtPauseButton.gameObject.SetActive (false);
 		rigPlayer = player.GetComponent<Rigidbody> ();
@@ -123,6 +123,15 @@ public class PlayerController : MonoBehaviour
 			RotateUI ();
 		}
 		gravity = Vector3.Lerp (gravity, gravityGyro, 7f * Time.deltaTime);
+
+		if (gravity.y > 9.5f) {
+			if (gravity.x >= 0 && gravity.x < 0.02f) {
+				gravity.x = 0.02f;
+			}else if (gravity.x <= 0 && gravity.x > -0.02f) {
+				gravity.x = -0.02f;
+			}
+		}
+		//Debug.Log (gravity.x + "/" + gravity.y);
 
 		if (!freeze) {
 			Vector3 curPos = player.transform.position;
@@ -224,23 +233,21 @@ public class PlayerController : MonoBehaviour
 		panelCoins.transform.up = -gravity;
 		panelLifes.transform.up = -gravity;
 		txtPauseButton.transform.up = -gravity;
+		txtCountdown.transform.up = -gravity;
 	}
 
 	public void LoadMenu ()
 	{
 		VFXandSoundTrigger.Instance.EndLevelMusic ();
 
-		Screen.sleepTimeout = SleepTimeout.SystemSetting;
+		//Screen.sleepTimeout = SleepTimeout.SystemSetting;
 		SceneManager.LoadScene ("Menu");
 	}
 
-	public void LoadSameLevel (int newlevel)
+	public void LoadSameLevel ()
 	{
-		if (newlevel == 1) {
-			SceneManager.LoadScene ("Level1");
-		}else if (newlevel == 2) {
-			SceneManager.LoadScene ("Level2");
-		}
+		SceneManager.LoadScene ("Level" + level);
+
 	}
 
 	
@@ -479,7 +486,7 @@ public class PlayerController : MonoBehaviour
 	{
 		if (!pause) {
 
-			Screen.sleepTimeout = SleepTimeout.NeverSleep;
+			//Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
 			pause = true;
 			//freeze = true;
@@ -489,7 +496,7 @@ public class PlayerController : MonoBehaviour
 			txtPauseButton.sprite = spriteResumeUI;
 		} else if (pause) {
 			
-			Screen.sleepTimeout = SleepTimeout.SystemSetting;
+			//Screen.sleepTimeout = SleepTimeout.SystemSetting;
 
 			pausePanel.SetActive (false);
 			txtPauseButton.sprite = spritePauseUI;
@@ -554,10 +561,10 @@ public class PlayerController : MonoBehaviour
 	IEnumerator CheckpointCountdown ()
 	{
 		txtCountdown.gameObject.SetActive (true);
-		for (int i = 2; i > 0; i--) {
+		for (int i = 3; i > 0; i--) {
 
 			txtCountdown.text = i.ToString ();
-			yield return new WaitForSeconds (1f);
+			yield return new WaitForSeconds (0.6f);
 		}
 
 		txtCountdown.gameObject.SetActive (false);
