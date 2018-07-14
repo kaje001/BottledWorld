@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4533471329210948}
   - component: {fileID: 33343670980730538}
   - component: {fileID: 23595601743929038}
-  - component: {fileID: 136757348151084412}
   - component: {fileID: 136762766884831436}
   m_Layer: 0
   m_Name: Stein1
@@ -84,19 +83,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1535247191848026}
   m_Mesh: {fileID: 4300000, guid: bef6048c9237b274da50c10f11ae7ec3, type: 3}
---- !u!136 &136757348151084412
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1535247191848026}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.1
-  m_Height: 0.3
-  m_Direction: 1
-  m_Center: {x: -0.0011259988, y: -1.9, z: 0.0028314032}
 --- !u!136 &136762766884831436
 CapsuleCollider:
   m_ObjectHideFlags: 1

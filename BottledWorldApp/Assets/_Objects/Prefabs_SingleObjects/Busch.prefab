@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4402330573952062}
   - component: {fileID: 33848837982570188}
   - component: {fileID: 23595139442767358}
-  - component: {fileID: 136035933930170604}
   - component: {fileID: 136006794979361154}
   m_Layer: 0
   m_Name: Busch
@@ -92,19 +91,6 @@ CapsuleCollider:
   m_GameObject: {fileID: 1868033064542726}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.21
-  m_Height: 0
-  m_Direction: 1
-  m_Center: {x: 0.037823997, y: -1.94, z: 0.0030709952}
---- !u!136 &136035933930170604
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1868033064542726}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.21
   m_Height: 0
