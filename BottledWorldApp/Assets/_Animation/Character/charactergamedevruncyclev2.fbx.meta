@@ -173,7 +173,17 @@ ModelImporter:
     7400000: WalkCycleAnimation
     9500000: //RootNode
     13700000: Cube
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: d6a57479676d5dd44ba6d6f0c0792b8c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 4b3bb212925b6d24eb1efad5de2e774c, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

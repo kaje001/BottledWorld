@@ -9,7 +9,7 @@ public class UIConEndLevel : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		textCoins.text = "x " + LastGameData.Instance.coins.ToString ();
+		textCoins.text = "+ " + LastGameData.Instance.coins.ToString ();
 	}
 
 }

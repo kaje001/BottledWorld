@@ -63,6 +63,9 @@ public class MenuController : MonoBehaviour {
 			StartCoroutine (UnlockLevel (false));
 		}
 
+
+		canvasCustoms.SetActive (false);
+
 	}
 
 	void Update(){
@@ -149,12 +152,13 @@ public class MenuController : MonoBehaviour {
 
 	public void ResetSaveGame(){
 		CoinController.Instance.ResetSaveState();
-		HideSettings ();
-		ShowSettings ();
-		txtTotalCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString ();
-		panelGotIt.SetActive (true);
-		customSel.Reload ();
-		StartCoroutine (UnlockLevel (false));
+		//HideSettings ();
+		//ShowSettings ();
+		//txtTotalCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString ();
+		//panelGotIt.SetActive (true);
+		//customSel.Reload ();
+		//StartCoroutine (UnlockLevel (false));
+		SceneManager.LoadScene("Menu");
 		// + "/" + CoinController.Instance.state.totalCoins.ToString ()
 	}
 
@@ -220,6 +224,7 @@ public class MenuController : MonoBehaviour {
 		}
 		canvasCustoms.SetActive (false);
 		custom = false;
+		txtTotalCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString ();
 		CoinController.Instance.Save ();
 		StartCoroutine(SlideCam(camPositions[0].transform, false));
 	}

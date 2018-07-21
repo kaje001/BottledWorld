@@ -8,7 +8,7 @@ public class TouchCon : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
 	public static TouchCon Instance { get; set; }
 
-	public PlayerController playCon;
+	//public PlayerController playCon;
 	float lastY;
 	int screenY;
 	float lastX;

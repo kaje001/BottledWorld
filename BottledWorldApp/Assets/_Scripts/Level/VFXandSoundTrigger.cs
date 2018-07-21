@@ -24,6 +24,10 @@ public class VFXandSoundTrigger : MonoBehaviour {
 	[SerializeField] Animator animator;
 	[SerializeField] Animator animatorStars;
 
+	[SerializeField] Material[] matNormal;
+	[SerializeField] Material[] matGhosty;
+	[SerializeField] SkinnedMeshRenderer playerMeshRenderer;
+
 	CameraShake camShake;
 
 	//0 = heart; 1 = dead; 2 = jump; 3 = collect; 4 = Boost
@@ -34,6 +38,8 @@ public class VFXandSoundTrigger : MonoBehaviour {
 	}
 
 	void Start(){
+		playerMeshRenderer.materials = matGhosty;
+
 		camShake = Camera.main.GetComponent<CameraShake> ();
 
 		//vfx[0] = Instantiate (vfxHeart, new Vector3 (0f, 0f, 0f), Quaternion.identity);
@@ -44,9 +50,6 @@ public class VFXandSoundTrigger : MonoBehaviour {
 		vfx[4] = Instantiate (vfxBoost, new Vector3 (0f, 0f, 0f), Quaternion.identity);
 	}
 
-	void Update(){
-
-	}
 
 	void PlayPS(int index){
 		
@@ -84,6 +87,8 @@ public class VFXandSoundTrigger : MonoBehaviour {
 
 		animator.SetTrigger ("knockdown");
 		animatorStars.SetTrigger ("starsStart");
+
+		playerMeshRenderer.materials = matGhosty;
 	}
 
 
@@ -142,6 +147,7 @@ public class VFXandSoundTrigger : MonoBehaviour {
 	public void TriggerStart(){
 		
 		SoundManager.Instance.PlaySingle (soundclipStart);
+		playerMeshRenderer.materials = matNormal;
 	}
 
 	public void TriggerCheckpoint(GameObject checkpointOb){
@@ -169,11 +175,19 @@ public class VFXandSoundTrigger : MonoBehaviour {
 
 		animator.SetTrigger ("cancelStandUp");
 		animatorStars.SetTrigger ("starsStart");
+
+		playerMeshRenderer.materials = matGhosty;
 	}
 
 	public void TriggerStartRunning(){
 
 		animator.SetTrigger ("startRunning");
+	}
+
+
+	public void TriggerPause(){
+
+		playerMeshRenderer.materials = matGhosty;
 	}
 
 }

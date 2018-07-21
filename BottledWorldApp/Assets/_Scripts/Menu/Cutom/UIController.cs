@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIController : MonoBehaviour {
 
@@ -23,6 +24,7 @@ public class UIController : MonoBehaviour {
 	}
 
 	public void OnChangePanel(int panelIndex){
+		EventSystem.current.SetSelectedGameObject (null);
 		int i = 0;
 		foreach (GameObject ob in panelCategories) {
 			if (i == panelIndex) {
@@ -42,5 +44,6 @@ public class UIController : MonoBehaviour {
 			}
 			i++;
 		}
+
 	}
 }

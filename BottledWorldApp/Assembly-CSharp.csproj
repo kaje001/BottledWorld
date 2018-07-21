@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\_Scripts\CamInEditor.cs" />
+     <Compile Include="Assets\_Scripts\Credits\CreditsGeneralControl.cs" />
+     <Compile Include="Assets\_Scripts\Credits\CreditsGyroCon.cs" />
      <Compile Include="Assets\_Scripts\EndLevel\AntControllerEndLevel.cs" />
      <Compile Include="Assets\_Scripts\EndLevel\LookAtAnt.cs" />
      <Compile Include="Assets\_Scripts\EndLevel\UIConEndLevel.cs" />
@@ -70,21 +72,24 @@
      <Compile Include="Assets\_Scripts\Menu\AntController.cs" />
      <Compile Include="Assets\_Scripts\Menu\Collectable.cs" />
      <Compile Include="Assets\_Scripts\Menu\Cutom\ButtonColorCustom.cs" />
+     <Compile Include="Assets\_Scripts\Menu\Cutom\CustomController.cs" />
      <Compile Include="Assets\_Scripts\Menu\Cutom\CustomSelecter.cs" />
      <Compile Include="Assets\_Scripts\Menu\Cutom\UIController.cs" />
      <Compile Include="Assets\_Scripts\Menu\HighlightBottle.cs" />
      <Compile Include="Assets\_Scripts\Menu\MenuController.cs" />
+     <Compile Include="Assets\_Scripts\Menu\ShelfController.cs" />
      <Compile Include="Assets\_Scripts\Spline\MathUtils.cs" />
      <Compile Include="Assets\_Scripts\Spline\SplineController.cs" />
      <Compile Include="Assets\_Scripts\Spline\SplineInterpolator.cs" />
      <Compile Include="Assets\_Scripts\StartUp\CoinController.cs" />
-     <Compile Include="Assets\_Scripts\StartUp\Fade.cs" />
      <Compile Include="Assets\_Scripts\StartUp\GyroConStartUp.cs" />
      <Compile Include="Assets\_Scripts\StartUp\Helper.cs" />
      <Compile Include="Assets\_Scripts\StartUp\LastGameData.cs" />
      <Compile Include="Assets\_Scripts\StartUp\SaveState.cs" />
      <Compile Include="Assets\_Scripts\StartUp\SoundManager.cs" />
      <Compile Include="Assets\_Scripts\StartUp\StartUpController.cs" />
+     <Compile Include="Assets\_Scripts\StartUp\UIEffects\Fade.cs" />
+     <Compile Include="Assets\_Scripts\StartUp\UIEffects\IconWiggel.cs" />
      <Compile Include="Assets\_Scripts\Test\CamController.cs" />
      <Compile Include="Assets\_Scripts\Test\PCSicherung.cs" />
      <Compile Include="Assets\_Scripts\Test\PhysicsController.cs" />
@@ -134,6 +139,7 @@
      <Compile Include="Assets\LeanTween\Testing\TestingRotate.cs" />
      <Compile Include="Assets\LeanTween\Testing\TestingSceneSwitching.cs" />
      <Compile Include="Assets\LeanTween\Testing\TestingSequencer.cs" />
+     <None Include="Assets\_Materials\Menu\OutlineSelected_SHA.shader" />
      <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX3 Multiply Color.shader" />
      <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFXM_MobileParticleAdd_Alpha8.shader" />
      <None Include="Assets\LeanTween\Examples\Archived\2dUnlitWithFade.shader" />

@@ -736,7 +736,7 @@ MonoBehaviour:
   player: {fileID: 939718188}
   camDummy: {fileID: 1528792685}
   camCenter: {fileID: 523984570}
-  playerSpeed: 2
+  playerSpeed: 4
   boostLenth: 5
   rotSpeed: 100
   lifes: 1
@@ -808,6 +808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hats:
+  - {fileID: 2117733072}
   - {fileID: 565041768}
   - {fileID: 894605184}
   - {fileID: 1229830321}
@@ -15123,7 +15124,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4449528532743602, guid: cf2fe87eb63361e41bd6d9b590023f46, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4449528532743602, guid: cf2fe87eb63361e41bd6d9b590023f46, type: 2}
       propertyPath: m_LocalScale.x
@@ -24920,7 +24921,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4780045121276278, guid: d32d5d85ed41d6a4ea45f70e4c2909d0, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4780045121276278, guid: d32d5d85ed41d6a4ea45f70e4c2909d0, type: 2}
       propertyPath: m_LocalScale.x
@@ -26269,6 +26270,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2117733073}
   - {fileID: 565041767}
   - {fileID: 894605183}
   - {fileID: 1229830320}
@@ -31046,7 +31048,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2ef4cb6cc76e9f84f887c30d59aea339, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2ef4cb6cc76e9f84f887c30d59aea339, type: 3}
       propertyPath: m_LocalScale.x
@@ -46556,6 +46558,11 @@ Prefab:
       propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
       value: 30.0000
       objectReference: {fileID: 0}
+    - target: {fileID: 198780168320385534, guid: 74191ae007d0e8242bcbbcc45a584905,
+        type: 2}
+      propertyPath: EmissionModule.m_Bursts.Array.data[1].countCurve.minScalar
+      value: 30.0000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 74191ae007d0e8242bcbbcc45a584905, type: 2}
   m_IsPrefabParent: 0
@@ -50618,6 +50625,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.44, y: 0.21, z: 0.37}
   m_Center: {x: 0.009217814, y: -1.856847, z: 0}
+--- !u!1 &2117733072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2117733073}
+  m_Layer: 0
+  m_Name: noHat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2117733073
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2117733072}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 979799516}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2127320096
 Prefab:
   m_ObjectHideFlags: 0

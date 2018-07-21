@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] Sprite spriteResumeUI;
 
 	List<int> coinIndexes = new List<int> ();
+	List<int> coinTempIndexes = new List<int> ();
+	List<GameObject> coinsTempObjects = new List<GameObject>();
 	int coinsLeftInLevel;
 
 	//UI Elemente
@@ -60,6 +62,10 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] Material matCheckpointUnchecked;
 	List<GameObject> touchedCheckpoints = new List<GameObject> ();
 	Vector3 checkpointPosition;
+	[SerializeField] GameObject[] arrowsCheckpoint; //0 = right; 1 = left
+	bool arrowsActive = false;
+	Vector3 pausePoint;
+	[SerializeField] GameObject firstCheckpoint;
 	//Vector3 checkpointGravity;
 	//Vector3 checkpointJumpVector;
 	//Quaternion checkpointQuaternion;
@@ -72,6 +78,7 @@ public class PlayerController : MonoBehaviour
 	float curJumpHight = 0;
 
 	IEnumerator coroutineJump;
+	IEnumerator coroutineBoost;
 	IEnumerator coroutineCheckCountdown;
 	//private Vector3 velocity = Vector3.zero;
 
@@ -81,7 +88,12 @@ public class PlayerController : MonoBehaviour
 
 		txtPauseButton.gameObject.SetActive (false);
 		rigPlayer = player.GetComponent<Rigidbody> ();
-		checkpointPosition = player.transform.position;
+		checkpointPosition = firstCheckpoint.transform.GetChild(0).position;
+
+		foreach (GameObject ob in arrowsCheckpoint) {
+			ob.SetActive (false);
+		}
+		pausePoint = firstCheckpoint.transform.GetChild(0).position;
 
 		swipeCon = CoinController.Instance.state.settingsControls;
 		if (swipeCon) {
@@ -144,7 +156,25 @@ public class PlayerController : MonoBehaviour
 			if (!pause) {
 				SetPhysicsGravity ();
 				forwardMovement = playerSpeed * Time.deltaTime;
-			} 
+
+				if (arrowsActive) {
+					arrowsActive = false;
+					foreach (GameObject ob in arrowsCheckpoint) {
+						ob.SetActive (false);
+					}
+				}
+			} else {
+				arrowsActive = true;
+				if (!arrowsCheckpoint[0].activeSelf && Vector3.Distance (arrowsCheckpoint [1].transform.position, pausePoint) > Vector3.Distance (arrowsCheckpoint [0].transform.position, pausePoint)) {
+					arrowsCheckpoint [0].SetActive (true);
+					arrowsCheckpoint [1].SetActive (false);
+				} else if (!arrowsCheckpoint[1].activeSelf  && Vector3.Distance (arrowsCheckpoint [1].transform.position, pausePoint) < Vector3.Distance (arrowsCheckpoint [0].transform.position, pausePoint)){
+					arrowsCheckpoint [1].SetActive (true);
+					arrowsCheckpoint [0].SetActive (false);
+				}
+			}
+
+
 
 			//rigPlayer.MovePosition (new Vector3 (pos.x, pos.y, curPos.z + forwardMovement)); //Der Spieler wird nach vorne bewegt
 			//player.transform.position = Vector3.Lerp(curPos, new Vector3 (pos.x, pos.y, curPos.z + forwardMovement), 10f * Time.deltaTime);
@@ -255,13 +285,23 @@ public class PlayerController : MonoBehaviour
 	public void SetToLastCheckpoint ()
 	{
 		txtPauseButton.gameObject.SetActive (false);
-		rigPlayer.velocity = Vector3.zero;
+		//rigPlayer.velocity = Vector3.zero;
 		//Physics.gravity = checkpointGravity;
 		Vector3 pos = player.transform.position;
 		pos.z = checkpointPosition.z;
 		player.transform.position = pos;
+		pausePoint = checkpointPosition;
 		//player.transform.rotation = checkpointQuaternion;
 		playerSpeed = startPlayerSpeed;
+
+		foreach (GameObject ob in coinsTempObjects) {
+			ob.SetActive (true);
+		}
+		coinsTempObjects.Clear ();
+		coinTempIndexes.Clear();
+		if (coinTempIndexes.Count != 0) {
+			CollectEffectUI (panelCoins, txtCoins, coinIndexes.Count);
+		}
 		
 	}
 
@@ -272,6 +312,11 @@ public class PlayerController : MonoBehaviour
 			//pause = true;
 			//pausePanel.SetActive (true);
 			txtPauseButton.gameObject.SetActive (false);
+
+			foreach (int i in coinTempIndexes) {
+				coinIndexes.Add (i);
+			}
+
 			txtScore.text = coinIndexes.Count.ToString () + "/" + coinsLeftInLevel;
 
 			LastGameData.Instance.coins = coinIndexes.Count;
@@ -364,13 +409,17 @@ public class PlayerController : MonoBehaviour
 	public void AddCoin (GameObject ob)
 	{
 
-			
 		Coin coin = ob.GetComponent<Coin> ();
 		//CoinController.Instance.CollectCoin (level, coin.index);
-		coinIndexes.Add (coin.index);
+
+		//coinIndexes.Add (coin.index);
+		coinTempIndexes.Add (coin.index);
+		coinsTempObjects.Add (ob);
+
 		//txtCoins.text = coinIndexes.Count.ToString ();
-		CollectEffectUI (panelCoins, txtCoins, coinIndexes.Count);
-		Destroy (ob);
+		CollectEffectUI (panelCoins, txtCoins, coinIndexes.Count + coinTempIndexes.Count);
+		//Destroy (ob);
+		ob.SetActive (false);
 
 		//Trigger VFX and Sound
 		VFXandSoundTrigger.Instance.TriggerCollect(player.transform);
@@ -406,7 +455,11 @@ public class PlayerController : MonoBehaviour
 
 	public void PlayerSpeedBoost ()
 	{
-		StartCoroutine ("Boost");
+		if (coroutineBoost != null) {
+			StopCoroutine (coroutineBoost);
+		}
+		coroutineBoost = Boost ();
+		StartCoroutine (coroutineBoost);
 	}
 
 	IEnumerator Boost ()
@@ -436,6 +489,13 @@ public class PlayerController : MonoBehaviour
 		//checkpointGravity = Physics.gravity;
 		checkpointPosition = player.transform.position;
 		//checkpointQuaternion = player.transform.rotation;
+		pausePoint = player.transform.position;
+
+		foreach (int i in coinTempIndexes) {
+			coinIndexes.Add (i);
+		}
+		coinTempIndexes.Clear();
+		coinsTempObjects.Clear ();
 
 		VFXandSoundTrigger.Instance.TriggerCheckpoint (checkpointOb);
 		//checkpointOb.GetComponent<Renderer> ().material = matCheckpointChecked;
@@ -490,10 +550,12 @@ public class PlayerController : MonoBehaviour
 
 			pause = true;
 			//freeze = true;
+			pausePoint = player.transform.position;
 			objPause = Instantiate (pauseCheck, player.transform.position, player.transform.rotation);
 			pausePanel.SetActive (true);
-			txtScore.text = coinIndexes.Count.ToString () + "/" + coinsLeftInLevel;
+			txtScore.text = (coinIndexes.Count + coinTempIndexes.Count).ToString () + "/" + coinsLeftInLevel;
 			txtPauseButton.sprite = spriteResumeUI;
+			VFXandSoundTrigger.Instance.TriggerPause ();
 		} else if (pause) {
 			
 			//Screen.sleepTimeout = SleepTimeout.SystemSetting;
@@ -511,6 +573,7 @@ public class PlayerController : MonoBehaviour
 		if (waitForUnpause) {
 			pause = false;
 			waitForUnpause = false;
+			VFXandSoundTrigger.Instance.TriggerStart ();
 			Destroy (objPause);
 		}
 	}
