@@ -1,14 +1,20 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\Menu\ShelfController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\StartUp\UIEffects\HoldPhoneInfo.cs">
     <Files>
-      <File FileName="Assets\_Scripts\StartUp\GyroConStartUp.cs" Line="6" Column="46" />
-      <File FileName="Assets\_Scripts\Credits\CreditsGyroCon.cs" Line="20" Column="21" />
-      <File FileName="Assets\_Scripts\Credits\CreditsGeneralControl.cs" Line="9" Column="38" />
-      <File FileName="Assets\_Scripts\Level\TouchCon.cs" Line="16" Column="21" />
-      <File FileName="Assets\_Scripts\Level\PlayerController.cs" Line="209" Column="17" />
-      <File FileName="Assets\_Scripts\Menu\AntController.cs" Line="47" Column="4" />
-      <File FileName="Assets\_Scripts\Menu\ShelfController.cs" Line="51" Column="1" />
+      <File FileName="Assets\_Scripts\StartUp\GyroConStartUp.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Credits\CreditsGyroCon.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Credits\CreditsGeneralControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Level\TouchCon.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Level\PlayerController.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Menu\AntController.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Menu\ShelfController.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\StartUp\SaveState.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\StartUp\UIEffects\IconWiggel.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Level\Effects\UpAndDownFloating.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Menu\Cutom\CustomController.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Menu\Cutom\CustomSelecter.cs" Line="27" Column="1" />
+      <File FileName="Assets\_Scripts\StartUp\UIEffects\HoldPhoneInfo.cs" Line="24" Column="38" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

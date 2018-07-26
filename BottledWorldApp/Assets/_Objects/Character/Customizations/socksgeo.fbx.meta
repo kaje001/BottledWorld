@@ -1,16 +1,33 @@
 fileFormatVersion: 2
-guid: 2ef4cb6cc76e9f84f887c30d59aea339
-timeCreated: 1530784878
+guid: f253941e4621f58449bbaf1d478d1f2a
+timeCreated: 1532628357
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: No Name
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Plane
+    100000: hintenlinks
+    100002: hintenrechts
+    100004: //RootNode
+    100006: vornelinks
+    100008: vornerechts
+    400000: hintenlinks
+    400002: hintenrechts
+    400004: //RootNode
+    400006: vornelinks
+    400008: vornerechts
+    2100000: Material
+    2300000: hintenlinks
+    2300002: hintenrechts
+    2300004: vornelinks
+    2300006: vornerechts
+    3300000: hintenlinks
+    3300002: hintenrechts
+    3300004: vornelinks
+    3300006: vornerechts
+    4300000: hintenrechts
+    4300002: vornerechts
+    4300004: vornelinks
+    4300006: hintenlinks
   externalObjects: {}
   materials:
     importMaterials: 1

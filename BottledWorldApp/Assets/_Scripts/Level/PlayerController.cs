@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
 	bool pause = false;
 	bool freeze = false;
+	bool inCheckpoint = true;
 	bool waitForUnpause = false;
 	bool finished = false;
 	[SerializeField] GameObject pauseCheck;
@@ -172,7 +173,15 @@ public class PlayerController : MonoBehaviour
 					arrowsCheckpoint [1].SetActive (true);
 					arrowsCheckpoint [0].SetActive (false);
 				}
+
+				if (inCheckpoint && arrowsActive) {
+					arrowsActive = false;
+					foreach (GameObject ob in arrowsCheckpoint) {
+						ob.SetActive (false);
+					}
+				}
 			}
+
 
 
 
@@ -299,9 +308,8 @@ public class PlayerController : MonoBehaviour
 		}
 		coinsTempObjects.Clear ();
 		coinTempIndexes.Clear();
-		if (coinTempIndexes.Count != 0) {
-			CollectEffectUI (panelCoins, txtCoins, coinIndexes.Count);
-		}
+		CollectEffectUI (panelCoins, txtCoins, coinIndexes.Count);
+
 		
 	}
 
@@ -350,7 +358,7 @@ public class PlayerController : MonoBehaviour
 	public void CheckDeath ()
 	{
 
-		if (pause || finished) {
+		if (pause || finished || inputJump) {
 			return;
 		}
 
@@ -505,6 +513,7 @@ public class PlayerController : MonoBehaviour
 		if (pause == true && freeze == false) {
 			StopCoroutine (coroutineCheckCountdown);
 			txtCountdown.gameObject.SetActive (false);
+			inCheckpoint = false;
 			VFXandSoundTrigger.Instance.TriggerCancelCountdown();
 		}
 	}
@@ -623,6 +632,7 @@ public class PlayerController : MonoBehaviour
 
 	IEnumerator CheckpointCountdown ()
 	{
+		inCheckpoint = true;
 		txtCountdown.gameObject.SetActive (true);
 		for (int i = 3; i > 0; i--) {
 
@@ -632,6 +642,8 @@ public class PlayerController : MonoBehaviour
 
 		txtCountdown.gameObject.SetActive (false);
 		//freeze = false;
+
+		inCheckpoint = false;
 		UnpauseGame();
 	}
 

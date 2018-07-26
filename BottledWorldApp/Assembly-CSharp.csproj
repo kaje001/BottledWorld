@@ -89,6 +89,7 @@
      <Compile Include="Assets\_Scripts\StartUp\SoundManager.cs" />
      <Compile Include="Assets\_Scripts\StartUp\StartUpController.cs" />
      <Compile Include="Assets\_Scripts\StartUp\UIEffects\Fade.cs" />
+     <Compile Include="Assets\_Scripts\StartUp\UIEffects\HoldPhoneInfo.cs" />
      <Compile Include="Assets\_Scripts\StartUp\UIEffects\IconWiggel.cs" />
      <Compile Include="Assets\_Scripts\Test\CamController.cs" />
      <Compile Include="Assets\_Scripts\Test\PCSicherung.cs" />

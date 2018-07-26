@@ -14,10 +14,10 @@ public class SaveState {
 	public int coinsCollectedLevel3 = 0;
 	public int coinsCollectedLevel4 = 0;
 
-	public int unlockedCustoms = 1;
-	public int selectedCustoms = 1;
+	public int unlockedCustoms = 65793;
+	public int selectedCustoms = 65793;
 
-	public int unlockedLevels = 15;
+	public int unlockedLevels = 1; // 15 für alle vier
 
 	public bool gotIt = false;
 	public bool settingsSound = true;
