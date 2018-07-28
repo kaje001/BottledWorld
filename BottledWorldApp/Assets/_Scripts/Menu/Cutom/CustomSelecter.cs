@@ -5,12 +5,21 @@ using UnityEngine;
 public class CustomSelecter : MonoBehaviour {
 
 	[SerializeField] GameObject[] hats;
-	[SerializeField] GameObject[] socks;
+	[SerializeField] GameObject[] socksFL;
+	[SerializeField] GameObject[] socksFR;
+	[SerializeField] GameObject[] socksBL;
+	[SerializeField] GameObject[] socksBR;
 	[SerializeField] GameObject[] backs;
+	List<GameObject[]> socks = new List<GameObject[]>();
 	//[SerializeField] GameObject[] colors;
 
 	// Use this for initialization
 	void Start () {
+		socks.Add (socksFL);
+		socks.Add (socksFR);
+		socks.Add (socksBL);
+		socks.Add (socksBR);
+
 		ActivateSelectedObjects ();
 	}
 
@@ -29,13 +38,17 @@ public class CustomSelecter : MonoBehaviour {
 		}
 
 		for (i = 0; i < 8; i++) {
-			if (i >= socks.Length) {
+			if (i >= socksFL.Length) {
 				break;
 			}
 			if (CoinController.Instance.IsCustomSelected (8 + i)) {
-				socks [i].SetActive (true);
+				foreach (GameObject[] gos in socks) {
+					gos [i].SetActive (true);
+				}
 			} else {
-				socks [i].SetActive (false);
+				foreach (GameObject[] gos in socks) {
+					gos [i].SetActive (false);
+				}
 			}
 		}
 

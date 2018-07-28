@@ -103,27 +103,49 @@ public class CustomController : MonoBehaviour {
 	}
 
 	public void SelectSock(int index){
-		if (activeSock > -1) {
-			CoinController.Instance.DeselectCustom (8 + activeSock);
-		}
-		CoinController.Instance.SelectCustom (8 + index);
-		activeSock = index;
-
-		cusSelect.Reload();
-
 		lastSelectedItem = 8 + index;
+		if (CheckEnoughCoins ()) {
+			PushNewCustom ();
+			if (CheckOwned ()) {
+				buttonBuy.SetActive (false);
+				//buttonSelect.SetActive (true);
+				SelectSelectedItem();
+			} else {
+				buttonBuy.SetActive (true);
+				buttonSelect.SetActive (false);
+			}
+		} else {
+			buttonBuy.SetActive (false);
+			buttonSelect.SetActive (false);
+			if (CheckOwned ()) {
+				PushNewCustom ();
+				//buttonSelect.SetActive (true);
+				SelectSelectedItem();
+			}
+		}
 	}
 
 	public void SelectBack(int index){
-		if (activeBack > -1) {
-			CoinController.Instance.DeselectCustom (16 + activeBack);
-		}
-		CoinController.Instance.SelectCustom (16 + index);
-		activeBack = index;
-
-		cusSelect.Reload();
-
 		lastSelectedItem = 16 + index;
+		if (CheckEnoughCoins ()) {
+			PushNewCustom ();
+			if (CheckOwned ()) {
+				buttonBuy.SetActive (false);
+				//buttonSelect.SetActive (true);
+				SelectSelectedItem();
+			} else {
+				buttonBuy.SetActive (true);
+				buttonSelect.SetActive (false);
+			}
+		} else {
+			buttonBuy.SetActive (false);
+			buttonSelect.SetActive (false);
+			if (CheckOwned ()) {
+				PushNewCustom ();
+				//buttonSelect.SetActive (true);
+				SelectSelectedItem();
+			}
+		}
 	}
 
 	bool CheckEnoughCoins(){
@@ -144,7 +166,16 @@ public class CustomController : MonoBehaviour {
 
 	public void ExitCustom(){
 
-		if (selectedHat == activeHat) {
+		lastSelectedItem = selectedHat;
+		PushNewCustom ();
+
+		lastSelectedItem = 8 + selectedSock;
+		PushNewCustom ();
+
+		lastSelectedItem = 16 + selectedBack;
+		PushNewCustom ();
+
+		/*if (selectedHat == activeHat) {
 
 		} else {
 			lastSelectedItem = selectedHat;
@@ -163,7 +194,7 @@ public class CustomController : MonoBehaviour {
 		} else {
 			lastSelectedItem = 16 + selectedBack;
 			PushNewCustom ();
-		}
+		}*/
 
 
 		/*if (CoinController.Instance.IsCustomOwned (activeHat)) {
@@ -193,15 +224,16 @@ public class CustomController : MonoBehaviour {
 		txtAvailableCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString ();
 		buttonBuy.SetActive (false);
 		RefreshButtonCustomSelect ();
+		SelectSelectedItem ();
 		//PushNewCustom ();
 	}
 
 	public void SelectSelectedItem(){
 		if (lastSelectedItem > -1 && lastSelectedItem < 8) {
 			selectedHat = lastSelectedItem;
-		}else if (lastSelectedItem > 8 && lastSelectedItem < 16) {
+		}else if (lastSelectedItem >= 8 && lastSelectedItem < 16) {
 			selectedSock = lastSelectedItem - 8;
-		}else if (lastSelectedItem > 16 && lastSelectedItem < 24) {
+		}else if (lastSelectedItem >= 16 && lastSelectedItem < 24) {
 			selectedBack = lastSelectedItem - 16;
 		}
 		RefreshButtonCustomSelect ();
@@ -212,10 +244,10 @@ public class CustomController : MonoBehaviour {
 		if (lastSelectedItem > -1 && lastSelectedItem < 8) {
 			CoinController.Instance.DeselectCustom (activeHat);
 			activeHat = lastSelectedItem;
-		}else if (lastSelectedItem > 8 && lastSelectedItem < 16) {
+		}else if (lastSelectedItem >= 8 && lastSelectedItem < 16) {
 			CoinController.Instance.DeselectCustom (8 + activeSock);
 			activeSock = lastSelectedItem - 8;
-		}else if (lastSelectedItem > 16 && lastSelectedItem < 24) {
+		}else if (lastSelectedItem >= 16 && lastSelectedItem < 24) {
 			CoinController.Instance.DeselectCustom (16 + activeBack);
 			activeBack = lastSelectedItem - 16;
 		}
