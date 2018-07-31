@@ -18,7 +18,7 @@ public class CreditsGeneralControl : MonoBehaviour {
 			rotation = 0;
 		}
 		rotation -= 45;
-		LeanTween.rotateZ (imageMain, rotation, 1.5f).setEase (LeanTweenType.easeInOutCubic);
+		LeanTween.rotateZ (imageMain, rotation, 1f).setEase (LeanTweenType.easeInOutCubic);
 	}
 
 	public void RotateLeft(){
@@ -26,6 +26,6 @@ public class CreditsGeneralControl : MonoBehaviour {
 			rotation = 0;
 		}
 		rotation += 45;
-		LeanTween.rotateZ (imageMain, rotation, 1.5f).setEase (LeanTweenType.easeInOutCubic);
+		LeanTween.rotateZ (imageMain, rotation, 1f).setEase (LeanTweenType.easeInOutCubic);
 	}
 }

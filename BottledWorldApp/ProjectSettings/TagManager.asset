@@ -22,6 +22,7 @@ TagManager:
   - FinishLine
   - Level0
   - Hats
+  - TutTrigger
   layers:
   - Default
   - TransparentFX

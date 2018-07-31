@@ -68,6 +68,9 @@
      <Compile Include="Assets\_Scripts\Level\SphereEvents.cs" />
      <Compile Include="Assets\_Scripts\Level\SphereHandler.cs" />
      <Compile Include="Assets\_Scripts\Level\TouchCon.cs" />
+     <Compile Include="Assets\_Scripts\Level\Tutorial\HideSelf.cs" />
+     <Compile Include="Assets\_Scripts\Level\Tutorial\TriggerNumber.cs" />
+     <Compile Include="Assets\_Scripts\Level\Tutorial\TutEvents.cs" />
      <Compile Include="Assets\_Scripts\Level\VFXandSoundTrigger.cs" />
      <Compile Include="Assets\_Scripts\Menu\AntController.cs" />
      <Compile Include="Assets\_Scripts\Menu\Collectable.cs" />

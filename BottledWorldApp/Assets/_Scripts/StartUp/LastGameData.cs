@@ -11,6 +11,9 @@ public class LastGameData : MonoBehaviour {
 	public int deaths = 0;
 	public bool won = false;
 	public int unlockLevel = 0;
+	public int level = 0;
+	public int sugarCubesForLevel = 0;
+	public int totalSugarCubesLevel = 0;
 
 	void Awake(){
 		Instance = this;

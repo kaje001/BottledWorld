@@ -55,16 +55,11 @@ public class MenuController : MonoBehaviour {
 			panelGotIt.SetActive (false);
 		}
 
-		if (LastGameData.Instance.unlockLevel != 0) {
-			CoinController.Instance.UnlockLevel (LastGameData.Instance.unlockLevel - 1);
-			StartCoroutine (UnlockLevel (true));
-
-		} else {
-			StartCoroutine (UnlockLevel (false));
-		}
-
+		StartCoroutine (UnlockLevel (false));
 
 		canvasCustoms.SetActive (false);
+
+		CoinController.Instance.Save ();
 
 	}
 
@@ -76,17 +71,21 @@ public class MenuController : MonoBehaviour {
 
 	public void CheckActivatedObject(GameObject ob){
 		bool musicoff = false;
-		if (ob.transform.tag == "Level1" && CoinController.Instance.IsLevelUnlocked(0)) {
+		if (ob.transform.tag == "Level0" && CoinController.Instance.IsLevelUnlocked(0)) {
+			Debug.Log ("Start Level 0");
+			SceneManager.LoadScene("Level0");
+			musicoff = true;
+		} else if (ob.transform.tag == "Level1" && CoinController.Instance.IsLevelUnlocked(1)) {
 			Debug.Log ("Start Level 1");
 			SceneManager.LoadScene("Level1");
 			musicoff = true;
-		} else if (ob.transform.tag == "Level2" && CoinController.Instance.IsLevelUnlocked(1)) {
+		} else if (ob.transform.tag == "Level2" && CoinController.Instance.IsLevelUnlocked(2)) {
 			Debug.Log ("Start Level 2");
 			SceneManager.LoadScene("Level2");
-		}else if (ob.transform.tag == "Level3" && CoinController.Instance.IsLevelUnlocked(2)) {
+		}else if (ob.transform.tag == "Level3" && CoinController.Instance.IsLevelUnlocked(3)) {
 			Debug.Log ("Start Level 3");
 			SceneManager.LoadScene("Level3");
-		}else if (ob.transform.tag == "Level4" && CoinController.Instance.IsLevelUnlocked(3)) {
+		}else if (ob.transform.tag == "Level4" && CoinController.Instance.IsLevelUnlocked(4)) {
 			Debug.Log ("Start Level 4");
 			SceneManager.LoadScene("Level4");
 		}
@@ -208,6 +207,10 @@ public class MenuController : MonoBehaviour {
 
 	public void SetSettingControl(bool b){
 		CoinController.Instance.state.settingsControls = b;
+		if (b) {
+			Input.gyro.enabled = false;
+
+		}
 	}
 
 	public void ShowCustoms(){
@@ -215,6 +218,7 @@ public class MenuController : MonoBehaviour {
 			return;
 		}
 		canvasDefault.SetActive (false);
+		GetComponent<CustomController> ().CustomOpen ();
 		StartCoroutine(SlideCam(camPositions[1].transform, true));
 	}
 

@@ -23,9 +23,9 @@ public class PlayerController : MonoBehaviour
 	Vector3 gravity;
 	Vector3 gravityGyro;
 
-	bool pause = false;
+	bool pause = true;
 	bool freeze = false;
-	bool inCheckpoint = true;
+	bool inCheckpoint = false;
 	bool waitForUnpause = false;
 	bool finished = false;
 	[SerializeField] GameObject pauseCheck;
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
 	List<GameObject> touchedCheckpoints = new List<GameObject> ();
 	Vector3 checkpointPosition;
 	[SerializeField] GameObject[] arrowsCheckpoint; //0 = right; 1 = left
-	bool arrowsActive = false;
+	bool arrowsActive = true;
 	Vector3 pausePoint;
 	[SerializeField] GameObject firstCheckpoint;
 	//Vector3 checkpointGravity;
@@ -327,15 +327,21 @@ public class PlayerController : MonoBehaviour
 
 			txtScore.text = coinIndexes.Count.ToString () + "/" + coinsLeftInLevel;
 
+			CoinController.Instance.AddCoinForLevel (level, coinIndexes.Count);
+
 			LastGameData.Instance.coins = coinIndexes.Count;
 			LastGameData.Instance.hearts = lifes;
 			LastGameData.Instance.deaths = 0;
 			LastGameData.Instance.won = true;
+			LastGameData.Instance.level = level;
+			LastGameData.Instance.totalSugarCubesLevel = coinsInLevel;
+			LastGameData.Instance.sugarCubesForLevel = CoinController.Instance.GetCoinForLevel(level);
+
+			//LastGameData.Instance.sugarCubesForLevel = coinIndexes.Count;
 			if (unlockLevel) {
 				LastGameData.Instance.unlockLevel = level + 1;
 			}
 
-			CoinController.Instance.AddCoinForLevel (level, coinIndexes.Count);
 
 			foreach (int i in coinIndexes) {
 				CoinController.Instance.CollectCoin (level, i);
@@ -577,6 +583,35 @@ public class PlayerController : MonoBehaviour
 		}
 
 	}
+
+	public void PauseGame (GameObject pauseTutPanel)
+	{
+		if (!pause) {
+
+			//Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+			pause = true;
+			//freeze = true;
+			pausePoint = player.transform.position;
+			objPause = Instantiate (pauseCheck, player.transform.position, player.transform.rotation);
+			pauseTutPanel.SetActive (true);
+			//txtPauseButton.sprite = spriteResumeUI;
+			txtPauseButton.gameObject.SetActive(false);
+			VFXandSoundTrigger.Instance.TriggerPause ();
+		} else if (pause) {
+
+			//Screen.sleepTimeout = SleepTimeout.SystemSetting;
+
+			pauseTutPanel.SetActive (false);
+			txtPauseButton.gameObject.SetActive(true);
+			//txtPauseButton.sprite = spritePauseUI;
+			//StartCoroutine ("CountdownAfterPause");
+			//freeze = false;
+			waitForUnpause = true;
+		}
+
+	}
+
 
 	public void UnpauseTouched(){
 		if (waitForUnpause) {

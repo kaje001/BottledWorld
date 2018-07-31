@@ -7,6 +7,7 @@ public class SphereHandler : MonoBehaviour {
 	[SerializeField] Transform[] spawnerSphere;
 	[SerializeField] GameObject spherePrefab;
 	[SerializeField] GameObject movingObjectsParent;
+	[SerializeField] float sphereSize = 0.35f;
 
 	void Start(){
 
@@ -25,6 +26,7 @@ public class SphereHandler : MonoBehaviour {
 				GameObject ob = Instantiate (spherePrefab, movingObjectsParent.transform);
 				ob.transform.position = t.position;
 				ob.transform.rotation = t.rotation;
+				ob.transform.localScale *= sphereSize;
 			}
 
 		}

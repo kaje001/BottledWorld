@@ -23,10 +23,13 @@ public class StartUpController : MonoBehaviour {
 	[SerializeField] GameObject textStartRotate;
 	[SerializeField] GameObject panelGyroNotWorking;
 
+	[SerializeField] Texture2D tex;
+	[SerializeField] Material mat;
+
 	// Use this for initialization
 	void Start () {
-		fadeLogo.FadeIn(2f);
-		StartCoroutine(FadeCaution());
+		//fadeLogo.FadeIn(2f);
+		//StartCoroutine(FadeCaution());
 		//timeStamp = Time.time + 2f;
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
@@ -39,6 +42,8 @@ public class StartUpController : MonoBehaviour {
 			textStartRotate.SetActive (true);
 			buttonStartGame.SetActive (false);
 		}
+
+		mat.mainTexture = tex;
 
 		startGyroGravity = Input.gyro.gravity;
 		StartCoroutine (CheckGyro ());
@@ -64,8 +69,13 @@ public class StartUpController : MonoBehaviour {
 		SceneManager.LoadScene("Menu");
 	}
 
+	public void LoadCredits(){
+
+		SceneManager.LoadScene("Credits");
+	}
+
 	public void RotateAntGyro(Vector2 gravityGyro){
-		if (starting) {
+		//if (starting) {
 			float angle = Vector2.SignedAngle (Vector2.down, gravityGyro);
 
 			if (angle > lastAngle || angle < lastAngle - 15) {
@@ -86,10 +96,10 @@ public class StartUpController : MonoBehaviour {
 			}
 
 			lastAngle = angle;
-		}
+		//}
 	}
 
-	IEnumerator FadeCaution(){
+	/*IEnumerator FadeCaution(){
 		yield return new WaitForSeconds (2f);
 		fadeLogo.FadeOut(2f);
 		yield return new WaitForSeconds (2f);
@@ -100,10 +110,10 @@ public class StartUpController : MonoBehaviour {
 		panelStart.SetActive(true);
 		starting = true;
 		antMiddle.gameObject.SetActive (true);
-	}
+	}*/
 
 	IEnumerator CheckGyro(){
-		yield return new WaitForSeconds (12f);
+		yield return new WaitForSeconds (4f);
 
 		if (startGyroGravity == Input.gyro.gravity) {
 			textStartRotate.SetActive (false);

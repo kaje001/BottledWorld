@@ -30,7 +30,9 @@ public class CoinController : MonoBehaviour {
 	}
 
 	public bool IsCoinCollected(int level, int index){
-		if (level == 1) {
+		if (level == 0) {
+			return (state.coinsCollectedLevel0 & (1 << (index))) != 0;
+		} else if (level == 1) {
 			return (state.coinsCollectedLevel1 & (1 << (index))) != 0;
 		} else if (level == 2) {
 			return (state.coinsCollectedLevel2 & (1 << (index))) != 0;
@@ -45,7 +47,9 @@ public class CoinController : MonoBehaviour {
 	}
 		
 	public void CollectCoin(int level, int index){
-		if (level == 1) {
+		if (level == 0) {
+			state.coinsCollectedLevel0 |= 1 << index;
+		} else if (level == 1) {
 			state.coinsCollectedLevel1 |= 1 << index;
 		} else if (level == 2) {
 			state.coinsCollectedLevel2 |= 1 << index;
@@ -70,18 +74,18 @@ public class CoinController : MonoBehaviour {
 		state.unlockedCustoms ^= 1 << index;
 	}
 
-	public bool IsCustomSelected(int index){
-		return (state.selectedCustoms & (1 << index)) != 0;
+	public bool IsCustomEquipped(int index){
+		return (state.equippedCustoms & (1 << index)) != 0;
 	}
 
 
-	public void SelectCustom(int index){
-		state.selectedCustoms |= 1 << index;
+	public void EquipCustom(int index){
+		state.equippedCustoms |= 1 << index;
 	}
 
 
-	public void DeselectCustom(int index){
-		state.selectedCustoms ^= 1 << index;
+	public void UnequipCustom(int index){
+		state.equippedCustoms ^= 1 << index;
 	}
 
 	public void ResetSaveState(){
@@ -92,7 +96,10 @@ public class CoinController : MonoBehaviour {
 	public int AddCoinForLevel(int level, int value = 1){
 		state.totalCoins += value;
 		state.availableCoins += value;
-		if (level == 1) {
+		if (level == 0) {
+			state.coinsLevel0 += value;
+			return state.coinsLevel0;
+		} else if (level == 1) {
 			state.coinsLevel1 += value;
 			return state.coinsLevel1;
 		} else if (level == 2) {
@@ -111,7 +118,9 @@ public class CoinController : MonoBehaviour {
 
 
 	public int GetCoinForLevel(int level){
-		if (level == 1) {
+		if (level == 0) {
+			return state.coinsLevel0;
+		} else if (level == 1) {
 			return state.coinsLevel1;
 		} else if (level == 2) {
 			return state.coinsLevel2;

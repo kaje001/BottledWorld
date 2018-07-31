@@ -25,6 +25,7 @@ public class AntControllerEndLevel : MonoBehaviour {
 
 	[SerializeField] GameObject panelScore;
 	[SerializeField] GameObject panelSugar;
+	[SerializeField] GameObject panelSugarInBottle;
 	[SerializeField] GameObject panelUnlock;
 
 	[SerializeField] AudioClip audioScore;
@@ -33,6 +34,8 @@ public class AntControllerEndLevel : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		panelSugarInBottle.SetActive (false);
 		panelSugar.SetActive (false);
 		panelUnlock.SetActive (false);
 		panelScore.SetActive (false);
@@ -77,14 +80,22 @@ public class AntControllerEndLevel : MonoBehaviour {
 		panelScore.SetActive (false);
 	}
 
+	public void RestartLevel(){
+		SceneManager.LoadScene ("Level" + LastGameData.Instance.level);
+	}
+
 	IEnumerator ShowScore(){
 		yield return new WaitForSeconds (0.8f);
 		panelSugar.SetActive (true);
 		SoundManager.Instance.PlaySingle (audioScore);
+		yield return new WaitForSeconds (0.5f);
+		panelSugarInBottle.SetActive (true);
+		SoundManager.Instance.PlaySingle (audioScore);
 		//playSound&Effect
-		yield return new WaitForSeconds (0.7f);
-		if(LastGameData.Instance.unlockLevel != 0){
+		yield return new WaitForSeconds (0.5f);
+		if(LastGameData.Instance.unlockLevel != 0 && !CoinController.Instance.IsLevelUnlocked(LastGameData.Instance.unlockLevel)){
 			panelUnlock.SetActive (true); //Enable if unlocked a new Level
+			CoinController.Instance.UnlockLevel (LastGameData.Instance.unlockLevel);
 		}
 		//playSound&Effect
 

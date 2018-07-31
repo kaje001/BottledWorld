@@ -20,6 +20,7 @@ public class ButtonColorCustom : MonoBehaviour {
 	void Start(){
 		im = GetComponent<Image> ();
 		HighlightSelected ();
+		//spriteEquipped.SetActive (false);
 	}
 
 	public void SetColor(int i){
@@ -35,31 +36,31 @@ public class ButtonColorCustom : MonoBehaviour {
 	void HighlightSelected(){
 		int i = 0;
 		if (cathegory == 0) {
-			if (CoinController.Instance.IsCustomSelected (index)) {
+			if (CoinController.Instance.IsCustomEquipped(index)) {
 				SetColor (1);
 			}
 		}else if (cathegory == 1) {
-			if (CoinController.Instance.IsCustomSelected (8 + index)) {
+			if (CoinController.Instance.IsCustomEquipped (8 + index)) {
 				SetColor (1);
 			}
 		}else if (cathegory == 2) {
-			if (CoinController.Instance.IsCustomSelected (16 + index)) {
+			if (CoinController.Instance.IsCustomEquipped (16 + index)) {
 				SetColor (1);
 			}
 		}else if (cathegory == 3) {
-			if (CoinController.Instance.IsCustomSelected (24 + index)) {
+			if (CoinController.Instance.IsCustomEquipped (24 + index)) {
 				SetColor (1);
 			}
 		}
 
 	}
 
-	public void UpdateView(int costs, bool purchasable, bool cube, bool equipped){
+	public void UpdateView(int costs, bool purchasable, bool notOwned, bool equipped){
 		textCosts.text = costs.ToString ();
-		spriteEquipped.SetActive (equipped);
-		spriteCube.SetActive (cube);
+		spriteCube.SetActive (notOwned);
 
-		if (cube) {
+		if (notOwned) {
+			spriteEquipped.SetActive (false);
 			transform.parent.GetComponent<Image> ().color = colors [4];
 			if (purchasable) {
 				transform.GetChild (0).GetComponent<Image> ().sprite = buttonStates [1];
@@ -70,7 +71,12 @@ public class ButtonColorCustom : MonoBehaviour {
 			}
 		} else {
 			transform.parent.GetComponent<Image> ().color = colors [5];
+			if (equipped) {
+				spriteEquipped.SetActive (true);
 
+			} else {
+				spriteEquipped.SetActive (false);
+			}
 		}
 
 

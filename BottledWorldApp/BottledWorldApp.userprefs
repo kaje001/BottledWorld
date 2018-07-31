@@ -1,20 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\Menu\Cutom\CustomController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\EndLevel\UIConEndLevel.cs">
     <Files>
-      <File FileName="Assets\_Scripts\StartUp\GyroConStartUp.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Credits\CreditsGyroCon.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Credits\CreditsGeneralControl.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Level\TouchCon.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Level\PlayerController.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Menu\AntController.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Menu\ShelfController.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\StartUp\SaveState.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\StartUp\UIEffects\IconWiggel.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Level\Effects\UpAndDownFloating.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Menu\Cutom\CustomController.cs" Line="227" Column="3" />
-      <File FileName="Assets\_Scripts\Menu\Cutom\CustomSelecter.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\StartUp\UIEffects\HoldPhoneInfo.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Menu\MenuController.cs" Line="62" Column="35" />
+      <File FileName="Assets\_Scripts\Level\Tutorial\TriggerNumber.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\Level\Tutorial\TutEvents.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\EndLevel\AntControllerEndLevel.cs" Line="98" Column="76" />
+      <File FileName="Assets\_Scripts\StartUp\LastGameData.cs" Line="1" Column="1" />
+      <File FileName="Assets\_Scripts\EndLevel\UIConEndLevel.cs" Line="14" Column="119" />
+      <File FileName="Assets\_Scripts\Level\PlayerController.cs" Line="338" Column="93" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

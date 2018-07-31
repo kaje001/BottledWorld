@@ -17,7 +17,11 @@ public class GyroCon : MonoBehaviour {
 
 	void Start () {
 		gyro = Input.gyro;
-		gyro.enabled = true;
+		if (!CoinController.Instance.state.settingsControls) {
+			gyro.enabled = true;
+		} else {
+			Input.gyro.enabled = false;
+		}
 	}
 	
 	// Update is called once per frame
@@ -29,6 +33,6 @@ public class GyroCon : MonoBehaviour {
 
 	public Vector3 GetGyroGravity(){
 
-		return new Vector3(Input.gyro.gravity.x, Input.gyro.gravity.y, 0f).normalized;
+		return new Vector3(gyro.gravity.x, gyro.gravity.y, 0f).normalized;
 	}
 }
