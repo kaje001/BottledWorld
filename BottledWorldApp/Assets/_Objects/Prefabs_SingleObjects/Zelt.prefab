@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23810081960810378}
   - component: {fileID: 95761245017967138}
   - component: {fileID: 65228064454353520}
+  - component: {fileID: 205741737122349484}
   m_Layer: 0
   m_Name: Zelt
   m_TagString: Untagged
@@ -188,3 +189,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!205 &205741737122349484
+LODGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1505411357802552}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.010240138, y: -1.6079322, z: -0.014452934}
+  m_Size: 0.89886856
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LODs:
+  - screenRelativeHeight: 0.072179295
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 23872818086319490}
+  m_Enabled: 1

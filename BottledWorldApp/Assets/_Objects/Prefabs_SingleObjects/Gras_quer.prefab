@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33417749747604278}
   - component: {fileID: 23077262788970058}
   - component: {fileID: 95830121725903146}
+  - component: {fileID: 205093471907468414}
   m_Layer: 0
   m_Name: Gras_quer
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1505289680346378}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -48.04297}
+  m_LocalPosition: {x: 0, y: 0, z: -48.497}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,3 +101,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!205 &205093471907468414
+LODGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1505289680346378}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.00045359135, y: -1.8815247, z: -0.001783669}
+  m_Size: 1.2875099
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LODs:
+  - screenRelativeHeight: 0.098925166
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 23077262788970058}
+  m_Enabled: 1

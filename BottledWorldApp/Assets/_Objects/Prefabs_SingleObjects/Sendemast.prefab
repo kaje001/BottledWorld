@@ -131,7 +131,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1457519580403280}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -52.29297}
+  m_LocalPosition: {x: 0, y: 0, z: -52.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4841059601906852}
@@ -390,15 +390,15 @@ LODGroup:
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LODs:
-  - screenRelativeHeight: 0.30352682
+  - screenRelativeHeight: 0.83264846
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 23165007336210550}
-  - screenRelativeHeight: 0.1547477
+  - screenRelativeHeight: 0.5112538
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 23934661745796682}
-  - screenRelativeHeight: 0.04625898
+  - screenRelativeHeight: 0.11906541
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 23141331857006068}

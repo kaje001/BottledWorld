@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33828035039291962}
   - component: {fileID: 23124899368542972}
   - component: {fileID: 95357534583543610}
+  - component: {fileID: 205151546552283218}
   m_Layer: 0
   m_Name: Gras_laengs
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1309881207304586}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -49.462967}
+  m_LocalPosition: {x: 0, y: 0, z: -49.917}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,3 +101,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!205 &205151546552283218
+LODGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1309881207304586}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.00089105964, y: -1.9015204, z: 0.000000059604645}
+  m_Size: 1.2620001
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LODs:
+  - screenRelativeHeight: 0.09511885
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 23124899368542972}
+  m_Enabled: 1
