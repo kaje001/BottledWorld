@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class AntControllerEndLevel : MonoBehaviour {
 
+	[SerializeField] UIConEndLevel UiCon;
+
 	[SerializeField] Animator animator;
 
 	[SerializeField] SplineInterpolator splineConAnt;
@@ -123,7 +125,6 @@ public class AntControllerEndLevel : MonoBehaviour {
 			paricles [i].Play ();
 			i++;
 		}
-		//playSound&Effect
 		yield return new WaitForSeconds (0.5f);
 		if(LastGameData.Instance.unlockLevel != 0 && !CoinController.Instance.IsLevelUnlocked(LastGameData.Instance.unlockLevel)){
 
@@ -138,7 +139,10 @@ public class AntControllerEndLevel : MonoBehaviour {
 				particleCount++;
 			}
 		}
-		//playSound&Effect
+
+		yield return new WaitForSeconds (0.5f);
+		UiCon.UpdateBar ();
+
 
 	}
 	IEnumerator WaitForLoadMenu(){

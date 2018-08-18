@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] int lifes = 1;
 	[SerializeField] int coinsInLevel = 5;
 	[SerializeField] int level = 1;
+	[SerializeField] int biom = 0;
 	[SerializeField] bool unlockLevel = false;
 	bool swipeCon = false;
 	Vector3 gravity;
@@ -68,6 +69,9 @@ public class PlayerController : MonoBehaviour
 	bool arrowsActive = true;
 	Vector3 pausePoint;
 	[SerializeField] GameObject firstCheckpoint;
+	[SerializeField] GameObject finishinLine;
+	float totalDistance;
+	[SerializeField] ProgressLevel progLevel;
 	//Vector3 checkpointGravity;
 	//Vector3 checkpointJumpVector;
 	//Quaternion checkpointQuaternion;
@@ -96,6 +100,7 @@ public class PlayerController : MonoBehaviour
 			ob.SetActive (false);
 		}
 		pausePoint = firstCheckpoint.transform.GetChild(0).position;
+		totalDistance = Vector3.Distance (firstCheckpoint.transform.position, finishinLine.transform.position);
 
 		swipeCon = CoinController.Instance.state.settingsControls;
 		if (swipeCon) {
@@ -353,6 +358,7 @@ public class PlayerController : MonoBehaviour
 		LastGameData.Instance.deaths = 0;
 		LastGameData.Instance.won = true;
 		LastGameData.Instance.level = level;
+		LastGameData.Instance.biom = biom;
 		LastGameData.Instance.totalSugarCubesLevel = coinsInLevel;
 		LastGameData.Instance.sugarCubesForLevel = CoinController.Instance.GetCoinForLevel(level);
 
@@ -382,6 +388,7 @@ public class PlayerController : MonoBehaviour
 		if (lifes == 0) { //wenn nein dann das EndScreen GameOver
 			//LoadMenu ();
 			pausePanel.SetActive (true);
+			progLevel.UpdateBar (Vector3.Distance (firstCheckpoint.transform.position, player.transform.position) / totalDistance);
 			txtPauseButton.gameObject.SetActive (false);
 			txtScore.text = coinIndexes.Count.ToString () + "/" + coinsLeftInLevel;
 			pause = true;
@@ -584,6 +591,7 @@ public class PlayerController : MonoBehaviour
 			pausePoint = player.transform.position;
 			objPause = Instantiate (pauseCheck, player.transform.position, player.transform.rotation);
 			pausePanel.SetActive (true);
+			progLevel.UpdateBar (Vector3.Distance (firstCheckpoint.transform.position, player.transform.position) / totalDistance);
 			txtScore.text = (coinIndexes.Count + coinTempIndexes.Count).ToString () + "/" + coinsLeftInLevel;
 			txtPauseButton.sprite = spriteResumeUI;
 			VFXandSoundTrigger.Instance.TriggerPause ();

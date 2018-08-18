@@ -12,6 +12,7 @@ public class LastGameData : MonoBehaviour {
 	public bool won = false;
 	public int unlockLevel = 0;
 	public int level = 0;
+	public int biom = 0;
 	public int sugarCubesForLevel = 0;
 	public int totalSugarCubesLevel = 0;
 

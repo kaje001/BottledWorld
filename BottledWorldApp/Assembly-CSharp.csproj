@@ -59,6 +59,7 @@
      <Compile Include="Assets\_Scripts\EndLevel\UIConEndLevel.cs" />
      <Compile Include="Assets\_Scripts\Level\CameraShake.cs" />
      <Compile Include="Assets\_Scripts\Level\Coin.cs" />
+     <Compile Include="Assets\_Scripts\Level\Effects\ProgressLevel.cs" />
      <Compile Include="Assets\_Scripts\Level\Effects\UpAndDownFloating.cs" />
      <Compile Include="Assets\_Scripts\Level\Effects\VFX_UI_slide.cs" />
      <Compile Include="Assets\_Scripts\Level\GyroCon.cs" />

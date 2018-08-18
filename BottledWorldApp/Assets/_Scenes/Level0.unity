@@ -314,6 +314,8 @@ MonoBehaviour:
   - {fileID: 1035886647}
   - {fileID: 763104417}
   firstCheckpoint: {fileID: 1100707013}
+  finishinLine: {fileID: 1517300340}
+  progLevel: {fileID: 0}
 --- !u!4 &20762949
 Transform:
   m_ObjectHideFlags: 0
