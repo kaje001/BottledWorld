@@ -17,6 +17,12 @@ public class CustomController : MonoBehaviour {
 
 	[SerializeField] GameObject panelReallyBuy;
 
+	[SerializeField] AudioClip soundCountDownSugar;
+	[SerializeField] AudioClip soundEquip;
+	[SerializeField] AudioClip soundButtonClick;
+	//[SerializeField] AudioClip soundChangeCategory;
+	[SerializeField] AudioClip soundBuy;
+
 	int activeHat = 0;
 	int activeSock = 0;
 	int activeBack = 0;
@@ -33,6 +39,7 @@ public class CustomController : MonoBehaviour {
 	int activeStartColor = 0;*/
 
 	int lastSelectedItem = -1;
+	int beforeSelectedItem = -1;
 
 	int selectedCustoms = 0;
 
@@ -117,6 +124,7 @@ public class CustomController : MonoBehaviour {
 				//buttonSelect.SetActive (true);
 				EquipSelectedItem();
 			} else {
+				SoundManager.Instance.PlaySingle (soundButtonClick);
 				PushNewCustom ();
 				buttonBuy.SetActive (true);
 				buttonSelect.SetActive (false);
@@ -127,7 +135,11 @@ public class CustomController : MonoBehaviour {
 			if (CheckOwned ()) {
 				//PushNewCustom ();
 				//buttonSelect.SetActive (true);
-				EquipSelectedItem();
+				EquipSelectedItem ();
+			} else {
+				lastSelectedItem = 0;
+				PushNewCustom ();
+				SoundManager.Instance.PlaySingle (soundButtonClick);
 			}
 		}
 	}
@@ -140,6 +152,7 @@ public class CustomController : MonoBehaviour {
 				//buttonSelect.SetActive (true);
 				EquipSelectedItem();
 			} else {
+				SoundManager.Instance.PlaySingle (soundButtonClick);
 				PushNewCustom ();
 				buttonBuy.SetActive (true);
 				buttonSelect.SetActive (false);
@@ -150,7 +163,12 @@ public class CustomController : MonoBehaviour {
 			if (CheckOwned ()) {
 				//PushNewCustom ();
 				//buttonSelect.SetActive (true);
-				EquipSelectedItem();
+				EquipSelectedItem ();
+			} else {
+				lastSelectedItem = 8;
+				PushNewCustom ();
+
+				SoundManager.Instance.PlaySingle (soundButtonClick);
 			}
 		}
 	}
@@ -163,6 +181,7 @@ public class CustomController : MonoBehaviour {
 				//buttonSelect.SetActive (true);
 				EquipSelectedItem();
 			} else {
+				SoundManager.Instance.PlaySingle (soundButtonClick);
 				PushNewCustom ();
 				buttonBuy.SetActive (true);
 				buttonSelect.SetActive (false);
@@ -173,13 +192,19 @@ public class CustomController : MonoBehaviour {
 			if (CheckOwned ()) {
 				//PushNewCustom ();
 				//buttonSelect.SetActive (true);
-				EquipSelectedItem();
+				EquipSelectedItem ();
+			} else {
+				lastSelectedItem = 16;
+				PushNewCustom ();
+
+				SoundManager.Instance.PlaySingle (soundButtonClick);
 			}
 		}
 	}
 
 
 	public void SelectColor(int index){
+
 		lastSelectedItem = 24 + index;
 		if (CheckEnoughCoins ()) {
 			if (CheckOwned ()) {
@@ -187,6 +212,7 @@ public class CustomController : MonoBehaviour {
 				//buttonSelect.SetActive (true);
 				EquipSelectedItem();
 			} else {
+				SoundManager.Instance.PlaySingle (soundButtonClick);
 				PushNewCustom ();
 				buttonBuy.SetActive (true);
 				buttonSelect.SetActive (false);
@@ -197,7 +223,12 @@ public class CustomController : MonoBehaviour {
 			if (CheckOwned ()) {
 				//PushNewCustom ();
 				//buttonSelect.SetActive (true);
-				EquipSelectedItem();
+				EquipSelectedItem ();
+			} else {
+				lastSelectedItem = 24;
+				PushNewCustom ();
+
+				SoundManager.Instance.PlaySingle (soundButtonClick);
 			}
 		}
 	}
@@ -237,10 +268,12 @@ public class CustomController : MonoBehaviour {
 	}
 
 	public void ShowReallyBuy(){
+		SoundManager.Instance.PlaySingle (soundButtonClick);
 		panelReallyBuy.SetActive (true);
 	}
 
 	public void HideReallyBuy(){
+		SoundManager.Instance.PlaySingle (soundButtonClick);
 		panelReallyBuy.SetActive (false);
 
 	}
@@ -251,6 +284,7 @@ public class CustomController : MonoBehaviour {
 			HideReallyBuy ();
 			return;
 		}
+		SoundManager.Instance.PlaySingle (soundBuy);
 		CoinController.Instance.UnlockCustom (lastSelectedItem);
 		CoinController.Instance.state.availableCoins -= prices [lastSelectedItem];
 
@@ -258,11 +292,13 @@ public class CustomController : MonoBehaviour {
 		buttonBuy.SetActive (false);
 		RefreshButtonCustomSelect ();
 		EquipSelectedItem ();
-		HideReallyBuy ();
+		panelReallyBuy.SetActive (false);
+		//HideReallyBuy ();
 		//PushNewCustom ();
 	}
 
 	public void EquipSelectedItem(){
+		SoundManager.Instance.PlaySingle (soundEquip);
 		if (lastSelectedItem > -1 && lastSelectedItem < 8) {
 			CoinController.Instance.UnequipCustom (selectedHat);
 			selectedHat = lastSelectedItem;
@@ -287,6 +323,29 @@ public class CustomController : MonoBehaviour {
 
 	void PushNewCustom(){
 		//Debug.Log ("lastSelectedItem: " + lastSelectedItem);
+
+
+		if (activeHat != selectedHat) {
+			DeselectCustom (activeHat);
+			activeHat = selectedHat;
+			SelectCustom (activeHat);
+		}
+		if (activeSock != selectedSock) {
+			DeselectCustom (activeSock);
+			activeSock = selectedSock;
+			SelectCustom (activeSock);
+		}
+		if (activeBack != selectedBack) {
+			DeselectCustom (activeBack);
+			activeBack = selectedBack;
+			SelectCustom (activeBack);
+		}
+		if (activeColor != selectedColor) {
+			DeselectCustom (activeColor);
+			activeColor = selectedColor;
+			SelectCustom (activeColor);
+		}
+
 		if (lastSelectedItem > -1 && lastSelectedItem < 8) {
 			DeselectCustom (activeHat);
 			activeHat = lastSelectedItem;
@@ -314,7 +373,13 @@ public class CustomController : MonoBehaviour {
 		}
 	}
 
-
+	public void RefreshOutlines(){
+		foreach(ButtonColorCustom bcc in bccs){
+			bcc.HighlightSelected();
+		}
+		lastSelectedItem = -1;
+		PushNewCustom ();
+	}
 
 	//________________________________________________________________test__________________________________
 	bool IsCustomSelected(int index){

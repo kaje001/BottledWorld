@@ -9,11 +9,21 @@ public class CreditsGeneralControl : MonoBehaviour {
 	[SerializeField] GameObject imageMain;
 	int rotation = 0;
 
+	[SerializeField] AudioClip audioButtonClick;
+
 	public void LoadStartUp(){
-		SceneManager.LoadScene ("StartUp");
+		SoundManager.Instance.PlaySingle (audioButtonClick);
+		if (LastGameData.Instance.level == -1) {
+			SceneManager.LoadScene ("Menu");
+
+		} else if (LastGameData.Instance.level == -2) {
+			SceneManager.LoadScene ("StartUp");
+
+		}
 	}
 
 	public void RotateRight(){
+		SoundManager.Instance.PlaySingle (audioButtonClick);
 		if (rotation == 360 || rotation == -360) {
 			rotation = 0;
 		}
@@ -22,6 +32,7 @@ public class CreditsGeneralControl : MonoBehaviour {
 	}
 
 	public void RotateLeft(){
+		SoundManager.Instance.PlaySingle (audioButtonClick);
 		if (rotation == 360 || rotation == -360) {
 			rotation = 0;
 		}

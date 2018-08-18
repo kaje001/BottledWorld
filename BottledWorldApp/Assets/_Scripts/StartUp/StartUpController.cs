@@ -26,6 +26,8 @@ public class StartUpController : MonoBehaviour {
 	[SerializeField] Texture2D tex;
 	[SerializeField] Material mat;
 
+	[SerializeField] AudioClip soundButtonClick;
+
 	// Use this for initialization
 	void Start () {
 		//fadeLogo.FadeIn(2f);
@@ -65,12 +67,15 @@ public class StartUpController : MonoBehaviour {
 	}*/
 	
 	public void StartGame(){
-		
+
+		SoundManager.Instance.PlaySingle (soundButtonClick);
 		SceneManager.LoadScene("Menu");
 	}
 
 	public void LoadCredits(){
 
+		LastGameData.Instance.level = -2;
+		SoundManager.Instance.PlaySingle (soundButtonClick);
 		SceneManager.LoadScene("Credits");
 	}
 

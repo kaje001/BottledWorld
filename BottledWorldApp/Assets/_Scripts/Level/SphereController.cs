@@ -35,6 +35,7 @@ public class SphereController : MonoBehaviour {
 
 		float forwardMovement = sphereSpeed * Time.deltaTime;
 		sphere.transform.position = new Vector3 (pos.x, pos.y, curPos.z - forwardMovement);
+		sphere.transform.GetChild(0).Rotate (Vector3.left, forwardMovement*130);
 	}
 
 	public void SphereJump(){

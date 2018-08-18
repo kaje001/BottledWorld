@@ -20,12 +20,17 @@ public class MenuController : MonoBehaviour {
 
 	[SerializeField] AudioClip musicMenu;
 	[SerializeField] AudioClip soundOverBottle;
+	[SerializeField] AudioClip soundAntWalking;
+	[SerializeField] AudioClip soundUnlockSelf;
+	[SerializeField] AudioClip soundButtonClick;
+	[SerializeField] AudioClip soundCountUpSugar;
+	[SerializeField] AudioClip audioUnlockLevel;
 
 	[SerializeField] HighlightBottle[] bottles;
-	[SerializeField] AudioClip audioUnlockLevel;
 
 	bool slide = false;
 	public bool custom = false;
+	public bool draged = false;
 
 	[SerializeField] CustomSelecter customSel;
 
@@ -121,35 +126,25 @@ public class MenuController : MonoBehaviour {
 		if (ob.GetComponent<HighlightBottle> ().active) {
 			ob.GetComponent<HighlightBottle> ().Hightlight (false);
 		}
-		//SoundManager.Instance.PlaySingle (soundOverBottle);
-		/*if (ob.transform.tag == "Level1") {
-			//Highlight Bottle1
-		} else if (ob.transform.tag == "Level2") {
-			Debug.Log ("Start Level 2");
-			//SceneManager.LoadScene("Level2");
-		}else if (ob.transform.tag == "Level3") {
-			Debug.Log ("Start Level 3");
-			//SceneManager.LoadScene("Level3");
-		}else if (ob.transform.tag == "Level4") {
-			Debug.Log ("Start Level 4");
-			//SceneManager.LoadScene("Level4");
-		}*/
+
 	}
 	
 	public void QuitGame(){
-		
-			Debug.Log ("Exit Game");
-			Application.Quit ();
+		SoundManager.Instance.PlaySingle (soundButtonClick);
+		Debug.Log ("Exit Game");
+		Application.Quit ();
 		
 	}
 
 	public void PressedGotIt(){
+		SoundManager.Instance.PlaySingle (soundButtonClick);
 		panelGotIt.SetActive (false);
 		CoinController.Instance.state.gotIt = true;
 		CoinController.Instance.Save ();
 	}
 
 	public void ResetSaveGame(){
+		SoundManager.Instance.PlaySingle (soundButtonClick);
 		CoinController.Instance.ResetSaveState();
 		//HideSettings ();
 		//ShowSettings ();
@@ -162,16 +157,25 @@ public class MenuController : MonoBehaviour {
 	}
 
 	public void ShowQuit(){
+		
+		if (draged) {
+			return;
+		}
+		SoundManager.Instance.PlaySingle (soundButtonClick);
 		panelQuit.SetActive (true);
 	}
 
 	public void HideQuit(){
+		SoundManager.Instance.PlaySingle (soundButtonClick);
 		panelQuit.SetActive (false);
 	}
 
 
 	public void ShowSettings(){
-
+		if (draged) {
+			return;
+		}
+		SoundManager.Instance.PlaySingle (soundButtonClick);
 		toggleSound.isOn = CoinController.Instance.state.settingsSound;
 		toggleMusic.isOn = CoinController.Instance.state.settingsMusic;
 		toggleControls.isOn = CoinController.Instance.state.settingsControls;
@@ -180,6 +184,7 @@ public class MenuController : MonoBehaviour {
 	}
 
 	public void HideSettings(){
+		SoundManager.Instance.PlaySingle (soundButtonClick);
 		panelSettings.SetActive (false);
 		CoinController.Instance.Save ();
 	}
@@ -193,10 +198,12 @@ public class MenuController : MonoBehaviour {
 	}
 
 	public void SetSettingSound(bool b){
+		SoundManager.Instance.PlaySingle (soundButtonClick);
 		CoinController.Instance.state.settingsSound = b;
 	}
 
 	public void SetSettingMusic(bool b){
+		SoundManager.Instance.PlaySingle (soundButtonClick);
 		CoinController.Instance.state.settingsMusic = b;
 		if (!b) {
 			SoundManager.Instance.StopMusic ();
@@ -206,6 +213,7 @@ public class MenuController : MonoBehaviour {
 	}
 
 	public void SetSettingControl(bool b){
+		SoundManager.Instance.PlaySingle (soundButtonClick);
 		CoinController.Instance.state.settingsControls = b;
 		if (b) {
 			Input.gyro.enabled = false;
@@ -214,9 +222,11 @@ public class MenuController : MonoBehaviour {
 	}
 
 	public void ShowCustoms(){
-		if (slide) {
+		//trying to eleminate touch while drag bug
+		if (slide || draged) {
 			return;
 		}
+		SoundManager.Instance.PlaySingle (soundButtonClick);
 		canvasDefault.SetActive (false);
 		GetComponent<CustomController> ().CustomOpen ();
 		StartCoroutine(SlideCam(camPositions[1].transform, true));
@@ -226,6 +236,7 @@ public class MenuController : MonoBehaviour {
 		if (slide) {
 			return;
 		}
+		SoundManager.Instance.PlaySingle (soundButtonClick);
 		canvasCustoms.SetActive (false);
 		custom = false;
 		txtTotalCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString ();
@@ -268,6 +279,13 @@ public class MenuController : MonoBehaviour {
 		if (b) {
 			SoundManager.Instance.PlaySingle (audioUnlockLevel);
 		}
+	}
+
+	public void LoadCredits(){
+		SoundManager.Instance.StopMusic ();
+		LastGameData.Instance.level = -1;
+		SoundManager.Instance.PlaySingle (soundButtonClick);
+		SceneManager.LoadScene("Credits");
 	}
 
 }

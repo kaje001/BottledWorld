@@ -1529,6 +1529,7 @@ MonoBehaviour:
   panelGyroNotWorking: {fileID: 1586338517}
   tex: {fileID: 2800000, guid: bc2f6d21c44cb3c4b8eb321e06a7a991, type: 3}
   mat: {fileID: 2100000, guid: d6a57479676d5dd44ba6d6f0c0792b8c, type: 2}
+  soundButtonClick: {fileID: 8300000, guid: feb361d9edc1a424fa8eb2c2d74449e3, type: 3}
 --- !u!4 &1451158028
 Transform:
   m_ObjectHideFlags: 0
@@ -2156,7 +2157,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Testversion No/Nr: 31_07_2018\n\nThis is a testversion. To test the game
+  m_Text: "Testversion No/Nr: 16_08_2018\n\nThis is a testversion. To test the game
     properly, please reset the game in the Settings.\n\nDies ist eine Testversion.
     Um das Spiel richtig zu testen, bitte in den Einstellungen das Spiel zur\xFCcksetzten."
 --- !u!222 &1672202567

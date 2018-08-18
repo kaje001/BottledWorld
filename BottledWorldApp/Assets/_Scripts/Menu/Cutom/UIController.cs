@@ -8,6 +8,9 @@ public class UIController : MonoBehaviour {
 
 	int activePanel = -1;
 
+	[SerializeField] CustomController cc;
+
+	[SerializeField] AudioClip soundCategoryChanged;
 
 	[SerializeField] GameObject[] panelCategories; //0 = Hats, 1 = Socks, 2 = Backs, 3 = Colors
 	[SerializeField] Image[] buttonsCategories; //0 = Hats, 1 = Socks, 2 = Backs, 3 = Colors
@@ -17,6 +20,13 @@ public class UIController : MonoBehaviour {
 	void Start(){
 		OnChangePanel (-1);
 		int i = 0;
+		/*foreach (GameObject ob in panelCategories) {
+			ob.SetActive (false);
+			buttonsCategories [i].sprite = spriteUnselectedCategories [i];
+			i++;
+		}
+
+		i = 0;*/
 		foreach (Image im in buttonsCategories) {
 			im.sprite = spriteUnselectedCategories [i];
 			i++;
@@ -24,6 +34,8 @@ public class UIController : MonoBehaviour {
 	}
 
 	public void OnChangePanel(int panelIndex){
+		SoundManager.Instance.PlaySingle (soundCategoryChanged);
+		cc.RefreshOutlines ();
 		EventSystem.current.SetSelectedGameObject (null);
 		int i = 0;
 		foreach (GameObject ob in panelCategories) {

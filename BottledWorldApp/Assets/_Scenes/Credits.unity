@@ -263,6 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageMain: {fileID: 1021617591}
+  audioButtonClick: {fileID: 8300000, guid: feb361d9edc1a424fa8eb2c2d74449e3, type: 3}
 --- !u!4 &21994616
 Transform:
   m_ObjectHideFlags: 0

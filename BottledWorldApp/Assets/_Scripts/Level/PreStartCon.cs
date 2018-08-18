@@ -31,6 +31,8 @@ public class PreStartCon : MonoBehaviour
 		timestamp = Time.time;
 		fadeOverlay.FadeOut (1f);
 
+		VFXandSoundTrigger.Instance.TriggerAntFalling ();
+
 	}
 	
 	// Update is called once per frame

@@ -12,12 +12,26 @@ public class VFXandSoundTrigger : MonoBehaviour {
 	[SerializeField] GameObject vfxCollect; 
 	[SerializeField] GameObject vfxBoost;
 
-	[SerializeField] AudioClip soundclipJump;
+	[SerializeField] VFX_UI_slide vfxUISugar;
+	[SerializeField] ParticleSystem vfxUISugarBurst;
+	[SerializeField] VFX_UI_slide vfxUIHeart;
+	[SerializeField] ParticleSystem vfxUIHeartBurst;
+
 	[SerializeField] AudioClip soundclipCollide;
-	[SerializeField] AudioClip soundclipCollect; 
+	[SerializeField] AudioClip soundclipCollectSugar; 
+	[SerializeField] AudioClip soundclipCollectHeart;
+	[SerializeField] AudioClip soundclipJump;
+	[SerializeField] AudioClip soundclipLanding;
 	[SerializeField] AudioClip soundclipBoost;
 	[SerializeField] AudioClip soundclipStart;
-	[SerializeField] AudioClip soundclipHeart;
+	[SerializeField] AudioClip soundclipAntFall;
+	[SerializeField] AudioClip soundclipCountdown;
+	[SerializeField] AudioClip soundclipCheckpoint;
+	[SerializeField] AudioClip soundclipCountUIHeart;
+	[SerializeField] AudioClip soundclipCountUISugar;
+	[SerializeField] AudioClip soundclipGameOver;
+	[SerializeField] AudioClip soundclipLevelEnd;
+	[SerializeField] AudioClip soundclipButtonClick;
 
 	[SerializeField] AudioClip music1;
 
@@ -64,14 +78,39 @@ public class VFXandSoundTrigger : MonoBehaviour {
 		}
 	}
 
+
+	public void TriggerCollect(Transform trans){
+		StopPS (3);
+		vfx [3].transform.position = trans.position;
+		vfx [3].transform.rotation = trans.rotation;
+		PlayPS (3);
+
+		vfxUISugar.StartEffect ();
+		StartCoroutine (BurstSugar());
+		SoundManager.Instance.PlaySingle (soundclipCollectSugar);
+		animator.SetTrigger ("collectedSugar");
+	}
+	IEnumerator BurstSugar(){
+		yield return new WaitForSeconds (0.6f);
+		vfxUISugarBurst.Play ();
+		SoundManager.Instance.PlaySingle (soundclipCountUISugar);
+	}
+
 	public void TriggerHeart(){
 		StopPS (0);
 		//vfx [0].transform.position = trans.position;
 		//vfx [0].transform.rotation = trans.rotation;
 		PlayPS (0);
 		vfx[0].GetComponent<Spiral>().PlayParticles();
+		vfxUIHeart.StartEffect ();
+		StartCoroutine (BurstHeart());
+		SoundManager.Instance.PlaySingle (soundclipCollectHeart);
+	}
 
-		SoundManager.Instance.PlaySingle (soundclipHeart);
+	IEnumerator BurstHeart(){
+		yield return new WaitForSeconds (0.6f);
+		vfxUIHeartBurst.Play ();
+		SoundManager.Instance.PlaySingle (soundclipCountUIHeart);
 	}
 
 
@@ -91,6 +130,18 @@ public class VFXandSoundTrigger : MonoBehaviour {
 		playerMeshRenderer.materials = matGhosty;
 	}
 
+	public void TriggerAntFalling(){
+		SoundManager.Instance.PlaySingle (soundclipAntFall);
+	}
+
+
+	public void TriggerGameOver(){
+		SoundManager.Instance.PlaySingle (soundclipGameOver);
+	}
+
+	public void TriggerLevelEnd(){
+		SoundManager.Instance.PlaySingle (soundclipLevelEnd);
+	}
 
 	public void TriggerJump(Transform trans){
 		StopPS (2);
@@ -109,22 +160,10 @@ public class VFXandSoundTrigger : MonoBehaviour {
 		vfx [2].transform.rotation = trans.rotation;
 		PlayPS (2);
 
-		SoundManager.Instance.PlaySingle (soundclipCollide);
+		SoundManager.Instance.PlaySingle (soundclipLanding);
 
 		animator.SetTrigger ("jumpEnding");
 	}
-
-
-	public void TriggerCollect(Transform trans){
-		StopPS (3);
-		vfx [3].transform.position = trans.position;
-		vfx [3].transform.rotation = trans.rotation;
-		PlayPS (3);
-
-		SoundManager.Instance.PlaySingle (soundclipCollect);
-		animator.SetTrigger ("collectedSugar");
-	}
-
 
 	public void TriggerBoost(Transform trans, bool b){
 		
@@ -146,7 +185,7 @@ public class VFXandSoundTrigger : MonoBehaviour {
 
 	public void TriggerStart(){
 		
-		SoundManager.Instance.PlaySingle (soundclipStart);
+		//SoundManager.Instance.PlaySingle (soundclipStart);
 		playerMeshRenderer.materials = matNormal;
 	}
 
@@ -154,7 +193,7 @@ public class VFXandSoundTrigger : MonoBehaviour {
 
 		checkpointOb.transform.GetChild (0).GetComponent<CheckpointColor> ().ChangeColorChecked ();
 
-		SoundManager.Instance.PlaySingle (soundclipStart);
+		SoundManager.Instance.PlaySingle (soundclipCheckpoint);
 	}
 
 	public void StartLevelMusic(){
@@ -167,6 +206,7 @@ public class VFXandSoundTrigger : MonoBehaviour {
 
 	public void TriggerStartCountdown(){
 
+		SoundManager.Instance.PlaySingle (soundclipCountdown);
 		animator.SetTrigger ("standUp");
 		animatorStars.SetTrigger ("starsEnd");
 	}
@@ -190,4 +230,7 @@ public class VFXandSoundTrigger : MonoBehaviour {
 		playerMeshRenderer.materials = matGhosty;
 	}
 
+	public void TriggerButtonClick(){
+		SoundManager.Instance.PlaySingle (soundclipButtonClick);
+	}
 }

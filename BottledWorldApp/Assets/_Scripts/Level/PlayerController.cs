@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] Image txtPauseButton;
 	[SerializeField] Sprite spritePauseUI;
 	[SerializeField] Sprite spriteResumeUI;
+	[SerializeField] GameObject textGameOver;
 
 	List<int> coinIndexes = new List<int> ();
 	List<int> coinTempIndexes = new List<int> ();
@@ -246,6 +247,10 @@ public class PlayerController : MonoBehaviour
 
 	void GetRotateWorld(){
 		if (swipeCon) {
+			//eleminate multi touch bug
+			if (Input.touchCount > 1) {
+				return;
+			}
 			float rot = TouchCon.Instance.GetDragLength ();
 			//Debug.Log (rot);
 			gravityGyro = Quaternion.Euler(0, 0, rot * rotSpeed) * gravityGyro;
@@ -277,6 +282,7 @@ public class PlayerController : MonoBehaviour
 
 	public void LoadMenu ()
 	{
+		VFXandSoundTrigger.Instance.TriggerButtonClick ();
 		VFXandSoundTrigger.Instance.EndLevelMusic ();
 
 		//Screen.sleepTimeout = SleepTimeout.SystemSetting;
@@ -285,6 +291,7 @@ public class PlayerController : MonoBehaviour
 
 	public void LoadSameLevel ()
 	{
+		VFXandSoundTrigger.Instance.TriggerButtonClick ();
 		SceneManager.LoadScene ("Level" + level);
 
 	}
@@ -321,33 +328,9 @@ public class PlayerController : MonoBehaviour
 			//pausePanel.SetActive (true);
 			txtPauseButton.gameObject.SetActive (false);
 
-			foreach (int i in coinTempIndexes) {
-				coinIndexes.Add (i);
-			}
+			//txtScore.text = coinIndexes.Count.ToString () + "/" + coinsLeftInLevel;
+			VFXandSoundTrigger.Instance.TriggerLevelEnd();
 
-			txtScore.text = coinIndexes.Count.ToString () + "/" + coinsLeftInLevel;
-
-			CoinController.Instance.AddCoinForLevel (level, coinIndexes.Count);
-
-			LastGameData.Instance.coins = coinIndexes.Count;
-			LastGameData.Instance.hearts = lifes;
-			LastGameData.Instance.deaths = 0;
-			LastGameData.Instance.won = true;
-			LastGameData.Instance.level = level;
-			LastGameData.Instance.totalSugarCubesLevel = coinsInLevel;
-			LastGameData.Instance.sugarCubesForLevel = CoinController.Instance.GetCoinForLevel(level);
-
-			//LastGameData.Instance.sugarCubesForLevel = coinIndexes.Count;
-			if (unlockLevel) {
-				LastGameData.Instance.unlockLevel = level + 1;
-			}
-
-
-			foreach (int i in coinIndexes) {
-				CoinController.Instance.CollectCoin (level, i);
-			}
-
-			CoinController.Instance.Save ();
 			StartCoroutine (WaitForFinish ());
 		}
 
@@ -357,6 +340,34 @@ public class PlayerController : MonoBehaviour
 		yield return new WaitForSeconds (1f);
 		fadeImage.FadeIn (3f);
 		yield return new WaitForSeconds (0.4f);
+
+		foreach (int i in coinTempIndexes) {
+			coinIndexes.Add (i);
+		}
+
+
+		CoinController.Instance.AddCoinForLevel (level, coinIndexes.Count);
+
+		LastGameData.Instance.coins = coinIndexes.Count;
+		LastGameData.Instance.hearts = lifes;
+		LastGameData.Instance.deaths = 0;
+		LastGameData.Instance.won = true;
+		LastGameData.Instance.level = level;
+		LastGameData.Instance.totalSugarCubesLevel = coinsInLevel;
+		LastGameData.Instance.sugarCubesForLevel = CoinController.Instance.GetCoinForLevel(level);
+
+		//LastGameData.Instance.sugarCubesForLevel = coinIndexes.Count;
+		if (unlockLevel) {
+			LastGameData.Instance.unlockLevel = level + 1;
+		}
+
+
+		foreach (int i in coinIndexes) {
+			CoinController.Instance.CollectCoin (level, i);
+		}
+
+		CoinController.Instance.Save ();
+
 		SceneManager.LoadScene ("EndLevel");
 	}
 
@@ -368,13 +379,16 @@ public class PlayerController : MonoBehaviour
 			return;
 		}
 
-		if (lifes == 0) { //wenn nein dann das Spiel zuruegsetzten
+		if (lifes == 0) { //wenn nein dann das EndScreen GameOver
 			//LoadMenu ();
 			pausePanel.SetActive (true);
 			txtPauseButton.gameObject.SetActive (false);
 			txtScore.text = coinIndexes.Count.ToString () + "/" + coinsLeftInLevel;
 			pause = true;
 			freeze = true;
+			textGameOver.SetActive (true);
+
+			VFXandSoundTrigger.Instance.TriggerGameOver ();
 		} else { //Wenn ja, dann zum letzten Checkpoint zuruegsetzten
 			lifes--;
 			txtLifes.text = lifes.ToString ();
@@ -559,6 +573,8 @@ public class PlayerController : MonoBehaviour
 
 	public void PauseGame ()
 	{
+
+		VFXandSoundTrigger.Instance.TriggerButtonClick ();
 		if (!pause) {
 
 			//Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -586,6 +602,8 @@ public class PlayerController : MonoBehaviour
 
 	public void PauseGame (GameObject pauseTutPanel)
 	{
+
+		VFXandSoundTrigger.Instance.TriggerButtonClick ();
 		if (!pause) {
 
 			//Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -698,6 +716,7 @@ public class PlayerController : MonoBehaviour
 	}
 
 	IEnumerator PulseUI(GameObject ui, Text text, int value){
+		yield return new WaitForSeconds (0.4f);
 		float scale = 1f;
 		int i = 0;
 		for (i = 0; i < 10; i++) {

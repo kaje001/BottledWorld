@@ -68,6 +68,7 @@ public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 		if (menuControll.custom) {
 			return;
 		}
+		menuControll.draged = true;
 		//Debug.Log ("Start Drag");
 		resetPos = transform.position;
 		targetPos = resetPos;
@@ -109,6 +110,8 @@ public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 		if (menuControll.custom) {
 			return;
 		}
+
+		menuControll.draged = false;
 		targetPos = resetPos;
 		isDrop = true;
 		timeNextPosition = Time.time + 2f;

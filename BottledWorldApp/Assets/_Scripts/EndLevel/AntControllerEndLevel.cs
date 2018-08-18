@@ -29,8 +29,16 @@ public class AntControllerEndLevel : MonoBehaviour {
 	[SerializeField] GameObject panelUnlock;
 
 	[SerializeField] AudioClip audioScore;
-	//[SerializeField] AudioClip audioUnlockLevel;
+	[SerializeField] AudioClip audioAllSugar;
+	[SerializeField] AudioClip audioUnlockLevel;
 	[SerializeField] AudioClip audioJump;
+	[SerializeField] AudioClip audioJumpLand;
+	[SerializeField] AudioClip audioFirework;
+	[SerializeField] AudioClip audioAntOutBottle;
+	[SerializeField] AudioClip audioButtonClick;
+
+	[SerializeField] ParticleSystem[] paricles;
+	int particleCount = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -40,6 +48,7 @@ public class AntControllerEndLevel : MonoBehaviour {
 		panelUnlock.SetActive (false);
 		panelScore.SetActive (false);
 		fade.FadeOut (2f);
+		SoundManager.Instance.PlaySingle (audioAntOutBottle);
 	}
 
 	void Update(){
@@ -56,7 +65,7 @@ public class AntControllerEndLevel : MonoBehaviour {
 		if (Vector3.Distance (transform.position, groundTrigger.transform.position) < 0.05f && !ground) {
 			ground = true;
 			animator.SetTrigger ("floor");
-			SoundManager.Instance.PlaySingle (audioJump);
+			SoundManager.Instance.PlaySingle (audioJumpLand);
 			ps.Play ();
 		}
 		if (Vector3.Distance (transform.position, fadeTrigger.transform.position) < 0.05f && !fadeb) {
@@ -74,6 +83,7 @@ public class AntControllerEndLevel : MonoBehaviour {
 	}
 
 	public void UnpauseMovement(){
+		SoundManager.Instance.PlaySingle (audioButtonClick);
 		splineConAnt.pause = false;
 		splineConCam.pause = false;
 		animator.SetTrigger ("jumpDown");
@@ -81,21 +91,52 @@ public class AntControllerEndLevel : MonoBehaviour {
 	}
 
 	public void RestartLevel(){
+		SoundManager.Instance.PlaySingle (audioButtonClick);
 		SceneManager.LoadScene ("Level" + LastGameData.Instance.level);
 	}
 
 	IEnumerator ShowScore(){
+		int i = 0;
+		int j = 0;
 		yield return new WaitForSeconds (0.8f);
 		panelSugar.SetActive (true);
 		SoundManager.Instance.PlaySingle (audioScore);
+		for (; i < LastGameData.Instance.coins; i++) {
+			yield return new WaitForSeconds (0.08f);
+			SoundManager.Instance.PlaySingle (audioFirework);
+			paricles [i].Play ();
+			particleCount++;
+		}
 		yield return new WaitForSeconds (0.5f);
 		panelSugarInBottle.SetActive (true);
-		SoundManager.Instance.PlaySingle (audioScore);
+		if (LastGameData.Instance.sugarCubesForLevel == LastGameData.Instance.totalSugarCubesLevel) {
+			SoundManager.Instance.PlaySingle (audioAllSugar);
+			j = i + 3;
+			for (; i < j; i++) {
+				yield return new WaitForSeconds (0.08f);
+				SoundManager.Instance.PlaySingle (audioFirework);
+				paricles [i].Play ();
+				particleCount++;
+			}
+		} else {
+			SoundManager.Instance.PlaySingle (audioFirework);
+			paricles [i].Play ();
+			i++;
+		}
 		//playSound&Effect
 		yield return new WaitForSeconds (0.5f);
 		if(LastGameData.Instance.unlockLevel != 0 && !CoinController.Instance.IsLevelUnlocked(LastGameData.Instance.unlockLevel)){
+
+			SoundManager.Instance.PlaySingle (audioUnlockLevel);
 			panelUnlock.SetActive (true); //Enable if unlocked a new Level
 			CoinController.Instance.UnlockLevel (LastGameData.Instance.unlockLevel);
+			j = i + 2;
+			for (; i < j; i++) {
+				yield return new WaitForSeconds (0.08f);
+				SoundManager.Instance.PlaySingle (audioFirework);
+				paricles [i].Play ();
+				particleCount++;
+			}
 		}
 		//playSound&Effect
 

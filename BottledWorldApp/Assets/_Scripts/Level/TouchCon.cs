@@ -68,7 +68,7 @@ public class TouchCon : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     }
 
 	public float GetDragLength(){
-		return publicLength;
+		return publicLength*2;
 	}
 
 }

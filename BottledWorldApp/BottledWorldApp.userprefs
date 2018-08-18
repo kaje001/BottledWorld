@@ -1,14 +1,18 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\EndLevel\UIConEndLevel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_Scripts\Credits\CreditsGeneralControl.cs">
     <Files>
-      <File FileName="Assets\_Scripts\Menu\MenuController.cs" Line="62" Column="35" />
-      <File FileName="Assets\_Scripts\Level\Tutorial\TriggerNumber.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\Level\Tutorial\TutEvents.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\EndLevel\AntControllerEndLevel.cs" Line="98" Column="76" />
-      <File FileName="Assets\_Scripts\StartUp\LastGameData.cs" Line="1" Column="1" />
-      <File FileName="Assets\_Scripts\EndLevel\UIConEndLevel.cs" Line="14" Column="119" />
-      <File FileName="Assets\_Scripts\Level\PlayerController.cs" Line="338" Column="93" />
+      <File FileName="Assets\_Scripts\StartUp\StartUpController.cs" Line="77" Column="36" />
+      <File FileName="Assets\_Scripts\Level\VFXandSoundTrigger.cs" Line="234" Column="59" />
+      <File FileName="Assets\_Scripts\EndLevel\AntControllerEndLevel.cs" Line="94" Column="55" />
+      <File FileName="Assets\_Scripts\Menu\Cutom\CustomController.cs" Line="381" Column="20" />
+      <File FileName="Assets\_Scripts\Menu\Cutom\ButtonColorCustom.cs" Line="20" Column="12" />
+      <File FileName="Assets\_Scripts\Menu\Cutom\UIController.cs" Line="21" Column="3" />
+      <File FileName="Assets\_Scripts\Level\TouchCon.cs" Line="71" Column="24" />
+      <File FileName="Assets\_Scripts\Level\SphereController.cs" Line="38" Column="72" />
+      <File FileName="Assets\_Scripts\Menu\MenuController.cs" Line="285" Column="38" />
+      <File FileName="Assets\_Scripts\StartUp\LastGameData.cs" Line="13" Column="29" />
+      <File FileName="Assets\_Scripts\Credits\CreditsGeneralControl.cs" Line="35" Column="55" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

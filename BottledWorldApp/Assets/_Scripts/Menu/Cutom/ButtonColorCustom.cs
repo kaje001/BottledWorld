@@ -17,7 +17,7 @@ public class ButtonColorCustom : MonoBehaviour {
 
 	[SerializeField] Color[] colors; //0 = notselectedFrame; 1 = selectedFrame; 2 = fontColornotpurchasable; 3 = fontColorpurchasable; 4 = backgroundDark; 5 = backgroundLight
 
-	void Start(){
+	void Awake(){
 		im = GetComponent<Image> ();
 		HighlightSelected ();
 		//spriteEquipped.SetActive (false);
@@ -33,7 +33,8 @@ public class ButtonColorCustom : MonoBehaviour {
 		}
 	}
 
-	void HighlightSelected(){
+	public void HighlightSelected(){
+		SetColor (0);
 		int i = 0;
 		if (cathegory == 0) {
 			if (CoinController.Instance.IsCustomEquipped(index)) {
