@@ -12,6 +12,8 @@ public class StartUpController : MonoBehaviour {
 	bool logo = false;
 	bool starting = false;
 
+	[SerializeField] GameObject panelLoading;
+
 	[SerializeField] GameObject panelStart;
 	[SerializeField] GameObject arrow;
 
@@ -34,6 +36,8 @@ public class StartUpController : MonoBehaviour {
 		//StartCoroutine(FadeCaution());
 		//timeStamp = Time.time + 2f;
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+		panelLoading.SetActive (false);
 
 		panelGyroNotWorking.SetActive (false);
 
@@ -70,6 +74,7 @@ public class StartUpController : MonoBehaviour {
 
 		SoundManager.Instance.PlaySingle (soundButtonClick);
 		SceneManager.LoadScene("Menu");
+		panelLoading.SetActive (true);
 	}
 
 	public void LoadCredits(){
@@ -77,6 +82,7 @@ public class StartUpController : MonoBehaviour {
 		LastGameData.Instance.level = -2;
 		SoundManager.Instance.PlaySingle (soundButtonClick);
 		SceneManager.LoadScene("Credits");
+		panelLoading.SetActive (true);
 	}
 
 	public void RotateAntGyro(Vector2 gravityGyro){
@@ -120,7 +126,7 @@ public class StartUpController : MonoBehaviour {
 	IEnumerator CheckGyro(){
 		yield return new WaitForSeconds (4f);
 
-		if (startGyroGravity == Input.gyro.gravity) {
+		if (startGyroGravity == Input.gyro.gravity && !CoinController.Instance.state.settingsControls) {
 			textStartRotate.SetActive (false);
 			buttonStartGame.SetActive (true);
 			panelGyroNotWorking.SetActive (true);

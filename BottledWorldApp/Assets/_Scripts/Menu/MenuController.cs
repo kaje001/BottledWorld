@@ -14,6 +14,7 @@ public class MenuController : MonoBehaviour {
 	[SerializeField] GameObject canvasDefault;
 	[SerializeField] GameObject canvasCustoms;
 	[SerializeField] GameObject panelGotIt;
+	[SerializeField] GameObject panelLoading;
 	[SerializeField] Toggle toggleSound;
 	[SerializeField] Toggle toggleMusic;
 	[SerializeField] Toggle toggleControls;
@@ -41,6 +42,7 @@ public class MenuController : MonoBehaviour {
 		playermat.dynamicFriction = 0.3f;
 		playermat.staticFriction = 0.05f;
 
+		panelLoading.SetActive (false);
 		panelQuit.SetActive (false);
 		panelSettings.SetActive (false);
 		panelSugarInfo.SetActive (false);
@@ -83,20 +85,25 @@ public class MenuController : MonoBehaviour {
 		if (ob.transform.tag == "Level0" && CoinController.Instance.IsLevelUnlocked(0)) {
 			Debug.Log ("Start Level 0");
 			SceneManager.LoadScene("Level0");
+			panelLoading.SetActive (true);
 			musicoff = true;
 		} else if (ob.transform.tag == "Level1" && CoinController.Instance.IsLevelUnlocked(1)) {
 			Debug.Log ("Start Level 1");
 			SceneManager.LoadScene("Level1");
+			panelLoading.SetActive (true);
 			musicoff = true;
 		} else if (ob.transform.tag == "Level2" && CoinController.Instance.IsLevelUnlocked(2)) {
 			Debug.Log ("Start Level 2");
 			SceneManager.LoadScene("Level2");
+			panelLoading.SetActive (true);
 		}else if (ob.transform.tag == "Level3" && CoinController.Instance.IsLevelUnlocked(3)) {
 			Debug.Log ("Start Level 3");
 			SceneManager.LoadScene("Level3");
+			panelLoading.SetActive (true);
 		}else if (ob.transform.tag == "Level4" && CoinController.Instance.IsLevelUnlocked(4)) {
 			Debug.Log ("Start Level 4");
 			SceneManager.LoadScene("Level4");
+			panelLoading.SetActive (true);
 		}
 
 		if (musicoff) {
@@ -162,6 +169,7 @@ public class MenuController : MonoBehaviour {
 		//customSel.Reload ();
 		//StartCoroutine (UnlockLevel (false));
 		SceneManager.LoadScene("Menu");
+		panelLoading.SetActive (true);
 		// + "/" + CoinController.Instance.state.totalCoins.ToString ()
 	}
 
@@ -300,6 +308,7 @@ public class MenuController : MonoBehaviour {
 		LastGameData.Instance.level = -1;
 		SoundManager.Instance.PlaySingle (soundButtonClick);
 		SceneManager.LoadScene("Credits");
+		panelLoading.SetActive (true);
 	}
 
 }

@@ -50,6 +50,8 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] Text txtCoins;
 	[SerializeField] Text txtLifes;
 	[SerializeField] Fade fadeImage;
+
+	[SerializeField] GameObject panelLoading;
 		
 	//Elemente für Dinge, die am Anfang des Levels gespawned werden muessen
 	[SerializeField] GameObject coinPrefab;
@@ -92,6 +94,7 @@ public class PlayerController : MonoBehaviour
 	{
 		//Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
+		panelLoading.SetActive (false);
 		txtPauseButton.gameObject.SetActive (false);
 		rigPlayer = player.GetComponent<Rigidbody> ();
 		checkpointPosition = firstCheckpoint.transform.GetChild(0).position;
@@ -292,12 +295,14 @@ public class PlayerController : MonoBehaviour
 
 		//Screen.sleepTimeout = SleepTimeout.SystemSetting;
 		SceneManager.LoadScene ("Menu");
+		panelLoading.SetActive (true);
 	}
 
 	public void LoadSameLevel ()
 	{
 		VFXandSoundTrigger.Instance.TriggerButtonClick ();
 		SceneManager.LoadScene ("Level" + level);
+		panelLoading.SetActive (true);
 
 	}
 
@@ -344,7 +349,7 @@ public class PlayerController : MonoBehaviour
 	IEnumerator WaitForFinish(){
 		yield return new WaitForSeconds (1f);
 		fadeImage.FadeIn (3f);
-		yield return new WaitForSeconds (0.4f);
+		yield return new WaitForSeconds (0.8f);
 
 		foreach (int i in coinTempIndexes) {
 			coinIndexes.Add (i);
@@ -375,6 +380,7 @@ public class PlayerController : MonoBehaviour
 		CoinController.Instance.Save ();
 
 		SceneManager.LoadScene ("EndLevel");
+		//panelLoading.SetActive (true);
 	}
 
 	// Es wird gecheckt, ob noch Leben verfuegbar sind
@@ -492,7 +498,7 @@ public class PlayerController : MonoBehaviour
 	{
 		if (coroutineBoost != null) {
 			StopCoroutine (coroutineBoost);
-		}
+		} 
 		coroutineBoost = Boost ();
 		StartCoroutine (coroutineBoost);
 	}
@@ -500,7 +506,7 @@ public class PlayerController : MonoBehaviour
 	IEnumerator Boost ()
 	{
 		VFXandSoundTrigger.Instance.TriggerBoost (player.transform, true);
-		playerSpeed = playerSpeed*2f;
+		playerSpeed = startPlayerSpeed*2f;
 		yield return new WaitForSeconds (boostLenth);
 
 		VFXandSoundTrigger.Instance.TriggerBoost (player.transform, false);

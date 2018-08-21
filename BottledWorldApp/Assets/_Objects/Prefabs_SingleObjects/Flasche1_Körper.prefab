@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4180896189346420}
   - component: {fileID: 33627155630292642}
   - component: {fileID: 23226748082505958}
+  - component: {fileID: 64604602411540078}
   m_Layer: 0
   m_Name: "Flasche1_K\xF6rper"
   m_TagString: Obstacle
@@ -34,13 +35,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1601355336262840}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0000000047683715, y: 0, z: 0.4885234}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!23 &23226748082505958
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -82,3 +83,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1601355336262840}
   m_Mesh: {fileID: 4300002, guid: 3c64cba99166e36428fb9af302445ec2, type: 3}
+--- !u!64 &64604602411540078
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1601355336262840}
+  m_Material: {fileID: 13400000, guid: d80255ea5113c494cb89b7accad2274a, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: f762fe58b45bec14d98e09f3719d920d, type: 3}

@@ -131,7 +131,7 @@ public class VFXandSoundTrigger : MonoBehaviour {
 	}
 
 	public void TriggerAntFalling(){
-		SoundManager.Instance.PlaySingle (soundclipAntFall);
+		SoundManager.Instance.PlaySingleCancelable(soundclipAntFall);
 	}
 
 
@@ -206,12 +206,13 @@ public class VFXandSoundTrigger : MonoBehaviour {
 
 	public void TriggerStartCountdown(){
 
-		SoundManager.Instance.PlaySingle (soundclipCountdown);
+		SoundManager.Instance.PlaySingleCancelable (soundclipCountdown);
 		animator.SetTrigger ("standUp");
 		animatorStars.SetTrigger ("starsEnd");
 	}
 
 	public void TriggerCancelCountdown(){
+		SoundManager.Instance.StopSingleCancelable ();
 
 		animator.SetTrigger ("cancelStandUp");
 		animatorStars.SetTrigger ("starsStart");

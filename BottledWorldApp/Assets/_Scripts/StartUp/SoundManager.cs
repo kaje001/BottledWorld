@@ -24,6 +24,21 @@ public class SoundManager : MonoBehaviour
 		DontDestroyOnLoad (gameObject);
 	}
 
+	public void PlaySingleCancelable(AudioClip clip){
+		if (!CoinController.Instance.state.settingsSound) {
+			return;
+		}
+
+		efxSource4.clip = clip;
+		efxSource4.Play ();
+	}
+
+	public void StopSingleCancelable(){
+		if (!CoinController.Instance.state.settingsSound) {
+			return;
+		}
+		efxSource4.Stop ();
+	}
 
 	public void PlaySingle(AudioClip clip)
 	{
@@ -37,12 +52,9 @@ public class SoundManager : MonoBehaviour
 		} else if (!efxSource2.isPlaying) {
 			efxSource2.clip = clip;
 			efxSource2.Play ();
-		} else if (!efxSource3.isPlaying) {
+		} else{
 			efxSource3.clip = clip;
 			efxSource3.Play ();
-		} else {
-			efxSource4.clip = clip;
-			efxSource4.Play ();
 		}
 
 

@@ -70,6 +70,7 @@ public class PreStartCon : MonoBehaviour
 		if ((Input.touchCount > 0 || Input.GetMouseButtonDown(0)) && a && b) {
 			timestamp = Time.time;
 			waitTime = 1.5f;
+			SoundManager.Instance.StopSingleCancelable ();
 		}
 	}
 		

@@ -1538,6 +1538,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4937580174019344}
   - component: {fileID: 95384647798944490}
+  - component: {fileID: 114816844113786702}
   m_Layer: 0
   m_Name: characterInLevel
   m_TagString: Untagged
@@ -3178,7 +3179,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896518681926742}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -6.647626, y: -2.0391588, z: 5.171997}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 4724416995890732}
@@ -3960,6 +3961,54 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114816844113786702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1896518681926742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e136be285f73b048999703c0452d191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hats:
+  - {fileID: 1747937872002826}
+  - {fileID: 1831664346536308}
+  - {fileID: 1037502921253240}
+  - {fileID: 1564467190328524}
+  socksFL:
+  - {fileID: 1269191403962814}
+  - {fileID: 1280104521882060}
+  - {fileID: 1155380019642618}
+  - {fileID: 1788723131029738}
+  socksFR:
+  - {fileID: 1393836314559148}
+  - {fileID: 1362094731549726}
+  - {fileID: 1949872150511384}
+  - {fileID: 1523721887875838}
+  socksBL:
+  - {fileID: 1813511168129826}
+  - {fileID: 1629273237807910}
+  - {fileID: 1204202237295028}
+  - {fileID: 1013124934016826}
+  socksBR:
+  - {fileID: 1443350314879638}
+  - {fileID: 1097810654364620}
+  - {fileID: 1426337549901880}
+  - {fileID: 1383258062507796}
+  backs:
+  - {fileID: 1183807518343524}
+  - {fileID: 1401235196033004}
+  - {fileID: 1510756225728754}
+  colors:
+  - {fileID: 2800000, guid: bc2f6d21c44cb3c4b8eb321e06a7a991, type: 3}
+  - {fileID: 2800000, guid: 3d9a1fb6d0222d64384786e6e4493229, type: 3}
+  - {fileID: 2800000, guid: 1410b92df82dbc140bc185cad303fe1a, type: 3}
+  - {fileID: 2800000, guid: 92e62b19040fa5e4b9a0e115a1c32a43, type: 3}
+  mats:
+  - {fileID: 2100000, guid: d6a57479676d5dd44ba6d6f0c0792b8c, type: 2}
+  - {fileID: 2100000, guid: a9d6f1c779d3f2543b7f036400821caf, type: 2}
 --- !u!137 &137420872024197234
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

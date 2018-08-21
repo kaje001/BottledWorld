@@ -11,6 +11,7 @@ public class AntControllerEndLevel : MonoBehaviour {
 
 	[SerializeField] SplineInterpolator splineConAnt;
 	[SerializeField] SplineInterpolator splineConCam;
+	[SerializeField] GameObject panelLoading;
 
 	[SerializeField] GameObject stopTrigger;
 	[SerializeField] GameObject jumpTrigger;
@@ -44,7 +45,7 @@ public class AntControllerEndLevel : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		panelLoading.SetActive (false);
 		panelSugarInBottle.SetActive (false);
 		panelSugar.SetActive (false);
 		panelUnlock.SetActive (false);
@@ -95,6 +96,7 @@ public class AntControllerEndLevel : MonoBehaviour {
 	public void RestartLevel(){
 		SoundManager.Instance.PlaySingle (audioButtonClick);
 		SceneManager.LoadScene ("Level" + LastGameData.Instance.level);
+		panelLoading.SetActive (true);
 	}
 
 	IEnumerator ShowScore(){
@@ -149,5 +151,6 @@ public class AntControllerEndLevel : MonoBehaviour {
 		yield return new WaitForSeconds (0.5f);
 		SoundManager.Instance.StopMusic ();
 		SceneManager.LoadScene ("Menu");
+		panelLoading.SetActive (true);
 	}
 }

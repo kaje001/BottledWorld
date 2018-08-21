@@ -7,6 +7,7 @@ using DentedPixel;
 public class CreditsGeneralControl : MonoBehaviour {
 
 	[SerializeField] GameObject imageMain;
+	[SerializeField] GameObject panelLoading;
 	int rotation = 0;
 
 	[SerializeField] AudioClip audioButtonClick;
@@ -15,9 +16,11 @@ public class CreditsGeneralControl : MonoBehaviour {
 		SoundManager.Instance.PlaySingle (audioButtonClick);
 		if (LastGameData.Instance.level == -1) {
 			SceneManager.LoadScene ("Menu");
+			panelLoading.SetActive (true);
 
 		} else if (LastGameData.Instance.level == -2) {
 			SceneManager.LoadScene ("StartUp");
+			panelLoading.SetActive (true);
 
 		}
 	}
