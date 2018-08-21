@@ -22,7 +22,7 @@ public class SaveState {
 	public int equippedCustoms = 16843009;
 
 	//Levels
-	public int unlockedLevels = 3; // 15 für alle vier
+	public int unlockedLevels = 1; // 15 für alle vier
 	public int unlockedBioms = 1; 
 
 	//Settings

@@ -39,12 +39,15 @@ public class UIConEndLevel : MonoBehaviour {
 	}
 
 	public void UpdateBar(){
-		
+		if (coins >= 8) {
+			return;
+		}
 		StartCoroutine (FillBar());
 
 	}
 
 	IEnumerator FillBar(){
+		
 		yield return new WaitForSeconds (0.3f);
 		for(int i = 0; i < LastGameData.Instance.coins; i++){
 			coins++;
