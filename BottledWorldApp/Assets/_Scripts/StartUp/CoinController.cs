@@ -15,6 +15,7 @@ public class CoinController : MonoBehaviour {
 		Load ();
 	}
 
+	//Saving and Loading
 	public void Save(){
 		PlayerPrefs.SetString ("save", Helper.Serialize<SaveState>(state));
 	}
@@ -29,37 +30,12 @@ public class CoinController : MonoBehaviour {
 		}
 	}
 
-	public bool IsCoinCollected(int level, int index){
-		if (level == 0) {
-			return (state.coinsCollectedLevel0 & (1 << (index))) != 0;
-		} else if (level == 1) {
-			return (state.coinsCollectedLevel1 & (1 << (index))) != 0;
-		} else if (level == 2) {
-			return (state.coinsCollectedLevel2 & (1 << (index))) != 0;
-		} else if (level == 3) {
-			return (state.coinsCollectedLevel3 & (1 << (index))) != 0;
-		} else if (level == 4) {
-			return (state.coinsCollectedLevel4 & (1 << (index))) != 0;
-		} else {
-			return false;
-		}
-
-	}
-		
-	public void CollectCoin(int level, int index){
-		if (level == 0) {
-			state.coinsCollectedLevel0 |= 1 << index;
-		} else if (level == 1) {
-			state.coinsCollectedLevel1 |= 1 << index;
-		} else if (level == 2) {
-			state.coinsCollectedLevel2 |= 1 << index;
-		} else if (level == 3) {
-			state.coinsCollectedLevel3 |= 1 << index;
-		} else if (level == 4) {
-			state.coinsCollectedLevel4 |= 1 << index;
-		}
+	public void ResetSaveState(){
+		PlayerPrefs.DeleteKey ("save");
+		Load ();
 	}
 
+	//Customization
 	public bool IsCustomOwned(int index){
 		return (state.unlockedCustoms & (1 << index)) != 0;
 	}
@@ -88,9 +64,36 @@ public class CoinController : MonoBehaviour {
 		state.equippedCustoms ^= 1 << index;
 	}
 
-	public void ResetSaveState(){
-		PlayerPrefs.DeleteKey ("save");
-		Load ();
+	//Coins
+	public bool IsCoinCollected(int level, int index){
+		if (level == 0) {
+			return (state.coinsCollectedLevel0 & (1 << (index))) != 0;
+		} else if (level == 1) {
+			return (state.coinsCollectedLevel1 & (1 << (index))) != 0;
+		} else if (level == 2) {
+			return (state.coinsCollectedLevel2 & (1 << (index))) != 0;
+		} else if (level == 3) {
+			return (state.coinsCollectedLevel3 & (1 << (index))) != 0;
+		} else if (level == 4) {
+			return (state.coinsCollectedLevel4 & (1 << (index))) != 0;
+		} else {
+			return false;
+		}
+
+	}
+
+	public void CollectCoin(int level, int index){
+		if (level == 0) {
+			state.coinsCollectedLevel0 |= 1 << index;
+		} else if (level == 1) {
+			state.coinsCollectedLevel1 |= 1 << index;
+		} else if (level == 2) {
+			state.coinsCollectedLevel2 |= 1 << index;
+		} else if (level == 3) {
+			state.coinsCollectedLevel3 |= 1 << index;
+		} else if (level == 4) {
+			state.coinsCollectedLevel4 |= 1 << index;
+		}
 	}
 
 	public int AddCoinForLevel(int level, int value = 1){
@@ -133,18 +136,30 @@ public class CoinController : MonoBehaviour {
 		}
 	}
 
+	//Level
 	public bool IsLevelUnlocked(int index){
 		return (state.unlockedLevels & (1 << index)) != 0;
 	}
-
 
 	public void UnlockLevel(int index){
 		state.unlockedLevels |= 1 << index;
 	}
 
-
 	public void LockLevel(int index){
 		state.unlockedLevels ^= 1 << index;
+	}
+
+	//Bioms
+	public bool IsBiomUnlocked(int index){
+		return (state.unlockedBioms & (1 << index)) != 0;
+	}
+
+	public void UnlockBiom(int index){
+		state.unlockedBioms |= 1 << index;
+	}
+
+	public void LockBiom(int index){
+		state.unlockedBioms ^= 1 << index;
 	}
 
 }

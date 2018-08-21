@@ -2,6 +2,7 @@
 
 public class SaveState {
 
+	//Coins
 	public int totalCoins = 0;
 	public int availableCoins = 0;
 
@@ -16,11 +17,15 @@ public class SaveState {
 	public int coinsCollectedLevel3 = 0;
 	public int coinsCollectedLevel4 = 0;
 
+	//Customizations
 	public int unlockedCustoms = 16843009; // alle cathegories 16843009; ohne color 65793
 	public int equippedCustoms = 16843009;
 
-	public int unlockedLevels = 1; // 15 für alle vier
+	//Levels
+	public int unlockedLevels = 3; // 15 für alle vier
+	public int unlockedBioms = 1; 
 
+	//Settings
 	public bool gotIt = false;
 	public bool settingsSound = true;
 	public bool settingsMusic = true;

@@ -302,6 +302,8 @@ MonoBehaviour:
   GlasClear: {fileID: 2100000, guid: f67cbf76d4fa5524d9c5cabebad5e478, type: 2}
   GlasMatt: {fileID: 2100000, guid: 308022295ad99d24390b6d0288717846, type: 2}
   active: 1
+  stared: 0
+  star: {fileID: 0}
 --- !u!136 &86110627
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1076,6 +1078,8 @@ MonoBehaviour:
   GlasClear: {fileID: 2100000, guid: f67cbf76d4fa5524d9c5cabebad5e478, type: 2}
   GlasMatt: {fileID: 2100000, guid: 308022295ad99d24390b6d0288717846, type: 2}
   active: 0
+  stared: 0
+  star: {fileID: 0}
 --- !u!136 &268387824
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1136,6 +1140,8 @@ MonoBehaviour:
   GlasClear: {fileID: 2100000, guid: f67cbf76d4fa5524d9c5cabebad5e478, type: 2}
   GlasMatt: {fileID: 2100000, guid: 308022295ad99d24390b6d0288717846, type: 2}
   active: 0
+  stared: 0
+  star: {fileID: 0}
 --- !u!136 &269273481
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6005,6 +6011,8 @@ MonoBehaviour:
   GlasClear: {fileID: 2100000, guid: f67cbf76d4fa5524d9c5cabebad5e478, type: 2}
   GlasMatt: {fileID: 2100000, guid: 308022295ad99d24390b6d0288717846, type: 2}
   active: 0
+  stared: 0
+  star: {fileID: 0}
 --- !u!136 &1220543597
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6507,6 +6515,8 @@ MonoBehaviour:
   GlasClear: {fileID: 2100000, guid: f67cbf76d4fa5524d9c5cabebad5e478, type: 2}
   GlasMatt: {fileID: 2100000, guid: 308022295ad99d24390b6d0288717846, type: 2}
   active: 1
+  stared: 0
+  star: {fileID: 0}
 --- !u!136 &1341757741
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10936,10 +10946,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 309cf248d1261844ba888b5b4ed36b42,
+    m_HighlightedSprite: {fileID: 21300000, guid: 4fd1fba7e5b69c64d857c69d9c947d38,
       type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 1c9eb27d01a040742a6688202f48d0cc, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: 1c9eb27d01a040742a6688202f48d0cc, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 4f634e6f8e4dd444c8c4b91056d378dd, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 4f634e6f8e4dd444c8c4b91056d378dd, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -10982,7 +10992,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 309cf248d1261844ba888b5b4ed36b42, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4fd1fba7e5b69c64d857c69d9c947d38, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

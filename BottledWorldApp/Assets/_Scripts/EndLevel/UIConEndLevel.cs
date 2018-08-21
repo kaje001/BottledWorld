@@ -30,6 +30,7 @@ public class UIConEndLevel : MonoBehaviour {
 			LockClosed.SetActive (true);
 			LockOpen.SetActive (false);
 		}
+		imageBar.fillAmount = 0.125f * coins;
 		coinsBiomBegin.text = (LastGameData.Instance.biom * 8).ToString();
 		coinsNextBiom.text = (LastGameData.Instance.biom * 8 + 8).ToString();
 		coinsNextBiom2.text = (LastGameData.Instance.biom * 8 + 8).ToString();

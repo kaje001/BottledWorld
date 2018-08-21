@@ -8,9 +8,12 @@ public class HighlightBottle : MonoBehaviour {
 	[SerializeField] Material GlasClear;
 	[SerializeField] Material GlasMatt;
 	[SerializeField] public bool active;
+	[SerializeField] public bool stared;
+	[SerializeField] GameObject star;
 
 	void Start(){
 		hightlightPic.SetActive (false);
+		star.SetActive(false);
 	}
 
 	public void Hightlight(bool b){
@@ -22,6 +25,12 @@ public class HighlightBottle : MonoBehaviour {
 			transform.GetChild(0).GetComponentInChildren<Renderer> ().material = GlasClear;
 		} else {
 			transform.GetChild(0).GetComponentInChildren<Renderer> ().material = GlasMatt;
+		}
+
+		if (stared) {
+			star.SetActive (true);
+		} else {
+			star.SetActive (false);
 		}
 	}
 }
