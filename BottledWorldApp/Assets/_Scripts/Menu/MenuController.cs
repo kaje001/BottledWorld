@@ -14,6 +14,7 @@ public class MenuController : MonoBehaviour {
 	[SerializeField] GameObject canvasDefault;
 	[SerializeField] GameObject canvasCustoms;
 	[SerializeField] GameObject panelGotIt;
+	[SerializeField] GameObject panelReallyReset;
 	[SerializeField] GameObject panelLoading;
 	[SerializeField] Toggle toggleSound;
 	[SerializeField] Toggle toggleMusic;
@@ -46,6 +47,7 @@ public class MenuController : MonoBehaviour {
 		panelQuit.SetActive (false);
 		panelSettings.SetActive (false);
 		panelSugarInfo.SetActive (false);
+		panelReallyReset.SetActive (false);
 
 		txtTotalCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString ();
 
@@ -159,20 +161,6 @@ public class MenuController : MonoBehaviour {
 		CoinController.Instance.Save ();
 	}
 
-	public void ResetSaveGame(){
-		SoundManager.Instance.PlaySingle (soundButtonClick);
-		CoinController.Instance.ResetSaveState();
-		//HideSettings ();
-		//ShowSettings ();
-		//txtTotalCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString ();
-		//panelGotIt.SetActive (true);
-		//customSel.Reload ();
-		//StartCoroutine (UnlockLevel (false));
-		SceneManager.LoadScene("Menu");
-		panelLoading.SetActive (true);
-		// + "/" + CoinController.Instance.state.totalCoins.ToString ()
-	}
-
 	public void ShowQuit(){
 		
 		if (draged) {
@@ -187,6 +175,32 @@ public class MenuController : MonoBehaviour {
 		panelQuit.SetActive (false);
 	}
 
+	public void ShowReallyReset(){
+		if (draged) {
+			return;
+		}
+		SoundManager.Instance.PlaySingle (soundButtonClick);
+		panelReallyReset.SetActive (true);
+	}
+
+	public void HideReallyReset(){
+		SoundManager.Instance.PlaySingle (soundButtonClick);
+		panelReallyReset.SetActive (false);
+	}
+
+	public void ResetSaveGame(){
+		SoundManager.Instance.PlaySingle (soundButtonClick);
+		CoinController.Instance.ResetSaveState();
+		//HideSettings ();
+		//ShowSettings ();
+		//txtTotalCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString ();
+		//panelGotIt.SetActive (true);
+		//customSel.Reload ();
+		//StartCoroutine (UnlockLevel (false));
+		SceneManager.LoadScene("Menu");
+		panelLoading.SetActive (true);
+		// + "/" + CoinController.Instance.state.totalCoins.ToString ()
+	}
 
 	public void ShowSettings(){
 		if (draged) {

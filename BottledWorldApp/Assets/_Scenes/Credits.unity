@@ -265,6 +265,7 @@ MonoBehaviour:
   imageMain: {fileID: 1021617591}
   panelLoading: {fileID: 333675748}
   audioButtonClick: {fileID: 8300000, guid: feb361d9edc1a424fa8eb2c2d74449e3, type: 3}
+  musicCredits: {fileID: 8300000, guid: ff747efc114dced4f973c2cf191b68bf, type: 3}
 --- !u!4 &21994616
 Transform:
   m_ObjectHideFlags: 0
@@ -589,7 +590,7 @@ MonoBehaviour:
   m_Text: 'Erik Masson
 
 
-    3D-Art (Character & Customization)
+    3D-Art (Character and Customization)
 
     Animation (Character)
 

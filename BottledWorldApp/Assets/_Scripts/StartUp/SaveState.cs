@@ -11,11 +11,13 @@ public class SaveState {
 	public int coinsLevel2 = 0;
 	public int coinsLevel3 = 0;
 	public int coinsLevel4 = 0;
+	public int coinsLevel5 = 0;
 	public int coinsCollectedLevel0 = 0;
 	public int coinsCollectedLevel1 = 0;
 	public int coinsCollectedLevel2 = 0;
 	public int coinsCollectedLevel3 = 0;
 	public int coinsCollectedLevel4 = 0;
+	public int coinsCollectedLevel5 = 0;
 
 	//Customizations
 	public int unlockedCustoms = 16843009; // alle cathegories 16843009; ohne color 65793

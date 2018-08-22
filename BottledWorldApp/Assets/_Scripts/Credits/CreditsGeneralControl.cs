@@ -11,8 +11,14 @@ public class CreditsGeneralControl : MonoBehaviour {
 	int rotation = 0;
 
 	[SerializeField] AudioClip audioButtonClick;
+	[SerializeField] AudioClip musicCredits;
+
+	void Start(){
+		SoundManager.Instance.PlayMusic (musicCredits);
+	}
 
 	public void LoadStartUp(){
+		SoundManager.Instance.StopMusic ();
 		SoundManager.Instance.PlaySingle (audioButtonClick);
 		if (LastGameData.Instance.level == -1) {
 			SceneManager.LoadScene ("Menu");

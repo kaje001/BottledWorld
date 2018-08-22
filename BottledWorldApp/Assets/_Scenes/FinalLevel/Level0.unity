@@ -965,7 +965,7 @@ MonoBehaviour:
   soundclipLevelEnd: {fileID: 8300000, guid: a0410867fb403564ba6eb4ac9d0139e3, type: 3}
   soundclipButtonClick: {fileID: 8300000, guid: feb361d9edc1a424fa8eb2c2d74449e3,
     type: 3}
-  music1: {fileID: 8300000, guid: f51ca6a208c84394194189d421b4e484, type: 3}
+  music1: {fileID: 8300000, guid: c735ea6e7fe090e42adc5e3de7e73ee9, type: 3}
   animator: {fileID: 779305580}
   animatorStars: {fileID: 1432572750}
   matNormal:
@@ -29344,7 +29344,7 @@ MonoBehaviour:
   spritesInfo:
   - {fileID: 21300000, guid: 6d8f2cf86a29fec408c6240daef34342, type: 3}
   - {fileID: 21300000, guid: 368b1dacd7ea25b4dad8f292b6a2f251, type: 3}
-  - {fileID: 21300000, guid: 909837b69931c834ba42f340e8ea4675, type: 3}
+  - {fileID: 21300000, guid: 00b3145b7a43b26428bfd474e7abe0ec, type: 3}
   - {fileID: 21300000, guid: 6e8253e0137af9b4d90b00fd54a26995, type: 3}
   - {fileID: 21300000, guid: d88defca46105554f91c507a3ead3d0a, type: 3}
   imageInfo: {fileID: 1833841482}

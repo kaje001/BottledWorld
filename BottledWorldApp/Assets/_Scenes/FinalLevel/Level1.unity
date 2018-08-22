@@ -1176,7 +1176,7 @@ MonoBehaviour:
   soundclipLevelEnd: {fileID: 8300000, guid: a0410867fb403564ba6eb4ac9d0139e3, type: 3}
   soundclipButtonClick: {fileID: 8300000, guid: feb361d9edc1a424fa8eb2c2d74449e3,
     type: 3}
-  music1: {fileID: 8300000, guid: f51ca6a208c84394194189d421b4e484, type: 3}
+  music1: {fileID: 8300000, guid: 5fcad3806dc894d4d8f3773e5966b8a0, type: 3}
   animator: {fileID: 779305580}
   animatorStars: {fileID: 1432572750}
   matNormal:

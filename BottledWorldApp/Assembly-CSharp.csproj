@@ -81,6 +81,7 @@
      <Compile Include="Assets\_Scripts\Menu\Cutom\CustomSelecter.cs" />
      <Compile Include="Assets\_Scripts\Menu\Cutom\UIController.cs" />
      <Compile Include="Assets\_Scripts\Menu\HighlightBottle.cs" />
+     <Compile Include="Assets\_Scripts\Menu\LockController.cs" />
      <Compile Include="Assets\_Scripts\Menu\MenuController.cs" />
      <Compile Include="Assets\_Scripts\Menu\ShelfController.cs" />
      <Compile Include="Assets\_Scripts\StartUp\CoinController.cs" />
@@ -146,6 +147,8 @@
      <Compile Include="Assets\LeanTween\Testing\TestingRotate.cs" />
      <Compile Include="Assets\LeanTween\Testing\TestingSceneSwitching.cs" />
      <Compile Include="Assets\LeanTween\Testing\TestingSequencer.cs" />
+     <Compile Include="Assets\ShowOverHight.cs" />
+     <Compile Include="Assets\SphereInStartScreen.cs" />
      <None Include="Assets\_Materials\Menu\OutlineSelected_SHA.shader" />
      <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX3 Multiply Color.shader" />
      <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFXM_MobileParticleAdd_Alpha8.shader" />
