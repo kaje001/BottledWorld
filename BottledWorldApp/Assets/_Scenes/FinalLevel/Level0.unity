@@ -89,7 +89,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: 55b9859f3adfbf94696f21f3d14a13cf,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -954,7 +955,7 @@ MonoBehaviour:
   soundclipLanding: {fileID: 8300000, guid: d837491509008234e9ad558db26866ee, type: 3}
   soundclipBoost: {fileID: 8300000, guid: 2923b825e1a8de24096d1854cee60497, type: 3}
   soundclipStart: {fileID: 8300000, guid: 9e0f0b38a550c3b469901d18d0313ff1, type: 3}
-  soundclipAntFall: {fileID: 8300000, guid: 4eb7c000f7fb78f459d9805b2cd07839, type: 3}
+  soundclipAntFall: {fileID: 8300000, guid: 8ed99b42fcf55654889b5c38c27caa5a, type: 3}
   soundclipCountdown: {fileID: 8300000, guid: 25707ae98a7a57a41a87f872fbcb593c, type: 3}
   soundclipCheckpoint: {fileID: 8300000, guid: 4f4a64f5d9ff6d745a9d58652ab9eef1, type: 3}
   soundclipCountUIHeart: {fileID: 8300000, guid: 889cd4c4977675b4f937c06c2648746c,
@@ -33444,7 +33445,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1071339696
 RectTransform:
   m_ObjectHideFlags: 0

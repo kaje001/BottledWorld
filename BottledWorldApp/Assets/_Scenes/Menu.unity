@@ -51,7 +51,7 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_TemporalCoherenceThreshold: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
+    m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 9
@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 112000002, guid: 00fdb2bbd00604246b7be6caa51da2c6,
+  m_LightingDataAsset: {fileID: 112000002, guid: a261d74ea3de97047b4e4be1cd113c45,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -20213,7 +20213,7 @@ MonoBehaviour:
   particleSysExplode: {fileID: 1032468806}
   soundUnlockLock: {fileID: 8300000, guid: 389515764be9a394a98063b5bbc40463, type: 3}
   soundUnlockBiom: {fileID: 8300000, guid: 795d4ba079c4f8b4aa605188a4b6081e, type: 3}
-  unlockable: 1
+  unlockable: 0
   textNeededSugar: {fileID: 574450501}
   highlightBottleFirstBottle: {fileID: 161718229}
 --- !u!1 &1491825568

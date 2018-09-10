@@ -301,6 +301,7 @@ public class MenuController : MonoBehaviour {
 		foreach (HighlightBottle hb in bottles) {
 			if (CoinController.Instance.IsLevelUnlocked (i)) {
 				hb.active = true;
+				//Debug.Log (i);
 			} else {
 				hb.active = false;
 			}

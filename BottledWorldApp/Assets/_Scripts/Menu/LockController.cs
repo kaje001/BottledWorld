@@ -42,10 +42,10 @@ public class LockController : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 		SoundManager.Instance.PlaySingle (soundUnlockLock);
 		CoinController.Instance.UnlockBiom (biom);
 		StartCoroutine (HidePanel ());
-		CoinController.Instance.Save();
 		highlightBottleFirstBottle.active = true;
 		highlightBottleFirstBottle.SetMaterial ();
 		CoinController.Instance.UnlockLevel (unlockLevel);
+		CoinController.Instance.Save();
 	}
 
 	IEnumerator HidePanel(){
