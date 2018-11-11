@@ -29,11 +29,12 @@ public class ShelfController : MonoBehaviour, IPointerDownHandler, IDragHandler,
 	void Update () {
 		targetPos -= new Vector3(0f,touchDif,0f);
 		//Debug.Log(touchDif);
-		if (targetPos.y > -0.21f && targetPos.y < 0.91f) {
+		if (targetPos.y > -0.21f && targetPos.y < 1.90f) {
+			
 		} else if (targetPos.y < -0.21f) {
 			targetPos = new Vector3(targetPos.x,-0.21f,targetPos.z);
-		} else if (targetPos.y > 0.91f) {
-			targetPos = new Vector3(targetPos.x,0.91f,targetPos.z);
+		} else if (targetPos.y > 1.90f) {
+			targetPos = new Vector3(targetPos.x,1.90f,targetPos.z);
 		}
 
 

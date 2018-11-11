@@ -106,6 +106,40 @@ public class MenuController : MonoBehaviour {
 			Debug.Log ("Start Level 4");
 			SceneManager.LoadScene("Level4");
 			panelLoading.SetActive (true);
+		} else if (ob.transform.tag == "Level5" && CoinController.Instance.IsLevelUnlocked(5)) {
+			Debug.Log ("Start Level 5");
+			SceneManager.LoadScene("Level5");
+			panelLoading.SetActive (true);
+			musicoff = true;
+		} else if (ob.transform.tag == "Level6" && CoinController.Instance.IsLevelUnlocked(6)) {
+			Debug.Log ("Start Level 6");
+			SceneManager.LoadScene("Level6");
+			panelLoading.SetActive (true);
+		}else if (ob.transform.tag == "Level7" && CoinController.Instance.IsLevelUnlocked(7)) {
+			Debug.Log ("Start Level 7");
+			SceneManager.LoadScene("Level7");
+			panelLoading.SetActive (true);
+		}else if (ob.transform.tag == "Level8" && CoinController.Instance.IsLevelUnlocked(8)) {
+			Debug.Log ("Start Level 8");
+			SceneManager.LoadScene("Level8");
+			panelLoading.SetActive (true);
+		} else if (ob.transform.tag == "Level9" && CoinController.Instance.IsLevelUnlocked(9)) {
+			Debug.Log ("Start Level 9");
+			SceneManager.LoadScene("Level9");
+			panelLoading.SetActive (true);
+			musicoff = true;
+		} else if (ob.transform.tag == "Level10" && CoinController.Instance.IsLevelUnlocked(10)) {
+			Debug.Log ("Start Level 10");
+			SceneManager.LoadScene("Level10");
+			panelLoading.SetActive (true);
+		}else if (ob.transform.tag == "Level11" && CoinController.Instance.IsLevelUnlocked(11)) {
+			Debug.Log ("Start Level 11");
+			SceneManager.LoadScene("Level11");
+			panelLoading.SetActive (true);
+		}else if (ob.transform.tag == "Level12" && CoinController.Instance.IsLevelUnlocked(12)) {
+			Debug.Log ("Start Level 12");
+			SceneManager.LoadScene("Level12");
+			panelLoading.SetActive (true);
 		}
 
 		if (musicoff) {

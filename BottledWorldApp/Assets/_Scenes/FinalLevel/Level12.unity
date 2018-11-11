@@ -1218,9 +1218,9 @@ MonoBehaviour:
   rotSpeed: 100
   lifes: 1
   coinsInLevel: 5
-  level: 3
-  biom: 0
-  unlockLevel: 1
+  level: 12
+  biom: 2
+  unlockLevel: 0
   pauseCheck: {fileID: 1693740428920292, guid: 4d01b6baba5ab5946a892136df66a0c0, type: 2}
   pausePanel: {fileID: 887897084}
   txtScore: {fileID: 923907557}
