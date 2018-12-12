@@ -78,6 +78,20 @@ public class CoinController : MonoBehaviour {
 			return (state.coinsCollectedLevel4 & (1 << (index))) != 0;
 		} else if (level == 5) {
 			return (state.coinsCollectedLevel5 & (1 << (index))) != 0;
+		} else if (level == 6) {
+			return (state.coinsCollectedLevel6 & (1 << (index))) != 0;
+		} else if (level == 7) {
+			return (state.coinsCollectedLevel7 & (1 << (index))) != 0;
+		} else if (level == 8) {
+			return (state.coinsCollectedLevel8 & (1 << (index))) != 0;
+		} else if (level == 9) {
+			return (state.coinsCollectedLevel9 & (1 << (index))) != 0;
+		} else if (level == 10) {
+			return (state.coinsCollectedLevel10 & (1 << (index))) != 0;
+		} else if (level == 11) {
+			return (state.coinsCollectedLevel11 & (1 << (index))) != 0;
+		} else if (level == 12) {
+			return (state.coinsCollectedLevel12 & (1 << (index))) != 0;
 		} else {
 			return false;
 		}
@@ -97,6 +111,20 @@ public class CoinController : MonoBehaviour {
 			state.coinsCollectedLevel4 |= 1 << index;
 		} else if (level == 5) {
 			state.coinsCollectedLevel5 |= 1 << index;
+		}else if (level == 6) {
+			state.coinsCollectedLevel6 |= 1 << index;
+		}else if (level == 7) {
+			state.coinsCollectedLevel7 |= 1 << index;
+		}else if (level == 8) {
+			state.coinsCollectedLevel8 |= 1 << index;
+		}else if (level == 9) {
+			state.coinsCollectedLevel9 |= 1 << index;
+		}else if (level == 10) {
+			state.coinsCollectedLevel10 |= 1 << index;
+		}else if (level == 11) {
+			state.coinsCollectedLevel11 |= 1 << index;
+		}else if (level == 12) {
+			state.coinsCollectedLevel12 |= 1 << index;
 		}
 	}
 
@@ -121,6 +149,27 @@ public class CoinController : MonoBehaviour {
 		} else if (level == 5) {
 			state.coinsLevel5 += value;
 			return state.coinsLevel5;
+		} else if (level == 6) {
+			state.coinsLevel6 += value;
+			return state.coinsLevel6;
+		} else if (level == 7) {
+			state.coinsLevel7 += value;
+			return state.coinsLevel7;
+		} else if (level == 8) {
+			state.coinsLevel8 += value;
+			return state.coinsLevel8;
+		} else if (level == 9) {
+			state.coinsLevel9 += value;
+			return state.coinsLevel9;
+		} else if (level == 10) {
+			state.coinsLevel10 += value;
+			return state.coinsLevel10;
+		} else if (level == 11) {
+			state.coinsLevel11 += value;
+			return state.coinsLevel11;
+		} else if (level == 12) {
+			state.coinsLevel12 += value;
+			return state.coinsLevel12;
 		}  else{
 			return 0;
 		}
@@ -140,6 +189,20 @@ public class CoinController : MonoBehaviour {
 			return state.coinsLevel4;
 		} else if (level == 5) {
 			return state.coinsLevel5;
+		} else if (level == 6) {
+			return state.coinsLevel6;
+		} else if (level == 7) {
+			return state.coinsLevel7;
+		} else if (level == 8) {
+			return state.coinsLevel8;
+		} else if (level == 9) {
+			return state.coinsLevel9;
+		} else if (level == 10) {
+			return state.coinsLevel10;
+		} else if (level == 11) {
+			return state.coinsLevel11;
+		} else if (level == 12) {
+			return state.coinsLevel12;
 		} else{
 			return 0;
 		}
