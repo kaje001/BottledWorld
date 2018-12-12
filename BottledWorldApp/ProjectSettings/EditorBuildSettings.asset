@@ -22,7 +22,7 @@ EditorBuildSettings:
     guid: 8455ef095f6103e4193dcb4dab68e29e
   - enabled: 1
     path: Assets/_Scenes/FinalLevel/Level3.unity
-    guid: a64f5a418acf2a340a1bf88c0d7050bf
+    guid: 885ccc50f935d014b863db5249cfe61a
   - enabled: 1
     path: Assets/_Scenes/FinalLevel/Level4.unity
     guid: 91c7d9001c0308045870fc1b2e7df6ba
@@ -34,7 +34,7 @@ EditorBuildSettings:
     guid: 16023fe2c37b87b46a7df5ae8565b8af
   - enabled: 1
     path: Assets/_Scenes/FinalLevel/Level7.unity
-    guid: f0ff44dcafa5cfc44ba494078cd7cb9d
+    guid: eca43ad4b3e60d34b96953cb53ed1336
   - enabled: 1
     path: Assets/_Scenes/FinalLevel/Level8.unity
     guid: 91c1e75144c331541adfe440bfafbdfc
