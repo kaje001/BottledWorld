@@ -584,7 +584,7 @@ MonoBehaviour:
   player: {fileID: 939718188}
   camDummy: {fileID: 1528792685}
   camCenter: {fileID: 523984570}
-  playerSpeed: 1.36
+  playerSpeed: 2.5
   boostLenth: 0.8
   rotSpeed: 100
   lifes: 1
