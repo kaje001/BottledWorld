@@ -20,16 +20,9 @@ public class GyroCon : MonoBehaviour {
 		if (!CoinController.Instance.state.settingsControls) {
 			gyro.enabled = true;
 		} else {
-			Input.gyro.enabled = false;
+			gyro.enabled = false;
 		}
 	}
-	
-	// Update is called once per frame
-	/*void Update () {
-		playCon.RotateWorldGyro (new Vector3(Input.gyro.gravity.x, Input.gyro.gravity.y, 0f).normalized);
-		//txt.text = Input.gyro.attitude.ToString ();
-
-	}*/
 
 	public Vector3 GetGyroGravity(){
 

@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] Transform camCenter;
 	[SerializeField] float playerSpeed = 1.2f;
 	[SerializeField] float boostLenth = 0.8f;
-	//[SerializeField] float jumpForce = 5f;
 	[SerializeField] int rotSpeed = 100;
 	[SerializeField] int lifes = 1;
 	[SerializeField] int coinsInLevel = 5;
@@ -59,7 +58,6 @@ public class PlayerController : MonoBehaviour
 	GameObject[] coinSpawnpoints;
 	[SerializeField] Transform parentCoins;
 
-	Rigidbody rigPlayer;
 	float startPlayerSpeed;
 	
 	//Checkpoint Elemente
@@ -74,9 +72,6 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] GameObject finishinLine;
 	float totalDistance;
 	[SerializeField] ProgressLevel progLevel;
-	//Vector3 checkpointGravity;
-	//Vector3 checkpointJumpVector;
-	//Quaternion checkpointQuaternion;
 
 	//For the Jump
 	float maxJumpHeight = 0.14f;
@@ -88,15 +83,11 @@ public class PlayerController : MonoBehaviour
 	IEnumerator coroutineJump;
 	IEnumerator coroutineBoost;
 	IEnumerator coroutineCheckCountdown;
-	//private Vector3 velocity = Vector3.zero;
 
 	void Start ()
 	{
-		//Screen.sleepTimeout = SleepTimeout.NeverSleep;
-
 		panelLoading.SetActive (false);
 		txtPauseButton.gameObject.SetActive (false);
-		rigPlayer = player.GetComponent<Rigidbody> ();
 		checkpointPosition = firstCheckpoint.transform.GetChild(0).position;
 
 		foreach (GameObject ob in arrowsCheckpoint) {
@@ -107,13 +98,11 @@ public class PlayerController : MonoBehaviour
 
 		swipeCon = CoinController.Instance.state.settingsControls;
 		if (swipeCon) {
-			//GetComponent<GyroCon> ().enabled = false;
-			//FindObjectOfType<TouchCon> ().enabled = true;
 			gravityGyro = Physics.gravity;
+		} else {
+			gravity = Physics.gravity;
 		}
 
-		//int curCoins = CoinController.Instance.GetCoinForLevel (level);
-		//txtCoins.text = curCoins.ToString ();
 		txtCoins.text = "0";
 		txtLifes.text = lifes.ToString ();
 
@@ -132,8 +121,6 @@ public class PlayerController : MonoBehaviour
 		LastGameData.Instance.unlockLevel = 0;
 
 		pause = true;
-		//freeze = true;
-		//StartCoroutine ("CountdownAfterPause");
 
 		VFXandSoundTrigger.Instance.StartLevelMusic ();
 	}
@@ -153,7 +140,6 @@ public class PlayerController : MonoBehaviour
 				gravity.x = -0.02f;
 			}
 		}
-		//Debug.Log (gravity.x + "/" + gravity.y);
 
 		if (!freeze) {
 			Vector3 curPos = player.transform.position;
@@ -161,7 +147,7 @@ public class PlayerController : MonoBehaviour
 			Vector3 pos = gravity.normalized * 1.86f;
 			pos = pos + (-gravity) * curJumpHight;
 			pos.z = curPos.z;
-			//player.transform.position = pos;
+
 			float forwardMovement = 0;
 			if (!pause) {
 				SetPhysicsGravity ();
@@ -192,64 +178,23 @@ public class PlayerController : MonoBehaviour
 			}
 
 
-
-
-			//rigPlayer.MovePosition (new Vector3 (pos.x, pos.y, curPos.z + forwardMovement)); //Der Spieler wird nach vorne bewegt
-			//player.transform.position = Vector3.Lerp(curPos, new Vector3 (pos.x, pos.y, curPos.z + forwardMovement), 10f * Time.deltaTime);
 			player.transform.position = new Vector3 (pos.x, pos.y, curPos.z + forwardMovement);
 
-
-			//player.transform.Rotate(0f,0f,(rot * rotSpeed));
 			player.transform.up = -gravity;
 		}
 
 		//Camera Movement
 
-		//camDummy.position = Vector3.Lerp(camDummy.position, player.transform.position, 2f * Time.deltaTime);
 		if (finished) {
 			camDummy.position = new Vector3 (player.transform.position.x, player.transform.position.y, camDummy.position.z);
 		} else {
 			camDummy.position = player.transform.position;
 
 		}
-		//camDummy.rotation = Quaternion.Lerp(camDummy.rotation, player.transform.rotation, 220f * Time.deltaTime);
-		//camDummy.rotation = Quaternion.Lerp(camDummy.rotation, player.transform.rotation, 4f * Time.deltaTime);
 		camDummy.rotation = player.transform.rotation;
 		if (!swipeCon) {
 			Camera.main.transform.LookAt (camCenter);
 		}
-
-	}
-	
-	//RotateWorld wird immer bei einer TouchBewegung aufgerufen
-	public void RotateWorld(float rot){
-		//Die Funktion rotiert nicht die Flasche, sondern die Gravitation und den Spieler
-			//Dadurch muss nicht die Ganze Geometrie gedreht und neu Berechnet werden (Performance :))
-		gravityGyro = Quaternion.Euler(0, 0, rot * rotSpeed) * gravityGyro;
-		//Debug.Log (gravityGyro);
-
-		
-		//jumpVec = Quaternion.Euler(0, 0, rot * rotSpeed) * jumpVec;
-		
-		/*player.transform.Rotate(0f,0f,(rot * rotSpeed));
-		if (lockplayer) {
-			Vector3 pos = gravity.normalized * 1.71f;
-			pos.z = player.transform.position.z;
-			player.transform.position = pos;
-		}
-		camDummy.rotation = player.transform.rotation;*/
-
-	}
-
-
-	public void RotateWorldGyro (Vector3 tempGravityGyro)
-	{
-		if (Vector3.Angle (gravity, tempGravityGyro) < 0.48f) {
-			return;
-		}
-
-		gravityGyro = tempGravityGyro * 9.81f;
-
 
 	}
 
@@ -260,15 +205,15 @@ public class PlayerController : MonoBehaviour
 				return;
 			}
 			float rot = TouchCon.Instance.GetDragLength ();
-			//Debug.Log (rot);
 			gravityGyro = Quaternion.Euler(0, 0, rot * rotSpeed) * gravityGyro;
-			//Debug.Log (gravityGyro);
+
 		} else {
 			Vector3 tempGravityGyro = GyroCon.Instance.GetGyroGravity ();
 			if (Vector3.Angle (gravity, tempGravityGyro) < 1f) {
 				return;
 			}
 
+//			Debug.Log (tempGravityGyro);
 			gravityGyro = tempGravityGyro * 9.81f;
 		}
 
@@ -293,7 +238,6 @@ public class PlayerController : MonoBehaviour
 		VFXandSoundTrigger.Instance.TriggerButtonClick ();
 		VFXandSoundTrigger.Instance.EndLevelMusic ();
 
-		//Screen.sleepTimeout = SleepTimeout.SystemSetting;
 		SceneManager.LoadScene ("Menu");
 		panelLoading.SetActive (true);
 	}
@@ -311,13 +255,10 @@ public class PlayerController : MonoBehaviour
 	public void SetToLastCheckpoint ()
 	{
 		txtPauseButton.gameObject.SetActive (false);
-		//rigPlayer.velocity = Vector3.zero;
-		//Physics.gravity = checkpointGravity;
 		Vector3 pos = player.transform.position;
 		pos.z = checkpointPosition.z;
 		player.transform.position = pos;
 		pausePoint = checkpointPosition;
-		//player.transform.rotation = checkpointQuaternion;
 		playerSpeed = startPlayerSpeed;
 
 		foreach (GameObject ob in coinsTempObjects) {
@@ -333,12 +274,8 @@ public class PlayerController : MonoBehaviour
 	public void Win(){
 		if (!freeze) {
 			finished = true;
-			//freeze = true;
-			//pause = true;
-			//pausePanel.SetActive (true);
 			txtPauseButton.gameObject.SetActive (false);
 
-			//txtScore.text = coinIndexes.Count.ToString () + "/" + coinsLeftInLevel;
 			VFXandSoundTrigger.Instance.TriggerLevelEnd();
 
 			StartCoroutine (WaitForFinish ());
@@ -367,7 +304,6 @@ public class PlayerController : MonoBehaviour
 		LastGameData.Instance.totalSugarCubesLevel = coinsInLevel;
 		LastGameData.Instance.sugarCubesForLevel = CoinController.Instance.GetCoinForLevel(level);
 
-		//LastGameData.Instance.sugarCubesForLevel = coinIndexes.Count;
 		if (unlockLevel) {
 			LastGameData.Instance.unlockLevel = level + 1;
 		}
@@ -407,7 +343,6 @@ public class PlayerController : MonoBehaviour
 			txtLifes.text = lifes.ToString ();
 			SetToLastCheckpoint ();
 			pause = true;
-			//StartCoroutine ("CountdownAfterPause");
 		}
 	}
 
@@ -449,17 +384,11 @@ public class PlayerController : MonoBehaviour
 	//Ein Zuckerwürfel aufsammeln
 	public void AddCoin (GameObject ob)
 	{
-
 		Coin coin = ob.GetComponent<Coin> ();
-		//CoinController.Instance.CollectCoin (level, coin.index);
-
-		//coinIndexes.Add (coin.index);
 		coinTempIndexes.Add (coin.index);
 		coinsTempObjects.Add (ob);
 
-		//txtCoins.text = coinIndexes.Count.ToString ();
 		CollectEffectUI (panelCoins, txtCoins, coinIndexes.Count + coinTempIndexes.Count);
-		//Destroy (ob);
 		ob.SetActive (false);
 
 		//Trigger VFX and Sound
@@ -477,7 +406,6 @@ public class PlayerController : MonoBehaviour
 		VFXandSoundTrigger.Instance.TriggerJump(player.transform);
 		
 		inputJump = true;
-		//Debug.Log ("test");
 
 		coroutineJump = Jump();
 		StartCoroutine (coroutineJump);
@@ -516,8 +444,6 @@ public class PlayerController : MonoBehaviour
 	public void SetCheckpoint (GameObject checkpointOb)
 	{
 		if (pause) {
-
-			//UnpauseGame ();
 			coroutineCheckCountdown = CheckpointCountdown();
 			StartCoroutine(coroutineCheckCountdown);
 
@@ -527,9 +453,7 @@ public class PlayerController : MonoBehaviour
 		}
 
 		touchedCheckpoints.Add (checkpointOb);
-		//checkpointGravity = Physics.gravity;
 		checkpointPosition = player.transform.position;
-		//checkpointQuaternion = player.transform.rotation;
 		pausePoint = player.transform.position;
 
 		foreach (int i in coinTempIndexes) {
@@ -539,7 +463,6 @@ public class PlayerController : MonoBehaviour
 		coinsTempObjects.Clear ();
 
 		VFXandSoundTrigger.Instance.TriggerCheckpoint (checkpointOb);
-		//checkpointOb.GetComponent<Renderer> ().material = matCheckpointChecked;
 	}
 
 	public void LeaveCheckpoint(){
@@ -563,7 +486,6 @@ public class PlayerController : MonoBehaviour
 		Destroy (ob);
 		lifes++;
 		CollectEffectUI (panelLifes, txtLifes, lifes);
-		//txtLifes.text = lifes.ToString ();
 
 		//Trigger VFX and Sound
 		VFXandSoundTrigger.Instance.TriggerHeart();
@@ -589,11 +511,7 @@ public class PlayerController : MonoBehaviour
 
 		VFXandSoundTrigger.Instance.TriggerButtonClick ();
 		if (!pause) {
-
-			//Screen.sleepTimeout = SleepTimeout.NeverSleep;
-
 			pause = true;
-			//freeze = true;
 			pausePoint = player.transform.position;
 			objPause = Instantiate (pauseCheck, player.transform.position, player.transform.rotation);
 			pausePanel.SetActive (true);
@@ -602,13 +520,8 @@ public class PlayerController : MonoBehaviour
 			txtPauseButton.sprite = spriteResumeUI;
 			VFXandSoundTrigger.Instance.TriggerPause ();
 		} else if (pause) {
-			
-			//Screen.sleepTimeout = SleepTimeout.SystemSetting;
-
 			pausePanel.SetActive (false);
 			txtPauseButton.sprite = spritePauseUI;
-			//StartCoroutine ("CountdownAfterPause");
-			//freeze = false;
 			waitForUnpause = true;
 		}
 
@@ -619,26 +532,17 @@ public class PlayerController : MonoBehaviour
 
 		VFXandSoundTrigger.Instance.TriggerButtonClick ();
 		if (!pause) {
-
-			//Screen.sleepTimeout = SleepTimeout.NeverSleep;
-
 			pause = true;
-			//freeze = true;
 			pausePoint = player.transform.position;
 			objPause = Instantiate (pauseCheck, player.transform.position, player.transform.rotation);
 			pauseTutPanel.SetActive (true);
-			//txtPauseButton.sprite = spriteResumeUI;
 			txtPauseButton.gameObject.SetActive(false);
 			VFXandSoundTrigger.Instance.TriggerPause ();
+
 		} else if (pause) {
-
-			//Screen.sleepTimeout = SleepTimeout.SystemSetting;
-
 			pauseTutPanel.SetActive (false);
 			txtPauseButton.gameObject.SetActive(true);
-			//txtPauseButton.sprite = spritePauseUI;
-			//StartCoroutine ("CountdownAfterPause");
-			//freeze = false;
+
 			waitForUnpause = true;
 		}
 

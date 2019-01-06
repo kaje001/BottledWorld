@@ -93,7 +93,12 @@ public class AntController : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 		Ray ray = Camera.main.ScreenPointToRay(new Vector3 (data.position.x, data.position.y+40f, 0f));
 		RaycastHit hitInfo;
 		if (Physics.Raycast (ray, out hitInfo, 100f, layMask)) {
-			if (overObject == null) {
+			if (hitInfo.collider.gameObject.tag == "Obstacle") {
+				if (overObject != null) {
+					menuControll.OverObjectLeave (overObject);
+					overObject = null;
+				}
+			}else if (overObject == null) {
 				overObject = hitInfo.collider.gameObject;
 				menuControll.OverObject (overObject);
 			}

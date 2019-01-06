@@ -148,14 +148,14 @@ public class MenuController : MonoBehaviour {
 	}
 
 	public void OverObject(GameObject ob){
-
-		if(ob.GetComponent<HighlightBottle> ().active){
-			ob.GetComponent<HighlightBottle> ().Hightlight (true);
+		HighlightBottle hb = ob.GetComponent<HighlightBottle> ();
+		if(hb.active){
+			hb.Hightlight (true);
 			SoundManager.Instance.PlaySingle (soundOverBottle);
 
 			panelSugarInfo.SetActive (true);
-			textSugarInfo.text = CoinController.Instance.GetCoinForLevel(int.Parse(ob.tag.Substring(ob.tag.Length-1,1))) + "/" + coinsInLevels[int.Parse(ob.tag.Substring(ob.tag.Length-1,1))];
-			panelSugarInfo.transform.localPosition = new Vector3 (int.Parse (ob.tag.Substring (ob.tag.Length - 1, 1)) * 120 - 240, panelSugarInfo.transform.localPosition.y, panelSugarInfo.transform.localPosition.z);
+			textSugarInfo.text = CoinController.Instance.GetCoinForLevel(hb.level) + "/" + coinsInLevels[hb.level];
+			panelSugarInfo.transform.localPosition = new Vector3 (hb.positionInShelf * 120 - 180, panelSugarInfo.transform.localPosition.y, panelSugarInfo.transform.localPosition.z);
 		}
 
 		/*if (ob.transform.tag == "Level1") {
@@ -173,7 +173,7 @@ public class MenuController : MonoBehaviour {
 	}
 
 	public void OverObjectLeave(GameObject ob){
-
+		
 		if (ob.GetComponent<HighlightBottle> ().active) {
 			ob.GetComponent<HighlightBottle> ().Hightlight (false);
 			panelSugarInfo.SetActive (false);

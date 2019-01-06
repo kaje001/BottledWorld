@@ -1702,6 +1702,8 @@ MonoBehaviour:
   GlasClear: {fileID: 2100000, guid: f67cbf76d4fa5524d9c5cabebad5e478, type: 2}
   GlasMatt: {fileID: 2100000, guid: 308022295ad99d24390b6d0288717846, type: 2}
   active: 0
+  level: 10
+  positionInShelf: 1
   stared: 0
   star: {fileID: 622864358}
 --- !u!136 &144674915
@@ -2919,6 +2921,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7b09d2cc94a05b24ba9e9155655be751, type: 2}
+    - target: {fileID: 1712537796035820, guid: 8a083ab7ac52c654e94f1f9a0dceb47c, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a083ab7ac52c654e94f1f9a0dceb47c, type: 2}
   m_IsPrefabAsset: 0
@@ -2927,6 +2933,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4678752313227728, guid: 8a083ab7ac52c654e94f1f9a0dceb47c,
     type: 2}
   m_PrefabInternal: {fileID: 250329857}
+--- !u!1 &250329859 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1712537796035820, guid: 8a083ab7ac52c654e94f1f9a0dceb47c,
+    type: 2}
+  m_PrefabInternal: {fileID: 250329857}
+--- !u!65 &250329860
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 250329859}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.52, y: 0.18, z: 2.29}
+  m_Center: {x: 0.00006568432, y: 0.53, z: -0.98}
 --- !u!1001 &263397555
 Prefab:
   m_ObjectHideFlags: 0
@@ -10063,6 +10086,8 @@ MonoBehaviour:
   GlasClear: {fileID: 2100000, guid: f67cbf76d4fa5524d9c5cabebad5e478, type: 2}
   GlasMatt: {fileID: 2100000, guid: 308022295ad99d24390b6d0288717846, type: 2}
   active: 0
+  level: 7
+  positionInShelf: 2
   stared: 0
   star: {fileID: 272355658}
 --- !u!136 &391213224
@@ -11746,6 +11771,8 @@ MonoBehaviour:
   GlasClear: {fileID: 2100000, guid: f67cbf76d4fa5524d9c5cabebad5e478, type: 2}
   GlasMatt: {fileID: 2100000, guid: 308022295ad99d24390b6d0288717846, type: 2}
   active: 0
+  level: 5
+  positionInShelf: 0
   stared: 0
   star: {fileID: 1184783971}
 --- !u!136 &537747489
@@ -14878,7 +14905,9 @@ MonoBehaviour:
   hightlightPic: {fileID: 1304890096}
   GlasClear: {fileID: 2100000, guid: f67cbf76d4fa5524d9c5cabebad5e478, type: 2}
   GlasMatt: {fileID: 2100000, guid: 308022295ad99d24390b6d0288717846, type: 2}
-  active: 1
+  active: 0
+  level: 1
+  positionInShelf: 0
   stared: 0
   star: {fileID: 338294215}
 --- !u!1 &758061208
@@ -17048,6 +17077,8 @@ MonoBehaviour:
   GlasClear: {fileID: 2100000, guid: f67cbf76d4fa5524d9c5cabebad5e478, type: 2}
   GlasMatt: {fileID: 2100000, guid: 308022295ad99d24390b6d0288717846, type: 2}
   active: 0
+  level: 11
+  positionInShelf: 2
   stared: 0
   star: {fileID: 1735201788}
 --- !u!136 &921392417
@@ -18040,6 +18071,8 @@ MonoBehaviour:
   GlasClear: {fileID: 2100000, guid: f67cbf76d4fa5524d9c5cabebad5e478, type: 2}
   GlasMatt: {fileID: 2100000, guid: 308022295ad99d24390b6d0288717846, type: 2}
   active: 0
+  level: 6
+  positionInShelf: 1
   stared: 0
   star: {fileID: 735040346}
 --- !u!136 &1019607934
@@ -19048,6 +19081,8 @@ MonoBehaviour:
   GlasClear: {fileID: 2100000, guid: f67cbf76d4fa5524d9c5cabebad5e478, type: 2}
   GlasMatt: {fileID: 2100000, guid: 308022295ad99d24390b6d0288717846, type: 2}
   active: 0
+  level: 9
+  positionInShelf: 0
   stared: 0
   star: {fileID: 774318200}
 --- !u!136 &1119074922
@@ -20269,6 +20304,8 @@ MonoBehaviour:
   GlasClear: {fileID: 2100000, guid: f67cbf76d4fa5524d9c5cabebad5e478, type: 2}
   GlasMatt: {fileID: 2100000, guid: 308022295ad99d24390b6d0288717846, type: 2}
   active: 0
+  level: 4
+  positionInShelf: 3
   stared: 0
   star: {fileID: 1974937280}
 --- !u!4 &1263421737
@@ -21225,6 +21262,8 @@ MonoBehaviour:
   GlasClear: {fileID: 2100000, guid: f67cbf76d4fa5524d9c5cabebad5e478, type: 2}
   GlasMatt: {fileID: 2100000, guid: 308022295ad99d24390b6d0288717846, type: 2}
   active: 0
+  level: 3
+  positionInShelf: 2
   stared: 0
   star: {fileID: 191824924}
 --- !u!1 &1337278002
@@ -21569,6 +21608,8 @@ MonoBehaviour:
   GlasClear: {fileID: 2100000, guid: f67cbf76d4fa5524d9c5cabebad5e478, type: 2}
   GlasMatt: {fileID: 2100000, guid: 308022295ad99d24390b6d0288717846, type: 2}
   active: 0
+  level: 12
+  positionInShelf: 3
   stared: 0
   star: {fileID: 547337699}
 --- !u!136 &1341429359
@@ -23526,7 +23567,9 @@ MonoBehaviour:
   hightlightPic: {fileID: 2017303508}
   GlasClear: {fileID: 2100000, guid: f67cbf76d4fa5524d9c5cabebad5e478, type: 2}
   GlasMatt: {fileID: 2100000, guid: 308022295ad99d24390b6d0288717846, type: 2}
-  active: 0
+  active: 1
+  level: 0
+  positionInShelf: 0
   stared: 0
   star: {fileID: 132960880}
 --- !u!136 &1541355054
@@ -29668,7 +29711,9 @@ MonoBehaviour:
   hightlightPic: {fileID: 1048689201}
   GlasClear: {fileID: 2100000, guid: f67cbf76d4fa5524d9c5cabebad5e478, type: 2}
   GlasMatt: {fileID: 2100000, guid: 308022295ad99d24390b6d0288717846, type: 2}
-  active: 1
+  active: 0
+  level: 2
+  positionInShelf: 1
   stared: 0
   star: {fileID: 1193361569}
 --- !u!1 &1994984861
@@ -30107,6 +30152,8 @@ MonoBehaviour:
   GlasClear: {fileID: 2100000, guid: f67cbf76d4fa5524d9c5cabebad5e478, type: 2}
   GlasMatt: {fileID: 2100000, guid: 308022295ad99d24390b6d0288717846, type: 2}
   active: 0
+  level: 8
+  positionInShelf: 3
   stared: 0
   star: {fileID: 1870675374}
 --- !u!136 &2024765762

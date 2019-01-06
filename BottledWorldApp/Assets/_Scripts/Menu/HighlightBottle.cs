@@ -7,8 +7,10 @@ public class HighlightBottle : MonoBehaviour {
 	[SerializeField] GameObject hightlightPic;
 	[SerializeField] Material GlasClear;
 	[SerializeField] Material GlasMatt;
-	[SerializeField] public bool active;
-	[SerializeField] public bool stared;
+	public bool active;
+	public int level;
+	public int positionInShelf;
+	public bool stared;
 	[SerializeField] GameObject star;
 
 	void Start(){

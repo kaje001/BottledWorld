@@ -3,8 +3,8 @@
 public class SaveState {
 
 	//Coins
-	public int totalCoins = 17;
-	public int availableCoins = 17;
+	public int totalCoins = 0;
+	public int availableCoins = 0;
 
 	public int coinsLevel0 = 0;
 	public int coinsLevel1 = 0;
@@ -38,8 +38,8 @@ public class SaveState {
 	public int equippedCustoms = 16843009;
 
 	//Levels
-	public int unlockedLevels = 8191; // 8191 für alle vier
-	public int unlockedBioms = 7; // 7 für alle Biome
+	public int unlockedLevels = 1; // 8191 für alle vier
+	public int unlockedBioms = 1; // 7 für alle Biome
 
 	//Settings
 	public bool gotIt = false;
