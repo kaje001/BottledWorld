@@ -76,6 +76,8 @@
      <Compile Include="Assets\_Scripts\Level\Tutorial\TriggerNumber.cs" />
      <Compile Include="Assets\_Scripts\Level\Tutorial\TutEvents.cs" />
      <Compile Include="Assets\_Scripts\Level\VFXandSoundTrigger.cs" />
+     <Compile Include="Assets\_Scripts\Menu\Achievments\Achievment.cs" />
+     <Compile Include="Assets\_Scripts\Menu\Achievments\AchievmentController.cs" />
      <Compile Include="Assets\_Scripts\Menu\AntController.cs" />
      <Compile Include="Assets\_Scripts\Menu\Collectable.cs" />
      <Compile Include="Assets\_Scripts\Menu\Cutom\ButtonColorCustom.cs" />

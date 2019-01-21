@@ -234,4 +234,16 @@ public class CoinController : MonoBehaviour {
 		state.unlockedBioms ^= 1 << index;
 	}
 
+	//Achievments
+	public bool IsAchievmentÚnlocked(int index){
+		return (state.unlockedAchievments & (1 << index)) != 0;
+	}
+
+	public void UnlockAchievment(int index){
+		state.unlockedAchievments |= 1 << index;
+	}
+
+	public void LockAchievments(int index){
+		state.unlockedAchievments ^= 1 << index;
+	}
 }

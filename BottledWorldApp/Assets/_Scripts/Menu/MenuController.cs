@@ -13,6 +13,7 @@ public class MenuController : MonoBehaviour {
 	[SerializeField] GameObject panelQuit;
 	[SerializeField] GameObject canvasDefault;
 	[SerializeField] GameObject canvasCustoms;
+	[SerializeField] GameObject canvasAchievments;
 	[SerializeField] GameObject panelGotIt;
 	[SerializeField] GameObject panelReallyReset;
 	[SerializeField] GameObject panelLoading;
@@ -34,6 +35,7 @@ public class MenuController : MonoBehaviour {
 
 	bool slide = false;
 	public bool custom = false;
+	public bool achievments = false;
 	public bool draged = false;
 
 	[SerializeField] CustomSelecter customSel;
@@ -222,6 +224,29 @@ public class MenuController : MonoBehaviour {
 		panelReallyReset.SetActive (false);
 	}
 
+	public void ShowAchievments(){
+		//trying to eleminate touch while drag bug
+		if (slide || draged) {
+			return;
+		}
+		SoundManager.Instance.PlaySingle (soundButtonClick);
+		canvasDefault.SetActive (false);
+		GetComponent<AchievmentController> ().UpdateAchievments ();
+		StartCoroutine(SlideCam(camPositions[2].transform, 2));
+	}
+
+	public void HideAchievments(){
+		if (slide) {
+			return;
+		}
+		SoundManager.Instance.PlaySingle (soundButtonClick);
+		canvasAchievments.SetActive (false);
+		achievments = false;
+		txtTotalCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString ();
+		CoinController.Instance.Save ();
+		StartCoroutine(SlideCam(camPositions[0].transform, 0));
+	}
+
 	public void ResetSaveGame(){
 		SoundManager.Instance.PlaySingle (soundButtonClick);
 		CoinController.Instance.ResetSaveState();
@@ -294,7 +319,7 @@ public class MenuController : MonoBehaviour {
 		SoundManager.Instance.PlaySingle (soundButtonClick);
 		canvasDefault.SetActive (false);
 		GetComponent<CustomController> ().CustomOpen ();
-		StartCoroutine(SlideCam(camPositions[1].transform, true));
+		StartCoroutine(SlideCam(camPositions[1].transform, 1));
 	}
 
 	public void HideCustoms(){
@@ -306,10 +331,10 @@ public class MenuController : MonoBehaviour {
 		custom = false;
 		txtTotalCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString ();
 		CoinController.Instance.Save ();
-		StartCoroutine(SlideCam(camPositions[0].transform, false));
+		StartCoroutine(SlideCam(camPositions[0].transform, 0));
 	}
 
-	IEnumerator SlideCam(Transform targetPos, bool b){
+	IEnumerator SlideCam(Transform targetPos, int b){
 		slide = true;
 		while(Vector3.Distance(Camera.main.transform.position, targetPos.position) > 1.2f){
 			Transform pos = Camera.main.transform;
@@ -319,12 +344,17 @@ public class MenuController : MonoBehaviour {
 			Camera.main.transform.rotation = pos.rotation;
 			yield return null;
 		}
-		if(b){
+		if (b == 1) {
 			custom = true;
 			canvasCustoms.SetActive (true);
-		}else{
+		} else if (b == 0) {
 			custom = false;
+			achievments = false;
 			canvasDefault.SetActive (true);
+			canvasAchievments.SetActive (false);
+		} else if (b == 2) {
+			achievments = true;
+			canvasAchievments.SetActive (true);
 		}
 		slide = false;
 	}

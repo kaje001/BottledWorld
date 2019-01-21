@@ -31,7 +31,7 @@ public class UIConEndLevel : MonoBehaviour {
 			LockOpen.SetActive (true);
 			LockClosed.SetActive (false);
 		} else {
-			imageBar.fillAmount = coins * 0.125f;
+			imageBar.fillAmount = (coins - LastGameData.Instance.biom * 8) * 0.125f;
 			LockClosed.SetActive (true);
 			LockOpen.SetActive (false);
 		}
@@ -55,7 +55,7 @@ public class UIConEndLevel : MonoBehaviour {
 	IEnumerator FillBar(){
 		
 		yield return new WaitForSeconds (0.3f);
-		if (coins >= 8) {
+		if (coins >= LastGameData.Instance.biom * 8 + 8) {
 			for(int i = 0; i < LastGameData.Instance.coins; i++){
 				coins++;
 				SoundManager.Instance.PlaySingle (soundBarCountsUp);
@@ -65,7 +65,7 @@ public class UIConEndLevel : MonoBehaviour {
 		} else {
 			for(int i = 0; i < LastGameData.Instance.coins; i++){
 				coins++;
-				imageBar.fillAmount = 0.125f * coins;
+				imageBar.fillAmount = 0.125f * (coins - LastGameData.Instance.biom * 8);
 				SoundManager.Instance.PlaySingle (soundBarCountsUp);
 				coinsBiomBegin.text = coins.ToString();
 				yield return new WaitForSeconds (0.3f);

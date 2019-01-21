@@ -41,6 +41,9 @@ public class SaveState {
 	public int unlockedLevels = 1; // 8191 für alle vier
 	public int unlockedBioms = 1; // 7 für alle Biome
 
+	//Achievments
+	public int unlockedAchievments = 0;
+
 	//Settings
 	public bool gotIt = false;
 	public bool settingsSound = true;
