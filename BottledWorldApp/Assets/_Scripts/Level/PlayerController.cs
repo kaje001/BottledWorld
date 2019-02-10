@@ -80,6 +80,10 @@ public class PlayerController : MonoBehaviour
 	bool inputJump = false;
 	float curJumpHight = 0;
 
+	[SerializeField] float immuneLenth = 3f;
+	[SerializeField] GameObject immuneSphere;
+	bool immune = false;
+
 	IEnumerator coroutineJump;
 	IEnumerator coroutineBoost;
 	IEnumerator coroutineCheckCountdown;
@@ -88,6 +92,10 @@ public class PlayerController : MonoBehaviour
 	{
 		panelLoading.SetActive (false);
 		txtPauseButton.gameObject.SetActive (false);
+		if (immuneSphere != null) {
+			immuneSphere.SetActive(false);
+		}
+		immuneSphere.SetActive(false);
 		checkpointPosition = firstCheckpoint.transform.GetChild(0).position;
 
 		foreach (GameObject ob in arrowsCheckpoint) {
@@ -323,7 +331,7 @@ public class PlayerController : MonoBehaviour
 	public void CheckDeath ()
 	{
 
-		if (pause || finished || inputJump) {
+		if (pause) {
 			return;
 		}
 
@@ -441,6 +449,28 @@ public class PlayerController : MonoBehaviour
 		ResetPlayerSpeed ();
 	}
 
+	public void PlayerImmunityBoost(){
+		immune = true;
+		immuneSphere.SetActive(true);
+		StartCoroutine (ImmuneReset ());
+	}
+
+	IEnumerator ImmuneReset ()
+	{
+		yield return new WaitForSeconds (immuneLenth - 0.6f);
+		immuneSphere.SetActive(false);
+		yield return new WaitForSeconds (0.2f);
+		immuneSphere.SetActive(true);
+		yield return new WaitForSeconds (0.2f);
+		immuneSphere.SetActive(false);
+		yield return new WaitForSeconds (0.1f);
+		immuneSphere.SetActive(true);
+		yield return new WaitForSeconds (0.1f);
+		immuneSphere.SetActive(false);
+		immune = false;
+
+	}
+
 	public void SetCheckpoint (GameObject checkpointOb)
 	{
 		if (pause) {
@@ -495,7 +525,7 @@ public class PlayerController : MonoBehaviour
 
 	public void HitObject ()
 	{
-		if (pause) {
+		if (pause || finished || inputJump || immune) {
 			return;
 		}
 

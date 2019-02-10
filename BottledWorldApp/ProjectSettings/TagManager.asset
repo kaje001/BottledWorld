@@ -31,6 +31,7 @@ TagManager:
   - Level10
   - Level11
   - Level12
+  - Immunity
   layers:
   - Default
   - TransparentFX

@@ -31,6 +31,9 @@ public class PlayerEvents : MonoBehaviour {
 		if(other.transform.tag == "Speed"){ //SpeedBoost anlaufen
 			playCon.PlayerSpeedBoost();
 		}
+		if(other.transform.tag == "Immunity"){ //SpeedBoost anlaufen
+			playCon.PlayerImmunityBoost();
+		}
 		if(other.transform.tag == "Checkpoint"){ //Checkpoint aktivieren
 			playCon.SetCheckpoint(other.gameObject);
 		}
