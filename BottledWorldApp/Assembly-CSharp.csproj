@@ -59,6 +59,12 @@
      <Compile Include="Assets\_Scripts\EndLevel\AntControllerEndLevel.cs" />
      <Compile Include="Assets\_Scripts\EndLevel\LookAtAnt.cs" />
      <Compile Include="Assets\_Scripts\EndLevel\UIConEndLevel.cs" />
+     <Compile Include="Assets\_Scripts\Language\LangCon.cs" />
+     <Compile Include="Assets\_Scripts\Language\LocalizationData.cs" />
+     <Compile Include="Assets\_Scripts\Language\LocalizationManager.cs" />
+     <Compile Include="Assets\_Scripts\Language\LocalizedText.cs" />
+     <Compile Include="Assets\_Scripts\Language\LocalizedTextEditor.cs" />
+     <Compile Include="Assets\_Scripts\Language\StartupManager.cs" />
      <Compile Include="Assets\_Scripts\Level\CameraShake.cs" />
      <Compile Include="Assets\_Scripts\Level\Coin.cs" />
      <Compile Include="Assets\_Scripts\Level\Effects\ProgressLevel.cs" />

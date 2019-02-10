@@ -43,10 +43,13 @@ public class SaveState {
 
 	//Achievments
 	public int unlockedAchievments = 0;
+	public bool newAchievmentUnlocked = false;
 
 	//Settings
 	public bool gotIt = false;
 	public bool settingsSound = true;
 	public bool settingsMusic = true;
 	public bool settingsControls = false;
+
+	public string language = "";
 }

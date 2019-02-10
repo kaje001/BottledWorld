@@ -9,10 +9,18 @@ public class CoinController : MonoBehaviour {
 	public SaveState state;
 
 	void Awake(){
-		
+
+		if (Instance == null) {
+			Instance = this;
+		} else if (Instance != this)
+		{
+			Destroy (gameObject);
+		}
+
 		DontDestroyOnLoad (this);
-		Instance = this;
 		Load ();
+
+		Debug.Log (Application.systemLanguage);
 	}
 
 	//Saving and Loading

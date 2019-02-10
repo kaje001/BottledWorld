@@ -23257,6 +23257,7 @@ GameObject:
   - component: {fileID: 1402392013}
   - component: {fileID: 1402392015}
   - component: {fileID: 1402392014}
+  - component: {fileID: 1402392016}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -23322,6 +23323,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1402392012}
   m_CullTransparentMesh: 0
+--- !u!114 &1402392016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1402392012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a9724042cbc4a46baed40e242fdc70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: infoMain
 --- !u!1 &1408768565
 GameObject:
   m_ObjectHideFlags: 0
@@ -23468,6 +23481,7 @@ GameObject:
   - component: {fileID: 1423759349}
   - component: {fileID: 1423759351}
   - component: {fileID: 1423759350}
+  - component: {fileID: 1423759352}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -23533,6 +23547,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1423759348}
   m_CullTransparentMesh: 0
+--- !u!114 &1423759352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1423759348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a9724042cbc4a46baed40e242fdc70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: infoQuit
 --- !u!1001 &1424266937
 Prefab:
   m_ObjectHideFlags: 0
@@ -31016,6 +31042,7 @@ GameObject:
   - component: {fileID: 2020418212}
   - component: {fileID: 2020418214}
   - component: {fileID: 2020418213}
+  - component: {fileID: 2020418215}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -31081,6 +31108,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2020418211}
   m_CullTransparentMesh: 0
+--- !u!114 &2020418215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2020418211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a9724042cbc4a46baed40e242fdc70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: settingsReset
 --- !u!1 &2021357686
 GameObject:
   m_ObjectHideFlags: 0
