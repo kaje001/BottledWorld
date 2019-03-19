@@ -95,7 +95,9 @@ public class PlayerController : MonoBehaviour
 		if (immuneSphere != null) {
 			immuneSphere.SetActive(false);
 		}
-		immuneSphere.SetActive(false);
+		if (immuneSphere != null) {
+			immuneSphere.SetActive (false);
+		}
 		checkpointPosition = firstCheckpoint.transform.GetChild(0).position;
 
 		foreach (GameObject ob in arrowsCheckpoint) {
@@ -126,6 +128,7 @@ public class PlayerController : MonoBehaviour
 		LastGameData.Instance.hearts = 0;
 		LastGameData.Instance.deaths = 0;
 		LastGameData.Instance.won = false;
+		LastGameData.Instance.wonFirstTime = false;
 		LastGameData.Instance.unlockLevel = 0;
 
 		pause = true;
@@ -316,6 +319,10 @@ public class PlayerController : MonoBehaviour
 			LastGameData.Instance.unlockLevel = level + 1;
 		}
 
+		if (!CoinController.Instance.IsLevelCompleted (level)) {
+			CoinController.Instance.CompleteLevel (level);
+			LastGameData.Instance.wonFirstTime = true;
+		}
 
 		foreach (int i in coinIndexes) {
 			CoinController.Instance.CollectCoin (level, i);
@@ -351,6 +358,11 @@ public class PlayerController : MonoBehaviour
 			txtLifes.text = lifes.ToString ();
 			SetToLastCheckpoint ();
 			pause = true;
+		}
+
+		CoinController.Instance.state.totalDeaths += 1;
+		if (CoinController.Instance.state.totalDeaths == 30 && !CoinController.Instance.IsAchievmentUnlocked (2)) {
+			CoinController.Instance.UnlockAchievment (2);
 		}
 	}
 

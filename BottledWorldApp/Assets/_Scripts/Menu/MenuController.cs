@@ -17,6 +17,7 @@ public class MenuController : MonoBehaviour {
 	[SerializeField] GameObject panelGotIt;
 	[SerializeField] GameObject panelReallyReset;
 	[SerializeField] GameObject panelLoading;
+	[SerializeField] GameObject imageNewAchivment;
 	[SerializeField] Toggle toggleSound;
 	[SerializeField] Toggle toggleMusic;
 	[SerializeField] Toggle toggleControls;
@@ -73,6 +74,43 @@ public class MenuController : MonoBehaviour {
 		StartCoroutine (UnlockLevel (false));
 
 		canvasCustoms.SetActive (false);
+		canvasAchievments.SetActive (false);
+
+		if (LastGameData.Instance.wonFirstTime) {
+			//TODO: Check for Level Achievments 
+
+			if (LastGameData.Instance.level == 0 && !CoinController.Instance.IsAchievmentUnlocked (9)) {
+				CoinController.Instance.UnlockAchievment (9);
+			}
+			if (LastGameData.Instance.level == 3 && !CoinController.Instance.IsAchievmentUnlocked (3)) {
+				CoinController.Instance.UnlockAchievment (3);
+			}
+			if (LastGameData.Instance.level == 7 && !CoinController.Instance.IsAchievmentUnlocked (4)) {
+				CoinController.Instance.UnlockAchievment (4);
+			}
+			if (LastGameData.Instance.level == 11 && !CoinController.Instance.IsAchievmentUnlocked (5)) {
+				CoinController.Instance.UnlockAchievment (5);
+			}
+			if (LastGameData.Instance.level == 4 && !CoinController.Instance.IsAchievmentUnlocked (6)) {
+				CoinController.Instance.UnlockAchievment (6);
+			}
+			if (LastGameData.Instance.level == 8 && !CoinController.Instance.IsAchievmentUnlocked (7)) {
+				CoinController.Instance.UnlockAchievment (7);
+			}
+			if (LastGameData.Instance.level == 12 && !CoinController.Instance.IsAchievmentUnlocked (8)) {
+				CoinController.Instance.UnlockAchievment (8);
+			}
+
+			if (CoinController.Instance.state.completedLevels == 8191 && !CoinController.Instance.IsAchievmentUnlocked (1)) {
+				CoinController.Instance.UnlockAchievment (8);
+			}
+		}
+
+		if (CoinController.Instance.state.newAchievmentUnlocked == true) {
+			imageNewAchivment.SetActive (true);
+		} else {
+			imageNewAchivment.SetActive (false);
+		}
 
 		CoinController.Instance.Save ();
 
@@ -229,8 +267,10 @@ public class MenuController : MonoBehaviour {
 		if (slide || draged) {
 			return;
 		}
+		CoinController.Instance.state.newAchievmentUnlocked = false;
 		SoundManager.Instance.PlaySingle (soundButtonClick);
 		canvasDefault.SetActive (false);
+		imageNewAchivment.SetActive (false);
 		GetComponent<AchievmentController> ().UpdateAchievments ();
 		StartCoroutine(SlideCam(camPositions[2].transform, 2));
 	}

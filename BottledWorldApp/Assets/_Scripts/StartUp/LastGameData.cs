@@ -10,6 +10,7 @@ public class LastGameData : MonoBehaviour {
 	public int hearts = 0;
 	public int deaths = 0;
 	public bool won = false;
+	public bool wonFirstTime = false;
 	public int unlockLevel = 0;
 	public int level = 0;
 	public int biom = 0;

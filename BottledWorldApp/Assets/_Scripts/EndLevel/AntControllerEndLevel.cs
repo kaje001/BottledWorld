@@ -122,6 +122,14 @@ public class AntControllerEndLevel : MonoBehaviour {
 				paricles [i].Play ();
 				particleCount++;
 			}
+
+			//Check Achievment Id: 0
+			if (LastGameData.Instance.level != 0) {
+				if (!CoinController.Instance.IsAchievmentUnlocked (0)) {
+					CoinController.Instance.UnlockAchievment (0);
+					CoinController.Instance.state.newAchievmentUnlocked = true;
+				}
+			}
 		} else {
 			SoundManager.Instance.PlaySingle (audioFirework);
 			paricles [i].Play ();

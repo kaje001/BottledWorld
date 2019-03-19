@@ -4570,7 +4570,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.98001885}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -13495,6 +13495,7 @@ MonoBehaviour:
   panelGotIt: {fileID: 817288855}
   panelReallyReset: {fileID: 2021883591}
   panelLoading: {fileID: 1315056501}
+  imageNewAchivment: {fileID: 1034743705}
   toggleSound: {fileID: 1015744058}
   toggleMusic: {fileID: 1491825570}
   toggleControls: {fileID: 1077156743}
@@ -13623,26 +13624,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameAchievments:
-  - credit
-  - exit
-  - home
-  - play
+  - Sugar Rush
+  - Nerd
+  - Zombie
+  - Beginner
+  - Advanced
+  - Master
+  - Persistent1
+  - Persistent2
+  - Persistent3
+  - Baby Steps
   descriptionAchievments:
-  - watched credits
-  - exit the game
-  - went to the home screen
-  - played a lot :)
+  - Collect all sugar cubes of a level!
+  - 'For special loyalty... Complete all levels '
+  - Despite the fact that you die, you always get up again
+  - 'Everyone starts small... Complete all levels in the first world '
+  - No one is born a master. Complete all levels in the second world
+  - 'Practice creates masters. Complete all levels in the third world '
+  - 'Stamina is what counts. Complete the special level in the first world '
+  - 'Patience is well rewarded! Complete the special level in the second world '
+  - 'Never give up, never surrender. Complete the special level in the third world '
+  - 'The first baby steps are done! Keep it up! Complete the tutorial '
   imageAchievmentsActive:
-  - {fileID: 21300000, guid: 2b0a7bde9692b144fba12e4fc7e4e4e6, type: 3}
-  - {fileID: 21300000, guid: 56bbacf6727804c49b877e4e7bd08ec8, type: 3}
-  - {fileID: 21300000, guid: fe7f7146a005d3e479625f8f3b5181fb, type: 3}
-  - {fileID: 21300000, guid: 30c4de7bb5f7ed24fb8426a2c9b38338, type: 3}
+  - {fileID: 21300000, guid: 8d5c90cddc8933d418fec6ba266a5a95, type: 3}
+  - {fileID: 21300000, guid: 8d5c90cddc8933d418fec6ba266a5a95, type: 3}
+  - {fileID: 21300000, guid: 8d5c90cddc8933d418fec6ba266a5a95, type: 3}
+  - {fileID: 21300000, guid: 8d5c90cddc8933d418fec6ba266a5a95, type: 3}
+  - {fileID: 21300000, guid: 8d5c90cddc8933d418fec6ba266a5a95, type: 3}
+  - {fileID: 21300000, guid: 8d5c90cddc8933d418fec6ba266a5a95, type: 3}
+  - {fileID: 21300000, guid: 8d5c90cddc8933d418fec6ba266a5a95, type: 3}
+  - {fileID: 21300000, guid: 8d5c90cddc8933d418fec6ba266a5a95, type: 3}
+  - {fileID: 21300000, guid: 8d5c90cddc8933d418fec6ba266a5a95, type: 3}
+  - {fileID: 21300000, guid: 8d5c90cddc8933d418fec6ba266a5a95, type: 3}
   imageAchievmentsInactive:
-  - {fileID: 21300000, guid: e706b6b443c5f1f44b5f598d2ac74257, type: 3}
-  - {fileID: 21300000, guid: 0a83af3ee8dca0f4696008c8dd8ed1ec, type: 3}
-  - {fileID: 21300000, guid: d44b1a8283ca9074fba34a3be99f69df, type: 3}
-  - {fileID: 21300000, guid: 90a1c36e0ff26154eb1aadb31842fe1b, type: 3}
+  - {fileID: 21300000, guid: 10e069728a2f33847a158040a47fd9c1, type: 3}
+  - {fileID: 21300000, guid: 10e069728a2f33847a158040a47fd9c1, type: 3}
+  - {fileID: 21300000, guid: 10e069728a2f33847a158040a47fd9c1, type: 3}
+  - {fileID: 21300000, guid: 10e069728a2f33847a158040a47fd9c1, type: 3}
+  - {fileID: 21300000, guid: 10e069728a2f33847a158040a47fd9c1, type: 3}
+  - {fileID: 21300000, guid: 10e069728a2f33847a158040a47fd9c1, type: 3}
+  - {fileID: 21300000, guid: 10e069728a2f33847a158040a47fd9c1, type: 3}
+  - {fileID: 21300000, guid: 10e069728a2f33847a158040a47fd9c1, type: 3}
+  - {fileID: 21300000, guid: 10e069728a2f33847a158040a47fd9c1, type: 3}
+  - {fileID: 21300000, guid: 10e069728a2f33847a158040a47fd9c1, type: 3}
+  stepsAchievment: 010000000d0000001e00000003000000030000000300000001000000010000000100000001000000
   prefabAchievment: {fileID: 1603541651189550, guid: 7285c6d0c26f669418070796cccb5d6c,
+    type: 2}
+  prefabAchievmentProgress: {fileID: 1938202615483368, guid: 923079dd521398b438b3ad29129516d9,
     type: 2}
   parentAchievments: {fileID: 895807876}
 --- !u!1 &636170802
@@ -15549,9 +15577,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &808971617
 MonoBehaviour:
@@ -16969,7 +16997,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0010675765}
+  m_AnchoredPosition: {x: 0, y: -0.000014634315}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1001 &897067148
@@ -18569,6 +18597,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4920159917705462, guid: ac82fa7786eb354478a44e543b811f47,
     type: 2}
   m_PrefabInternal: {fileID: 1032468805}
+--- !u!1 &1034743705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1034743706}
+  - component: {fileID: 1034743708}
+  - component: {fileID: 1034743707}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1034743706
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1034743705}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1338999354}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 51, y: 17}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1034743707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1034743705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: e90f3017404a3264785f09d7cdef6954, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1034743708
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1034743705}
+  m_CullTransparentMesh: 0
 --- !u!1 &1036315546
 GameObject:
   m_ObjectHideFlags: 0
@@ -19376,7 +19473,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1116315899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20835,8 +20932,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 355051630}
   m_HandleRect: {fileID: 355051629}
   m_Direction: 2
-  m_Value: 0
-  m_Size: 0.98001885
+  m_Value: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -21935,7 +22032,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0000027, y: 1.0000027, z: 1.0000027}
-  m_Children: []
+  m_Children:
+  - {fileID: 1034743706}
   m_Father: {fileID: 672240034}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

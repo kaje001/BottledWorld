@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO.Ports;
 
 public class AchievmentController : MonoBehaviour {
 
@@ -9,18 +10,26 @@ public class AchievmentController : MonoBehaviour {
 	[SerializeField] string[] descriptionAchievments;
 	[SerializeField] Sprite[] imageAchievmentsActive;
 	[SerializeField] Sprite[] imageAchievmentsInactive;
+	[SerializeField] int[] stepsAchievment;
 
-	[SerializeField] GameObject prefabAchievment; //Child - 1: image, 2: name, 3: description
+	[SerializeField] GameObject prefabAchievment; //Child  1: image, 2: name, 3: description
+	[SerializeField] GameObject prefabAchievmentProgress; //Child  1: image, 2: name, 3: description 4: ProgressBar
 	[SerializeField] RectTransform parentAchievments;
 
 	List<Achievment> achieves = new List<Achievment>();
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		parentAchievments.sizeDelta = new Vector2 (0f, nameAchievments.Length * 160);
-		parentAchievments.position = Vector2.zero;
+		//parentAchievments.position = Vector2.zero;
 		for (int i = 0; i < nameAchievments.Length; i++) {
-			GameObject ob = Instantiate (prefabAchievment, parentAchievments);
+			GameObject ob = null;
+			if (stepsAchievment [i] > 1) {
+				ob = Instantiate (prefabAchievmentProgress, parentAchievments);
+
+			} else {
+				ob = Instantiate (prefabAchievment, parentAchievments);
+			}
 			ob.transform.localPosition = new Vector2 (0f, -160 * i - 80);
 			Achievment achive = ob.GetComponent<Achievment> ();
 			achive.index = i;
@@ -28,6 +37,7 @@ public class AchievmentController : MonoBehaviour {
 			achive.spriteInactive = imageAchievmentsInactive [i];
 			achive.stringName = nameAchievments [i];
 			achive.stringDescription = descriptionAchievments [i];
+			achive.steps = stepsAchievment [i];
 			achive.SetValues ();
 			achieves.Add (achive);
 			//ob.transform.GetChild (0).GetComponent<Image> ().sprite = imageAchievments [i];
@@ -42,7 +52,23 @@ public class AchievmentController : MonoBehaviour {
 	}
 
 	public void UpdateAchievments(){
+		//TODO Hier die values anpassen
 		foreach(Achievment achiev in achieves){
+			if (achiev.index == 1) {
+				achiev.value = CoinController.Instance.CompletetLevelCount (0, 12);
+			} else if (achiev.index == 2) {
+				achiev.value = CoinController.Instance.state.totalDeaths;
+
+			}else if (achiev.index == 3) {
+				achiev.value = CoinController.Instance.CompletetLevelCount (1, 3);
+
+			}else if (achiev.index == 4) {
+				achiev.value = CoinController.Instance.CompletetLevelCount (5, 7);
+
+			}else if (achiev.index == 5) {
+				achiev.value = CoinController.Instance.CompletetLevelCount (9, 11);
+
+			}
 			achiev.SetValues ();
 		}
 	}

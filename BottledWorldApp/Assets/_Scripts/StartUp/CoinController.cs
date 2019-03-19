@@ -229,6 +229,29 @@ public class CoinController : MonoBehaviour {
 		state.unlockedLevels ^= 1 << index;
 	}
 
+	//completedLevels
+	public bool IsLevelCompleted(int index){
+		return (state.completedLevels & (1 << index)) != 0;
+	}
+
+	public void CompleteLevel(int index){
+		state.completedLevels |= 1 << index;
+	}
+
+	public void UncompleteLevel(int index){
+		state.completedLevels ^= 1 << index;
+	}
+
+	public int CompletetLevelCount(int index1, int index2){
+		int count = 0;
+		for (int i = 0; i <= index2 - index1; i++) {
+			if ((state.completedLevels & (1 << (index1 + i))) != 0) {
+				count++;
+			}
+		}
+		return count;
+	}
+
 	//Bioms
 	public bool IsBiomUnlocked(int index){
 		return (state.unlockedBioms & (1 << index)) != 0;
@@ -243,12 +266,13 @@ public class CoinController : MonoBehaviour {
 	}
 
 	//Achievments
-	public bool IsAchievmentÚnlocked(int index){
+	public bool IsAchievmentUnlocked(int index){
 		return (state.unlockedAchievments & (1 << index)) != 0;
 	}
 
 	public void UnlockAchievment(int index){
 		state.unlockedAchievments |= 1 << index;
+		state.newAchievmentUnlocked = true;
 	}
 
 	public void LockAchievments(int index){

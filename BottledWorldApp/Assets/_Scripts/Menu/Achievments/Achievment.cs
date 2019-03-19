@@ -11,20 +11,32 @@ public class Achievment : MonoBehaviour {
 	public Sprite spriteInactive;
 	public string stringName;
 	public string stringDescription;
+	public float value;
+	public float steps;
 
 	[SerializeField] Image image;
 	[SerializeField] Text txtName;
 	[SerializeField] Text txtDescription;
 
+	[SerializeField] Image imageFill;
+	[SerializeField] Text txtProgress;
+
 	public void SetValues(){
-		if (CoinController.Instance.IsAchievmentÚnlocked (index)) {
+		Debug.Log ("UpdateAchivlment");
+		if (CoinController.Instance.IsAchievmentUnlocked (index)) {
 			image.sprite = spriteActive;
+			Debug.Log ("sprite");
 		} else {
 			image.sprite = spriteInactive;
 		}
 
 		txtName.text = stringName;
 		txtDescription.text = stringDescription;
+
+		if (steps > 1) {
+			imageFill.fillAmount = value/steps;
+			txtProgress.text = (int)value + "/" + steps;
+		}
 	}
 
 }
