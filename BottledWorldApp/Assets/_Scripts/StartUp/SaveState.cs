@@ -43,9 +43,10 @@ public class SaveState {
 
 	public int completedLevels = 0;
 
-	//Achievments
-	public int unlockedAchievments = 0;
-	public bool newAchievmentUnlocked = false;
+    //Achievments
+    public int unlockedAchievments = 0;
+    public int claimedAchievments = 0;
+    public bool newAchievmentUnlocked = false;
 
 	public int totalDeaths = 0;
 

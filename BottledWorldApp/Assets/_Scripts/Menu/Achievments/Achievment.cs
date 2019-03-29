@@ -21,14 +21,33 @@ public class Achievment : MonoBehaviour {
 	[SerializeField] Image imageFill;
 	[SerializeField] Text txtProgress;
 
-	public void SetValues(){
-		Debug.Log ("UpdateAchivlment");
+    [SerializeField] GameObject imageLock;
+    [SerializeField] GameObject imageSugarCube;
+    [SerializeField] GameObject imageStar;
+
+    public void SetValues(){
 		if (CoinController.Instance.IsAchievmentUnlocked (index)) {
-			image.sprite = spriteActive;
-			Debug.Log ("sprite");
+            if (CoinController.Instance.IsAchievmentClaimed(index))
+            {
+                image.sprite = spriteActive;
+                imageLock.SetActive(false);
+                imageStar.SetActive(false);
+                imageSugarCube.SetActive(false);
+            }
+            else
+            {
+                image.sprite = spriteActive;
+                imageLock.SetActive(true);
+                imageSugarCube.SetActive(true);
+                imageStar.SetActive(true);
+            }
 		} else {
-			image.sprite = spriteInactive;
-		}
+            image.sprite = spriteInactive;
+            imageLock.SetActive(true);
+            imageSugarCube.SetActive(false);
+            imageStar.SetActive(false);
+        }
+        
 
 		txtName.text = stringName;
 		txtDescription.text = stringDescription;
@@ -38,5 +57,21 @@ public class Achievment : MonoBehaviour {
 			txtProgress.text = (int)value + "/" + steps;
 		}
 	}
+
+    public void OnClickLock()
+    {
+        if (CoinController.Instance.IsAchievmentUnlocked(index))
+        {
+            if (!CoinController.Instance.IsAchievmentClaimed(index))
+            {
+                imageLock.SetActive(false);
+                imageStar.SetActive(false);
+                imageSugarCube.SetActive(false);
+                CoinController.Instance.ClaimAchievment(index);
+                CoinController.Instance.state.availableCoins++;
+                CoinController.Instance.state.totalCoins++;
+            }
+        }
+    }
 
 }

@@ -39,13 +39,13 @@ public class LocalizationManager : MonoBehaviour {
 		} else {
 			canvas.SetActive (true);
 		}
-		if (Application.systemLanguage == SystemLanguage.German) {
+		/*if (Application.systemLanguage == SystemLanguage.German) {
 			LoadLocalizedText ("german");
 		} else if (Application.systemLanguage == SystemLanguage.English) {
 			LoadLocalizedText ("english");
 		}else{
 			canvas.SetActive (true);
-		}
+		}*/
 
 	}
     

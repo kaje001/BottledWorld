@@ -278,4 +278,19 @@ public class CoinController : MonoBehaviour {
 	public void LockAchievments(int index){
 		state.unlockedAchievments ^= 1 << index;
 	}
+
+    public bool IsAchievmentClaimed(int index)
+    {
+        return (state.claimedAchievments & (1 << index)) != 0;
+    }
+
+    public void ClaimAchievment(int index)
+    {
+        state.claimedAchievments |= 1 << index;
+    }
+
+    public void UnClaimAchievments(int index)
+    {
+        state.claimedAchievments ^= 1 << index;
+    }
 }

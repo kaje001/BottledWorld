@@ -20,17 +20,21 @@ public class AchievmentController : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		parentAchievments.sizeDelta = new Vector2 (0f, nameAchievments.Length * 160);
+        //TODO different Achievment sizes
+        int contentSizeY = 0;
+
 		//parentAchievments.position = Vector2.zero;
 		for (int i = 0; i < nameAchievments.Length; i++) {
 			GameObject ob = null;
 			if (stepsAchievment [i] > 1) {
 				ob = Instantiate (prefabAchievmentProgress, parentAchievments);
-
-			} else {
+                ob.transform.localPosition = new Vector2(0f, -contentSizeY - 100);
+                contentSizeY += 220;
+            } else {
 				ob = Instantiate (prefabAchievment, parentAchievments);
-			}
-			ob.transform.localPosition = new Vector2 (0f, -160 * i - 80);
+                ob.transform.localPosition = new Vector2(0f, -contentSizeY - 80);
+                contentSizeY += 170;
+            }
 			Achievment achive = ob.GetComponent<Achievment> ();
 			achive.index = i;
 			achive.spriteActive = imageAchievmentsActive [i];
@@ -44,7 +48,9 @@ public class AchievmentController : MonoBehaviour {
 			//ob.transform.GetChild (1).GetComponent<Text> ().text = nameAchievments [i];
 			//ob.transform.GetChild (2).GetComponent<Text> ().text = descriptionAchievments [i];
 		}
-	}
+
+        parentAchievments.sizeDelta = new Vector2(0f, contentSizeY);
+    }
 	
 	// Update is called once per frame
 	void Update () {
