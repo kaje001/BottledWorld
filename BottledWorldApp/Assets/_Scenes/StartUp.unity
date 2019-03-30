@@ -1989,11 +1989,7 @@ MonoBehaviour:
   m_Text: 'Your Gyroscope doesn''t seem to work.
 
 
-    Start the game with the Play Button,
-
-    open the Settings
-
-    and activate the Swipe-Control-Option.'
+    Start the game with the Play Button.'
 --- !u!222 &889760625
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3443,6 +3439,7 @@ MonoBehaviour:
   hearts: 0
   deaths: 0
   won: 0
+  wonFirstTime: 0
   unlockLevel: 0
   level: 0
   biom: 0

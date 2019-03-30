@@ -130,7 +130,9 @@ public class StartUpController : MonoBehaviour {
 			textStartRotate.SetActive (false);
 			buttonStartGame.SetActive (true);
 			panelGyroNotWorking.SetActive (true);
-		}
+            CoinController.Instance.state.settingsControls = true;
+
+        }
 	}
 	
 }
