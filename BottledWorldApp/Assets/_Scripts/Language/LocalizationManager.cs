@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
+using UnityEngine.SceneManagement;
 
 public class LocalizationManager : MonoBehaviour {
 
@@ -12,6 +12,9 @@ public class LocalizationManager : MonoBehaviour {
     private string missingTextString = "Localized text not found";
 
 	[SerializeField] GameObject canvas;
+
+    [SerializeField] string[] lexEnglish;
+    [SerializeField] string[] lexGerman;
 
     // Use this for initialization
     void Awake () 
@@ -28,17 +31,13 @@ public class LocalizationManager : MonoBehaviour {
 
 	void Start(){
 		canvas.SetActive (false);
-		if (CoinController.Instance.state.language != "") {
-			if (CoinController.Instance.state.language == "english") {
-				LoadLocalizedText ("english");
-			} else if (CoinController.Instance.state.language == "german") {
-				LoadLocalizedText ("german");
-			} else {
-				canvas.SetActive (true);
-			}
-		} else {
+		if (CoinController.Instance.state.language != "german" && CoinController.Instance.state.language != "english") {
 			canvas.SetActive (true);
-		}
+        }
+        else
+        {
+            SceneManager.LoadScene("StartUp");
+        }
 		/*if (Application.systemLanguage == SystemLanguage.German) {
 			LoadLocalizedText ("german");
 		} else if (Application.systemLanguage == SystemLanguage.English) {
@@ -49,7 +48,7 @@ public class LocalizationManager : MonoBehaviour {
 
 	}
     
-    public void LoadLocalizedText(string fileName)
+    /*public void LoadLocalizedText(string fileName)
     {
 		CoinController.Instance.state.language = fileName;
 		fileName = fileName + ".json";
@@ -72,23 +71,30 @@ public class LocalizationManager : MonoBehaviour {
         }
 
         isReady = true;
-    }
+    }*/
 
-    public string GetLocalizedValue(string key)
+    public string GetLocalizedValue(int id)
     {
         string result = missingTextString;
-        if (localizedText.ContainsKey (key)) 
+       
+        if(CoinController.Instance.state.language == "english")
         {
-            result = localizedText [key];
+            result = lexEnglish[id];
+        }
+        else if (CoinController.Instance.state.language == "german")
+        {
+            result = lexGerman[id];
         }
 
         return result;
 
     }
 
-    public bool GetIsReady()
+    public void SetLanguage(string s)
     {
-        return isReady;
+        CoinController.Instance.state.language = s;
+        CoinController.Instance.Save();
+        SceneManager.LoadScene("StartUp");
     }
 
 }

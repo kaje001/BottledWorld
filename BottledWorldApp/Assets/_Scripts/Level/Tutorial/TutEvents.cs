@@ -8,15 +8,21 @@ public class TutEvents : MonoBehaviour {
 	[SerializeField] PlayerController playcon;
 	[SerializeField] GameObject pausePanel;
 
-	[SerializeField] string[] texts;
+    string[] texts = new string[5];
 	[SerializeField] Sprite[] spritesInfo;
 	[SerializeField] Image imageInfo;
 	[SerializeField] Text textInfo;
 
 	// Use this for initialization
-	void Start () {
-		
-	}
+	void Start ()
+    {
+        texts[0] = LocalizationManager.instance.GetLocalizedValue(6);
+        texts[1] = LocalizationManager.instance.GetLocalizedValue(5);
+        texts[2] = LocalizationManager.instance.GetLocalizedValue(7);
+        texts[3] = LocalizationManager.instance.GetLocalizedValue(8);
+        texts[4] = LocalizationManager.instance.GetLocalizedValue(4);
+
+    }
 	
 	void OnTriggerEnter(Collider other){
 		if (other.tag == "TutTrigger") {
