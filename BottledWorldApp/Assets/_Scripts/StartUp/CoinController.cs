@@ -31,6 +31,7 @@ public class CoinController : MonoBehaviour {
 	public void Load(){
 		if (PlayerPrefs.HasKey ("save")) {
 			state = Helper.Deserialize<SaveState> (PlayerPrefs.GetString("save"));
+
 		} else {
 			state = new SaveState ();
 			Save ();

@@ -102,7 +102,7 @@ public class MenuController : MonoBehaviour {
 			}
 
 			if (CoinController.Instance.state.completedLevels == 8191 && !CoinController.Instance.IsAchievmentUnlocked (1)) {
-				CoinController.Instance.UnlockAchievment (8);
+				CoinController.Instance.UnlockAchievment (1);
 			}
 		}
 
@@ -289,14 +289,16 @@ public class MenuController : MonoBehaviour {
 
 	public void ResetSaveGame(){
 		SoundManager.Instance.PlaySingle (soundButtonClick);
+        string lang = CoinController.Instance.state.language;
 		CoinController.Instance.ResetSaveState();
-		//HideSettings ();
-		//ShowSettings ();
-		//txtTotalCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString ();
-		//panelGotIt.SetActive (true);
-		//customSel.Reload ();
-		//StartCoroutine (UnlockLevel (false));
-		SceneManager.LoadScene("Menu");
+        CoinController.Instance.state.language = lang;
+        //HideSettings ();
+        //ShowSettings ();
+        //txtTotalCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString ();
+        //panelGotIt.SetActive (true);
+        //customSel.Reload ();
+        //StartCoroutine (UnlockLevel (false));
+        SceneManager.LoadScene("Menu");
 		panelLoading.SetActive (true);
 		// + "/" + CoinController.Instance.state.totalCoins.ToString ()
 	}

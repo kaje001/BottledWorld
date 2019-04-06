@@ -32,7 +32,18 @@ public class LocalizationManager : MonoBehaviour {
 	void Start(){
 		canvas.SetActive (false);
 		if (CoinController.Instance.state.language != "german" && CoinController.Instance.state.language != "english") {
-			canvas.SetActive (true);
+           /* if (Application.systemLanguage == SystemLanguage.German)
+            {
+                SetLanguage("german");
+            }
+            else if (Application.systemLanguage == SystemLanguage.English)
+            {
+                SetLanguage("english");
+            }
+            else
+            {*/
+                canvas.SetActive(true);
+           // }
         }
         else
         {

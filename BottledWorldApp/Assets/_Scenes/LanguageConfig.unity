@@ -311,7 +311,7 @@ MonoBehaviour:
   - Music
   - Reset
   - 'Swipe Controlls '
-  - 'Bottled Ant started as a project at  the university applied sience Harz '
+  - 'Bottled Ant started as a project at the university applied sience Harz '
   - 'Quit? '
   - 'Collect all sugar cubes of an level!  '
   - 'For special loyalty...Complete all levels '
@@ -842,7 +842,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1584447232}
   - component: {fileID: 1584447231}
-  - component: {fileID: 1584447230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -850,14 +849,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1584447230
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1584447229}
-  m_Enabled: 1
 --- !u!20 &1584447231
 Camera:
   m_ObjectHideFlags: 0
