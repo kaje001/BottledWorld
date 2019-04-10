@@ -10,9 +10,11 @@ public class AchievmentController : MonoBehaviour {
 	string[] descriptionAchievments = new string[10];
 	[SerializeField] Sprite[] imageAchievmentsActive;
 	[SerializeField] Sprite[] imageAchievmentsInactive;
-	[SerializeField] int[] stepsAchievment;
+    [SerializeField] int[] stepsAchievment;
+    [SerializeField] int[] indexAchievment;
+    [SerializeField] int[] valueSugarAchievment;
 
-	[SerializeField] GameObject prefabAchievment; //Child  1: image, 2: name, 3: description
+    [SerializeField] GameObject prefabAchievment; //Child  1: image, 2: name, 3: description
 	[SerializeField] GameObject prefabAchievmentProgress; //Child  1: image, 2: name, 3: description 4: ProgressBar
 	[SerializeField] RectTransform parentAchievments;
 
@@ -21,27 +23,27 @@ public class AchievmentController : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 
-        nameAchievments[0] = LocalizationManager.instance.GetLocalizedValue(28);
-        nameAchievments[1] = LocalizationManager.instance.GetLocalizedValue(29);
-        nameAchievments[2] = LocalizationManager.instance.GetLocalizedValue(30);
-        nameAchievments[3] = LocalizationManager.instance.GetLocalizedValue(31);
-        nameAchievments[4] = LocalizationManager.instance.GetLocalizedValue(32);
-        nameAchievments[5] = LocalizationManager.instance.GetLocalizedValue(33);
-        nameAchievments[6] = LocalizationManager.instance.GetLocalizedValue(34);
-        nameAchievments[7] = LocalizationManager.instance.GetLocalizedValue(35);
-        nameAchievments[8] = LocalizationManager.instance.GetLocalizedValue(36);
-        nameAchievments[9] = LocalizationManager.instance.GetLocalizedValue(37);
+        nameAchievments[8] = LocalizationManager.instance.GetLocalizedValue(28);
+        nameAchievments[7] = LocalizationManager.instance.GetLocalizedValue(29);
+        nameAchievments[9] = LocalizationManager.instance.GetLocalizedValue(30);
+        nameAchievments[1] = LocalizationManager.instance.GetLocalizedValue(31);
+        nameAchievments[2] = LocalizationManager.instance.GetLocalizedValue(32);
+        nameAchievments[3] = LocalizationManager.instance.GetLocalizedValue(33);
+        nameAchievments[4] = LocalizationManager.instance.GetLocalizedValue(34);
+        nameAchievments[5] = LocalizationManager.instance.GetLocalizedValue(35);
+        nameAchievments[6] = LocalizationManager.instance.GetLocalizedValue(36);
+        nameAchievments[0] = LocalizationManager.instance.GetLocalizedValue(37);
 
-        descriptionAchievments[0] = LocalizationManager.instance.GetLocalizedValue(18);
-        descriptionAchievments[1] = LocalizationManager.instance.GetLocalizedValue(19);
-        descriptionAchievments[2] = LocalizationManager.instance.GetLocalizedValue(20);
-        descriptionAchievments[3] = LocalizationManager.instance.GetLocalizedValue(21);
-        descriptionAchievments[4] = LocalizationManager.instance.GetLocalizedValue(22);
-        descriptionAchievments[5] = LocalizationManager.instance.GetLocalizedValue(23);
-        descriptionAchievments[6] = LocalizationManager.instance.GetLocalizedValue(24);
-        descriptionAchievments[7] = LocalizationManager.instance.GetLocalizedValue(25);
-        descriptionAchievments[8] = LocalizationManager.instance.GetLocalizedValue(26);
-        descriptionAchievments[9] = LocalizationManager.instance.GetLocalizedValue(27);
+        descriptionAchievments[8] = LocalizationManager.instance.GetLocalizedValue(18);
+        descriptionAchievments[7] = LocalizationManager.instance.GetLocalizedValue(19);
+        descriptionAchievments[9] = LocalizationManager.instance.GetLocalizedValue(20);
+        descriptionAchievments[1] = LocalizationManager.instance.GetLocalizedValue(21);
+        descriptionAchievments[2] = LocalizationManager.instance.GetLocalizedValue(22);
+        descriptionAchievments[3] = LocalizationManager.instance.GetLocalizedValue(23);
+        descriptionAchievments[4] = LocalizationManager.instance.GetLocalizedValue(24);
+        descriptionAchievments[5] = LocalizationManager.instance.GetLocalizedValue(25);
+        descriptionAchievments[6] = LocalizationManager.instance.GetLocalizedValue(26);
+        descriptionAchievments[0] = LocalizationManager.instance.GetLocalizedValue(27);
 
         int contentSizeY = 0;
 
@@ -58,7 +60,8 @@ public class AchievmentController : MonoBehaviour {
                 contentSizeY += 170;
             }
 			Achievment achive = ob.GetComponent<Achievment> ();
-			achive.index = i;
+			achive.index = indexAchievment[i];
+            achive.valueSugar = valueSugarAchievment[i];
 			achive.spriteActive = imageAchievmentsActive [i];
 			achive.spriteInactive = imageAchievmentsInactive [i];
 			achive.stringName = nameAchievments [i];

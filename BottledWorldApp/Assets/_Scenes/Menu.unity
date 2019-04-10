@@ -14410,7 +14410,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9527ec9a4aa28db478565acad0814980, type: 3}
   - {fileID: 21300000, guid: 9527ec9a4aa28db478565acad0814980, type: 3}
   - {fileID: 21300000, guid: 9527ec9a4aa28db478565acad0814980, type: 3}
-  stepsAchievment: 010000000d0000001e00000003000000030000000300000001000000010000000100000001000000
+  stepsAchievment: 010000000300000003000000030000000100000001000000010000000d000000010000001e000000
+  indexAchievment: 09000000030000000400000005000000060000000700000008000000010000000000000002000000
+  valueSugarAchievment: 010000000300000004000000050000000300000004000000050000000a0000000300000006000000
   prefabAchievment: {fileID: 1603541651189550, guid: 7285c6d0c26f669418070796cccb5d6c,
     type: 3}
   prefabAchievmentProgress: {fileID: 1938202615483368, guid: 923079dd521398b438b3ad29129516d9,
@@ -17903,7 +17905,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.49652964}
+  m_AnchoredPosition: {x: 0, y: -0.000006739955}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1001 &897067148
@@ -22179,7 +22181,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 355051629}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9830126
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

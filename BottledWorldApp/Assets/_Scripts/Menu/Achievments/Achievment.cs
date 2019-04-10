@@ -13,6 +13,7 @@ public class Achievment : MonoBehaviour {
 	public string stringDescription;
 	public float value;
 	public float steps;
+    public int valueSugar;
 
 	[SerializeField] Image image;
 	[SerializeField] Text txtName;
@@ -68,8 +69,8 @@ public class Achievment : MonoBehaviour {
                 imageStar.SetActive(false);
                 imageSugarCube.SetActive(false);
                 CoinController.Instance.ClaimAchievment(index);
-                CoinController.Instance.state.availableCoins++;
-                CoinController.Instance.state.totalCoins++;
+                CoinController.Instance.state.availableCoins+= valueSugar;
+                CoinController.Instance.state.totalCoins+= valueSugar;
             }
         }
     }
