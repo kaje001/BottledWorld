@@ -15,8 +15,9 @@ public class MenuController : MonoBehaviour {
 	[SerializeField] GameObject canvasCustoms;
 	[SerializeField] GameObject canvasAchievments;
 	[SerializeField] GameObject panelGotIt;
-	[SerializeField] GameObject panelReallyReset;
-	[SerializeField] GameObject panelLoading;
+    [SerializeField] GameObject panelReallyReset;
+    [SerializeField] GameObject panelChangeLang;
+    [SerializeField] GameObject panelLoading;
 	[SerializeField] GameObject imageNewAchivment;
 	[SerializeField] Toggle toggleSound;
 	[SerializeField] Toggle toggleMusic;
@@ -51,6 +52,7 @@ public class MenuController : MonoBehaviour {
 		panelSettings.SetActive (false);
 		panelSugarInfo.SetActive (false);
 		panelReallyReset.SetActive (false);
+        panelChangeLang.SetActive(false);
 
 		txtTotalCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString ();
 
@@ -262,7 +264,38 @@ public class MenuController : MonoBehaviour {
 		panelReallyReset.SetActive (false);
 	}
 
-	public void ShowAchievments(){
+    public void ShowChangeLang()
+    {
+        if (draged)
+        {
+            return;
+        }
+        SoundManager.Instance.PlaySingle(soundButtonClick);
+        panelChangeLang.SetActive(true);
+    }
+
+    public void HideChangeLang()
+    {
+        SoundManager.Instance.PlaySingle(soundButtonClick);
+        panelChangeLang.SetActive(false);
+    }
+
+    public void ChangeLang(string s)
+    {
+        if(CoinController.Instance.state.language == s)
+        {
+            HideChangeLang();
+            return;
+        }
+        else
+        {
+            CoinController.Instance.state.language = s;
+            SceneManager.LoadScene("Menu");
+
+        }
+    }
+
+    public void ShowAchievments(){
 		//trying to eleminate touch while drag bug
 		if (slide || draged) {
 			return;
