@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5300534781423992721}
+  - component: {fileID: 1420702921}
   m_Layer: 0
   m_Name: Schmetterling_Mesh
   m_TagString: Untagged
@@ -31,6 +32,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &1420702921
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5300534781424346033}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.00000059604645, y: -13.726795, z: -0.17500125}
+  m_Size: 1.775764
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.016886014
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 5300534781422091633}
+  m_Enabled: 1
 --- !u!1 &5300534781424346035
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +77,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5300534781424346035}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -8.14, z: 0}
+  m_LocalPosition: {x: -0, y: -8.14, z: -0.29}
   m_LocalScale: {x: 0.030814, y: 0.030814, z: 0.030814}
   m_Children: []
   m_Father: {fileID: 5300534781423992721}
@@ -88,7 +108,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 837a69845f609114f97e1e5726a38284, type: 2}
+  - {fileID: 2100000, guid: 56061711f86462b47a5842130b397e57, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
