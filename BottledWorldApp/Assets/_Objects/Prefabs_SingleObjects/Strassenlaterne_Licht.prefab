@@ -41,9 +41,9 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
-  m_Range: 1
+  m_Color: {r: 0.9843137, g: 1, b: 0.85490197, a: 1}
+  m_Intensity: 5.97
+  m_Range: 5.25
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -79,7 +79,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3850296009814554137}
   m_Layer: 0
-  m_Name: Strassenlaterne
+  m_Name: Strassenlaterne_Licht
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4903986850563147089}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 8.223991}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -168,6 +168,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4822694957172938318, guid: 02c796d6a44b32b4288c04a367dbc22e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 922df9bc7264ffb44adea30410dca7d7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02c796d6a44b32b4288c04a367dbc22e, type: 3}
 --- !u!4 &6326253450351621270 stripped
