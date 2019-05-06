@@ -24,28 +24,28 @@ public class UIConEndLevel : MonoBehaviour {
 
 		coins = CoinController.Instance.state.totalCoins - LastGameData.Instance.coins;
 
-		if (CoinController.Instance.state.totalCoins - LastGameData.Instance.coins >= LastGameData.Instance.biom * 8 + 8) {
-			//coins = LastGameData.Instance.biom * 8 + 8;
+		if (CoinController.Instance.state.totalCoins - LastGameData.Instance.coins >= LastGameData.Instance.biom * 14 + 14) {
+			//coins = LastGameData.Instance.biom * 14 + 14;
 
 			imageBar.fillAmount = 1;
 			LockOpen.SetActive (true);
 			LockClosed.SetActive (false);
 		} else {
-			imageBar.fillAmount = (coins - LastGameData.Instance.biom * 8) * 0.125f;
+			imageBar.fillAmount = (coins - LastGameData.Instance.biom * 14) * 0.125f;
 			LockClosed.SetActive (true);
 			LockOpen.SetActive (false);
 		}
 			
-		//coinsBiomBegin.text = (LastGameData.Instance.biom * 8).ToString();
+		//coinsBiomBegin.text = (LastGameData.Instance.biom * 14).ToString();
 		coinsBiomBegin.text = coins.ToString();
-		coinsNextBiom.text = (LastGameData.Instance.biom * 8 + 8).ToString();
-		coinsNextBiom2.text = (LastGameData.Instance.biom * 8 + 8).ToString();
+		coinsNextBiom.text = (LastGameData.Instance.biom * 14 + 14).ToString();
+		coinsNextBiom2.text = (LastGameData.Instance.biom * 14 + 14).ToString();
 		textCoins.text = "+ " + LastGameData.Instance.coins.ToString ();
 		textCoinsInLevel.text = LastGameData.Instance.sugarCubesForLevel + "/" + LastGameData.Instance.totalSugarCubesLevel;
 	}
 
 	public void UpdateBar(){
-		/*if (coins >= 8) {
+		/*if (coins >= 14) {
 			return;
 		}*/
 		StartCoroutine (FillBar());
@@ -55,7 +55,7 @@ public class UIConEndLevel : MonoBehaviour {
 	IEnumerator FillBar(){
 		
 		yield return new WaitForSeconds (0.3f);
-		if (coins >= LastGameData.Instance.biom * 8 + 8) {
+		if (coins >= LastGameData.Instance.biom * 14 + 14) {
 			for(int i = 0; i < LastGameData.Instance.coins; i++){
 				coins++;
 				SoundManager.Instance.PlaySingle (soundBarCountsUp);
@@ -65,11 +65,11 @@ public class UIConEndLevel : MonoBehaviour {
 		} else {
 			for(int i = 0; i < LastGameData.Instance.coins; i++){
 				coins++;
-				imageBar.fillAmount = 0.125f * (coins - LastGameData.Instance.biom * 8);
+				imageBar.fillAmount = 0.0714f * (coins - LastGameData.Instance.biom * 14);
 				SoundManager.Instance.PlaySingle (soundBarCountsUp);
 				coinsBiomBegin.text = coins.ToString();
 				yield return new WaitForSeconds (0.3f);
-				if (coins >= LastGameData.Instance.biom * 8 + 8) {
+				if (coins >= LastGameData.Instance.biom * 14 + 14) {
 					SoundManager.Instance.PlaySingle (soundUnlockLock);
 					LockOpen.SetActive (true);
 					LockClosed.SetActive (false);
