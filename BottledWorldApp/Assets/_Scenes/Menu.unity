@@ -28737,6 +28737,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: charactergamedevruncyclev2
       objectReference: {fileID: 0}
+    - target: {fileID: 400110, guid: 36b1234be7d930140a2393439e3acbf1, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: 36b1234be7d930140a2393439e3acbf1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -28789,10 +28793,6 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 866e1b74aed235441b01ce02a5281c2c, type: 2}
-    - target: {fileID: 400110, guid: 36b1234be7d930140a2393439e3acbf1, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36b1234be7d930140a2393439e3acbf1, type: 3}
 --- !u!1 &1773147452
