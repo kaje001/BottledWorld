@@ -31,7 +31,7 @@ public class UIConEndLevel : MonoBehaviour {
 			LockOpen.SetActive (true);
 			LockClosed.SetActive (false);
 		} else {
-			imageBar.fillAmount = (coins - LastGameData.Instance.biom * 14) * 0.125f;
+			imageBar.fillAmount = (coins - LastGameData.Instance.biom * 14) * 0.0714f;
 			LockClosed.SetActive (true);
 			LockOpen.SetActive (false);
 		}

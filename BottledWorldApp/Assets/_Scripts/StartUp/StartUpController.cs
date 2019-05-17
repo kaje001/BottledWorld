@@ -124,7 +124,7 @@ public class StartUpController : MonoBehaviour {
 	}*/
 
 	IEnumerator CheckGyro(){
-		yield return new WaitForSeconds (4f);
+		yield return new WaitForSeconds (3f);
 
 		if (startGyroGravity == Input.gyro.gravity && !CoinController.Instance.state.settingsControls) {
 			textStartRotate.SetActive (false);
@@ -133,6 +133,13 @@ public class StartUpController : MonoBehaviour {
             CoinController.Instance.state.settingsControls = true;
 
         }
-	}
+
+        yield return new WaitForSeconds(12f);
+
+        textStartRotate.SetActive(false);
+        buttonStartGame.SetActive(true);
+        panelGyroNotWorking.SetActive(true);
+        CoinController.Instance.state.settingsControls = true;
+    }
 	
 }

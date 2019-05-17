@@ -65,12 +65,13 @@ public class Achievment : MonoBehaviour {
         {
             if (!CoinController.Instance.IsAchievmentClaimed(index))
             {
-                imageLock.SetActive(false);
-                imageStar.SetActive(false);
-                imageSugarCube.SetActive(false);
+                //imageLock.SetActive(false);
+                //imageStar.SetActive(false);
+                //imageSugarCube.SetActive(false);
                 CoinController.Instance.ClaimAchievment(index);
                 CoinController.Instance.state.availableCoins+= valueSugar;
                 CoinController.Instance.state.totalCoins+= valueSugar;
+                GameObject.FindObjectOfType<AchievmentController>().UpdateAchievments();
             }
         }
     }

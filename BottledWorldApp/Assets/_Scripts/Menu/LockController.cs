@@ -24,14 +24,22 @@ public class LockController : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 			transform.parent.gameObject.SetActive (false);
 		}
 
-		if ((biom-1) * 14 + 14 - CoinController.Instance.state.totalCoins <= 0) {
-			textNeededSugar.text = "0";
-			unlockable = true;
-			ShowParticle ();
-		} else {
-			textNeededSugar.text = ((biom-1) * 14 + 14 - CoinController.Instance.state.totalCoins).ToString ();
-		}
+        CheckUnlockable();
 	}
+
+    public void CheckUnlockable()
+    {
+        if ((biom - 1) * 14 + 14 - CoinController.Instance.state.totalCoins <= 0)
+        {
+            textNeededSugar.text = "0";
+            unlockable = true;
+            ShowParticle();
+        }
+        else
+        {
+            textNeededSugar.text = ((biom - 1) * 14 + 14 - CoinController.Instance.state.totalCoins).ToString();
+        }
+    }
 
 	public void ShowParticle(){
 		particleSys.Play ();

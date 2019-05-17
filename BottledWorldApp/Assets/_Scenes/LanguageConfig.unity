@@ -415,6 +415,9 @@ MonoBehaviour:
   - Settings
   - 'Your Gyroscope doesn''t seem to work. '
   - 'Start the game with the Play Button. '
+  - 'Collect a shield to run through objects. Attention: the immunity lasts only a
+    specific time!'
+  - 'Start the game with the Play Button. '
   lexGerman:
   - 'Drehe um das Spiel zu starten '
   - 'Ziehe die Ameise ueber die Flasche '
@@ -459,6 +462,9 @@ MonoBehaviour:
   - 'Babyschritte '
   - 'Einstellungen '
   - 'Dein Gyroskop scheint nicht zu funktionieren. '
+  - 'Starte das Spiel mit dem Start-Knopf. '
+  - 'Sammle ein Schutzschild um durch Gegenstaende zu laufen. Achtung: Die Immunitaet
+    haelt nur einen bestimmten Zeitraum!'
   - 'Starte das Spiel mit dem Start-Knopf. '
 --- !u!4 &503042052
 Transform:

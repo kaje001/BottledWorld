@@ -43,7 +43,10 @@ public class MenuController : MonoBehaviour {
 	[SerializeField] CustomSelecter customSel;
 	[SerializeField] int[] coinsInLevels;
 
-	void Start(){
+    [SerializeField] LockController lockCon1;
+    [SerializeField] LockController lockCon2;
+
+    void Start(){
 		playermat.dynamicFriction = 0.3f;
 		playermat.staticFriction = 0.05f;
 
@@ -316,7 +319,9 @@ public class MenuController : MonoBehaviour {
 		canvasAchievments.SetActive (false);
 		achievments = false;
 		txtTotalCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString ();
-		CoinController.Instance.Save ();
+        lockCon1.CheckUnlockable();
+        lockCon2.CheckUnlockable();
+        CoinController.Instance.Save ();
 		StartCoroutine(SlideCam(camPositions[0].transform, 0));
 	}
 

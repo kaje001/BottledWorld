@@ -12,6 +12,7 @@ public class AchievmentController : MonoBehaviour {
     [SerializeField] int[] stepsAchievment;
     [SerializeField] int[] indexAchievment;
     [SerializeField] int[] valueSugarAchievment;
+    [SerializeField] Text txtCoins;
 
     [SerializeField] GameObject prefabAchievment; //Child  1: image, 2: name, 3: description
 	[SerializeField] GameObject prefabAchievmentProgress; //Child  1: image, 2: name, 3: description 4: ProgressBar
@@ -101,5 +102,7 @@ public class AchievmentController : MonoBehaviour {
 			}
 			achiev.SetValues ();
 		}
-	}
+
+        txtCoins.text = "x " + CoinController.Instance.state.availableCoins.ToString();
+    }
 }
