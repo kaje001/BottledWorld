@@ -24,6 +24,7 @@ public class Achievment : MonoBehaviour {
 
     [SerializeField] GameObject imageLock;
     [SerializeField] GameObject imageSugarCube;
+    [SerializeField] Text txtRewardSugar;
     [SerializeField] GameObject imageStar;
 
     public void SetValues(){
@@ -37,8 +38,8 @@ public class Achievment : MonoBehaviour {
             }
             else
             {
-                image.sprite = spriteActive;
-                imageLock.SetActive(true);
+                image.sprite = spriteInactive;
+                imageLock.SetActive(false);
                 imageSugarCube.SetActive(true);
                 imageStar.SetActive(true);
             }
@@ -52,6 +53,7 @@ public class Achievment : MonoBehaviour {
 
 		txtName.text = stringName;
 		txtDescription.text = stringDescription;
+        txtRewardSugar.text = "+" + valueSugar.ToString();
 
 		if (steps > 1) {
 			imageFill.fillAmount = value/steps;

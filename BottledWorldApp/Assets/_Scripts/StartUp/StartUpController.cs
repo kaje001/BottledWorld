@@ -134,12 +134,16 @@ public class StartUpController : MonoBehaviour {
 
         }
 
-        yield return new WaitForSeconds(12f);
+        yield return new WaitForSeconds(17f);
 
-        textStartRotate.SetActive(false);
-        buttonStartGame.SetActive(true);
-        panelGyroNotWorking.SetActive(true);
-        CoinController.Instance.state.settingsControls = true;
+        if (!CoinController.Instance.state.settingsControls)
+        {
+            textStartRotate.SetActive(false);
+            buttonStartGame.SetActive(true);
+            panelGyroNotWorking.SetActive(true);
+            CoinController.Instance.state.settingsControls = true;
+        }
+        
     }
 	
 }

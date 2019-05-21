@@ -92,6 +92,7 @@
     <Compile Include="Assets\_Scripts\Menu\Achievments\Achievment.cs" />
     <Compile Include="Assets\_Scripts\Menu\Achievments\AchievmentController.cs" />
     <Compile Include="Assets\_Scripts\Menu\Achievments\RotateStar.cs" />
+    <Compile Include="Assets\_Scripts\Menu\Achievments\ScaleSugarCube.cs" />
     <Compile Include="Assets\_Scripts\Menu\AntController.cs" />
     <Compile Include="Assets\_Scripts\Menu\Collectable.cs" />
     <Compile Include="Assets\_Scripts\Menu\Cutom\ButtonColorCustom.cs" />
