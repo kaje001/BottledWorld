@@ -8,21 +8,28 @@ public class CustomSelecter : MonoBehaviour {
 	[SerializeField] GameObject[] socksFL;
 	[SerializeField] GameObject[] socksFR;
 	[SerializeField] GameObject[] socksBL;
-	[SerializeField] GameObject[] socksBR;
-	[SerializeField] GameObject[] backs;
+    [SerializeField] GameObject[] socksBR;
+    [SerializeField] GameObject[] socksArmR;
+    [SerializeField] GameObject[] socksArmL;
+    [SerializeField] GameObject[] backs;
 	[SerializeField] Texture2D[] colors;
 	[SerializeField] Material[] mats;
 	List<GameObject[]> socks = new List<GameObject[]>();
-	//[SerializeField] GameObject[] colors;
+    //[SerializeField] GameObject[] colors;
 
-	// Use this for initialization
-	void Start () {
+    [SerializeField] Mesh[] meshs;
+    [SerializeField] SkinnedMeshRenderer meshRenderer;
+
+    // Use this for initialization
+    void Start () {
 		socks.Add (socksFL);
 		socks.Add (socksFR);
 		socks.Add (socksBL);
-		socks.Add (socksBR);
+        socks.Add(socksBR);
+        socks.Add(socksArmR);
+        socks.Add(socksArmL);
 
-		ActivateEquippedObjects ();
+        ActivateEquippedObjects ();
 	}
 
 	void ActivateEquippedObjects(){
@@ -47,12 +54,25 @@ public class CustomSelecter : MonoBehaviour {
 				foreach (GameObject[] gos in socks) {
 					gos [i].SetActive (true);
 				}
-			} else {
+                /*if (i == 4)
+                {
+                    meshRenderer.sharedMesh = meshs[1];
+                }
+                else if (i == 7)
+                {
+                    meshRenderer.sharedMesh = meshs[2];
+                }
+                else
+                {
+                    meshRenderer.sharedMesh = meshs[0];
+                }*/
+            } else {
 				foreach (GameObject[] gos in socks) {
 					gos [i].SetActive (false);
 				}
 			}
-		}
+            
+        }
 
 		for (i = 0; i < 8; i++) {
 			if (i >= backs.Length) {
@@ -88,8 +108,8 @@ public class CustomSelecter : MonoBehaviour {
 
 	public void ShowSelectedObjects(int selectedObjects){
 		int i = 0;
-
-		for (i = 0; i < 8; i++) {
+        
+        for (i = 0; i < 8; i++) {
 			if (i >= hats.Length) {
 				break;
 			}
@@ -130,8 +150,9 @@ public class CustomSelecter : MonoBehaviour {
 			if (i >= colors.Length) {
 				break;
 			}
-			if ((selectedObjects & (1 << (24 + i))) != 0 ) {
-				foreach (Material mat in mats) {
+			if ((selectedObjects & (1 << (24 + i))) != 0 )
+            {
+                foreach (Material mat in mats) {
 					mat.mainTexture = colors [i];
 				}
 			} else {

@@ -8,7 +8,7 @@ public class ScaleSugarCube : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LeanTween.scale(gameObject, transform.localScale * 1.3f, 1.2f).setLoopPingPong(-1).setEase(LeanTweenType.easeInOutSine);
+        LeanTween.scale(gameObject, transform.localScale * 1.3f, 0.7f).setLoopPingPong(-1).setEase(LeanTweenType.easeInOutSine);
     }
     
 }

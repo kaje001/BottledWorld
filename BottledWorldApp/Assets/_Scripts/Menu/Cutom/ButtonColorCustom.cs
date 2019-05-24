@@ -72,7 +72,8 @@ public class ButtonColorCustom : MonoBehaviour {
 			}
 		} else {
 			transform.parent.GetComponent<Image> ().color = colors [5];
-			if (equipped) {
+            transform.GetChild(0).GetComponent<Image>().sprite = buttonStates[1];
+            if (equipped) {
 				spriteEquipped.SetActive (true);
 
 			} else {

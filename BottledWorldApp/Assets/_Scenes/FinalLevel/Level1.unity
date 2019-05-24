@@ -88,7 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 112000002, guid: 9797e355f3c07a34984785d19354e3a6,
+  m_LightingDataAsset: {fileID: 112000000, guid: 9797e355f3c07a34984785d19354e3a6,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -1039,6 +1039,8 @@ MonoBehaviour:
   soundclipLevelEnd: {fileID: 8300000, guid: a0410867fb403564ba6eb4ac9d0139e3, type: 3}
   soundclipButtonClick: {fileID: 8300000, guid: feb361d9edc1a424fa8eb2c2d74449e3,
     type: 3}
+  soundImmuPickup: {fileID: 8300000, guid: 677d533028145c249966f371682a4932, type: 3}
+  soundImmuEnd: {fileID: 8300000, guid: b9aa771db68dde14c88d00343ccd6a80, type: 3}
   music1: {fileID: 8300000, guid: 5fcad3806dc894d4d8f3773e5966b8a0, type: 3}
   animator: {fileID: 779305580}
   animatorStars: {fileID: 1432572750}

@@ -27,6 +27,8 @@ public class Achievment : MonoBehaviour {
     [SerializeField] Text txtRewardSugar;
     [SerializeField] GameObject imageStar;
 
+    [SerializeField] AudioClip soundClaimAchievement;
+
     public void SetValues(){
 		if (CoinController.Instance.IsAchievmentUnlocked (index)) {
             if (CoinController.Instance.IsAchievmentClaimed(index))
@@ -74,6 +76,8 @@ public class Achievment : MonoBehaviour {
                 CoinController.Instance.state.availableCoins+= valueSugar;
                 CoinController.Instance.state.totalCoins+= valueSugar;
                 GameObject.FindObjectOfType<AchievmentController>().UpdateAchievments();
+
+                SoundManager.Instance.PlaySingle(soundClaimAchievement);
             }
         }
     }

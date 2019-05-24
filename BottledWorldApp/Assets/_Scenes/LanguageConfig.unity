@@ -417,7 +417,8 @@ MonoBehaviour:
   - 'Start the game with the Play Button. '
   - 'Collect a shield to run through objects. Attention: the immunity lasts only a
     specific time!'
-  - 'Start the game with the Play Button. '
+  - Every fourth level will be something special! Sometimes you will be faster or
+    gain special abilitys!
   lexGerman:
   - 'Drehe um das Spiel zu starten '
   - 'Ziehe die Ameise ueber die Flasche '
@@ -465,7 +466,8 @@ MonoBehaviour:
   - 'Starte das Spiel mit dem Start-Knopf. '
   - 'Sammle ein Schutzschild um durch Gegenstaende zu laufen. Achtung: Die Immunitaet
     haelt nur einen bestimmten Zeitraum!'
-  - 'Starte das Spiel mit dem Start-Knopf. '
+  - Jedes vierte Level ist etwas besonderes! Manchmal wirst du schneller oder bekommst
+    eine besondere Faehigkeit!
 --- !u!4 &503042052
 Transform:
   m_ObjectHideFlags: 0
@@ -872,7 +874,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

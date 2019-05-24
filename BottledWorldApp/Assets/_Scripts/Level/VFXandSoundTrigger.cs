@@ -31,9 +31,11 @@ public class VFXandSoundTrigger : MonoBehaviour {
 	[SerializeField] AudioClip soundclipCountUISugar;
 	[SerializeField] AudioClip soundclipGameOver;
 	[SerializeField] AudioClip soundclipLevelEnd;
-	[SerializeField] AudioClip soundclipButtonClick;
+    [SerializeField] AudioClip soundclipButtonClick;
+    [SerializeField] AudioClip soundImmuPickup;
+    [SerializeField] AudioClip soundImmuEnd;
 
-	[SerializeField] AudioClip music1;
+    [SerializeField] AudioClip music1;
 
 	[SerializeField] Animator animator;
 	[SerializeField] Animator animatorStars;
@@ -182,8 +184,19 @@ public class VFXandSoundTrigger : MonoBehaviour {
 		animator.SetTrigger ("boostStart");
 	}
 
+    public void TriggerImmuPickUp()
+    {
 
-	public void TriggerStart(){
+        SoundManager.Instance.PlaySingle(soundImmuPickup);
+    }
+
+    public void TriggerImmuEnd()
+    {
+
+        SoundManager.Instance.PlaySingle(soundImmuEnd);
+    }
+
+    public void TriggerStart(){
 		
 		//SoundManager.Instance.PlaySingle (soundclipStart);
 		playerMeshRenderer.materials = matNormal;

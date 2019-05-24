@@ -44,7 +44,7 @@ public class CustomController : MonoBehaviour {
 	int selectedCustoms = 0;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		ActivateSelectedObjects ();
 		/*activeStartHat = activeHat;
 		activeStartSock = activeSock;
@@ -100,8 +100,11 @@ public class CustomController : MonoBehaviour {
 		}
 
 		for (; i < 32; i++) {
-			if (CoinController.Instance.IsCustomEquipped (i)) {
-				activeColor = i;
+			if (CoinController.Instance.IsCustomEquipped (i))
+            {
+                Debug.Log("ActiveSelectedObject " + i);
+
+                activeColor = i;
 				selectedColor = i;
 				SelectCustom (i);
 			}
@@ -324,7 +327,6 @@ public class CustomController : MonoBehaviour {
 	void PushNewCustom(){
 		//Debug.Log ("lastSelectedItem: " + lastSelectedItem);
 
-
 		if (activeHat != selectedHat) {
 			DeselectCustom (activeHat);
 			activeHat = selectedHat;
@@ -346,20 +348,30 @@ public class CustomController : MonoBehaviour {
 			SelectCustom (activeColor);
 		}
 
-		if (lastSelectedItem > -1 && lastSelectedItem < 8) {
-			DeselectCustom (activeHat);
-			activeHat = lastSelectedItem;
-		}else if (lastSelectedItem >= 8 && lastSelectedItem < 16) {
-			DeselectCustom (activeSock);
-			activeSock = lastSelectedItem ;
-		}else if (lastSelectedItem >= 16 && lastSelectedItem < 24) {
-			DeselectCustom (activeBack);
-			activeBack = lastSelectedItem;
-		}else if (lastSelectedItem >= 24) {
-			DeselectCustom (activeColor);
-			activeColor = lastSelectedItem;
-		}
-		SelectCustom (lastSelectedItem);
+        if (lastSelectedItem != -1)
+        {
+            if (lastSelectedItem > -1 && lastSelectedItem < 8)
+            {
+                DeselectCustom(activeHat);
+                activeHat = lastSelectedItem;
+            }
+            else if (lastSelectedItem >= 8 && lastSelectedItem < 16)
+            {
+                DeselectCustom(activeSock);
+                activeSock = lastSelectedItem;
+            }
+            else if (lastSelectedItem >= 16 && lastSelectedItem < 24)
+            {
+                DeselectCustom(activeBack);
+                activeBack = lastSelectedItem;
+            }
+            else if (lastSelectedItem >= 24 && lastSelectedItem < 32)
+            {
+                DeselectCustom(activeColor);
+                activeColor = lastSelectedItem;
+            }
+            SelectCustom(lastSelectedItem);
+        }
 
 		cusSelect.ShowSelectedObjects (selectedCustoms);
 	}
@@ -387,8 +399,11 @@ public class CustomController : MonoBehaviour {
 	}
 
 
-	void SelectCustom(int index){
-		selectedCustoms |= 1 << index;
+	void SelectCustom(int index)
+    {
+        Debug.Log(selectedCustoms);
+        selectedCustoms |= 1 << index;
+        Debug.Log(selectedCustoms);
 	}
 
 

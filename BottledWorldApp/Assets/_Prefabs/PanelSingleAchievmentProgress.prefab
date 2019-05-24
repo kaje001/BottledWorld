@@ -1073,6 +1073,8 @@ MonoBehaviour:
   imageSugarCube: {fileID: 1863483141523592}
   txtRewardSugar: {fileID: 6426240084131988190}
   imageStar: {fileID: 1196065500030412}
+  soundClaimAchievement: {fileID: 8300000, guid: 14b3a9871ada95a438df6c5325fbde87,
+    type: 3}
 --- !u!1 &1975457779542424
 GameObject:
   m_ObjectHideFlags: 0

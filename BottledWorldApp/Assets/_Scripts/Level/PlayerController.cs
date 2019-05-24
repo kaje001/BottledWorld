@@ -464,7 +464,11 @@ public class PlayerController : MonoBehaviour
 	public void PlayerImmunityBoost(){
 		immune = true;
 		immuneSphere.SetActive(true);
-		StartCoroutine (ImmuneReset ());
+
+        //Trigger VFX and Sound
+        VFXandSoundTrigger.Instance.TriggerImmuPickUp();
+
+        StartCoroutine (ImmuneReset ());
 	}
 
 	IEnumerator ImmuneReset ()
@@ -481,7 +485,10 @@ public class PlayerController : MonoBehaviour
 		immuneSphere.SetActive(false);
 		immune = false;
 
-	}
+        //Trigger VFX and Sound
+        VFXandSoundTrigger.Instance.TriggerImmuEnd();
+
+    }
 
 	public void SetCheckpoint (GameObject checkpointOb)
 	{
