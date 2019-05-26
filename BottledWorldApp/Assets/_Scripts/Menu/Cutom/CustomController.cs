@@ -102,7 +102,6 @@ public class CustomController : MonoBehaviour {
 		for (; i < 32; i++) {
 			if (CoinController.Instance.IsCustomEquipped (i))
             {
-                Debug.Log("ActiveSelectedObject " + i);
 
                 activeColor = i;
 				selectedColor = i;
@@ -401,9 +400,7 @@ public class CustomController : MonoBehaviour {
 
 	void SelectCustom(int index)
     {
-        Debug.Log(selectedCustoms);
         selectedCustoms |= 1 << index;
-        Debug.Log(selectedCustoms);
 	}
 
 

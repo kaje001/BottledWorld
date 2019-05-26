@@ -17,9 +17,6 @@ public class CustomSelecter : MonoBehaviour {
 	List<GameObject[]> socks = new List<GameObject[]>();
     //[SerializeField] GameObject[] colors;
 
-    [SerializeField] Mesh[] meshs;
-    [SerializeField] SkinnedMeshRenderer meshRenderer;
-
     // Use this for initialization
     void Start () {
 		socks.Add (socksFL);
@@ -54,18 +51,6 @@ public class CustomSelecter : MonoBehaviour {
 				foreach (GameObject[] gos in socks) {
 					gos [i].SetActive (true);
 				}
-                /*if (i == 4)
-                {
-                    meshRenderer.sharedMesh = meshs[1];
-                }
-                else if (i == 7)
-                {
-                    meshRenderer.sharedMesh = meshs[2];
-                }
-                else
-                {
-                    meshRenderer.sharedMesh = meshs[0];
-                }*/
             } else {
 				foreach (GameObject[] gos in socks) {
 					gos [i].SetActive (false);

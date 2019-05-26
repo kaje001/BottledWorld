@@ -9,8 +9,9 @@ public class UIConEndLevel : MonoBehaviour {
 	[SerializeField] Text textCoinsInLevel;
 
 	[SerializeField] GameObject LockOpen;
-	[SerializeField] GameObject LockClosed;
-	[SerializeField] Image imageBar;
+    [SerializeField] GameObject LockClosed;
+    [SerializeField] GameObject panelProgress;
+    [SerializeField] Image imageBar;
 	int coins = 0;
 	[SerializeField] Text coinsBiomBegin;
 	[SerializeField] Text coinsNextBiom;
@@ -21,6 +22,11 @@ public class UIConEndLevel : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        if(LastGameData.Instance.biom == 2)
+        {
+            panelProgress.SetActive(false);
+        }
 
 		coins = CoinController.Instance.state.totalCoins - LastGameData.Instance.coins;
 
@@ -45,10 +51,14 @@ public class UIConEndLevel : MonoBehaviour {
 	}
 
 	public void UpdateBar(){
-		/*if (coins >= 14) {
+        /*if (coins >= 14) {
 			return;
 		}*/
-		StartCoroutine (FillBar());
+        if (LastGameData.Instance.biom == 2)
+        {
+            return;
+        }
+        StartCoroutine (FillBar());
 
 	}
 

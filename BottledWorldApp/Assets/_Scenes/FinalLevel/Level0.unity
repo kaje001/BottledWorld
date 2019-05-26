@@ -1121,6 +1121,8 @@ MonoBehaviour:
   - {fileID: 1126281997}
   - {fileID: 1338162328}
   - {fileID: 429952573}
+  socksArmR: []
+  socksArmL: []
   backs:
   - {fileID: 371415444}
   - {fileID: 185743818}
@@ -1133,6 +1135,8 @@ MonoBehaviour:
   mats:
   - {fileID: 2100000, guid: d6a57479676d5dd44ba6d6f0c0792b8c, type: 2}
   - {fileID: 2100000, guid: a9d6f1c779d3f2543b7f036400821caf, type: 2}
+  meshs: []
+  meshRenderer: {fileID: 0}
 --- !u!1001 &22647073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12917,7 +12921,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 300
   field of view: 60
   orthographic: 0
   orthographic size: 5

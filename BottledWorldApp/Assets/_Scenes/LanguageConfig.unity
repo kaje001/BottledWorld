@@ -375,7 +375,7 @@ MonoBehaviour:
   canvas: {fileID: 1494211293}
   lexEnglish:
   - 'Rotate to start the game '
-  - 'Drag the ant over the first bottle '
+  - 'To start, drag the ant over the babybottle '
   - 'Do you really want to reset all game data? '
   - 'Game Over '
   - 'Collect sugar pieces to unlock new bioms and to customize your ant '
@@ -421,7 +421,7 @@ MonoBehaviour:
     gain special abilitys!
   lexGerman:
   - 'Drehe um das Spiel zu starten '
-  - 'Ziehe die Ameise ueber die Flasche '
+  - 'Ziehe die Ameise zuerst auf die Babyflasche '
   - 'Moechtest du wirklich das Spiel zuruecksetzten? '
   - Game Over
   - 'Sammel Zuckerwuerfel, um neue Biome freizuschalten und dir Customizations zu
