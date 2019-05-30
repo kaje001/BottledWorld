@@ -12,8 +12,9 @@ public class AntControllerEndLevel : MonoBehaviour {
 	[SerializeField] SplineInterpolator splineConAnt;
 	[SerializeField] SplineInterpolator splineConCam;
 	[SerializeField] GameObject panelLoading;
+    [SerializeField] GameObject panelInfo;
 
-	[SerializeField] GameObject stopTrigger;
+    [SerializeField] GameObject stopTrigger;
 	[SerializeField] GameObject jumpTrigger;
 	[SerializeField] GameObject groundTrigger;
 	[SerializeField] GameObject fadeTrigger;
@@ -49,8 +50,9 @@ public class AntControllerEndLevel : MonoBehaviour {
 		panelSugarInBottle.SetActive (false);
 		panelSugar.SetActive (false);
 		panelUnlock.SetActive (false);
-		panelScore.SetActive (false);
-		fade.FadeOut (2f);
+        panelScore.SetActive(false);
+        panelInfo.SetActive(false);
+        fade.FadeOut (2f);
 		SoundManager.Instance.PlaySingle (audioAntOutBottle);
 	}
 
@@ -86,11 +88,21 @@ public class AntControllerEndLevel : MonoBehaviour {
 	}
 
 	public void UnpauseMovement(){
-		SoundManager.Instance.PlaySingle (audioButtonClick);
-		splineConAnt.pause = false;
-		splineConCam.pause = false;
-		animator.SetTrigger ("jumpDown");
-		panelScore.SetActive (false);
+        if(LastGameData.Instance.biom == 2 && LastGameData.Instance.level == 12 && !CoinController.Instance.state.info12thlevel)
+        {
+            CoinController.Instance.state.info12thlevel = true;
+            panelScore.SetActive(false);
+            panelInfo.SetActive(true);
+        }
+        else
+        {
+            SoundManager.Instance.PlaySingle(audioButtonClick);
+            splineConAnt.pause = false;
+            splineConCam.pause = false;
+            animator.SetTrigger("jumpDown");
+            panelScore.SetActive(false);
+            panelInfo.SetActive(false);
+        }
 	}
 
 	public void RestartLevel(){

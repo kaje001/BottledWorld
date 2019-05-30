@@ -23,18 +23,29 @@ public class ShelfController : MonoBehaviour, IPointerDownHandler, IDragHandler,
 	// Use this for initialization
 	void Start () {
 		targetPos = transform.localPosition;
-	}
+        if(LastGameData.Instance.biom == 1)
+        {
+            Debug.Log("biom1");
+            targetPos = new Vector3(targetPos.x, 0.89f, targetPos.z);
+        }
+        else if (LastGameData.Instance.biom == 2)
+        {
+            targetPos = new Vector3(targetPos.x, 1.98f, targetPos.z);
+        }
+        lerpSpeed = lerpSpeedDrag;
+        //transform.localPosition = targetPos;
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		targetPos -= new Vector3(0f,touchDif,0f);
 		//Debug.Log(touchDif);
-		if (targetPos.y > -0.21f && targetPos.y < 1.90f) {
+		if (targetPos.y > -0.21f && targetPos.y < 1.98f) {
 			
 		} else if (targetPos.y < -0.21f) {
 			targetPos = new Vector3(targetPos.x,-0.21f,targetPos.z);
-		} else if (targetPos.y > 1.90f) {
-			targetPos = new Vector3(targetPos.x,1.90f,targetPos.z);
+		} else if (targetPos.y > 1.98f) {
+			targetPos = new Vector3(targetPos.x,1.98f,targetPos.z);
 		}
 
 

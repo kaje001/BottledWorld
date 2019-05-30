@@ -57,4 +57,9 @@ public class SaveState {
 	public bool settingsControls = false;
 
 	public string language = "";
+
+    //Infos
+    public bool info4thlevel = false;
+    public bool info9thlevel = false;
+    public bool info12thlevel = false;
 }

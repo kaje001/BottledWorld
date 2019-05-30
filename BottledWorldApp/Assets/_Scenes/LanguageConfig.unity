@@ -419,6 +419,11 @@ MonoBehaviour:
     specific time!'
   - Every fourth level will be something special! Sometimes you will be faster or
     gain special abilitys!
+  - Thank you for playing Bottled Ant!
+  - This is expected to be the final level, but you have the option to collect all
+    the sugar cubes and customizations.
+  - If you want to give us feedback or have questions? Contact us on our social media
+    accounts. :)
   lexGerman:
   - 'Drehe um das Spiel zu starten '
   - 'Ziehe die Ameise zuerst auf die Babyflasche '
@@ -468,6 +473,11 @@ MonoBehaviour:
     haelt nur einen bestimmten Zeitraum!'
   - Jedes vierte Level ist etwas besonderes! Manchmal wirst du schneller oder bekommst
     eine besondere Faehigkeit!
+  - Danke, dass du Bottled Ant gespielt hast!
+  - Dies wird voraussichtlich das letzte Level sein. Du hast aber die Moeglichkeit
+    alle Zuckerwuerfel und Customizations zu sammeln.
+  - Du hast Fragen oder moechtest uns Feedback geben? Dann kontaktiere uns auf unseren
+    Social Media Accounts. :)
 --- !u!4 &503042052
 Transform:
   m_ObjectHideFlags: 0
