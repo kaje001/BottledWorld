@@ -78,6 +78,8 @@ public class Achievment : MonoBehaviour {
                 GameObject.FindObjectOfType<AchievmentController>().UpdateAchievments();
 
                 SoundManager.Instance.PlaySingle(soundClaimAchievement);
+
+                GPS_init.Instance.UnlockAchievement(index);
             }
         }
     }

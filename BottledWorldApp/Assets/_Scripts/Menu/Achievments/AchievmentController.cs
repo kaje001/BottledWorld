@@ -74,13 +74,9 @@ public class AchievmentController : MonoBehaviour {
 			//ob.transform.GetChild (2).GetComponent<Text> ().text = descriptionAchievments [i];
 		}
 
-        parentAchievments.sizeDelta = new Vector2(0f, contentSizeY);
+        parentAchievments.sizeDelta = new Vector2(0f, contentSizeY + 120f);
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	public void UpdateAchievments(){
 		//TODO Hier die values anpassen

@@ -470,4 +470,9 @@ public class MenuController : MonoBehaviour {
 		panelLoading.SetActive (true);
 	}
 
+    public void ShowAchievementsGPS()
+    {
+        GPS_init.Instance.ShowAchievements();
+    }
+
 }
