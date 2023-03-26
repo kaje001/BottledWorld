@@ -17,7 +17,7 @@ public class CoinController : MonoBehaviour {
 			Destroy (gameObject);
 		}
 
-		DontDestroyOnLoad (this);
+		DontDestroyOnLoad (this.gameObject);
 		Load ();
 
 		Debug.Log (Application.systemLanguage);
